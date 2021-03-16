@@ -5,14 +5,17 @@
  */
 package inventory_management;
 
+
 import java.awt.Color;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class RESET_PASSWORD extends javax.swing.JFrame {
+    String phone;
+    String email;
+
 
     /**
      * Creates new form FORGOT_PASSWORD1
@@ -20,7 +23,12 @@ public class RESET_PASSWORD extends javax.swing.JFrame {
     public RESET_PASSWORD() {
         initComponents();
     }
-
+void res (String eml, String mob) {
+        email= eml;
+        phone  = mob;
+        System.out.println("!!!!!!!!! "+email);
+        System.out.println("@@@@@@@@@@@@@@@ "+phone);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,8 +42,8 @@ public class RESET_PASSWORD extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        pass1 = new javax.swing.JPasswordField();
+        pass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -58,11 +66,11 @@ public class RESET_PASSWORD extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hidden.png"))); // NOI18N
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 40, 30));
 
-        jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 450, 50));
+        pass1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel1.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 450, 50));
 
-        jPasswordField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 450, 50));
+        pass.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 450, 50));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 255));
@@ -115,15 +123,23 @@ public class RESET_PASSWORD extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-           /* if(P.equals("")||C_P.equals("")){
-                JOptionPane.showMessageDialog(this, "Fill up all field first");
-            }else(REGISTRATION_DATAOBEJECT.validate(P, C_P)){
-                email.setBackground(Color.green);
-                email.setText(null);
-                pass.setBackground(Color.green);
-                pass.setText(null);*/
-                JOptionPane.showMessageDialog(null, "Password Reset Successfully");
+        String Paass = pass.getText();      
+        String Paaas = pass1.getText();
+       
+        //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
+           if(Paass.equals(Paaas)){
+               UPDATEPROFILE_M_DATAOBJECT.Reset_password(Paass, Paaas,email);
+                System.out.println("Data inserted");
+               
+                System.out.println("passsssssss"+Paass);
+                System.out.println("cpcpcppcpcp"+Paass);
+                JOptionPane.showMessageDialog(this, "Your Password Change Sucessfully "); 
+                new LOGINFROM().setVisible(true);
+                this.dispose();
+           }else{
+                System.out.println("Data NOT inserted");
+                JOptionPane.showMessageDialog(this, "Both Password Not Same"); 
+           }
                
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -172,7 +188,7 @@ public class RESET_PASSWORD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField pass;
+    private javax.swing.JPasswordField pass1;
     // End of variables declaration//GEN-END:variables
 }

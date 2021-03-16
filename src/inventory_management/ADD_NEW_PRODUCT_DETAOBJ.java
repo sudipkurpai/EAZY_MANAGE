@@ -7,8 +7,6 @@ package inventory_management;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JTextField;
 
 /**
@@ -59,20 +57,4 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
               System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
 }
-
-public static boolean validate(String Product_id) throws SQLException
-    {
-        boolean status =false;
-        try{
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement("select * from add_new_product where Product_id = ?");
-            ps.setString(1, Product_id);
-            
-            ResultSet rs=ps.executeQuery();
-            status=rs.next();
-            con.close();
-           }
-        catch(Exception e){System.out.println(e);}
-        return status;
-    }
 }

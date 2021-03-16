@@ -5,12 +5,21 @@
  */
 package inventory_management;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class FORGOT_PASSWORD extends javax.swing.JFrame {
-
+     int otp;
+     String eml;
+     String phonee;
+     
     /**
      * Creates new form LOGIN_M
      */
@@ -29,11 +38,11 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        mng_id = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pass1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -47,11 +56,11 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/email.png"))); // NOI18N
-        jLabel3.setText("  Email / Phone");
+        jLabel3.setText("Email ID / Phone");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 420, 30));
 
-        jTextField2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 420, 60));
+        mng_id.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jPanel2.add(mng_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 420, 60));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 0));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -69,6 +78,11 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton3.setText("Send");
         jButton3.setBorder(null);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -76,8 +90,8 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         jLabel2.setText("Enter Your OTP");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 420, 50));
 
-        jPasswordField1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 420, 60));
+        pass1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jPanel2.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 420, 60));
 
         jLabel1.setBackground(new java.awt.Color(255, 0, 51));
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -118,11 +132,79 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        RESET_PASSWORD FP = new RESET_PASSWORD();
-        FP.setVisible(true);
-        this.dispose();
+        
+        try{
+          
+            if (Integer.parseInt(pass1.getText())== otp){
+            System.out.println("OTP Validate Successfully");  
+            JOptionPane.showMessageDialog(null, "OTP Validate Successfully");
+            RESET_PASSWORD FP = new RESET_PASSWORD();
+            FP.res(eml, phonee);
+            FP.setVisible(true);
+            this.dispose();
+            }
+            else{
+            JOptionPane.showMessageDialog(null, "Enter Your OTP", " Error", JOptionPane.ERROR_MESSAGE);   
+           }
+        }catch (Exception e){
+            System.out.println("Exception -"+e);
+        }  
+        
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        String p_email = mng_id.getText();
+        String phone = mng_id.getText();
+        try {
+            //  Data fetch from database
+            String sql = "Select * from register Where EMAIL =? or MOBILE_NO =? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,p_email);
+            ps.setString(2,phone);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                eml =rs.getString("Email");
+                phonee =rs.getString("MOBILE_NO");
+                System.out.println("EMAILLLLLLLL "+eml);
+                System.out.println("phoooooo "+phonee);
+                
+                rs.close();
+                ps.close();
+            
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        try{
+            if(p_email.equals(eml)||phone.equals(phonee) ){
+                gen_otp();
+                System.out.println("matched"+eml);    
+             JOptionPane.showMessageDialog(null, "OTP Sand");
+            /* if(REGISTRATION_DATAOBEJECT.vali(p_email, phone)){
+                gen_otp();
+                JOptionPane.showMessageDialog(null, "OTP Send");
+                
+                
+             */ 
+            } else{
+                    
+                JOptionPane.showMessageDialog(null,"Enter Correct Email Id/ Phone Number ", "Login Error", JOptionPane.ERROR_MESSAGE);
+                
+            }}
+        catch (Exception e){
+            System.out.println("Exceptionsssss -"+e);
+        }  
+     
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    public void gen_otp(){
+         Random rand = new Random();
+        otp = rand.nextInt(10000); // 0 - 9999
+        System.out.println("YOUR OTP IS "+otp);
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -167,7 +249,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField mng_id;
+    private javax.swing.JPasswordField pass1;
     // End of variables declaration//GEN-END:variables
 }

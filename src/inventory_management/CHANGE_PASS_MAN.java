@@ -6,7 +6,11 @@
 package inventory_management;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,8 +19,13 @@ import java.util.Random;
 public class CHANGE_PASS_MAN extends javax.swing.JFrame {
     
    String time = null;
-   String date = null;
-   String ph = null;
+     String date = null;
+     String ph = null;
+     String Name = null;
+     String Id = null;
+     String emll = null;
+     int otp;
+     int mng_Id;
     /**
      * Creates new form CHANGE_PASS_MAN
      */
@@ -31,11 +40,13 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         mng_name.setText(fullname);
         System.out.println("fullnamegggggg" + fullname);
         mng_id.setText(mng_Id);
+        Id = mng_Id;
         System.out.println("mng_Idhhhhhhhhh " + mng_Id);
         eml.setText(email);
         System.out.println("emailjjjjjjj" + email );
+        
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -214,6 +225,11 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("Submit");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 40));
 
         open.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -385,13 +401,84 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
 
     private void get_otpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_get_otpMouseClicked
         // TODO add your handling code here:
-        gen_otp();
+        
+        String p_email = mng_id.getText();
+        String p_pass = pass.getText();
+        
+        //String mng_Id = null;
+        String eml= null;
+        String passw= null;
+        
+        try {
+            //  Data fetch from database
+            String sql = "Select * from register Where MNG_ID = ? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,p_email);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                eml =rs.getString("Email");
+                passw =rs.getString("PASSWORD");
+                System.out.println("EMAILLLLLLLL "+eml);
+                System.out.println("MNGGGGGGGGGGGGG "+p_email);
+                System.out.println("Passssssss "+passw);
+                rs.close();
+                ps.close();
+            
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        try{
+            if(p_pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Wrong Password");
+            }else if(REGISTRATION_DATAOBEJECT.validate(p_email, p_pass)){
+                gen_otp();
+                JOptionPane.showMessageDialog(null, "OTP Send");
+                
+                
+              
+            }else{
+                
+                JOptionPane.showMessageDialog(null,"Enter Correct Password", "Login Error", JOptionPane.ERROR_MESSAGE);
+                
+            }
+        }catch (Exception e){
+            System.out.println("Exception -"+e);
+        }  
+     
+               
+                 
+                           
     }//GEN-LAST:event_get_otpMouseClicked
 
-    public void gen_otp(){
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+      try{
+          if("Enter Your OTP".equals(pass1.getText())){
+             JOptionPane.showMessageDialog(null, "OTP Field is blank", "Error", JOptionPane.ERROR_MESSAGE); 
+          }else if (Integer.parseInt(pass1.getText())== otp){
+            System.out.println("OTP Validate Successfully");  
+            JOptionPane.showMessageDialog(null, "OTP Validate Successfully");
+            CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
+            cpm.cpmm(Name, Id, emll, time, date, ph);
+            System.out.println("emlllll"+emll);
+            System.out.println("Idddddd"+Id);
+            cpm.setVisible(true);              
+            this.dispose();
+          }else{
+            JOptionPane.showMessageDialog(null, "Enter OTP", "Login Error", JOptionPane.ERROR_MESSAGE);   
+           }
+    }//GEN-LAST:event_jButton3MouseClicked
+catch (Exception e){
+            System.out.println("Exception -"+e);
+        }  }
+   public void gen_otp(){
          Random rand = new Random();
-        int otp = rand.nextInt(10000); // 0 - 9999
+        otp = rand.nextInt((10000 - 100)+1); // 0 - 9999
         System.out.println("YOUR OTP IS "+otp);
+        
     }
     
     /**

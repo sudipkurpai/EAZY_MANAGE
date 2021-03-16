@@ -5,45 +5,17 @@
  */
 package inventory_management;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
-            
-    String mng_Id = null;
-    String emp_Id = null;
-    String Name = null;
-    String Phone = null;
-    String Email = null;
-    String ID = null;
-    String date=null;
-    String time = null;
-    
-    
+
     /**
      * Creates new form UPDATEPROFILE
      */
     public UPDATEPROFILE_EMP() {
-       initComponents();
-       
-    }
-
-      void udpe (String fullname, String mng_Id,String email,String t1,String d1,String p) {
-        Name = fullname;
-        ID = mng_Id;
-        Email = email;
-        time = t1;
-        date = d1;
-        Phone= p;
-        first_name.setEditable(false);
-         first_name.setText(Name);
-        //first_name.enable(false);
+        initComponents();
     }
 
     /**
@@ -59,20 +31,20 @@ public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        first_name = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        last_name = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        c_addr = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        c_email = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        c_phone = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        c_dob = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        c_gen = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -101,20 +73,20 @@ public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
         jLabel3.setText("First Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
 
-        first_name.setBackground(new java.awt.Color(255, 255, 255));
-        first_name.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        first_name.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(first_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 420, 40));
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 420, 40));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Last Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 130, 20));
 
-        last_name.setBackground(new java.awt.Color(255, 255, 255));
-        last_name.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        last_name.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(last_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 450, 40));
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 120, 450, 40));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
@@ -122,58 +94,53 @@ public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
         jLabel7.setText("Home Address");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 170, 30));
 
-        c_addr.setBackground(new java.awt.Color(255, 255, 255));
-        c_addr.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        c_addr.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(c_addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 920, 100));
+        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 920, 100));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Email");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, -1, -1));
 
-        c_email.setBackground(new java.awt.Color(255, 255, 255));
-        c_email.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        c_email.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(c_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 450, 40));
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField6.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 450, 40));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Phone");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
-        c_phone.setBackground(new java.awt.Color(255, 255, 255));
-        c_phone.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        c_phone.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(c_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 420, 40));
+        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 420, 40));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("DOB");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, -1, -1));
 
-        c_dob.setBackground(new java.awt.Color(255, 255, 255));
-        c_dob.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        c_dob.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(c_dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 420, 40));
+        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField8.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 420, 40));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Gender");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, -1, 30));
 
-        c_gen.setBackground(new java.awt.Color(255, 255, 255));
-        c_gen.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        c_gen.setForeground(new java.awt.Color(0, 0, 0));
-        c_gen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Femail", "Others" }));
-        jPanel1.add(c_gen, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 450, 40));
+        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jComboBox2.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Femail", "Others" }));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 450, 40));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (11).png"))); // NOI18N
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 640, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (13).png"))); // NOI18N
@@ -196,70 +163,12 @@ public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1400, 787));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-  void Update_Profile(){
-         System.out.println("!!!!!!!!56!");
-         String firstname= first_name.getText();
-        
-         try{   
-            String sql = "Select * from employee_register Where FIRST_NAME = ?";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,firstname);
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-                String eml=rs.getString("EMAIL");
-                String mob=rs.getString("MOBILE_NO"); 
-                String db=rs.getString("DOB");
-                String gn=rs.getString("GENDER");
-                String add =rs.getString("ADDRESS");
-                c_email.setText(eml);
-                c_phone.setText(mob);
-                c_dob.setText(db);
-                c_gen.setSelectedItem(gn);
-                c_addr.setText(add);
-                
-                
-                rs.close();
-                ps.close();
-            }else{
-                JOptionPane.showMessageDialog(null, "NOTHING FOUND IN DATABASE!!!!!!");
-            }
-            con.close();
-           }
-        catch(Exception e){System.out.println(e);}
-         
-  }
+
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
-          DASHBOARD_M dm = new DASHBOARD_M();
-    dm.mngname(Name,ID,Email,Phone,date,time);
-    dm.setVisible(true);
-    this.dispose();
+        new DASHBOARD_FINAL_EMPLOYEE().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
-
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        // TODO add your handling code here:
-        String FST = first_name.getText();    
-        String DOB = c_dob.getText();      
-        String add = c_addr.getText();
-        String gen2 = c_gen.getSelectedItem().toString();
-        System.out.println("@@@@@@@@@ "+gen2);
-        
-        
-        
-        int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_m(DOB,add,gen2,ID);
-            //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
-           if(i>0){
-                System.out.println("Data inserted");
-                JOptionPane.showMessageDialog(this, "Your Profile Update Sucessfully "); 
-                new REGISTRATION().setVisible(true);
-                this.dispose();
-           }else{
-                System.out.println("Data NOT inserted");
-                JOptionPane.showMessageDialog(this, "Your Profile Not Update Sucessfully"); 
-           }
-                                   
-    }//GEN-LAST:event_jLabel16MouseClicked
 
     /**
      * @param args the command line arguments
@@ -300,12 +209,7 @@ public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField c_addr;
-    private javax.swing.JTextField c_dob;
-    private javax.swing.JTextField c_email;
-    private javax.swing.JComboBox<String> c_gen;
-    private javax.swing.JTextField c_phone;
-    private javax.swing.JTextField first_name;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -320,6 +224,11 @@ public class UPDATEPROFILE_EMP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField last_name;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

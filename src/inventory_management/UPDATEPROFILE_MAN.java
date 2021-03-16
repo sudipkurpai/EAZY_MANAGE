@@ -26,6 +26,7 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
     String time = null;
     
     
+    
 
     /**
      * Creates new form UPDATEPROFILE
@@ -170,11 +171,6 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
         gen.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         gen.setForeground(new java.awt.Color(0, 0, 0));
         gen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
-        gen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genActionPerformed(evt);
-            }
-        });
         jPanel1.add(gen, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 450, 40));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (11).png"))); // NOI18N
@@ -183,7 +179,7 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
                 jLabel16MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 640, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 640, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (13).png"))); // NOI18N
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -226,6 +222,7 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
                 String db=rs.getString("DOB");
                 String gn=rs.getString("GENDER");
                 String add =rs.getString("ADDRESS");
+                
                 email.setText(eml);
                 phone.setText(mob);
                 dob.setText(db);
@@ -245,27 +242,23 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
        DASHBOARD_M dm = new DASHBOARD_M();
-       
-       
        dm.mngname(Name,ID,Email,Phone,date,time);
        dm.setVisible(true);
-        this.dispose();
+       this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-        
-        
-        
-        
-        String DOB = dob.getText();      
+       String DOB = dob.getText();      
         String add = addr.getText();
+        String Pass= null;
+        String c_pass=null;
         String gen2 = gen.getSelectedItem().toString();
         System.out.println("@@@@@@@@@ "+gen2);
         
         
         
-        int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_m(DOB,add,gen2,ID);
+        int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_m(DOB, add, gen2, ID);
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
                 System.out.println("Data inserted");
@@ -281,10 +274,6 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void genActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genActionPerformed
 
     /**
      * @param args the command line arguments

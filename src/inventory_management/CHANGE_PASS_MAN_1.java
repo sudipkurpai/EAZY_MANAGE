@@ -6,20 +6,36 @@
 package inventory_management;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Sudip Maiti
  */
 public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
-
+     String time = null;
+     String date = null;
+     String ph = null;
+     String Name = null;
+     
+     String emll = null;
+     String Id = null;
     /**
      * Creates new form CHANGE_PASS_MAN
      */
     public CHANGE_PASS_MAN_1() {
         initComponents();
     }
-
+ void cpmm (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+        Name = fullname;
+         Id = mng_Id;
+        emll = email;
+        time = t1;
+        date = d1;
+        ph= p;
+        System.out.println("Idddddddd"+Id);
+        System.out.println("Emlllllll"+emll);
+        }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +49,7 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         pass = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         pass1 = new javax.swing.JPasswordField();
         jLabel17 = new javax.swing.JLabel();
@@ -52,6 +69,11 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Submit");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 160, 40));
 
         pass.setBackground(new java.awt.Color(204, 255, 204));
@@ -73,6 +95,14 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 20, 30));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
@@ -243,6 +273,40 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
         pass.setEchoChar((char)0);
     }//GEN-LAST:event_hide2MousePressed
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+         String Paass = pass.getText();      
+        String Paaas = pass1.getText();
+        String DOB =null;
+        String ADDRESS=null;
+        String GENDER=null;
+        //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
+           if(Paass.equals(Paaas)){
+               UPDATEPROFILE_M_DATAOBJECT.update_password(Paass, Paass, Id);
+                System.out.println("Data inserted");
+                        
+                System.out.println("mmmmmm"+Id);
+                System.out.println("ddddddd"+emll);
+                System.out.println("passsssssss"+Paass);
+                System.out.println("cpcpcppcpcp"+Paass);
+                JOptionPane.showMessageDialog(this, "Your Password Change Sucessfully "); 
+                new LOGINFROM().setVisible(true);
+                this.dispose();
+           }else{
+                System.out.println("Data NOT inserted");
+                JOptionPane.showMessageDialog(this, "Both Password Not Same"); 
+           }
+        
+        
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        DASHBOARD_M dm = new DASHBOARD_M();
+       dm.mngname(Name,Id,emll,ph,date,time);
+       dm.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -286,6 +350,7 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel open1;

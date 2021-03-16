@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Sudip Maiti
  */
+
 public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
      String time = null;
      String date = null;
@@ -63,10 +64,14 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
             PreparedStatement ps=con.prepareStatement("select * from id_store");         
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
-            trn_id = rs.getString("Transaction_Id");
-                System.out.println("Transaction ID "+trn_id);
-                rs.close();
-                ps.close();
+             mng_Id=rs.getString("MNG_ID");
+            System.out.println("MANAGER ID "+mng_Id);
+            emp_id=rs.getString("EMP_ID");
+            System.out.println("EMPLOYEE ID "+emp_id);
+            trn_id=rs.getString("Transaction_Id");
+            System.out.println("Transaction_Id "+trn_id);
+            rs.close();
+            ps.close();
             }else{
                 JOptionPane.showMessageDialog(null, "NOTHING FOUND IN DATABASE!!!!!!");
             }
@@ -119,7 +124,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         mfg = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         quantity = new javax.swing.JTextField();
         catagory = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -156,16 +160,11 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                 jLabel18MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(892, 12, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 6, 20, 20));
 
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setForeground(new java.awt.Color(0, 0, 0));
         jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 169, 20));
 
         jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -199,11 +198,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jLabel5.setText("Transaction ID :");
 
         mng_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        mng_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mng_nameActionPerformed(evt);
-            }
-        });
 
         mng_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -271,11 +265,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         p_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        p_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                p_idActionPerformed(evt);
-            }
-        });
         jPanel2.add(p_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -283,11 +272,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, -1));
 
         p_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        p_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                p_nameActionPerformed(evt);
-            }
-        });
         jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 130, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -296,11 +280,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 80, -1));
 
         s_cost.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        s_cost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                s_costActionPerformed(evt);
-            }
-        });
         jPanel2.add(s_cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 130, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -308,11 +287,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
         unit_pri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        unit_pri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unit_priActionPerformed(evt);
-            }
-        });
         jPanel2.add(unit_pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 130, -1));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -321,35 +295,16 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 70, -1));
 
         mfg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        mfg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mfgActionPerformed(evt);
-            }
-        });
         jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, -1));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel11.setText("Mfg Date :");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 60, -1));
 
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 60, -1));
-
         quantity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        quantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantityActionPerformed(evt);
-            }
-        });
         jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 130, -1));
 
         catagory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        catagory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                catagoryActionPerformed(evt);
-            }
-        });
         jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 130, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -361,11 +316,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 50, -1));
 
         total.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        total.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalActionPerformed(evt);
-            }
-        });
         jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 130, -1));
 
         desc.setBorder(null);
@@ -378,11 +328,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 70, -1));
 
         exp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        exp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                expActionPerformed(evt);
-            }
-        });
         jPanel2.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 130, -1));
 
         jLabel16.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -391,11 +336,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 50, -1));
 
         brand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        brand.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandActionPerformed(evt);
-            }
-        });
         jPanel2.add(brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 130, -1));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -433,21 +373,17 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/New_button.png"))); // NOI18N
         jLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 120, 50));
 
         jLabel24.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
         jLabel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel24.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jLabel24AncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel24MouseClicked(evt);
@@ -459,8 +395,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,46 +410,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void p_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_p_idActionPerformed
-
-    private void p_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_p_nameActionPerformed
-
-    private void s_costActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_costActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_s_costActionPerformed
-
-    private void unit_priActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unit_priActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unit_priActionPerformed
-
-    private void mfgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mfgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mfgActionPerformed
-
-    private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_quantityActionPerformed
-
-    private void catagoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catagoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_catagoryActionPerformed
-
-    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_totalActionPerformed
-
-    private void expActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_expActionPerformed
-
-    private void brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_brandActionPerformed
-
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
         
@@ -522,15 +418,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     dm.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void mng_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mng_nameActionPerformed
-        // TODO add your handling code here:
-   
-    }//GEN-LAST:event_mng_nameActionPerformed
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
         // TODO add your handling code here:
@@ -554,10 +441,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         a = Integer.parseInt(s_cost.getText());
         b = Integer.parseInt(quantity.getText());
         c=a*b;
+        
         total.setText(""+c);
-        
-       
-        
         if(Product_id.isEmpty() || p_nmaee.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill up all field first");
         }
@@ -567,7 +452,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                                   mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
               });
         int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product (mng,mng_i,timee,t_id, Product_id, p_nmaee,  Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand);
-        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id ,t_idd.toString());
+        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id ,t_id);
         if(i>0 || j>0){
         System.out.println("Data inserted");
         JOptionPane.showMessageDialog(this, "Add Product Successfully");
@@ -578,10 +463,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jLabel24MouseClicked
-
-    private void jLabel24AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel24AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel24AncestorAdded
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
@@ -596,13 +477,18 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
          catagory.setText("");
          brand.setText("");
          total.setText("");
-        
+    
         
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void t_iddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_iddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_t_iddActionPerformed
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+        // TODO add your handling code here:
+        id_create();
+    }//GEN-LAST:event_jLabel23MouseClicked
     
 
     /**
@@ -630,7 +516,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

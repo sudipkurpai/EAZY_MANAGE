@@ -91,7 +91,7 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
                 System.out.println("MANAGER ID "+mng_Id);
                 emp_Id=rs.getString("EMP_ID");
                 System.out.println("EMPLOYEE ID "+emp_Id);
-                Transaction_Id=rs.getString("EMP_ID");
+                Transaction_Id=rs.getString("Transaction_Id");
                 System.out.println("Transaction_Id "+Transaction_Id);
                 rs.close();
                 ps.close();

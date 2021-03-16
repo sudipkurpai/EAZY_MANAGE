@@ -5,95 +5,83 @@
  */
 package inventory_management;
 
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
-     String time = null;
+String time = null;
      String date = null;
-     
      String ph = null;
      String Name = null;
      String Id = null;
      String emll = null;
-     String trn_id = null;
-     String Product_id = null;
-    
-    
-    
-
+    private Object DbUtils;
     /**
      * Creates new form SEARCH_PRODUCT_M
      */
     public SEARCH_PRODUCT_M() {
         initComponents();
     }
-    void snp (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+    void spm (String fullname, String mng_Id,String email,String t1,String d1,String p) {
         Name = fullname;
         Id = mng_Id;
         emll = email;
         time = t1;
         date = d1;
         ph= p;
+        }
+    {
+        
+    }
+        void Search_product(){
         
         
-       
-    
-    //String product_idee = pro1_id.getText();
+        String product_idee = pro1_id.getText();
         //String p_pass = pass.getText();
+        String Product_id = null;
         
         
-        
-//        try {
-//             //Data fetch from database
-//            String sql = "Select * from add_new_product Where Product_id = ?";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//             String product_idee = pro1_id.getText();
-//            ps.setString(1,product_idee);
-//            ResultSet rs=ps.executeQuery();
-//            if(rs.next()){
-//                String product_ideoo =rs.getString("Product_id");
-//                 System.out.println("EMpppppp "+product_ideoo);
-//                String product_nameyy =rs.getString("Product_name");
-//                 System.out.println("pppnnn "+product_nameyy);
-//                String description =rs.getString("Description");
-//                 System.out.println("ddsss "+description);
-//                String standerd_cost =rs.getString("Standerd_cost");
-//                 System.out.println("ssccc "+standerd_cost);
-//                String unitprice =rs.getString("Unit_price");
-//                 System.out.println("uuppp "+unitprice);
-//                String mfgdate =rs.getString("Mfg_date");
-//                 System.out.println("mmmddd "+mfgdate);
-//                String expirydate =rs.getString("Exp_date");
-//                 System.out.println("eeeddd "+expirydate);
-//                String quantity =rs.getString("Quantity");
-//                 System.out.println("qqqqnnn "+quantity);
-//                String category =rs.getString("Category");
-//                 System.out.println("ccccttt "+category);
-//                String brand =rs.getString("Brand");
-//                System.out.println("bbbrr "+brand);
-//                
-//               
-//                rs.close();
-//                ps.close();
-//            }else{
-//                System.out.println("Enter Correct Product Id");
-//            }
-//        }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
+        try {
+             //Data fetch from database
+            String sql = "Select * from add_new_product Where Product_id = Product_id";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            //ps.setString(1,Product_id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                String product_ide =rs.getString("Product_id");
+                System.out.println("EMpppppp "+product_ide);
+                String p_name =rs.getString("Product_name");
+                String Desc =rs.getString("Description");
+                String San_cast =rs.getString("Standerd_cost");
+                String Unit_pri =rs.getString("Unit_price");
+                String mfg_date =rs.getString("Mfg_date");
+                String exp_date =rs.getString("Exp_date");
+                String quant =rs.getString("Quantity");
+                String catagory =rs.getString("Category");
+                String Brand =rs.getString("Brand");
+                rs.close();
+                ps.close();
+            }else{
+                System.out.println("Enter Correct Product Id");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
 //        try{
 //            //ganesh
-//            if(Product_id.equals("pro1_id")){
+//            if(Product_id.equals("product_idee")){
 //                JOptionPane.showMessageDialog(this, "product found");
 //            }
 //            //raghu
@@ -105,7 +93,8 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
 //        }catch (Exception e){
 //            System.out.println("Exception -"+e);
 //        }   
-    }                            
+     
+    }                         
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,14 +112,15 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,6 +131,16 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
         pro1_id.setBackground(new java.awt.Color(255, 255, 255));
         pro1_id.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         pro1_id.setBorder(null);
+        pro1_id.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pro1_idMouseClicked(evt);
+            }
+        });
+        pro1_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pro1_idActionPerformed(evt);
+            }
+        });
         jPanel1.add(pro1_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 49, 400, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -167,11 +167,55 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1160, 780));
 
+        jButton1.setBackground(new java.awt.Color(51, 255, 51));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("ADD");
+        jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 930, 140, 40));
+
+        jButton2.setBackground(new java.awt.Color(0, 102, 204));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Modify");
+        jButton2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 930, 150, 40));
+
+        jButton3.setBackground(new java.awt.Color(204, 0, 0));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Delete");
+        jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 930, 140, 40));
+
+        jPanel4.setBackground(new java.awt.Color(0, 204, 102));
+
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("x");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,52 +227,30 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1118, 0, -1, 30));
-
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("ADD");
-        jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 930, 140, 40));
-
-        jButton2.setBackground(new java.awt.Color(0, 102, 204));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Modify");
-        jButton2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 930, 150, 40));
-
-        jButton3.setBackground(new java.awt.Color(204, 0, 0));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Delete");
-        jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 930, 140, 40));
-
-        jPanel4.setBackground(new java.awt.Color(0, 204, 102));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 1130, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 97, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 130));
@@ -244,87 +266,117 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1160, 1047));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-   String product_idee = pro1_id.getText();
-    String product_ideoo= null;
-        try {
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+         DASHBOARD_M dm = new DASHBOARD_M();
+        dm.mngname(Name, Id, emll, ph, date, time);
+        dm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
         
+      /* 
+        void Search_product(){
+      
+       String src=pro1_id.getText();
+        //String p_pass = pass.getText();
+        
+       try {
              //Data fetch from database
             String sql = "Select * from add_new_product Where Product_id = ?";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-             
-            ps.setString(1,product_idee);
+            //ps.setString(1,Product_id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
-                product_ideoo =rs.getString("Product_id");
-                 System.out.println("EMpppppp "+product_ideoo);
-                String product_nameyy =rs.getString("Product_name");
-                 System.out.println("pppnnn "+product_nameyy);
-                String description =rs.getString("Description");
-                 System.out.println("ddsss "+description);
-                String standerd_cost =rs.getString("Standerd_cost");
-                 System.out.println("ssccc "+standerd_cost);
-                String unitprice =rs.getString("Unit_price");
-                 System.out.println("uuppp "+unitprice);
-                String mfgdate =rs.getString("Mfg_date");
-                 System.out.println("mmmddd "+mfgdate);
-                String expirydate =rs.getString("Exp_date");
-                 System.out.println("eeeddd "+expirydate);
-                String quantity =rs.getString("Quantity");
-                 System.out.println("qqqqnnn "+quantity);
-                String category =rs.getString("Category");
-                 System.out.println("ccccttt "+category);
-                String brand =rs.getString("Brand");
-                System.out.println("bbbrr "+brand);
-               // JOptionPane.showMessageDialog(this, "Product Found");
-                
-               
+                String product_ide =rs.getString("Product_id");
+                System.out.println("EMpppppp "+product_ide);
+                String p_name =rs.getString("Product_name");
+                String Desc =rs.getString("Description");
+                String San_cast =rs.getString("Standerd_cost");
+                String Unit_pri =rs.getString("Unit_price");
+                String mfg_date =rs.getString("Mfg_date");
+                String exp_date =rs.getString("Exp_date");
+                String quant =rs.getString("Quantity");
+                String catagory =rs.getString("Category");
+                String Brand =rs.getString("Brand");
                 rs.close();
                 ps.close();
+                DefaultTableModel model = (DefaultTableModel)table.getModel();
+              model.addRow(new Object[]{product_ide.get(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
+                                       mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
+              }
             }else{
-                JOptionPane.showMessageDialog(this, "Enter Correct Product Id");
                 System.out.println("Enter Correct Product Id");
             }
         }catch(Exception e){
             System.out.println("error"+e);
         }
         try{
-            //ganesh
-            if(ADD_NEW_PRODUCT_DETAOBJ.validate(product_idee))
-                 
+            
+           String sql = "Select * from add_new_product Where Product_id LIKE '%"+src+"%'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+                      
+               } catch (Exception e) {
+            System.out.println("null,e");
+               } 
+    }*/
+    }                                    
 
-            {System.out.println("ppppppppppiiiiiiiiiii"+product_idee);
-                JOptionPane.showMessageDialog(this, "product found");
-               // System.out.println("pppppppppp"+pro1_id);
-               String table[] =  {Product_id};
-              
-         // DefaultTableModel model = (DefaultTableModel)table.getModel();
-           // model.addRow(table);
-              
-            
-    
-            //raghu
-            }else 
-            JOptionPane.showMessageDialog(this, "product not found");
-            //sudip
-            
-            
-        }catch (Exception e){
-            System.out.println("Exception -"+e);  
+    private void pro1_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pro1_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pro1_idActionPerformed
+
+    private void pro1_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pro1_idMouseClicked
+        // TODO add your handling code here:
+        pro1_id.setText("");
+    }//GEN-LAST:event_pro1_idMouseClicked
+/*
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+    String tf = pro1_id.getText();
+    try{
+        String query ="SELECT * FROM add_new_product WHERE Product_id=?";
+        pst=con.prepareStatement(query);
+        table.setmodel(resultsetToTableModel(rs));
+        
+    }catch(Exception e){
+        JOptionpane.showMessegeDialog(null, e);
     }//GEN-LAST:event_jLabel2MouseClicked
-     
-           
-      
-    
+      finally{
+        try{
+            if(pst!=null){
+               rs.close();
+               pst.close();
+            }
+        }
+        catch(Exception e){
     }
+    }*/
     
     
     /**
@@ -377,4 +429,12 @@ public class SEARCH_PRODUCT_M extends javax.swing.JFrame {
     private javax.swing.JTextField pro1_id;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    private TableModel DbUtilsresultSetToTableModel(PreparedStatement ps) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private TableModel resultSetToTableModel(PreparedStatement ps) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

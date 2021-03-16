@@ -141,7 +141,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel102 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         add_emp3 = new javax.swing.JPanel();
-        UPDATEPROFILE_EMP = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
         navbar = new javax.swing.JPanel();
         mng_name = new javax.swing.JLabel();
@@ -966,13 +966,8 @@ public class DASHBOARD_M extends javax.swing.JFrame {
             }
         });
 
-        UPDATEPROFILE_EMP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UPDATEPROFILE_EMP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/student-profile.png"))); // NOI18N
-        UPDATEPROFILE_EMP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UPDATEPROFILE_EMPMouseClicked(evt);
-            }
-        });
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/student-profile.png"))); // NOI18N
 
         jLabel122.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jLabel122.setForeground(new java.awt.Color(0, 204, 102));
@@ -991,13 +986,12 @@ public class DASHBOARD_M extends javax.swing.JFrame {
             .addGroup(add_emp3Layout.createSequentialGroup()
                 .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 5, Short.MAX_VALUE))
-            .addComponent(UPDATEPROFILE_EMP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel83, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         add_emp3Layout.setVerticalGroup(
             add_emp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, add_emp3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(UPDATEPROFILE_EMP, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                .addComponent(jLabel83, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
@@ -2298,7 +2292,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                 .addGroup(UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(change_pass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(salf_update, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(430, Short.MAX_VALUE))
         );
 
         jPanel1.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 810, 630));
@@ -2596,7 +2590,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void add_emp3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_emp3MouseClicked
         // TODO add your handling code here:
-        UPDATEPROFILE_EMP up = new UPDATEPROFILE_EMP();
     }//GEN-LAST:event_add_emp3MouseClicked
 
     private void jLabel121MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel121MouseClicked
@@ -2611,7 +2604,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
          String t1 = time1.getText();
          String d1 = time2.getText();
          cp.change(name, ID, eml,t1,d1,ph);
-         cp.setVisible(true);
+        cp.setVisible(true);
         this.dispose();
        
     }//GEN-LAST:event_change_passMouseClicked
@@ -2688,14 +2681,14 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jPanel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel30MouseClicked
         // TODO add your handling code here:
-       SEARCH_PRODUCT_M spm = new SEARCH_PRODUCT_M();
+        SEARCH_PRODUCT_M spmm = new SEARCH_PRODUCT_M();
         String name = mng_name.getText();
         String ID = mng_id.getText();
         String t1 = time1.getText();
         String d1 = time2.getText();
-        spm.snp(name, ID, eml, t1, d1, ph);
+        spmm.spm(name, ID, eml, t1, d1, ph);
         
-        spm.setVisible(true);
+        spmm.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jPanel30MouseClicked
 
@@ -2747,19 +2740,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel68MouseClicked
 
-    private void UPDATEPROFILE_EMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UPDATEPROFILE_EMPMouseClicked
-        // TODO add your handling code here:
-        UPDATEPROFILE_EMP UP = new UPDATEPROFILE_EMP();
-        String name = mng_name.getText();
-        String ID = mng_id.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        UP.udpe(name, ID, eml, t1, d1, ph);
-        UP.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_UPDATEPROFILE_EMPMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -2802,7 +2782,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LOGOUTaa;
     private javax.swing.JLabel Showtime;
-    private javax.swing.JLabel UPDATEPROFILE_EMP;
     private javax.swing.JPanel UPD_PRO;
     private javax.swing.JPanel Update;
     private javax.swing.JPanel add_emp;
@@ -2921,6 +2900,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel97;

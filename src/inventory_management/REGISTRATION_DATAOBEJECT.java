@@ -53,5 +53,21 @@ public class REGISTRATION_DATAOBEJECT {
            }
         catch(Exception e){System.out.println(e);}
         return status;
+    
+    }      
+public static boolean vali (String EMAIL,String MOBILE_NO) throws SQLException
+    {
+        boolean status =false;
+        try{
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from register where EMAIL = ? or MOBILE_NO =? ");
+            ps.setString(1, EMAIL);
+            ps.setString(1, MOBILE_NO);
+            ResultSet rs=ps.executeQuery();
+            status=rs.next();
+            con.close();
+           }
+        catch(Exception e){System.out.println(e);}
+        return status;
     }
 }

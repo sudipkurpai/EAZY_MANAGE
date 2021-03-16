@@ -31,7 +31,7 @@ public class ID_STORE_FETCH {
               System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
     }
-    public static boolean validate(String mng_id,String emp_id) throws SQLException
+    public static boolean validate(String mng_id,String emp_id,String Transaction_Id) throws SQLException
     {
         boolean status =false;
         try{
@@ -39,6 +39,7 @@ public class ID_STORE_FETCH {
             PreparedStatement ps=con.prepareStatement("select * from id_store");
             ps.setString(1, mng_id);
             ps.setString(2, emp_id);
+            ps.setString(3, Transaction_Id);
             ResultSet rs=ps.executeQuery();
             status=rs.next();
             con.close();
