@@ -342,13 +342,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
              
         }catch (Exception e){
             System.out.println("Exception -"+e);  
-    }                                    
-     
-           
-      
-    
-    
-
+    }                                  
     }//GEN-LAST:event_SearchbMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked

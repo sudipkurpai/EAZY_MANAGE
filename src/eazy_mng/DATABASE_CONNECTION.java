@@ -16,7 +16,7 @@ public class DATABASE_CONNECTION {
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/inventory_management","root","");
+            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/eazy_manage","root","");
         }catch(Exception e){
             System.out.println(e);
         }

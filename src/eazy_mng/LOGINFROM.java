@@ -8,6 +8,7 @@ package eazy_mng;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -171,6 +172,11 @@ public class LOGINFROM extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 passFocusLost(evt);
+            }
+        });
+        pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passKeyPressed(evt);
             }
         });
         jPanel2.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 300, 40));
@@ -523,6 +529,78 @@ public class LOGINFROM extends javax.swing.JFrame {
         fp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void passKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            String p_email = email.getText();
+        String p_pass = pass.getText();
+        String name= null;
+        String mng_Id = null;
+        String eml= null;
+        String phone = null;
+        try {
+            //  Data fetch from database
+            String sql = "Select * from register Where MNG_ID = ?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,p_email);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                eml =rs.getString("Email");
+                System.out.println("EMAILLLLLLLL "+eml);
+                phone =rs.getString("MOBILE_NO");
+                System.out.println("EMAILLLLLLLL "+phone);
+                String fname =rs.getString("FIRST_NAME");
+                System.out.println("FIRST NAME "+fname);
+                String lname =rs.getString("LAST_NAME");
+                System.out.println("LAST NAME "+lname);
+                name = fname+" "+lname;
+                System.out.println("FULL NAME "+name);
+                mng_Id =rs.getString("MNG_ID");
+                System.out.println("MNGGGGGGGGGGGGG "+mng_Id);
+                rs.close();
+                ps.close();
+            }else{
+                //JOptionPane.showMessageDialog(null, "Enter Correct User Name");
+                System.out.println("Enter Correct User Name");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        try{
+            if(p_email.equals("")||p_pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill up all field first");
+            }else if(REGISTRATION_DATAOBEJECT.validate(p_email, p_pass)){
+                String timeee = time;
+                System.out.println("11111111111111" +timeee);
+                MAN_SEASION_DATAOBJECT.man_isert_session(name,mng_Id,phone,eml,timeee,"",date,"");
+                email.setForeground(Color.GREEN);
+                pass.setForeground(Color.GREEN);                
+                JOptionPane.showMessageDialog(null, "Login Successfully");
+                
+                DASHBOARD_M dm = new DASHBOARD_M();
+                System.out.println("2222222222222222" +timeee);
+                
+                dm.mngname(name,mng_Id,eml,phone,date,timeee);  
+                dm.setVisible(true);              
+                         
+                this.dispose();
+            }else{
+                email.setForeground(Color.RED);
+                pass.setForeground(Color.RED);
+                JOptionPane.showMessageDialog(null,"Enter Correct Details", "Login Error", JOptionPane.ERROR_MESSAGE);
+                email.setText("Manager ID");
+                pass.setText("Password");
+                pass.setEchoChar((char)0);
+                email.setForeground(new Color(128,128,128));
+                pass.setForeground(new Color(128,128,128));
+            }
+        }catch (Exception e){
+            System.out.println("Exception -"+e);
+        }
+        }
+    }//GEN-LAST:event_passKeyPressed
 
     /**
      * @param args the command line arguments

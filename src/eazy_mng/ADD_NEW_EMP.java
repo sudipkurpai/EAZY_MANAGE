@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package eazy_mng;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
