@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inventory_management;
+package eazy_mng;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -286,7 +286,7 @@ public class LOGINFROM extends javax.swing.JFrame {
         jLabel10.setText("Inventory Management");
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory_management/profile.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eazy_mng/profile.png"))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Gabriola", 1, 48)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));

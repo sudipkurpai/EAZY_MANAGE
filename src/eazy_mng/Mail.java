@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inventory_management;
+package eazy_mng;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;    
 import java.util.logging.Level;
