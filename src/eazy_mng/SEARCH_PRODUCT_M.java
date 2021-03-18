@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eazy_mng;
+package inventory_management;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -41,61 +37,11 @@ String time = null;
         date = d1;
         ph= p;
         }
-    {
+    
         
-    }
-        void Search_product(){
-        
-        
-        String product_idee = pro1_id.getText();
-        //String p_pass = pass.getText();
-        String Product_id = null;
+    
         
         
-        try {
-             //Data fetch from database
-            String sql = "Select * from add_new_product Where Product_id = Product_id";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            //ps.setString(1,Product_id);
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-                String product_ide =rs.getString("Product_id");
-                System.out.println("EMpppppp "+product_ide);
-                String p_name =rs.getString("Product_name");
-                String Desc =rs.getString("Description");
-                String San_cast =rs.getString("Standerd_cost");
-                String Unit_pri =rs.getString("Unit_price");
-                String mfg_date =rs.getString("Mfg_date");
-                String exp_date =rs.getString("Exp_date");
-                String quant =rs.getString("Quantity");
-                String catagory =rs.getString("Category");
-                String Brand =rs.getString("Brand");
-                rs.close();
-                ps.close();
-            }else{
-                System.out.println("Enter Correct Product Id");
-            }
-        }catch(Exception e){
-            System.out.println("error"+e);
-        }
-//        try{
-//            //ganesh
-//            if(Product_id.equals("product_idee")){
-//                JOptionPane.showMessageDialog(this, "product found");
-//            }
-//            //raghu
-//            else 
-//            JOptionPane.showMessageDialog(this, "product not found");
-//            //sudip
-//           
-//            
-//        }catch (Exception e){
-//            System.out.println("Exception -"+e);
-//        }   
-     
-    }                         
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -109,7 +55,6 @@ String time = null;
         jLabel5 = new javax.swing.JLabel();
         pro1_id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -118,6 +63,7 @@ String time = null;
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -131,29 +77,11 @@ String time = null;
         pro1_id.setBackground(new java.awt.Color(255, 255, 255));
         pro1_id.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         pro1_id.setBorder(null);
-        pro1_id.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pro1_idMouseClicked(evt);
-            }
-        });
-        pro1_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pro1_idActionPerformed(evt);
-            }
-        });
         jPanel1.add(pro1_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 49, 400, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/RaghuSearch.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, 65));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (23).png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, -1, -1));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,11 +100,6 @@ String time = null;
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("ADD");
         jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 930, 140, 40));
 
         jButton2.setBackground(new java.awt.Color(0, 102, 204));
@@ -238,6 +161,17 @@ String time = null;
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
+        jButton4.setBackground(new java.awt.Color(0, 0, 255));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Search");
+        jButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -245,12 +179,18 @@ String time = null;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 1130, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(265, 265, 265))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 130));
@@ -269,10 +209,6 @@ String time = null;
         setSize(new java.awt.Dimension(1160, 1047));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -297,23 +233,29 @@ String time = null;
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
         // TODO add your handling code here:
         
-      /* 
-        void Search_product(){
-      
-       String src=pro1_id.getText();
-        //String p_pass = pass.getText();
+                            
+    }
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+       String product_idee = pro1_id.getText();
+       
         
-       try {
-             //Data fetch from database
+        
+        
+        try {
+             
             String sql = "Select * from add_new_product Where Product_id = ?";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-            //ps.setString(1,Product_id);
+            ps.setString(1,product_idee);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
+                
+           
                 String product_ide =rs.getString("Product_id");
-                System.out.println("EMpppppp "+product_ide);
+                System.out.println("Pro Idddddd "+product_ide);
                 String p_name =rs.getString("Product_name");
+                System.out.println("pronnnnnn "+p_name);
                 String Desc =rs.getString("Description");
                 String San_cast =rs.getString("Standerd_cost");
                 String Unit_pri =rs.getString("Unit_price");
@@ -324,61 +266,23 @@ String time = null;
                 String Brand =rs.getString("Brand");
                 rs.close();
                 ps.close();
-                DefaultTableModel model = (DefaultTableModel)table.getModel();
-              model.addRow(new Object[]{product_ide.get(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
-                                       mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
-              }
+                JOptionPane.showMessageDialog(this, "Prouduct Found");
+               DefaultTableModel Sudip = (DefaultTableModel)table.getModel();
+              Sudip.addRow(new Object[]{product_ide,p_name,Desc,San_cast,Unit_pri,mfg_date,exp_date,quant,catagory,Brand});
+                    
+                
             }else{
+                JOptionPane.showMessageDialog(this, "Enter Correct Product Id");
                 System.out.println("Enter Correct Product Id");
             }
-        }catch(Exception e){
+        } catch(Exception e){
             System.out.println("error"+e);
-        }
-        try{
-            
-           String sql = "Select * from add_new_product Where Product_id LIKE '%"+src+"%'";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            
-                      
-               } catch (Exception e) {
-            System.out.println("null,e");
-               } 
-    }*/
-    }                                    
-
-    private void pro1_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pro1_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pro1_idActionPerformed
-
-    private void pro1_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pro1_idMouseClicked
-        // TODO add your handling code here:
-        pro1_id.setText("");
-    }//GEN-LAST:event_pro1_idMouseClicked
-/*
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-    String tf = pro1_id.getText();
-    try{
-        String query ="SELECT * FROM add_new_product WHERE Product_id=?";
-        pst=con.prepareStatement(query);
-        table.setmodel(resultsetToTableModel(rs));
+                                          
+    }//GEN-LAST:event_jButton4MouseClicked
+    
         
-    }catch(Exception e){
-        JOptionpane.showMessegeDialog(null, e);
-    }//GEN-LAST:event_jLabel2MouseClicked
-      finally{
-        try{
-            if(pst!=null){
-               rs.close();
-               pst.close();
-            }
-        }
-        catch(Exception e){
+        
     }
-    }*/
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -418,8 +322,8 @@ String time = null;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -430,11 +334,4 @@ String time = null;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 
-    private TableModel DbUtilsresultSetToTableModel(PreparedStatement ps) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private TableModel resultSetToTableModel(PreparedStatement ps) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eazy_mng;
+package inventory_management;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -179,7 +179,9 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         }
         try{
             if(p_email.equals(eml)||phone.equals(phonee) ){
+                
                 gen_otp();
+               
                 System.out.println("matched"+eml);    
              JOptionPane.showMessageDialog(null, "OTP Sand");
             /* if(REGISTRATION_DATAOBEJECT.vali(p_email, phone)){
@@ -199,11 +201,21 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
      
     }//GEN-LAST:event_jButton3MouseClicked
 
+    
     public void gen_otp(){
          Random rand = new Random();
         otp = rand.nextInt(10000); // 0 - 9999
         System.out.println("YOUR OTP IS "+otp);
-        
+       
+          try{
+              String mng = mng_id.getText();
+              String msc= "YOUR OTP IS "+otp;
+            Mail.send(msc,"cc", "Welcome User", msc);
+                   
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     /**
      * @param args the command line arguments

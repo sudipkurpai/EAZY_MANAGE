@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eazy_mng;
+package inventory_management;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -243,9 +243,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel64 = new javax.swing.JPanel();
         jLabel135 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
-        jPanel55 = new javax.swing.JPanel();
-        jLabel128 = new javax.swing.JLabel();
-        jLabel120 = new javax.swing.JLabel();
         jPanel76 = new javax.swing.JPanel();
         jLabel136 = new javax.swing.JLabel();
         jLabel124 = new javax.swing.JLabel();
@@ -851,6 +848,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel98.setForeground(new java.awt.Color(0, 204, 102));
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel98.setText("Remove Employee");
+        jLabel98.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel98MouseClicked(evt);
+            }
+        });
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fired.png"))); // NOI18N
 
@@ -875,6 +877,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel58.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel58.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel58MouseClicked(evt);
+            }
+        });
 
         jLabel99.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel99.setForeground(new java.awt.Color(0, 204, 102));
@@ -931,11 +938,16 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jPanel61.setBackground(new java.awt.Color(204, 255, 204));
         jPanel61.setPreferredSize(new java.awt.Dimension(170, 50));
+        jPanel61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel61MouseClicked(evt);
+            }
+        });
 
         jLabel102.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel102.setForeground(new java.awt.Color(0, 204, 102));
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel102.setText("Check Performance");
+        jLabel102.setText("Check Profile");
 
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/information-desk.png"))); // NOI18N
 
@@ -946,7 +958,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
             .addComponent(jLabel102, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
             .addGroup(jPanel61Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addComponent(jLabel40)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel61Layout.setVerticalGroup(
@@ -968,6 +980,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/student-profile.png"))); // NOI18N
+        jLabel83.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel83MouseClicked(evt);
+            }
+        });
 
         jLabel122.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jLabel122.setForeground(new java.awt.Color(0, 204, 102));
@@ -1031,7 +1048,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel61, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                     .addComponent(add_emp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         jPanel1.add(mng_emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 640));
@@ -2061,6 +2078,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         bill.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel64.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel64.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel64MouseClicked(evt);
+            }
+        });
         jPanel64.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel135.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -2079,26 +2101,12 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         });
         jPanel64.add(jLabel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 170, -1));
 
-        jPanel55.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel55.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel128.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        jLabel128.setForeground(new java.awt.Color(32, 64, 81));
-        jLabel128.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/bill (15).png"))); // NOI18N
-        jPanel55.add(jLabel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 70, 80));
-
-        jLabel120.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel120.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel120.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel120.setText("Search Bill");
-        jLabel120.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel76.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel76.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel120MouseClicked(evt);
+                jPanel76MouseClicked(evt);
             }
         });
-        jPanel55.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, -1));
-
-        jPanel76.setBackground(new java.awt.Color(204, 255, 204));
         jPanel76.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel136.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -2143,6 +2151,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel54.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, -1));
 
         jPanel77.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel77.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel77MouseClicked(evt);
+            }
+        });
         jPanel77.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel139.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -2167,30 +2180,25 @@ public class DASHBOARD_M extends javax.swing.JFrame {
             billLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(billLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addGroup(billLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel76, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
                 .addGroup(billLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(billLayout.createSequentialGroup()
-                        .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(jPanel64, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel77, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                    .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel64, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
+                .addComponent(jPanel76, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(jPanel77, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         billLayout.setVerticalGroup(
             billLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(billLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(billLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel64, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
                 .addGroup(billLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel76, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel77, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel77, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel76, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58)
+                .addComponent(jPanel64, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(238, Short.MAX_VALUE))
         );
 
@@ -2292,7 +2300,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                 .addGroup(UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(change_pass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(salf_update, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 810, 630));
@@ -2494,7 +2502,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
              int No=0;
                 if (No == 0){
                 }
-        }
+               }
        
 
     }//GEN-LAST:event_jLabel22MouseClicked
@@ -2590,6 +2598,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void add_emp3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_emp3MouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_add_emp3MouseClicked
 
     private void jLabel121MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel121MouseClicked
@@ -2628,10 +2637,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private void jLabel119MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel119MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel119MouseClicked
-
-    private void jLabel120MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel120MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel120MouseClicked
 
     private void jLabel123MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel123MouseClicked
         // TODO add your handling code here:
@@ -2740,6 +2745,107 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel68MouseClicked
 
+    private void UPDATEPROFILE_EMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UPDATEPROFILE_EMPMouseClicked
+        // TODO add your handling code here:
+//       
+//Code By Raghuu
+
+//MANAGER_UPDATE_PROFILE UP = new  MANAGER_UPDATE_PROFILE();
+//        String name = mng_name.getText();
+//        String ID = mng_id.getText();
+//        String t1 = time1.getText();
+//        String d1 = time2.getText();
+//       UP.udpe(name, ID, eml, t1, d1, ph);
+//      UP.setVisible(true);
+//        this.dispose();
+//        
+    }//GEN-LAST:event_UPDATEPROFILE_EMPMouseClicked
+
+    private void jLabel83MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel83MouseClicked
+        // TODO add your handling code here:
+        MANAGER_UPDATE_PROFILE mup = new MANAGER_UPDATE_PROFILE();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        mup.udpe(name, ID, eml,t1,d1,ph);
+        mup.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_jLabel83MouseClicked
+
+    private void jLabel98MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel98MouseClicked
+        // TODO add your handling code here:
+        REMOVE_EMPLOYEE re = new REMOVE_EMPLOYEE();
+         String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        re.ree(name, ID, eml,t1,d1,ph);
+        re.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel98MouseClicked
+
+    private void jPanel64MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel64MouseClicked
+        // TODO add your handling code here:
+        REJECT_BILL CB = new REJECT_BILL();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        CB.cb(name, ID, eml,t1,d1,ph);
+        CB.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel64MouseClicked
+
+    private void jPanel76MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel76MouseClicked
+        // TODO add your handling code here:
+        TODAY_BILL tb = new TODAY_BILL();
+         String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        tb.tbb(name, ID, eml,t1,d1,ph);
+        tb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel76MouseClicked
+
+    private void jPanel77MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel77MouseClicked
+        // TODO add your handling code here:
+        ALL_BILL ab = new ALL_BILL();
+         String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        ab.abb(name, ID, eml,t1,d1,ph);
+        ab.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel77MouseClicked
+
+    private void jPanel61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel61MouseClicked
+        // TODO add your handling code here:
+        CHECK_PROFILE cp = new CHECK_PROFILE();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        cp.cpp(name, ID, eml,t1,d1,ph);
+        cp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel61MouseClicked
+
+    private void jPanel58MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel58MouseClicked
+        // TODO add your handling code here:
+        EMPLOYEE_LIST el = new EMPLOYEE_LIST();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        el.ell(name, ID, eml,t1,d1,ph);
+        el.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel58MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2816,7 +2922,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -2824,7 +2929,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
     private javax.swing.JLabel jLabel127;
-    private javax.swing.JLabel jLabel128;
     private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel130;
@@ -2927,7 +3031,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel54;
-    private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel59;

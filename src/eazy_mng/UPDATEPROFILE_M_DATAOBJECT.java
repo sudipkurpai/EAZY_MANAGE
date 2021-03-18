@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eazy_mng;
+package inventory_management;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -80,6 +80,43 @@ public class UPDATEPROFILE_M_DATAOBJECT {
               return status;
 //INSERT INTO `register`(`FIRST_NAME`, `LAST_NAME`, `EMAIL`, `MOBILE_NO`, `PASSWORD`, `CONFIRM_PASSWORD`, `ADDRESS`, `GENDER`) 
     }
+               public static boolean validate (String EMP_ID) throws SQLException
+    {
+        boolean status =false;
+        try{
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from employee_register where EMP_ID = ?");
+            ps.setString(1, EMP_ID);
+            
+            ResultSet rs=ps.executeQuery();
+            status=rs.next();
+            con.close();
+           }
+        catch(Exception e){System.out.println(e);}
+        return status;
+    }
+               
+               
+               
+               
+                public static int updateprofile_emp ( String DOB, String ADDRESS,String GENDER,String emp_id){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("UPDATE employee_register set DOB =?,ADDRESS =?,GENDER =? where EMP_ID = ?");
+                   
+                   ps.setString(1, DOB);
+                   ps.setString(2, ADDRESS);
+                   ps.setString(3, GENDER);
+                   ps.setString(4, emp_id);
+                   status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+}
 }
 
 

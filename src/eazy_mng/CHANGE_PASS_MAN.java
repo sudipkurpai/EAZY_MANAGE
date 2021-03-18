@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eazy_mng;
+package inventory_management;
 
 import java.awt.Color;
 import java.sql.Connection;
@@ -24,7 +24,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
      String Name = null;
      String Id = null;
      String emll = null;
-     int otp;
+     String otp;
      int mng_Id;
     /**
      * Creates new form CHANGE_PASS_MAN
@@ -105,6 +105,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         pass.setForeground(new java.awt.Color(0, 204, 102));
         pass.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         pass.setText("Enter Current Password");
+        pass.setToolTipText("Enter Your Old Password");
         pass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 102)));
         pass.setPreferredSize(new java.awt.Dimension(420, 40));
         pass.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -458,7 +459,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
       try{
           if("Enter Your OTP".equals(pass1.getText())){
              JOptionPane.showMessageDialog(null, "OTP Field is blank", "Error", JOptionPane.ERROR_MESSAGE); 
-          }else if (Integer.parseInt(pass1.getText())== otp){
+          }else if (pass1.getText()== otp){
             System.out.println("OTP Validate Successfully");  
             JOptionPane.showMessageDialog(null, "OTP Validate Successfully");
             CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
@@ -475,8 +476,8 @@ catch (Exception e){
             System.out.println("Exception -"+e);
         }  }
    public void gen_otp(){
-         Random rand = new Random();
-        otp = rand.nextInt((10000 - 100)+1); // 0 - 9999
+        Random rand = new Random();
+        otp = String.format("%06d",rand.nextInt(1000000));
         System.out.println("YOUR OTP IS "+otp);
         
     }

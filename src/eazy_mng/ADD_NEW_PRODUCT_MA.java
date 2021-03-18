@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eazy_mng;
+package inventory_management;
 
 
 import java.math.BigInteger;
@@ -55,7 +55,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         mng_name.setText(Name);
         mng_id.setText(Id);
         d_t.setText(dt);
-        
+       
  }
   void id_create(){
         t_idd.setEditable(false);
@@ -88,6 +88,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+ttttt_Id);
         t_idd.setText(""+ttttt_Id);
     }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -437,9 +438,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         String mng_i= mng_id.getText();
         String timee = d_t.getText();
         String t_id = t_idd.getText();
-        int a,b,c ;
-        a = Integer.parseInt(s_cost.getText());
-        b = Integer.parseInt(quantity.getText());
+        double a,b,c ;
+        a=Double.parseDouble(s_cost.getText());
+        b=Double.parseDouble(quantity.getText());
+
         c=a*b;
         
         total.setText(""+c);
