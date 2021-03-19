@@ -62,7 +62,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         eml = new javax.swing.JTextField();
         addr = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        res = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -158,10 +158,10 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         addr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 260, 20));
 
-        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setBorder(null);
-        jTextPane1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        res.setBackground(new java.awt.Color(255, 255, 255));
+        res.setBorder(null);
+        res.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jScrollPane1.setViewportView(res);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 224, 610, 130));
 
@@ -205,6 +205,11 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 0));
         jButton3.setText("Remove");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, -1, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 430));
@@ -317,6 +322,50 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_serFocusLost
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        String em_id = ser.getText();
+        String a = name.getText();
+        String b = eml.getText();
+        String c = phone.getText();
+        String d = addr.getText();
+        String e = res.getText();
+        if (a==""||b==""||c==""||d=="")
+        
+          JOptionPane.showMessageDialog(this, "Fill Up All Filld First");  
+        else if (e=="")
+            JOptionPane.showMessageDialog(this, "Give a Reason for Remove Employee"); 
+        else{
+            int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Remove This Employee ?");
+        if(Yes == 0){
+            String sql="delete from employee_register where EMP_ID = ?";
+            try{
+                int i = REGISTRATION_DATAOBEJECT.remove_emp_system(Name, ID, date, time, em_id, a, e);
+                if(i>0){
+                    Connection con=DATABASE_CONNECTION.getConnection();
+                    PreparedStatement ps=con.prepareStatement(sql);
+                    ps.setString(1,em_id);
+                    ps.execute();
+                    ps.close();
+                    con.close();
+                    JOptionPane.showMessageDialog(this, "Employee Remove Successfully"); 
+                }else{
+                    JOptionPane.showMessageDialog(this, "Employee can't Remove"); 
+                }                   
+            }
+            catch(Exception exe){
+                System.out.println("exxxx"+exe);
+                
+            }
+        }else{
+             int No=0;
+                if (No == 0){
+                }
+               }
+        }
+                
+    }//GEN-LAST:event_jButton3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -370,9 +419,9 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField name;
     private javax.swing.JTextField phone;
+    private javax.swing.JTextPane res;
     private javax.swing.JTextField ser;
     // End of variables declaration//GEN-END:variables
 }

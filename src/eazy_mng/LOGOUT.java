@@ -77,8 +77,8 @@ public class LOGOUT extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(jLabel2)
+                .addGap(36, 36, 36))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,7 +123,7 @@ public class LOGOUT extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-         new LOGIN_EMPLOYEE().setVisible(true);
+         new LOGINFROM().setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
