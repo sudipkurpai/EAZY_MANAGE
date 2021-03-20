@@ -497,7 +497,7 @@ public class LOGINFROM extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
         
-        REGISTRATION rn = new REGISTRATION();
+        MNG_REGISTER rn = new MNG_REGISTER();
                 rn.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked

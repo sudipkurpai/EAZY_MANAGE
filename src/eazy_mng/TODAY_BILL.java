@@ -162,7 +162,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Bill", "Today Bill", "Cancle Bill", " ", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Bill", "Pending Bill", "Success Bill", "Cancle Bill", " ", " " }));
         jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 255));

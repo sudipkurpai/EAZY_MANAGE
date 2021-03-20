@@ -263,8 +263,7 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
            if(i>0){
                 System.out.println("Data inserted");
                 JOptionPane.showMessageDialog(this, "Your Profile Update Sucessfully "); 
-                new REGISTRATION().setVisible(true);
-                this.dispose();
+                
            }else{
                 System.out.println("Data NOT inserted");
                 JOptionPane.showMessageDialog(this, "Your Profile Not Update Sucessfully"); 

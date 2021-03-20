@@ -344,12 +344,13 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
+                  <StringArray count="6">
                     <StringItem index="0" value="All Bill"/>
-                    <StringItem index="1" value="Today Bill"/>
-                    <StringItem index="2" value="Cancle Bill"/>
-                    <StringItem index="3" value=" "/>
+                    <StringItem index="1" value="Pending Bill"/>
+                    <StringItem index="2" value="Success Bill"/>
+                    <StringItem index="3" value="Cancle Bill"/>
                     <StringItem index="4" value=" "/>
+                    <StringItem index="5" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>

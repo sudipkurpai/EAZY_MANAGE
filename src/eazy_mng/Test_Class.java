@@ -115,7 +115,7 @@ public class Test_Class extends javax.swing.JFrame {
         
       if(evt.getKeyChar()>= '0' && evt.getKeyChar()<= '9'){
           a.setEditable(true);
-      }else if(evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)
+      }else if(evt.getKeyChar()==KeyEvent.VK_BACK_SPACE || evt.getKeyChar()== '.')
       {
           a.setEditable(true);
       }
@@ -130,14 +130,18 @@ public class Test_Class extends javax.swing.JFrame {
         // TODO add your handling code here:
        
       if(evt.getKeyChar()>= '0' && evt.getKeyChar()<= '9'){
+          a1.requestFocusInWindow();
           a1.setEditable(true);
       }else if(evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)
       {
+          a1.requestFocusInWindow();
           a1.setEditable(true);
+          
       }
       else {
           a1.setEditable(false);
           JOptionPane.showMessageDialog(this, "Enter Only Number Value");
+          a1.requestFocusInWindow();
       }
     }//GEN-LAST:event_a1KeyTyped
 

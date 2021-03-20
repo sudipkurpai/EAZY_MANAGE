@@ -6,12 +6,16 @@
 package eazy_mng;
 
 
+import java.awt.event.KeyEvent;
 import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 /**
@@ -40,6 +44,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     public ADD_NEW_PRODUCT_MA() {
         initComponents();
         id_create();
+        cal();
+        table();
+        search();
+        //click();
     }
     
  void anp (String fullname, String mng_Id,String email,String t1,String d1,String p,String t2,String d2) {
@@ -57,6 +65,14 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         d_t.setText(dt);
        
  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   void id_create(){
         t_idd.setEditable(false);
          try{
@@ -88,6 +104,30 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+ttttt_Id);
         t_idd.setText(""+ttttt_Id);
     }
+  public void table()
+{
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_new_product ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Description"),rs.getString("Standerd_cost"),rs.getString("Unit_price"),
+              rs.getString("Mfg_date"),rs.getString("Exp_date"),rs.getString("Quantity"),rs.getString("Category"),rs.getString("Brand"),rs.getString("Total") };
+               model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,9 +141,9 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
+        Product_id = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        Search = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -148,12 +188,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 102));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ADD NEW PRODUCT");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 60));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,24 +199,66 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                 jLabel18MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 6, 20, 20));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 169, 20));
-
-        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Product_search.png"))); // NOI18N
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, 40));
+        Product_id.setBackground(new java.awt.Color(255, 255, 255));
+        Product_id.setForeground(new java.awt.Color(0, 0, 0));
+        Product_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Product ID :");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, 60));
+
+        Search.setBackground(new java.awt.Color(0, 0, 255));
+        Search.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        Search.setForeground(new java.awt.Color(0, 204, 204));
+        Search.setText("Search");
+        Search.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SearchMouseClicked(evt);
+            }
+        });
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addGap(162, 162, 162)
+                .addComponent(jLabel20)
+                .addGap(9, 9, 9)
+                .addComponent(Product_id, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Product_id, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -281,6 +361,11 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 80, -1));
 
         s_cost.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        s_cost.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                s_costKeyTyped(evt);
+            }
+        });
         jPanel2.add(s_cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 130, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -292,8 +377,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Unit Price :");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 70, -1));
+        jLabel10.setText("Selling Price :");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 80, -1));
 
         mfg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, -1));
@@ -303,6 +388,11 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 60, -1));
 
         quantity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        quantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                quantityKeyTyped(evt);
+            }
+        });
         jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 130, -1));
 
         catagory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -353,6 +443,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(51, 0, 255));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 900, 20));
 
+        table.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -360,10 +451,23 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
             new String [] {
                 "Product ID", "Product Name", "Description", "Stander Cost", "Unit Price", "Mfg Date", "Expiry Date", "Quantity", "category", "Brand", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(table);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 900, 310));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 900, 300));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -402,7 +506,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -411,6 +515,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+   
+ 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
         
@@ -438,24 +544,28 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         String mng_i= mng_id.getText();
         String timee = d_t.getText();
         String t_id = t_idd.getText();
-        double a,b,c ;
-        a=Double.parseDouble(s_cost.getText());
-        b=Double.parseDouble(quantity.getText());
-
-        c=a*b;
+        String totall = total.getText();
+//        double a,b,c ;
+//        a=Double.parseDouble(s_cost.getText());
+//        b=Double.parseDouble(quantity.getText());
+//
+//        c=a*b;
         
-        total.setText(""+c);
+        //total.setText(""+c);
         if(Product_id.isEmpty() || p_nmaee.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill up all field first");
         }
         else {
-             DefaultTableModel model = (DefaultTableModel)table.getModel();
-              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
-                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
-              });
-        int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product (mng,mng_i,timee,t_id, Product_id, p_nmaee,  Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand);
+            
+//             DefaultTableModel model = (DefaultTableModel)table.getModel();
+//              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
+//                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
+//              });
+        int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product (mng,mng_i,timee,t_id, Product_id, p_nmaee,  Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand,totall);
         int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id ,t_id);
+        
         if(i>0 || j>0){
+            table();
         System.out.println("Data inserted");
         JOptionPane.showMessageDialog(this, "Add Product Successfully");
                }
@@ -491,7 +601,179 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
         id_create();
     }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void s_costKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_costKeyTyped
+        // TODO add your handling code here:
+        if(evt.getKeyChar()>= '0' && evt.getKeyChar()<= '9'){
+          s_cost.setEditable(true);
+      }else if(evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)
+      {
+         s_cost.setEditable(true);
+      }
+      else {
+          s_cost.setEditable(false);
+          JOptionPane.showMessageDialog(this, "Enter Only Number Value");
+      }
+    }//GEN-LAST:event_s_costKeyTyped
+
+    private void quantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityKeyTyped
+        // TODO add your handling code here:
+        if(evt.getKeyChar()>= '0' && evt.getKeyChar()<= '9'){
+          quantity.setEditable(true);
+      }else if(evt.getKeyChar()==KeyEvent.VK_BACK_SPACE|| evt.getKeyChar()== '.')
+      {
+          quantity.setEditable(true);
+      }
+      else {
+          quantity.setEditable(false);
+          JOptionPane.showMessageDialog(this, "Enter Only Number Value");
+      }
+    }//GEN-LAST:event_quantityKeyTyped
+
+    private void SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchMouseClicked
+        // TODO add your handling code here:
+       String product_idee = Product_id.getText();
+      try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_new_product where Product_id=? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Description"),rs.getString("Standerd_cost"),rs.getString("Unit_price"),
+                        rs.getString("Mfg_date"),rs.getString("Exp_date"),rs.getString("Quantity"),rs.getString("Category"),rs.getString("Brand"),rs.getString("Total") };
+                    JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+               JOptionPane.showMessageDialog(this, "Product Not Found");
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }//GEN-LAST:event_SearchMouseClicked
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        click();
+    }//GEN-LAST:event_tableMouseClicked
     
+    public void search(){
+        DocumentListener dl = new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+              update_val();  
+                //To change body of generated methods, choose Tools | Templates.
+                
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            
+            protected void update_val(){
+               String f1=Product_id.getText();
+               if (f1.equals("")){
+                  table();
+               }else {
+                  // System.out.println("NONE");
+                  
+               }  
+               
+            }
+            
+        };
+        Product_id.getDocument().addDocumentListener(dl);
+    }
+    
+    public void cal(){
+        DocumentListener dl = new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+              update_val();  
+                //To change body of generated methods, choose Tools | Templates.
+                
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            
+            protected void update_val(){
+               String f1=s_cost.getText();
+               String f2=quantity.getText();
+               if (!f1.equals("") && f2.equals("")){
+                   double b=Double.parseDouble(s_cost.getText());
+                   //double  b1=Double.parseDouble(a1.getText());
+                   double c= b;
+                   String e=String.valueOf(c);
+                   total.setText(e);
+               }else if (f1.equals("") && !f2.equals("")){
+                   //double b=Double.parseDouble(a.getText());
+                   double  b1=Double.parseDouble(quantity.getText());
+                   double c= b1;
+                   String e=String.valueOf(c);
+                   total.setText(e);
+               }else if (!f1.equals("") && !f2.equals("")){
+                   double b=Double.parseDouble(s_cost.getText());
+                   double  b1=Double.parseDouble(quantity.getText());
+                   double c= b*b1;
+                   String e=String.valueOf(c);
+                   total.setText(e);
+               }else{
+                   System.out.println("NONE");
+               }
+                   
+                   
+               
+            }
+
+            
+            
+        };
+        s_cost.getDocument().addDocumentListener(dl);
+        quantity.getDocument().addDocumentListener(dl);
+    }
+    public void click(){
+     int i = table.getSelectedRow();
+     DefaultTableModel model=(DefaultTableModel)table.getModel();
+     p_id.setText(model.getValueAt(i,0).toString());
+     p_name.setText(model.getValueAt(i,1).toString());
+     desc.setText(model.getValueAt(i,2).toString());
+     s_cost.setText(model.getValueAt(i,3).toString());
+     unit_pri.setText(model.getValueAt(i,4).toString());
+     mfg.setText(model.getValueAt(i,5).toString());
+     exp.setText(model.getValueAt(i,6).toString());
+     quantity.setText(model.getValueAt(i,7).toString());
+     catagory.setText(model.getValueAt(i,8).toString());
+     brand.setText(model.getValueAt(i,9).toString());
+     total.setText(model.getValueAt(i,10).toString());
+    }
+
 
     /**
      *
@@ -510,6 +792,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Product_id;
+    private javax.swing.JButton Search;
     private javax.swing.JTextField brand;
     private javax.swing.JTextField catagory;
     private javax.swing.JTextField d_t;
@@ -524,7 +808,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
@@ -543,7 +826,6 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField mfg;
     private javax.swing.JTextField mng_id;
     private javax.swing.JTextField mng_name;
