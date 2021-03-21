@@ -15,21 +15,22 @@ import java.sql.*;
  */
 public class REGISTRATION_DATAOBEJECT {
     public static int inventory_management_system (String FIRST_NAME, String LAST_NAME, String EMAIL, 
-            String MOBILE_NO, String MNG_ID,String PASSWORD, String CONFIRM_PASSWORD, String GENDER){
+            String MOBILE_NO, String MNG_ID,String PASSWORD, String CONFIRM_PASSWORD, String ADDRESS,String GENDER,String T_D,String DOB){
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
-                   PreparedStatement ps=con.prepareStatement("INSERT INTO register(FIRST_NAME, LAST_NAME, EMAIL, MOBILE_NO, MNG_ID,PASSWORD,CONFIRM_PASSWORD,GENDER) VALUES (?,?,?,?,?,?,?,? ) ");
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO register(FIRST_NAME, LAST_NAME, EMAIL, MOBILE_NO, MNG_ID,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER,T_D,DOB) VALUES (?,?,?,?,?,?,?,?,?,?,?) ");
                    ps.setString(1, FIRST_NAME);
                    ps.setString(2, LAST_NAME);
                    ps.setString(3, EMAIL);
                    ps.setString(4, MOBILE_NO);
                    ps.setString(5, MNG_ID);
                    ps.setString(6, PASSWORD);
-                   ps.setString(7, CONFIRM_PASSWORD);
-                   
-                   ps.setString(8, GENDER);
-                  
+                   ps.setString(7, CONFIRM_PASSWORD);                   
+                   ps.setString(8, ADDRESS);
+                   ps.setString(9, GENDER);
+                   ps.setString(10, T_D);
+                   ps.setString(11, DOB);
                    status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){

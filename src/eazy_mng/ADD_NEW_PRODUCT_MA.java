@@ -33,7 +33,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
      String Id = null;
      String emll = null;
      String trn_id = null;
+     String pro_id = null;
      BigInteger ttttt_Id =null;
+     BigInteger pppp_Id =null;
+     String PPPP=null;
      String mng_Id = null;
      String emp_id = null;
      
@@ -43,11 +46,11 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
      */
     public ADD_NEW_PRODUCT_MA() {
         initComponents();
-        id_create();
+       id_create();
         cal();
         table();
         search();
-        //click();
+       
     }
     
  void anp (String fullname, String mng_Id,String email,String t1,String d1,String p,String t2,String d2) {
@@ -75,6 +78,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
  
   void id_create(){
         t_idd.setEditable(false);
+        p_id.setEditable(false);
          try{
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement("select * from id_store");         
@@ -84,8 +88,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
             System.out.println("MANAGER ID "+mng_Id);
             emp_id=rs.getString("EMP_ID");
             System.out.println("EMPLOYEE ID "+emp_id);
-            trn_id=rs.getString("Transaction_Id");
+            trn_id=rs.getString("TRANSACTION_ID");
             System.out.println("Transaction_Id "+trn_id);
+            pro_id=rs.getString("PRODUCT_ID");
+            System.out.println("Product_Id "+pro_id);
             rs.close();
             ps.close();
             }else{
@@ -102,7 +108,16 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         System.out.println("#################"+trn_id);
         ttttt_Id = ttttt_Id.add(nxt);
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+ttttt_Id);
-        t_idd.setText(""+ttttt_Id);
+        t_idd.setText("EMNG_T"+ttttt_Id);
+        
+        
+        pppp_Id= new BigInteger(pro_id);
+        BigInteger aaa = new BigInteger("1");
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+ pppp_Id);
+        System.out.println("#################"+pro_id);
+        pppp_Id = pppp_Id.add(aaa);
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+pppp_Id);
+        p_id.setText("EMNG_P"+pppp_Id);
     }
   public void table()
 {
@@ -183,6 +198,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -343,22 +359,22 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setText("Product ID :");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 30));
 
         p_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(p_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 130, -1));
+        jPanel2.add(p_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 130, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setText("Product Name :");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 90, 30));
 
         p_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 130, -1));
+        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Description :");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 80, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 80, 30));
 
         s_cost.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         s_cost.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -366,26 +382,26 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                 s_costKeyTyped(evt);
             }
         });
-        jPanel2.add(s_cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 130, -1));
+        jPanel2.add(s_cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 130, 30));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel9.setText("Standerd Cost :");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, 30));
 
         unit_pri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(unit_pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 130, -1));
+        jPanel2.add(unit_pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 130, 30));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Selling Price :");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 80, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, 30));
 
         mfg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 130, -1));
+        jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 130, 30));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel11.setText("Mfg Date :");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 60, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 60, 30));
 
         quantity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         quantity.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -393,41 +409,41 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                 quantityKeyTyped(evt);
             }
         });
-        jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 130, -1));
+        jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 130, 30));
 
         catagory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 130, -1));
+        jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 130, 30));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setText("Category :");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, -1, 30));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel14.setText("Tolal :");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 50, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 50, 30));
 
         total.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 130, -1));
+        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 130, 30));
 
         desc.setBorder(null);
         jScrollPane1.setViewportView(desc);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 130, 60));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 130, 70));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel15.setText("Expiry Date :");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 70, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 70, 30));
 
         exp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 130, -1));
+        jPanel2.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 30));
 
         jLabel16.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Brand :");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 50, -1));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 50, 30));
 
         brand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, 130, -1));
+        jPanel2.add(brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 130, 30));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -438,10 +454,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                 jLabel17MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 120, 50));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 120, 50));
 
         jSeparator1.setForeground(new java.awt.Color(51, 0, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 900, 20));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 900, 10));
 
         table.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -467,12 +483,12 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 900, 300));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 900, 260));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Quantity :");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 60, -1));
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 60, 30));
 
         jLabel23.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -495,6 +511,17 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 120, 50));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update_aa.png"))); // NOI18N
+        jLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 120, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -561,8 +588,9 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 //              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
 //                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
 //              });
-        int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product (mng,mng_i,timee,t_id, Product_id, p_nmaee,  Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand,totall);
-        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id ,t_id);
+        int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product(mng,mng_i, timee, t_id, Product_id, p_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);
+                           
+        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
         
         if(i>0 || j>0){
             table();
@@ -600,6 +628,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         // TODO add your handling code here:
         id_create();
+        
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void s_costKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_s_costKeyTyped
@@ -669,6 +698,56 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
         click();
     }//GEN-LAST:event_tableMouseClicked
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        // TODO add your handling code here:
+        String Product_id = p_id.getText();
+        String p_nmaee = p_name.getText();
+        String Desc= desc.getText();
+        String Standerd_cost = s_cost.getText();
+        String unit_price = unit_pri.getText();
+        String mfg_date = mfg.getText();
+        String exp_date = exp.getText();
+        String quantit = quantity.getText();
+        String catag = catagory.getText();
+        String Brand = brand.getText();
+        String mng = mng_name.getText();
+        String mng_i= mng_id.getText();
+        String timee = d_t.getText();
+        String t_id = t_idd.getText();
+        String totall = total.getText();
+//        double a,b,c ;
+//        a=Double.parseDouble(s_cost.getText());
+//        b=Double.parseDouble(quantity.getText());
+//
+//        c=a*b;
+        
+        //total.setText(""+c);
+        if(Product_id.isEmpty() || p_nmaee.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill up all field first");
+        }
+        else {
+            
+//             DefaultTableModel model = (DefaultTableModel)table.getModel();
+//              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
+//                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
+//              });
+        int i = ADD_NEW_PRODUCT_DETAOBJ.Update_product(Product_id, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);
+               
+                           
+        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),PPPP);
+        
+        if(i>0 || j>0){
+            table();
+        System.out.println("Data inserted");
+        JOptionPane.showMessageDialog(this, " Product Update Successfully");
+               }
+        else{
+        System.out.println("Data NOT inserted");
+        JOptionPane.showMessageDialog(this, "Product Can Not Update");
+            }
+        }
+    }//GEN-LAST:event_jLabel19MouseClicked
     
     public void search(){
         DocumentListener dl = new DocumentListener(){
@@ -743,7 +822,9 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                    double  b1=Double.parseDouble(quantity.getText());
                    double c= b*b1;
                    String e=String.valueOf(c);
+                   total.setEditable(false);
                    total.setText(e);
+                   
                }else{
                    System.out.println("NONE");
                }
@@ -808,6 +889,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;

@@ -58,4 +58,32 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
               System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
 }
+    
+    public static int Update_product ( String Product_id,String Description,String Standerd_cost,String Unit_price, String Mfg_date, String Exp_date, String Quantity,String Category, String Brand,String Total){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("Update add_new_product set  Description=?, Standerd_cost=?, Unit_price=?, Mfg_date=?, Exp_date=?, Quantity=?, Category=?, Brand=?,Total=? where Product_id =?");
+                 
+                   ps.setString(1, Product_id);
+                   System.out.println("Producttt"+Product_id);
+                   ps.setString(2, Description);
+                   ps.setString(3, Standerd_cost);
+                   System.out.println("8888888888"+Standerd_cost);
+                   ps.setString(4, Unit_price);
+                   System.out.println("999999999"+Unit_price);
+                   ps.setString(5, Mfg_date);
+                   ps.setString(6, Exp_date);
+                   ps.setString(7, Quantity);
+                   ps.setString(8, Category);
+                   ps.setString(9, Brand);
+                   ps.setString(10,Total);
+                  status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("upddddddddddddddproooooo"+status);
+              return status;
+}
 }

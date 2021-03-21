@@ -29,9 +29,13 @@ public class MNG_REGISTER extends javax.swing.JFrame {
     String ID = null;
     String date=null;
     String time = null;
+    String td= time+date;
     BigInteger mng_id =null;
     String mng ;
     String Transaction_Id = null;
+    String pro_Id=null;
+    String add =null;
+    String dob=null;
     /**
      * Creates new form REGISTRATION
      */
@@ -87,8 +91,10 @@ public class MNG_REGISTER extends javax.swing.JFrame {
                 System.out.println("MANAGER ID "+Mng_Id);
                 emp_id=rs.getString("EMP_ID");
                 System.out.println("EMPLOYEE ID "+emp_id);
-                Transaction_Id=rs.getString("Transaction_Id");
+                Transaction_Id=rs.getString("TRANSACTION_ID");
                 System.out.println("Transaction_Id "+Transaction_Id);
+                pro_Id=rs.getString("PRODUCT_ID");
+                 System.out.println("Product_Id "+pro_Id);
                 rs.close();
                 ps.close();
             }else{
@@ -774,9 +780,9 @@ public class MNG_REGISTER extends javax.swing.JFrame {
         }else if(PASSWORD_PATTERN.matcher(password).matches()){
             if(password.equals(c_pass) ){
             if(c1.isSelected()==true && c2.isSelected()==true ){
-                int i = REGISTRATION_DATAOBEJECT.inventory_management_system(fName, lName,ph, mail, mng, password, password,gen);
-                int j = ID_STORE_FETCH.insert_id(mng_id.toString(), emp_id,Transaction_Id);
-                    if(i>0 || j>0){
+                int i = REGISTRATION_DATAOBEJECT.inventory_management_system(fName, lName,ph, mail, mng, password, c_pass,add,gen,td,dob);
+                int j = ID_STORE_FETCH.insert_id(mng_id.toString(), emp_id,Transaction_Id,pro_Id);
+                    if(i>0 && j>0){
                          System.out.println("Data inserted");
 
                          JOptionPane.showMessageDialog(this, "Your Account Sucessfully Created"); 
