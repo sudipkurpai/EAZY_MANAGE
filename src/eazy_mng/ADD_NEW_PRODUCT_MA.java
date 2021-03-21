@@ -46,7 +46,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
      */
     public ADD_NEW_PRODUCT_MA() {
         initComponents();
-       id_create();
+        id_create();
         cal();
         table();
         search();
@@ -199,6 +199,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        p_name1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -365,16 +367,16 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(p_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 130, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setText("Product Name :");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 90, 30));
+        jLabel7.setText("Vendor Name");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 30));
 
         p_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, 30));
+        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 130, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Description :");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 80, 30));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 80, 30));
 
         s_cost.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         s_cost.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -428,7 +430,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         desc.setBorder(null);
         jScrollPane1.setViewportView(desc);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 130, 70));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 30));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel15.setText("Expiry Date :");
@@ -457,7 +459,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 120, 50));
 
         jSeparator1.setForeground(new java.awt.Color(51, 0, 255));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 900, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 258, 900, 10));
 
         table.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -483,7 +485,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 900, 260));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 900, 250));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -522,6 +524,13 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 120, 50));
+
+        p_name1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(p_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 130, 30));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel12.setText("Product Name :");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -732,10 +741,10 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 //              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
 //                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
 //              });
-        int i = ADD_NEW_PRODUCT_DETAOBJ.Update_product(Product_id, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);
+        int i = ADD_NEW_PRODUCT_DETAOBJ.Update_product( Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,Product_id);
                
                            
-        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),PPPP);
+        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pro_id);
         
         if(i>0 || j>0){
             table();
@@ -883,6 +892,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -913,6 +923,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JTextField mng_name;
     private javax.swing.JTextField p_id;
     private javax.swing.JTextField p_name;
+    private javax.swing.JTextField p_name1;
     private javax.swing.JTextField quantity;
     private javax.swing.JTextField s_cost;
     private javax.swing.JTextField t_idd;

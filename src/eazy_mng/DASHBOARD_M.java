@@ -911,6 +911,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel59.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel59.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel59MouseClicked(evt);
+            }
+        });
 
         jLabel100.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel100.setForeground(new java.awt.Color(0, 204, 102));
@@ -2845,6 +2850,18 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         el.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel58MouseClicked
+
+    private void jPanel59MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel59MouseClicked
+        // TODO add your handling code here:
+        ATTEDENCE at=new ATTEDENCE();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        at.aaa(name, ID, eml,t1,d1,ph);
+        at.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel59MouseClicked
 
     /**
      * @param args the command line arguments

@@ -5,11 +5,16 @@
  */
 package eazy_mng;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sudip Maiti
  */
-public class ATTEDENCE_CHECK extends javax.swing.JFrame {
+public class ATTEDENCE extends javax.swing.JFrame {
 
     String ID = null;
     String Name = null;
@@ -20,20 +25,25 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
     String Address =null;
     String date=null;
     String time = null;
+    
     /**
      * Creates new form REMOVE_EMPLOYEE
      */
-    public ATTEDENCE_CHECK() {
+    public ATTEDENCE() {
         initComponents();
     }
 
-    void udpe (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+    void aaa (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
         ID = mng_Id;
         Email = email;
         time = t1;
         date = d1;
         Phone= p;
+        ab.setText(Name);
+        ab.setEditable(false);
+        dd.setText(date);
+        dd.setEditable(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +59,7 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        emp = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -66,16 +76,18 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        en = new javax.swing.JTextField();
+        ab = new javax.swing.JTextField();
+        dd = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        c2 = new com.toedter.calendar.JDateChooser();
+        c1 = new com.toedter.calendar.JDateChooser();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -86,7 +98,7 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ATTEDENCE CHECK");
+        jLabel1.setText("ATTEDENCE ");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 204));
@@ -102,8 +114,8 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(243, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(291, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(224, 224, 224)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -120,13 +132,13 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(210, 169, 251));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 255));
-        jTextField2.setText("Enter Employee ID");
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextField2.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 30));
+        emp.setBackground(new java.awt.Color(255, 255, 255));
+        emp.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        emp.setForeground(new java.awt.Color(0, 0, 255));
+        emp.setText("Enter Employee ID");
+        emp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        emp.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jPanel3.add(emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 255, 51));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -159,7 +171,7 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 204));
         jButton4.setText("Search");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, 30));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, 30));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -178,8 +190,8 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel9.setText("Time :");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, 20));
+        jLabel9.setText("To");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 204));
@@ -205,6 +217,11 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 204));
         jButton7.setText("Search");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 30));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -217,20 +234,20 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jLabel14.setText("Status:");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 90, -1));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 30));
+        en.setBackground(new java.awt.Color(255, 255, 255));
+        en.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        en.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(en, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 30));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 160, 30));
+        ab.setBackground(new java.awt.Color(255, 255, 255));
+        ab.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        ab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(ab, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 160, 30));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 30));
+        dd.setBackground(new java.awt.Color(255, 255, 255));
+        dd.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        dd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(dd, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 160, 30));
 
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
@@ -263,9 +280,18 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         jLabel17.setText("In Time :");
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 90, -1));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 0, 255));
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 230, 30));
+        c2.setBackground(new java.awt.Color(255, 255, 255));
+        c2.setForeground(new java.awt.Color(0, 0, 255));
+        jPanel3.add(c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 230, 30));
+
+        c1.setBackground(new java.awt.Color(255, 255, 255));
+        c1.setForeground(new java.awt.Color(0, 0, 255));
+        jPanel3.add(c1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 230, 30));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel18.setText("Time :");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, 20));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 430));
 
@@ -284,6 +310,18 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M();
@@ -292,6 +330,51 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
        this.dispose();
         
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        String em_id=emp.getText();
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From employee_register Where EMP_ID = ?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,em_id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                String emp_id =rs.getString("EMP_ID");
+                String f_name =rs.getString("FIRST_NAME");
+                 System.out.println("EMpppppp "+f_name);
+                String l_name =rs.getString("LAST_NAME");
+                 System.out.println("pppnnn "+l_name);
+               String nnn=f_name+l_name;
+               
+                en.setText(nnn);
+                en.setEditable(false);
+                rs.close();
+                ps.close();
+            }else{
+                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
+                System.out.println("Enter Correct Employee Id");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+//        try{
+//            
+//            if(UPDATEPROFILE_M_DATAOBJECT.validate(em_id))
+//            {System.out.println("EmpppppppppppIDD"+em_id);
+//                JOptionPane.showMessageDialog(this, "Employee Found in This Id");
+//           }else 
+//            JOptionPane.showMessageDialog(this, "Employee ID not found");
+//             
+//        }catch (Exception e){
+//            System.out.println("Exception -"+e);  
+//    } 
+//        
+//        
+    }//GEN-LAST:event_jButton7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -310,14 +393,18 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ATTEDENCE_CHECK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATTEDENCE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ATTEDENCE_CHECK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATTEDENCE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ATTEDENCE_CHECK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATTEDENCE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ATTEDENCE_CHECK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ATTEDENCE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -326,18 +413,23 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ATTEDENCE_CHECK().setVisible(true);
+                new ATTEDENCE().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ab;
+    private com.toedter.calendar.JDateChooser c1;
+    private com.toedter.calendar.JDateChooser c2;
+    private javax.swing.JTextField dd;
+    private javax.swing.JTextField emp;
+    private javax.swing.JTextField en;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -347,6 +439,7 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -358,11 +451,7 @@ public class ATTEDENCE_CHECK extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
