@@ -760,7 +760,7 @@ public class MNG_REGISTER extends javax.swing.JFrame {
     }//GEN-LAST:event_firstnameFocusGained
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        String fName = conf_pass.getText();
+        String fName = firstname.getText();
         String lName = lastname.getText();
         String ph = phone3.getText();
         String mail = email.getText();

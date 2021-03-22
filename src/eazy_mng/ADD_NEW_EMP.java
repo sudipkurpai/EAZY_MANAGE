@@ -91,8 +91,10 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
                 System.out.println("MANAGER ID "+mng_Id);
                 emp_Id=rs.getString("EMP_ID");
                 System.out.println("EMPLOYEE ID "+emp_Id);
-                Transaction_Id=rs.getString("Transaction_Id");
+                Transaction_Id=rs.getString("TRANSACTION_ID");
                 System.out.println("Transaction_Id "+Transaction_Id);
+                Product_id=rs.getString("PRODUCT_ID");
+               
                 rs.close();
                 ps.close();
             }else{
@@ -552,7 +554,7 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        String fName = conf_pass.getText();
+        String fName = firstname.getText();
         String lName = lastname.getText();
         String ph = phone3.getText();
         String mail = email.getText();

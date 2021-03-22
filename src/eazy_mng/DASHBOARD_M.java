@@ -2853,7 +2853,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jPanel59MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel59MouseClicked
         // TODO add your handling code here:
-        ATTEDENCE at=new ATTEDENCE();
+        CHECK_ATTEDENCE at=new CHECK_ATTEDENCE();
         String name = mng_name.getText();
         String ID = mng_id.getText();
         String t1 = time1.getText();
