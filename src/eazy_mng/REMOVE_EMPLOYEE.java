@@ -25,11 +25,13 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
     String Address =null;
     String date=null;
     String time = null;
+    
     /**
      * Creates new form REMOVE_EMPLOYEE
      */
     public REMOVE_EMPLOYEE() {
         initComponents();
+        
     }
     void ree (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
@@ -38,6 +40,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         time = t1;
         date = d1;
         Phone= p;
+      
     }
 
     /**
@@ -98,8 +101,8 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(240, 240, 240)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
-                .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,6 +144,11 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 255));
         jButton1.setText("Reset");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 100, 40));
 
         name.setBackground(new java.awt.Color(255, 255, 255));
@@ -326,14 +334,18 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         // TODO add your handling code here:
         String em_id = ser.getText();
         String a = name.getText();
-        String b = eml.getText();
-        String c = phone.getText();
-        String d = addr.getText();
+        name.setEditable(false);
+      //  String b = eml.getText();
+        eml.setEditable(false);
+     //   String c = phone.getText();
+       phone.setEditable(false);
+     //   String d = addr.getText();
+      addr.setEditable(false);
         String e = res.getText();
-        if (a==""||b==""||c==""||d=="")
+        if (em_id.equals("Enter Employee ID")){
         
-          JOptionPane.showMessageDialog(this, "Fill Up All Filld First");  
-        else if (e=="")
+          JOptionPane.showMessageDialog(this, "Insert Employee ID First");  
+        }else if (e.equals(""))
             JOptionPane.showMessageDialog(this, "Give a Reason for Remove Employee"); 
         else{
             int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Remove This Employee ?");
@@ -365,6 +377,17 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         }
                 
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        ser.setText("Enter Employee ID");
+        name.setText("");
+        eml.setText("");
+        phone.setText("");
+        addr.setText("");
+        res.setText("");
+
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments

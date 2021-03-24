@@ -23,7 +23,7 @@ import javax.swing.Timer;
  */
 public class MNG_REGISTER extends javax.swing.JFrame {
 
-     String emp_id =null;
+    String emp_id =null;
     String Mng_Id = null;
     String Name = null;
     String ID = null;
@@ -421,6 +421,11 @@ public class MNG_REGISTER extends javax.swing.JFrame {
                 conf_passFocusLost(evt);
             }
         });
+        conf_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conf_passActionPerformed(evt);
+            }
+        });
         jPanel2.add(conf_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 220, 30));
 
         Close1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -580,7 +585,7 @@ public class MNG_REGISTER extends javax.swing.JFrame {
     private void Close_bMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Close_bMouseExited
         // TODO add your handling code here:
         Close_bb.setBackground(new Color(0,153,204));
-        Close_b.setForeground(new Color(14,73,181));
+        Close_b.setForeground(new Color(255,255,255));
     }//GEN-LAST:event_Close_bMouseExited
 
     private void Close_bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Close_bMouseClicked
@@ -833,6 +838,10 @@ public class MNG_REGISTER extends javax.swing.JFrame {
         ap.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void conf_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conf_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_conf_passActionPerformed
     
     /**
      * @param args the command line arguments

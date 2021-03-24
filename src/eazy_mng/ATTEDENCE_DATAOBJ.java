@@ -56,19 +56,19 @@ public class ATTEDENCE_DATAOBJ {
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
                    PreparedStatement ps=con.prepareStatement("update attendance set OUT_TIME =?, BREAK_TIME=?, STATUS=? where EMP_ID =? and DATE = ? ");
-                   
-                  
-                 //  System.out.println("55555551"+Product_id);
-                   ps.setString(1, out_time);
-                 //  System.out.println("6666666"+ Product_name);
+                  ps.setString(1, out_time);
+                   System.out.println("111111"+ out_time);
                    ps.setString(2, break_time);
-                 //  System.out.println("77777777777"+Description);
+                   System.out.println("22222222"+break_time);
                   
                  //  System.out.println("8888888888"+Standerd_cost);
                    ps.setString(3, Status);
+                   System.out.println("3333333"+Status);
                    ps.setString(4, emp_id);
+                  
                    ps.setString(5, date);
-                   System.out.println("111111111"+emp_id);
+                    System.out.println("55555551"+date);
+                   System.out.println("4444444"+emp_id);
                  //  System.out.println("999999999"+Unit_price);
                    
                   status=ps.executeUpdate();

@@ -5,6 +5,7 @@
  */
 package eazy_mng;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -219,6 +220,14 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         emp.setText("Enter Employee ID");
         emp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         emp.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        emp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                empFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                empFocusLost(evt);
+            }
+        });
         jPanel3.add(emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 230, 30));
 
         save.setBackground(new java.awt.Color(255, 255, 0));
@@ -273,7 +282,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         daaa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         daaa.setForeground(new java.awt.Color(204, 0, 204));
         daaa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 255)));
-        jPanel3.add(daaa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 190, 20));
+        jPanel3.add(daaa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 200, 20));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 204));
@@ -309,7 +318,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 204));
         jLabel14.setText("Status:");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 90, -1));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 160, 90, -1));
 
         en.setBackground(new java.awt.Color(255, 255, 255));
         en.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -350,7 +359,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         sta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         sta.setForeground(new java.awt.Color(0, 0, 0));
         sta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Present", "Half Day", "Absent", " " }));
-        jPanel3.add(sta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 160, 30));
+        jPanel3.add(sta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 160, 30));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 204));
@@ -435,17 +444,32 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
             if(rs1.next()){   
                 String nnn =rs1.getString("EMP_NAME");
                 String in_timee =rs1.getString("IN_TIME");
+                String out_timee =rs1.getString("OUT_TIME");
+                String break_timee =rs1.getString("BREAK_TIME");
+                String Status =rs1.getString("STATUS");
                 en.setText(nnn);
                 en.setEditable(false);
                 in_t.setText(in_timee);
-                in_t.setEditable(false);
+                
+                o_t.setText(out_timee);
+               // o_t.setEditable(false);
+                b_t.setText(break_timee);
+               // b_t.setEditable(false);
+                sta.setSelectedItem(Status);
+              //  sta.setEditable(false);
+                if(in_t.equals(""))
+                {
+                    in_t.setEditable(true);
+                }else
+                    in_t.setEditable(false);
+              //  in_t.setEditable(false);
                 table();
                 enable();                
                 rs1.close();
                 ps1.close();
             }else{
                 
-                System.out.println("Enter Correct Employee Id");
+                System.out.println("Nothing Found In this ID");
             
              //Data fetch from database
             String sql = "Select * From employee_register Where EMP_ID = ?";
@@ -469,7 +493,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
                 ps.close();
             }else{
                 JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
-                System.out.println("Enter Correct Employee Id");
+               // System.out.println("Enter Correct Employee Id");
             }}
         }catch(Exception e){
             System.out.println("error"+e);
@@ -540,21 +564,26 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     }//GEN-LAST:event_saveMouseClicked
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        // TODO add your handling code here:
-         String empe = emp.getText();      
+        // TODO add your handling code here:\
+         in_t.setEditable(false);
+        String empe = emp.getText();  
+        System.out.println("emppp"+empe);
         String out_t = o_t.getText();
+        System.out.println("outttttt"+out_t);
         String br_t = b_t.getText();
+        System.out.println("breeeeeeak"+br_t);
         String staa = sta.getSelectedItem().toString();
+        System.out.println("staaaaa"+staa);
         String daaaa = dd.getText();
+        System.out.println("dateeeee"+daaaa);
+       
         
-        
-        
-        int i = ATTEDENCE_DATAOBJ.update(empe, out_t, br_t, staa,daaaa);
+        int i = ATTEDENCE_DATAOBJ.update( out_t, br_t, staa,empe,daaaa);
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
                 System.out.println("Data inserted");
                 JOptionPane.showMessageDialog(this, "Attedence Update Sucessfully "); 
-                
+                table();
            }else{
                 System.out.println("Data NOT inserted");
                 JOptionPane.showMessageDialog(this, "Unable to Given Attedence"); 
@@ -563,10 +592,32 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        emp.setText("Enter Employee ID");
         reset();
         
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void empFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_empFocusGained
+        // TODO add your handling code here:
+       // emp.setText("");
+        if(emp.getText().equals("Enter Employee ID")){
+            
+            emp.setText("");
+           
+        }
+    }//GEN-LAST:event_empFocusGained
+
+    private void empFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_empFocusLost
+        // TODO add your handling code here:
+      // emp.setText("Enter Employee ID");
+       if(emp.getText().equals("")){
+           
+            emp.setText("Enter Employee ID");
+           
+        }else{
+           emp.setVisible(true);
+    }//GEN-LAST:event_empFocusLost
+    }
     /**
      * @param args the command line arguments
      */

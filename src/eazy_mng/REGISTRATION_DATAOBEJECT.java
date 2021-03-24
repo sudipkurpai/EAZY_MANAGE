@@ -14,13 +14,13 @@ import java.sql.*;
  * @author Sudip Maiti
  */
 public class REGISTRATION_DATAOBEJECT {
-    public static int inventory_management_system (String FIRST_NAME, String LAST_NAME, String EMAIL, 
+    public static int inventory_management_system (String fname, String LAST_NAME, String EMAIL, 
             String MOBILE_NO, String MNG_ID,String PASSWORD, String CONFIRM_PASSWORD, String ADDRESS,String GENDER,String T_D,String DOB){
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
                    PreparedStatement ps=con.prepareStatement("INSERT INTO register(FIRST_NAME, LAST_NAME, EMAIL, MOBILE_NO, MNG_ID,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER,T_D,DOB) VALUES (?,?,?,?,?,?,?,?,?,?,?) ");
-                   ps.setString(1, FIRST_NAME);
+                   ps.setString(1, fname);
                    ps.setString(2, LAST_NAME);
                    ps.setString(3, EMAIL);
                    ps.setString(4, MOBILE_NO);
