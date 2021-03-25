@@ -259,7 +259,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,em_id);
             ResultSet rs=ps.executeQuery();
-            if(rs.next()){
+            if(rs.next()||UPDATEPROFILE_M_DATAOBJECT.validate(em_id)){
                 String emp_id =rs.getString("EMP_ID");
                 String f_name =rs.getString("FIRST_NAME");
                 // System.out.println("EMpppppp "+f_name);
@@ -289,26 +289,19 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
                
                 rs.close();
                 ps.close();
-            }else{
-                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
-                System.out.println("Enter Correct Employee Id");
+                JOptionPane.showMessageDialog(this, "Employee Id Found");
+           
+                
+            }else if(em_id.equals("")||em_id.equals("Enter Employee ID"))  
+               JOptionPane.showMessageDialog(this, "Insert Employee ID First");
+            
+            else{
+                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id. \nEmployee ID not found!!!");
+              //  System.out.println("Enter Correct Employee Id");
             }
         }catch(Exception e){
             System.out.println("error"+e);
-        }
-        try{
-            
-            if(UPDATEPROFILE_M_DATAOBJECT.validate(em_id))
-                 
-
-            {System.out.println("EmpppppppppppIDD"+em_id);
-                JOptionPane.showMessageDialog(this, "Employee Id Found");
-           }else 
-            JOptionPane.showMessageDialog(this, "Employee ID not found");
-             
-        }catch (Exception e){
-            System.out.println("Exception -"+e);  
-    }                         
+        }                       
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void serFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_serFocusGained
@@ -335,7 +328,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         String em_id = ser.getText();
         String a = name.getText();
         name.setEditable(false);
-      //  String b = eml.getText();
+       String b = eml.getText();
         eml.setEditable(false);
      //   String c = phone.getText();
        phone.setEditable(false);
@@ -353,6 +346,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
             String sql="delete from employee_register where EMP_ID = ?";
             try{
                 int i = REGISTRATION_DATAOBEJECT.remove_emp_system(Name, ID, date, time, em_id, a, e);
+                
                 if(i>0){
                     Connection con=DATABASE_CONNECTION.getConnection();
                     PreparedStatement ps=con.prepareStatement(sql);
@@ -360,7 +354,9 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
                     ps.execute();
                     ps.close();
                     con.close();
-                    JOptionPane.showMessageDialog(this, "Employee Remove Successfully"); 
+                    JOptionPane.showMessageDialog(this, "Employee Remove Successfully\nEmail Send To "+a);
+                  String rrrr = res.getText();
+                    MAIL.send(b,"Sorry To Say, You Are Rejected From Our Company", rrrr);
                 }else{
                     JOptionPane.showMessageDialog(this, "Employee can't Remove"); 
                 }                   

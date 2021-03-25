@@ -5,6 +5,12 @@
  */
 package eazy_mng;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Sudip Maiti
@@ -34,6 +40,60 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         date = d1;
         Phone= p;
     }
+    public void table2(){
+         String empee= emp.getText();
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From employee_reports Where EMP_ID='"+empee+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+           DefaultTableModel model =(DefaultTableModel)table2.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                   rs.getString("WHO_REPORT"),rs.getString("REPORTER'S_ID"),rs.getString("POSITION"),rs.getString("DATE"),rs.getString("TIME"),
+              rs.getString("REPORTS") };
+               model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        
+       
+    }
+    
+        public void table()
+{
+    String empee= emp.getText();
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From employee_register Where EMP_ID='"+empee+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                   rs.getString("EMP_ID"),rs.getString("FIRST_NAME"),rs.getString("LAST_NAME"),rs.getString("MOBILE_NO"),rs.getString("EMAIL"),
+              rs.getString("GENDER"),rs.getString("DOB"),rs.getString("ADDRESS") };
+               model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,13 +109,13 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        emp = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        eml = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        report = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -65,8 +125,11 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table2 = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -111,12 +174,20 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(210, 169, 251));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 255));
-        jTextField2.setText("Enter Employee ID");
-        jTextField2.setBorder(null);
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 360, 20));
+        emp.setBackground(new java.awt.Color(255, 255, 255));
+        emp.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        emp.setForeground(new java.awt.Color(0, 0, 255));
+        emp.setText("Enter Employee ID");
+        emp.setBorder(null);
+        emp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                empFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                empFocusLost(evt);
+            }
+        });
+        jPanel3.add(emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 360, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rounded (4).png"))); // NOI18N
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 60));
@@ -125,24 +196,30 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 255));
         jButton1.setText("Basic Info");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 180, 40));
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 370, 20));
+        name.setBackground(new java.awt.Color(255, 255, 255));
+        name.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 370, 20));
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 350, 20));
+        eml.setBackground(new java.awt.Color(255, 255, 255));
+        eml.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        eml.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 350, 20));
 
-        jTextPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextPane1.setBorder(null);
-        jTextPane1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        report.setBackground(new java.awt.Color(210, 169, 251));
+        report.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        report.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        report.setForeground(new java.awt.Color(0, 0, 204));
+        jScrollPane1.setViewportView(report);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 730, 100));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 730, 100));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 204));
@@ -163,52 +240,119 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 204));
         jButton2.setText("Reset");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 51, 51));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 0));
         jButton3.setText("Remove Employee");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 170, 40));
 
         jButton4.setBackground(new java.awt.Color(0, 224, 201));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 204));
         jButton4.setText("Search");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, -1, 30));
 
         jButton5.setBackground(new java.awt.Color(204, 0, 204));
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 0));
         jButton5.setText("Reports");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 180, 40));
 
         jButton6.setBackground(new java.awt.Color(51, 255, 51));
         jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(51, 51, 255));
         jButton6.setText("Update Profile");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 170, 40));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setBackground(new java.awt.Color(210, 169, 251));
+        table.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        table.setForeground(new java.awt.Color(0, 0, 204));
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "Emp Id", "First Name", "Last Name", "Phone", "Email", "Gender", "Date of Birth", "Address"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 730, 50));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel7.setText("Employee Report");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 100, -1));
+        jLabel7.setText("Reports");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 100, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 430));
+        table2.setBackground(new java.awt.Color(210, 169, 251));
+        table2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        table2.setForeground(new java.awt.Color(0, 0, 204));
+        table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Who Report", "Reporter's Id", "Position", "Date", "Time", "Reson"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table2MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(table2);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 730, 110));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel9.setText("Employee Report");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 100, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,7 +365,7 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(770, 480));
+        setSize(new java.awt.Dimension(770, 609));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -232,6 +376,154 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
        dm.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+          String em_id = emp.getText();
+          try {
+            String sql = "Select * From employee_register Where EMP_ID = ?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,em_id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()||UPDATEPROFILE_M_DATAOBJECT.validate(em_id)){
+                emp.setEditable(false);
+                String emp_id =rs.getString("EMP_ID");
+                String f_name =rs.getString("FIRST_NAME");
+                // System.out.println("EMpppppp "+f_name);
+                String l_name =rs.getString("LAST_NAME");
+                // System.out.println("pppnnn "+l_name);
+                 String Name = (f_name+" "+l_name);
+                String Phone =rs.getString("MOBILE_NO");
+                 
+                String Email =rs.getString("EMAIL");
+               // System.out.println("emlllll "+l_name);
+                String gen =rs.getString("GENDER");
+                String dob =rs.getString("DOB");
+                String Address =rs.getString("ADDRESS");
+                name.setText(" "+Name);
+                name.setEditable(false);
+                eml.setText(" "+Email);
+                eml.setEditable(false);
+                table.setEnabled(false);
+                report.setEnabled(false);
+                table2.setEnabled(false);
+                
+                
+               // JOptionPane.showMessageDialog(this, "Product Found");
+                
+               
+                rs.close();
+                ps.close();
+                JOptionPane.showMessageDialog(this, "Employee Id Found");
+           
+                
+            }else if(em_id.equals("")||em_id.equals("Enter Employee ID"))  
+               JOptionPane.showMessageDialog(this, "Insert Employee ID First");
+            
+            else{
+                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id. \nEmployee ID not found!!!");
+              //  System.out.println("Enter Correct Employee Id");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }                       
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    
+     public void reset(){
+       
+        report.setEnabled(false);
+        table2.setEnabled(false);
+        emp.setEditable(true);
+        name.setText("");
+        eml.setText("");  
+        table.setEnabled(false); 
+        DefaultTableModel tm=(DefaultTableModel) table.getModel();
+        while(tm.getRowCount()>0){
+            tm.setRowCount(0);      
+        }
+     }
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        table.setEnabled(true);
+        report.setEnabled(false);
+        report.setText("");
+        table2.setEnabled(false);
+        table();    
+        DefaultTableModel tm=(DefaultTableModel) table2.getModel();
+        while(tm.getRowCount()>0){
+            tm.setRowCount(0);
+            
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        table2();
+        report.setEnabled(true);
+        table2.setEnabled(true);
+        table.setEnabled(false);
+       DefaultTableModel tm=(DefaultTableModel) table.getModel();
+        while(tm.getRowCount()>0){
+            tm.setRowCount(0);
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        emp.setText("Enter Employee ID");
+         report.setText("");
+       
+        
+        DefaultTableModel tm=(DefaultTableModel) table2.getModel();
+        while(tm.getRowCount()>0){
+            tm.setRowCount(0);
+        
+       reset();
+        
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void empFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_empFocusGained
+        // TODO add your handling code here:
+         if(emp.getText().equals("Enter Employee ID")){
+            
+            emp.setText("");
+         }
+    }//GEN-LAST:event_empFocusGained
+
+    private void empFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_empFocusLost
+        // TODO add your handling code here:
+        if(emp.getText().equals("")){
+           
+            emp.setText("Enter Employee ID");
+           
+        }else{
+           emp.setVisible(true);
+        }
+    }//GEN-LAST:event_empFocusLost
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        MANAGER_UPDATE_PROFILE mup = new MANAGER_UPDATE_PROFILE();
+        mup.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        REMOVE_EMPLOYEE re = new REMOVE_EMPLOYEE();
+        re.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
+        // TODO add your handling code here:
+         int i= table2.getSelectedRow();
+        DefaultTableModel sudip =(DefaultTableModel)table2.getModel();
+        report.setText(sudip.getValueAt(i,5).toString());
+    }//GEN-LAST:event_table2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -270,6 +562,8 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField eml;
+    private javax.swing.JTextField emp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -283,15 +577,16 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField name;
+    private javax.swing.JTextPane report;
+    private javax.swing.JTable table;
+    private javax.swing.JTable table2;
     // End of variables declaration//GEN-END:variables
 }

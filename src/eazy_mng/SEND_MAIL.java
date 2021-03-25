@@ -147,7 +147,7 @@ public class SEND_MAIL extends javax.swing.JFrame {
         String subj=sub.getText();
         String msg=sms.getText();
          try{
-            Mail.send(too, ccc, subj, msg);
+            MAIL.send(too, subj, msg);
 
         }catch(Exception e){
             e.printStackTrace();

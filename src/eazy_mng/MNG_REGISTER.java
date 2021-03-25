@@ -164,8 +164,6 @@ public class MNG_REGISTER extends javax.swing.JFrame {
         c2 = new javax.swing.JCheckBox();
         c1 = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -489,22 +487,12 @@ public class MNG_REGISTER extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 50, 20));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(10, 36, 25));
-        jLabel3.setText("In order to receive the best deals that are customaize to your tastes.");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 400, 10));
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(10, 36, 25));
-        jLabel5.setText("Sing up now to recive exclusive offers and promotions. ");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 400, 10));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 50, 20));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(10, 36, 25));
         jLabel7.setText("Already have an account ? ");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 230, 20));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 230, 20));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 520));
 
@@ -773,38 +761,30 @@ public class MNG_REGISTER extends javax.swing.JFrame {
         String c_pass = conf_pass.getText();
         
         String gen = jComboBox1.getSelectedItem().toString() ;
-
-        //Date from Calender and set Format for date
-        
-       
-        
-        //////////////
-
-        if(fName.isEmpty() || lName.equals("") || ph.equals("") || mail.isEmpty() || password.equals("")|| c_pass.isEmpty()){
+         if(fName.isEmpty() || lName.equals("") || ph.equals("") || mail.isEmpty() || password.equals("")|| c_pass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill up all field first");
         }else if(PASSWORD_PATTERN.matcher(password).matches()){
-            if(password.equals(c_pass) ){
-            if(c1.isSelected()==true && c2.isSelected()==true ){
+              if(password.equals(c_pass) ){
+              if(c1.isSelected()==true && c2.isSelected()==true ){
                 int i = REGISTRATION_DATAOBEJECT.inventory_management_system(fName, lName,ph, mail, mng, password, c_pass,add,gen,td,dob);
                 int j = ID_STORE_FETCH.insert_id(mng_id.toString(), emp_id,Transaction_Id,pro_Id);
-                    if(i>0 && j>0){
-                         System.out.println("Data inserted");
-
-                         JOptionPane.showMessageDialog(this, "Your Account Sucessfully Created"); 
-                         new LOGINFROM().setVisible(true);
-                         this.dispose();
-                    }else{
-                         System.out.println("Data NOT inserted");
-                         JOptionPane.showMessageDialog(this, "Your Account Not Created"); 
+              if(i>0 && j>0){
+                System.out.println("Data inserted");
+                JOptionPane.showMessageDialog(this, "Your Account Sucessfully Created"); 
+                new LOGINFROM().setVisible(true);
+                this.dispose();
+              }else{
+                System.out.println("Data NOT inserted");
+                JOptionPane.showMessageDialog(this, "Your Account Not Created"); 
                     }
-           }else{
+             }else{
                 JOptionPane.showMessageDialog(this, "You have to accept our company Terms & Condition"); 
-           }   
-        }else {
-            JOptionPane.showMessageDialog(this, "Both Password Not Same");
-        }
-        }else {
-            JOptionPane.showMessageDialog(null, "Password between 8 and 20 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
+             }   
+             }else {
+               JOptionPane.showMessageDialog(this, "Both Password Not Same");
+             }
+             }else {
+               JOptionPane.showMessageDialog(null, "Password between 8 and 20 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
         
         }
         
@@ -907,8 +887,6 @@ public class MNG_REGISTER extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

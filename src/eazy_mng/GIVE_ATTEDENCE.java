@@ -64,18 +64,27 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     public void enable()
     {
        if("".equals(in_t.getText())) {
+            in_t.setEditable(true);
+                    o_t.setEditable(false);
+                    b_t.setEditable(false);
+                    sta.setEnabled(false);
            update.setEnabled(false);
            save.setEnabled(true);
            System.out.println("intimmmmm"+in_t.getText());
            
        }else if(!"".equals(in_t.getText()) ){
+            in_t.setEditable(false);
+                    o_t.setEditable(true);
+                    b_t.setEditable(true);
+                    sta.setEnabled(true);
         update.setEnabled(true);
         save.setEnabled(false);
          System.out.println("intinnnnnnnn"+in_t.getText());
     }
        
     }
-    
+  
+                   
     
     
     
@@ -441,7 +450,11 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
             ps1.setString(1,em_id);
             ps1.setString(2,datttt);
             ResultSet rs1=ps1.executeQuery();
-            if(rs1.next()){   
+            if(em_id.equals("")||em_id.equals("Enter Employee ID")){
+            JOptionPane.showMessageDialog(this, "Insert Employee ID First");    
+                
+            }else if(rs1.next()){
+                emp.setEditable(false);
                 String nnn =rs1.getString("EMP_NAME");
                 String in_timee =rs1.getString("IN_TIME");
                 String out_timee =rs1.getString("OUT_TIME");
@@ -457,12 +470,8 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
                // b_t.setEditable(false);
                 sta.setSelectedItem(Status);
               //  sta.setEditable(false);
-                if(in_t.equals(""))
-                {
-                    in_t.setEditable(true);
-                }else
-                    in_t.setEditable(false);
-              //  in_t.setEditable(false);
+              
+                
                 table();
                 enable();                
                 rs1.close();
@@ -478,7 +487,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
             ps.setString(1,em_id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
-                String emp_id =rs.getString("EMP_ID");
+               // String emp_id =rs.getString("EMP_ID");
                 String f_name =rs.getString("FIRST_NAME");
                  System.out.println("EMpppppp "+f_name);
                 String l_name =rs.getString("LAST_NAME");
@@ -514,7 +523,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7MouseClicked
 
     public void reset(){
-        
+        emp.setEditable(true);
         en.setText("");
         in_t.setText("");
         o_t.setText("");
@@ -552,11 +561,14 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         
         if(i>0){
             table();
-        System.out.println("Data inserted");
-        JOptionPane.showMessageDialog(this, "Attedence Successfully");
-               }
-        else{
-        System.out.println("Data NOT inserted");
+       // System.out.println("Data inserted");
+        JOptionPane.showMessageDialog(this, "Employee In Time Attedence Successfully");
+        
+        reset();
+        emp.setText("Enter Employee ID");
+               
+        } else{
+       // System.out.println("Data NOT inserted");
         JOptionPane.showMessageDialog(this, "Attedence not done");
             }
         }
@@ -582,8 +594,10 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
                 System.out.println("Data inserted");
-                JOptionPane.showMessageDialog(this, "Attedence Update Sucessfully "); 
                 table();
+                JOptionPane.showMessageDialog(this, "Attedence Update Sucessfully ");
+                emp.setText("Enter Employee ID");
+                reset();
            }else{
                 System.out.println("Data NOT inserted");
                 JOptionPane.showMessageDialog(this, "Unable to Given Attedence"); 
@@ -593,6 +607,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         emp.setText("Enter Employee ID");
+        
         reset();
         
     }//GEN-LAST:event_jButton3MouseClicked

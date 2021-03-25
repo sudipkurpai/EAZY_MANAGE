@@ -19,6 +19,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
      int otp;
      String eml;
      String phonee;
+     String name;
      
     /**
      * Creates new form LOGIN_M
@@ -167,6 +168,9 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
             if(rs.next()){
                 eml =rs.getString("Email");
                 phonee =rs.getString("MOBILE_NO");
+              String  fname=rs.getString("FIRST_NAME");
+             String   lname=rs.getString("LAST_NAME");
+                 name=fname+" "+lname;
                 System.out.println("EMAILLLLLLLL "+eml);
                 System.out.println("phoooooo "+phonee);
                 
@@ -183,7 +187,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                 gen_otp();
                
                 System.out.println("matched"+eml);    
-             JOptionPane.showMessageDialog(null, "OTP Sand");
+             JOptionPane.showMessageDialog(null, "OTP Sand To"+" "+name);
             /* if(REGISTRATION_DATAOBEJECT.vali(p_email, phone)){
                 gen_otp();
                 JOptionPane.showMessageDialog(null, "OTP Send");
@@ -210,7 +214,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
           try{
               String mng = mng_id.getText();
               String msc= "YOUR OTP IS "+otp;
-            Mail.send(msc,"cc", "Welcome User", msc);
+            MAIL.send(mng,"Welcome"+" "+name, msc);
                    
 
         }catch(Exception e){

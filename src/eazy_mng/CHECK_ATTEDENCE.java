@@ -300,30 +300,36 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,cal);
             ps.setString(2,cal2);*/
-        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-        String d1 = s.format(c1.getDate());
-        System.out.println("!@##%$$%$"+d1);
-        String d2 = s.format(c2.getDate());
-        System.out.println("!@##%$$%$"+d2);
-            try {       
-             //Data fetch from database
-             String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+"'  ";
+        /**/
+        
+        
+         if(c1.getDate()== null || c2.getDate()== null){
+             JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
+         }else{
+          try { 
+            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+            System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+            System.out.println("!@##%$$%$"+d2);
+            String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+"'  ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);           
             ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           while (rs.next())
-           {               
-               Object o []={
-                   rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),rs.getString("MNG_ID"),rs.getString("IN_TIME"),
-              rs.getString("OUT_TIME"),rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
-               model.addRow(o);
-               
-           }
+            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+            model.setRowCount(0);
+                while (rs.next())
+                {               
+                    Object o []={
+                        rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),rs.getString("MNG_ID"),rs.getString("IN_TIME"),
+                   rs.getString("OUT_TIME"),rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
+                    model.addRow(o);
+
+                }
             }catch(Exception e){
             System.out.println("error"+e);
         }
+         }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
