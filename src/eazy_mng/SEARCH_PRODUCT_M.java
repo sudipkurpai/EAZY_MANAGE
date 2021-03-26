@@ -128,7 +128,7 @@ String time = null;
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 102));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 204, 102));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
@@ -218,16 +218,9 @@ String time = null;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         // TODO add your handling code here:
-         DASHBOARD_M dm = new DASHBOARD_M();
-        dm.mngname(Name, Id, emll, ph, date, time);
-        dm.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
@@ -279,10 +272,18 @@ String time = null;
             System.out.println("error"+e);
                                           
     }//GEN-LAST:event_jButton4MouseClicked
+    }
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+         DASHBOARD_M dm = new DASHBOARD_M ();
+        dm.mngname(Name, Id, emll, ph, date, time);
+        dm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
     
         
         
-    }
+    
     /**
      * @param args the command line arguments
      */

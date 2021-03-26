@@ -2591,7 +2591,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void salf_updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salf_updateMouseClicked
         // TODO add your handling code here:
-        UPDATEPROFILE_MAN upm = new UPDATEPROFILE_MAN();
+        UPDATE_PROFILE upm = new UPDATE_PROFILE();
         String Name = mng_name.getText();
         String ID = mng_id.getText();
          String t1 = time1.getText();

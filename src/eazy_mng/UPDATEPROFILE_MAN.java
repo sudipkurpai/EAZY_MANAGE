@@ -139,6 +139,11 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
         email.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         email.setForeground(new java.awt.Color(0, 0, 0));
         email.setEnabled(false);
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, 450, 40));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
@@ -273,6 +278,10 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
 
     /**
      * @param args the command line arguments

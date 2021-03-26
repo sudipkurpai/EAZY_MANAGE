@@ -31,6 +31,8 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
     String emp =null;
     String Transaction_Id = null;
     String Product_id=null;
+    String emaill =null;
+    String phonee =null;
     /**
      * Creates new form REGISTRATION
      */
@@ -57,6 +59,8 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         ID = mng_Id;
         mng_name.setText(Name);
         mng_id.setText(ID);
+        emaill=eml;
+        phonee=phone;
        
         System.out.println("Fullname"+Name);
         System.out.println("idddddddddddd"+ID);
@@ -794,7 +798,7 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
     private void Close_bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Close_bMouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M ();
-        dm.mngname(Name, mng_Id, emp_Id, Name, date, time);
+        dm.mngname(Name, mng_Id, emaill, phonee, date, time);
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Close_bMouseClicked
