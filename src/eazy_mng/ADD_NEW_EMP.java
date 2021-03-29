@@ -25,14 +25,16 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
     String emp_Id = null;
     String Name = null;
     String ID = null;
-    String date=null;
-    String time = null;
+    String ldate=null;
+    String ltime = null;
     BigInteger emp_id =null;
     String emp =null;
     String Transaction_Id = null;
     String Product_id=null;
     String emaill =null;
     String phonee =null;
+    String date=null;
+    String time = null;
     /**
      * Creates new form REGISTRATION
      */
@@ -53,7 +55,7 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         date();
         time();
     }
-    void mngname(String fullname, String mng_Id,String eml, String phone,String time1,String time2 ) 
+    void mngname(String fullname, String mng_Id,String eml,String time1,String date1,String phone ) 
     {
         Name = fullname;
         ID = mng_Id;
@@ -61,6 +63,8 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         mng_id.setText(ID);
         emaill=eml;
         phonee=phone;
+        ltime=time1;
+        ldate=date1;
        
         System.out.println("Fullname"+Name);
         System.out.println("idddddddddddd"+ID);
@@ -798,7 +802,7 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
     private void Close_bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Close_bMouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M ();
-        dm.mngname(Name, mng_Id, emaill, phonee, date, time);
+        dm.mngname(Name, mng_Id, emaill, phonee, ldate, ltime);
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Close_bMouseClicked

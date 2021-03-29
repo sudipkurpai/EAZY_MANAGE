@@ -22,7 +22,7 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
     String mng_Id = null;
     String emp_Id = null;
     String Name = null;
-    String Phone = null;
+    String Ph = null;
     String Email = null;
     String ID = null;
     String date=null;
@@ -35,18 +35,22 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
     }
 
     
-     void mngname(String name, String mng_Id,String Phone, String email,String t1,String d1) 
+     void mngname(String name, String mng_Id, String email,String t1,String d1,String Phone) 
     {
         Name = name;
+        
         ID = mng_Id;
-        Phone = Phone;
+        Ph = Phone;
         System.out.println("Fullname"+Name);
         System.out.println("idddddddddddd"+ID);
         MNG_ID.setText(ID);
         MNG_ID.setEditable(false);
         fullname.setText(Name);
         fullname.setEditable(false);
-        Update_Profile();
+        Email = email;
+        time = t1;
+        date = d1;
+       Update_Profile();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,7 +93,7 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Mng_ID");
+        jLabel4.setText("Mng ID");
 
         addr.setBackground(new java.awt.Color(255, 255, 255));
         addr.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -161,16 +165,14 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dobb, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(dobb, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel12))
                         .addGap(417, 417, 417)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(357, Short.MAX_VALUE))))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -224,9 +226,9 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
                     .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(gen, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,13 +303,8 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
                 email.setEditable(false);
                 phone.setText(mob);
                 phone.setEditable(false);
-             // dobb.getDate(db));
-               
                 gen.setSelectedItem(gn);
-                
                 addr.setText(add);
-                
-                
                 rs.close();
                 ps.close();
             }else{
@@ -321,7 +318,8 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M();
-        dm.mngname(Name,ID,Email,Phone,date,time);
+        
+        dm.mngname(Name,ID,Email,Ph,date,time);
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel20MouseClicked
@@ -332,13 +330,8 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
         String dob = s.format(dobb.getDate());
         System.out.println("dateee"+dob);
         String add = addr.getText();
-        String Pass= null;
-        String c_pass=null;
         String gen2 = gen.getSelectedItem().toString();
         System.out.println("@@@@@@@@@ "+gen2);
-        
-        
-        
         int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_m(dob, add, gen2, ID);
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
@@ -355,7 +348,7 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
         // TODO add your handling code here:
         addr.setText("");
         dobb.setDate(null);
-        gen.setSelectedIndex(2);
+        gen.setSelectedIndex(1);
     }//GEN-LAST:event_jLabel18MouseClicked
 
     /**

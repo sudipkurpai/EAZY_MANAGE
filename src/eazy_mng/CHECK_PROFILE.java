@@ -431,19 +431,7 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     
-     public void reset(){
-       
-        report.setEnabled(false);
-        table2.setEnabled(false);
-        emp.setEditable(true);
-        name.setText("");
-        eml.setText("");  
-        table.setEnabled(false); 
-        DefaultTableModel tm=(DefaultTableModel) table.getModel();
-        while(tm.getRowCount()>0){
-            tm.setRowCount(0);      
-        }
-     }
+    
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         table.setEnabled(true);
@@ -474,14 +462,23 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
         // TODO add your handling code here:
         emp.setText("Enter Employee ID");
          report.setText("");
+        name.setText("");
+        eml.setText("");  
+         report.setEnabled(false);
+        table2.setEnabled(false);
+         
+        emp.setEditable(true);
        
-        
+        table.setEnabled(false); 
         DefaultTableModel tm=(DefaultTableModel) table2.getModel();
         while(tm.getRowCount()>0){
             tm.setRowCount(0);
-        
-       reset();
-        
+       
+       
+        DefaultTableModel tm1=(DefaultTableModel) table.getModel();
+        while(tm1.getRowCount()>0){
+            tm1.setRowCount(0);      
+        } 
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -506,7 +503,7 @@ public class CHECK_PROFILE extends javax.swing.JFrame {
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
-        MANAGER_UPDATE_PROFILE mup = new MANAGER_UPDATE_PROFILE();
+        UPDATE_PROFILE_EMPLOYEE mup = new UPDATE_PROFILE_EMPLOYEE();
         mup.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6MouseClicked

@@ -39,9 +39,11 @@ void res (String eml, String mob) {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        hide2 = new javax.swing.JLabel();
+        open2 = new javax.swing.JLabel();
+        hide3 = new javax.swing.JLabel();
+        open3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         pass1 = new javax.swing.JPasswordField();
         pass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -55,16 +57,50 @@ void res (String eml, String mob) {
         jPanel1.setBackground(new java.awt.Color(255, 193, 182));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (1).png"))); // NOI18N
+        hide2.setPreferredSize(new java.awt.Dimension(24, 33));
+        hide2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide2MousePressed(evt);
+            }
+        });
+        jPanel1.add(hide2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 40, 50));
+
+        open2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        open2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (2).png"))); // NOI18N
+        open2.setPreferredSize(new java.awt.Dimension(24, 33));
+        open2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                open2MousePressed(evt);
+            }
+        });
+        jPanel1.add(open2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 40, 50));
+
+        hide3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (1).png"))); // NOI18N
+        hide3.setPreferredSize(new java.awt.Dimension(24, 33));
+        hide3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide3MousePressed(evt);
+            }
+        });
+        jPanel1.add(hide3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 40, 50));
+
+        open3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        open3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (2).png"))); // NOI18N
+        open3.setPreferredSize(new java.awt.Dimension(24, 33));
+        open3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                open3MousePressed(evt);
+            }
+        });
+        jPanel1.add(open3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 40, 50));
+
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 255));
         jLabel2.setText("New Password");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 450, 40));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hidden.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 40, 30));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hidden.png"))); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 40, 30));
 
         pass1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jPanel1.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 450, 50));
@@ -131,8 +167,7 @@ void res (String eml, String mob) {
                UPDATEPROFILE_M_DATAOBJECT.Reset_password(Paass, Paaas,email);
                 System.out.println("Data inserted");
                
-                System.out.println("passsssssss"+Paass);
-                System.out.println("cpcpcppcpcp"+Paass);
+               
                 JOptionPane.showMessageDialog(this, "Your Password Change Sucessfully "); 
                 new LOGINFROM().setVisible(true);
                 this.dispose();
@@ -142,6 +177,34 @@ void res (String eml, String mob) {
            }
                
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
+        // TODO add your handling code here:
+        open2.setVisible(true);
+        hide2.setVisible(false);
+        pass.setEchoChar((char)0);
+    }//GEN-LAST:event_hide2MousePressed
+
+    private void open2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_open2MousePressed
+        // TODO add your handling code here:
+        hide2.setVisible(true);
+        open2.setVisible(false);
+        pass.setEchoChar('*');
+    }//GEN-LAST:event_open2MousePressed
+
+    private void hide3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide3MousePressed
+        // TODO add your handling code here:
+        open2.setVisible(true);
+        hide2.setVisible(false);
+        pass1.setEchoChar((char)0);
+    }//GEN-LAST:event_hide3MousePressed
+
+    private void open3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_open3MousePressed
+        // TODO add your handling code here:
+         hide2.setVisible(true);
+        open2.setVisible(false);
+        pass1.setEchoChar('*');
+    }//GEN-LAST:event_open3MousePressed
 
     /**
      * @param args the command line arguments
@@ -180,14 +243,16 @@ void res (String eml, String mob) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hide2;
+    private javax.swing.JLabel hide3;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel open2;
+    private javax.swing.JLabel open3;
     private javax.swing.JPasswordField pass;
     private javax.swing.JPasswordField pass1;
     // End of variables declaration//GEN-END:variables

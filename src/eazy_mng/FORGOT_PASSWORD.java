@@ -16,16 +16,20 @@ import javax.swing.JOptionPane;
  * @author RAGHUNATH DAS
  */
 public class FORGOT_PASSWORD extends javax.swing.JFrame {
-     int otp;
+      String otp;
      String eml;
      String phonee;
      String name;
+     
      
     /**
      * Creates new form LOGIN_M
      */
     public FORGOT_PASSWORD() {
         initComponents();
+        pass1.setEnabled(false);
+        b.setEnabled(false);
+        b2.setEnabled(true);
     }
 
     /**
@@ -38,10 +42,12 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        hide2 = new javax.swing.JLabel();
+        open2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         mng_id = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        b = new javax.swing.JButton();
+        b2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pass1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
@@ -53,6 +59,26 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(154, 211, 188));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (1).png"))); // NOI18N
+        hide2.setPreferredSize(new java.awt.Dimension(24, 33));
+        hide2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide2MousePressed(evt);
+            }
+        });
+        jPanel2.add(hide2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 40, 60));
+
+        open2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        open2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (2).png"))); // NOI18N
+        open2.setPreferredSize(new java.awt.Dimension(24, 33));
+        open2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                open2MousePressed(evt);
+            }
+        });
+        jPanel2.add(open2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 40, 60));
+
         jLabel3.setBackground(new java.awt.Color(0, 0, 255));
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 255));
@@ -63,28 +89,28 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         mng_id.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jPanel2.add(mng_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 420, 60));
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 0));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Verify Code");
-        jButton2.setBorder(null);
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        b.setBackground(new java.awt.Color(0, 153, 0));
+        b.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b.setForeground(new java.awt.Color(255, 255, 255));
+        b.setText("Verify Code");
+        b.setBorder(null);
+        b.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                bMouseClicked(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 140, 50));
+        jPanel2.add(b, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 140, 50));
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 204));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jButton3.setText("Send");
-        jButton3.setBorder(null);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        b2.setBackground(new java.awt.Color(0, 153, 204));
+        b2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        b2.setText("Send");
+        b2.setBorder(null);
+        b2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                b2MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 110, 40));
+        jPanel2.add(b2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 255));
@@ -126,18 +152,19 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-       LOGIN_EMPLOYEE dm = new LOGIN_EMPLOYEE();
+       LOGINFROM dm = new LOGINFROM();
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    
+    private void bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMouseClicked
         // TODO add your handling code here:
         
         try{
-          
-            if (Integer.parseInt(pass1.getText())== otp){
-            System.out.println("OTP Validate Successfully");  
+          if(" ".equals(pass1.getText())){
+             JOptionPane.showMessageDialog(null, "OTP Field is blank", "Error", JOptionPane.ERROR_MESSAGE); 
+          }else if (pass1.getText().equals(otp)){
             JOptionPane.showMessageDialog(null, "OTP Validate Successfully");
             RESET_PASSWORD FP = new RESET_PASSWORD();
             FP.res(eml, phonee);
@@ -145,18 +172,19 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
             this.dispose();
             }
             else{
-            JOptionPane.showMessageDialog(null, "Enter Your OTP", " Error", JOptionPane.ERROR_MESSAGE);   
+            JOptionPane.showMessageDialog(null, "Enter Your Currect OTP", " Error", JOptionPane.ERROR_MESSAGE);   
            }
         }catch (Exception e){
             System.out.println("Exception -"+e);
         }  
         
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_bMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void b2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b2MouseClicked
         // TODO add your handling code here:
         String p_email = mng_id.getText();
         String phone = mng_id.getText();
+        
         try {
             //  Data fetch from database
             String sql = "Select * from register Where EMAIL =? or MOBILE_NO =? ";
@@ -183,8 +211,10 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         }
         try{
             if(p_email.equals(eml)||phone.equals(phonee) ){
-                
-                gen_otp();
+              gen_otp();
+               pass1.setEnabled(true);
+               b.setEnabled(true);
+                b2.setEnabled(false);
                
                 System.out.println("matched"+eml);    
              JOptionPane.showMessageDialog(null, "OTP Sand To"+" "+name);
@@ -197,24 +227,42 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
             } else{
                     
                 JOptionPane.showMessageDialog(null,"Enter Correct Email Id/ Phone Number ", "Login Error", JOptionPane.ERROR_MESSAGE);
-                
+                 pass1.setEnabled(false);
+                 b.setEnabled(false);
+                  b2.setEnabled(true);
             }}
         catch (Exception e){
             System.out.println("Exceptionsssss -"+e);
         }  
      
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_b2MouseClicked
+
+    private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
+        // TODO add your handling code here:
+        open2.setVisible(true);
+        hide2.setVisible(false);
+        pass1.setEchoChar((char)0);
+    }//GEN-LAST:event_hide2MousePressed
+
+    private void open2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_open2MousePressed
+        // TODO add your handling code here:
+        hide2.setVisible(true);
+        open2.setVisible(false);
+        pass1.setEchoChar('*');
+    }//GEN-LAST:event_open2MousePressed
 
     
     public void gen_otp(){
          Random rand = new Random();
-        otp = rand.nextInt(10000); // 0 - 9999
+         otp = String.format("%06d",rand.nextInt(1000000));
         System.out.println("YOUR OTP IS "+otp);
        
           try{
-              String mng = mng_id.getText();
+             // String mng = eml.getText();
               String msc= "YOUR OTP IS "+otp;
-            MAIL.send(mng,"Welcome"+" "+name, msc);
+            MAIL.send(eml,"Welcome"+" "+name, msc);
+            
+            
                    
 
         }catch(Exception e){
@@ -258,14 +306,16 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton b;
+    private javax.swing.JButton b2;
+    private javax.swing.JLabel hide2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField mng_id;
+    private javax.swing.JLabel open2;
     private javax.swing.JPasswordField pass1;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
    String time = null;
      String date = null;
      String ph = null;
-     String Name = null;
+     String Name;
      String Id = null;
      String emll = null;
      String otp;
@@ -31,12 +31,16 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
      */
     public CHANGE_PASS_MAN() {
         initComponents();
-        
+         pass1.setEditable(false);
+                 
+         b.setEnabled(false);
+       // get_otp.setEnabled(true);
     }
     void change (String fullname, String mng_Id,String email,String t1,String d1,String p) {
         time = t1;
         date = d1;
         ph= p;
+        
         mng_name.setText(fullname);
         System.out.println("fullnamegggggg" + fullname);
         mng_id.setText(mng_Id);
@@ -72,7 +76,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         pass1 = new javax.swing.JPasswordField();
-        jButton3 = new javax.swing.JButton();
+        b = new javax.swing.JButton();
         open = new javax.swing.JLabel();
         hide = new javax.swing.JLabel();
         open1 = new javax.swing.JLabel();
@@ -93,6 +97,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         get_otp.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         get_otp.setForeground(new java.awt.Color(0, 0, 0));
         get_otp.setText("Get OTP");
+        get_otp.setEnabled(false);
         get_otp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 get_otpMouseClicked(evt);
@@ -222,16 +227,17 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         });
         jPanel1.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 390, -1));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Submit");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        b.setBackground(new java.awt.Color(255, 255, 255));
+        b.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        b.setForeground(new java.awt.Color(0, 0, 0));
+        b.setText("Submit");
+        b.setEnabled(false);
+        b.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                bMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 40));
+        jPanel1.add(b, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 40));
 
         open.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         open.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (2).png"))); // NOI18N
@@ -369,7 +375,7 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
     private void Close_bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Close_bMouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M ();
-        String Name =mng_name.getText();
+         String Name =mng_name.getText();
          String Id = mng_id.getText();
          String emll = eml.getText();
          //String fullname, String mng_Id,String email, String phone, String Date, String Time
@@ -431,18 +437,24 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
         try{
+            String Name =mng_name.getText();
             if(p_pass.equals("")){
                 JOptionPane.showMessageDialog(this, "Wrong Password");
             }else if(REGISTRATION_DATAOBEJECT.validate(p_email, p_pass)){
                 gen_otp();
-                JOptionPane.showMessageDialog(null, "OTP Send");
-                
+                  pass1.setEnabled(true);
+                 b.setEnabled(true);
+                 get_otp.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "OTP Send To "+" "+Name+" " +"By Email");
+               
                 
               
             }else{
                 
                 JOptionPane.showMessageDialog(null,"Enter Correct Password", "Login Error", JOptionPane.ERROR_MESSAGE);
-                
+                 pass1.setEnabled(false);
+                 b.setEnabled(false);
+                 get_otp.setEnabled(true);
             }
         }catch (Exception e){
             System.out.println("Exception -"+e);
@@ -453,25 +465,25 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
                            
     }//GEN-LAST:event_get_otpMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMouseClicked
         // TODO add your handling code here:
         
       try{
           if("Enter Your OTP".equals(pass1.getText())){
              JOptionPane.showMessageDialog(null, "OTP Field is blank", "Error", JOptionPane.ERROR_MESSAGE); 
-          }else if (pass1.getText()== otp){
+          }else if (pass1.getText().equals(otp)){
             System.out.println("OTP Validate Successfully");  
             JOptionPane.showMessageDialog(null, "OTP Validate Successfully");
             CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
             cpm.cpmm(Name, Id, emll, time, date, ph);
-            System.out.println("emlllll"+emll);
-            System.out.println("Idddddd"+Id);
+           // System.out.println("emlllll"+emll);
+           // System.out.println("Idddddd"+Id);
             cpm.setVisible(true);              
             this.dispose();
           }else{
-            JOptionPane.showMessageDialog(null, "Enter OTP", "Login Error", JOptionPane.ERROR_MESSAGE);   
+            JOptionPane.showMessageDialog(null, "Enter Currect OTP", "Login Error", JOptionPane.ERROR_MESSAGE);   
            }
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_bMouseClicked
 catch (Exception e){
             System.out.println("Exception -"+e);
         }  }
@@ -480,6 +492,15 @@ catch (Exception e){
         otp = String.format("%06d",rand.nextInt(1000000));
         System.out.println("YOUR OTP IS "+otp);
         
+         try{
+              String mng = eml.getText();
+              String msc= "YOUR OTP IS "+otp;
+            MAIL.send(mng,"Welcome"+" "+Name, msc);
+                   
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     /**
@@ -523,11 +544,11 @@ catch (Exception e){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Close_b;
     private javax.swing.JPanel Close_bb;
+    private javax.swing.JButton b;
     private javax.swing.JLabel eml;
     private javax.swing.JButton get_otp;
     private javax.swing.JLabel hide;
     private javax.swing.JLabel hide1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

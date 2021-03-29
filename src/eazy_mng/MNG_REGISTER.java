@@ -766,7 +766,7 @@ public class MNG_REGISTER extends javax.swing.JFrame {
         }else if(PASSWORD_PATTERN.matcher(password).matches()){
               if(password.equals(c_pass) ){
               if(c1.isSelected()==true && c2.isSelected()==true ){
-                int i = REGISTRATION_DATAOBEJECT.inventory_management_system(fName, lName,ph, mail, mng, password, c_pass,add,gen,td,dob);
+                int i = REGISTRATION_DATAOBEJECT.inventory_management_system(fName, lName,mail,ph,mng, password, c_pass,add,gen,td,dob);
                 int j = ID_STORE_FETCH.insert_id(mng_id.toString(), emp_id,Transaction_Id,pro_Id);
               if(i>0 && j>0){
                 System.out.println("Data inserted");

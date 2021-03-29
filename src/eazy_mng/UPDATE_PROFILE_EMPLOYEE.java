@@ -8,13 +8,14 @@ package eazy_mng;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author RAGHUNATH DAS
  */
-public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
+public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
      String ID = null;
     String Name = null;
     String Phone = null;
@@ -30,7 +31,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
     /**
      * Creates new form MANAGER_UPDATE_PROFILE
      */
-    public MANAGER_UPDATE_PROFILE() {
+    public UPDATE_PROFILE_EMPLOYEE() {
         initComponents();
     }
     void udpe (String fullname, String mng_Id,String email,String t1,String d1,String p) {
@@ -71,7 +72,6 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         ph = new javax.swing.JTextField();
         fname = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        dob = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -83,6 +83,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         Searchb = new javax.swing.JButton();
         Search1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        dobb = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -130,11 +131,6 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         jLabel9.setText("Email");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 157, -1, -1));
 
-        dob.setBackground(new java.awt.Color(255, 255, 255));
-        dob.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        dob.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 271, 420, 40));
-
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("First Name");
@@ -146,6 +142,11 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 187, 450, 40));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (13).png"))); // NOI18N
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 497, -1, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (11).png"))); // NOI18N
@@ -159,7 +160,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Gender");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 245, -1, 30));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -170,7 +171,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         gender.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         gender.setForeground(new java.awt.Color(0, 0, 0));
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
-        jPanel2.add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 275, 450, 40));
+        jPanel2.add(gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 450, 40));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -191,21 +192,37 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
 
         Search1.setBackground(new java.awt.Color(255, 255, 255));
         Search1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        Search1.setForeground(new java.awt.Color(0, 0, 0));
+        Search1.setForeground(new java.awt.Color(0, 204, 0));
+        Search1.setText("Enter Employee ID");
         Search1.setBorder(null);
-        jPanel2.add(Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 470, 30));
+        Search1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Search1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                Search1FocusLost(evt);
+            }
+        });
+        jPanel2.add(Search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 470, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/RaghuSearch.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 500, -1));
 
+        dobb.setBackground(new java.awt.Color(255, 255, 255));
+        dobb.setForeground(new java.awt.Color(0, 0, 0));
+        dobb.setDateFormatString("dd-MM-yyyy");
+        dobb.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel2.add(dobb, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 420, 40));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 560));
 
         jPanel3.setBackground(new java.awt.Color(32, 64, 81));
 
-        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Update Profile");
+        jLabel1.setText("UPDATE PROFILE");
 
         jButton1.setBackground(new java.awt.Color(32, 64, 81));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -222,17 +239,14 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1))
+            .addComponent(jButton1)
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
@@ -254,17 +268,18 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
-          String DOB = dob.getText();      
+        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+        String dob = s.format(dobb.getDate());
+        System.out.println("dateee"+dob);
         String add = address.getText();
-        String Pass= null;
-        String c_pass=null;
+        
         String gen = gender.getSelectedItem().toString();
         System.out.println("@@@@@@@@@ "+gen);
         String emp_idd=Search1.getText();
         System.out.println("empppppp"+emp_idd);
         
         
-        int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_emp(DOB, add, gen,emp_idd);
+        int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_emp(dob, add, gen,emp_idd);
         
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
@@ -313,7 +328,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
                 ph.setEditable(false);
                 email.setText(Email);
                 email.setEditable(false);
-                dob.setText(Dob);
+              //  dobb.setText(Dob);
                 gender.setSelectedItem(gen);
                 address.setText(Address);
                 
@@ -353,6 +368,38 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+        Search1.setText("Enter Employee ID");
+                fname.setText("");
+                lname.setText("");
+                ph.setText("");
+                email.setText("");
+                gender.setSelectedIndex(1);
+                address.setText("");
+                 dobb.setDate(null);
+       
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void Search1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Search1FocusGained
+        // TODO add your handling code here:
+        if(Search1.getText().equals("Enter Employee ID")){
+            
+            Search1.setText("");
+    }                            
+    }//GEN-LAST:event_Search1FocusGained
+
+    private void Search1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Search1FocusLost
+        // TODO add your handling code here:
+        if(Search1.getText().equals("")){
+           
+            Search1.setText("Enter Employee ID");
+           
+        }else{
+           Search1.setVisible(true);
+        }
+    }//GEN-LAST:event_Search1FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -370,20 +417,21 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MANAGER_UPDATE_PROFILE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPDATE_PROFILE_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MANAGER_UPDATE_PROFILE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPDATE_PROFILE_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MANAGER_UPDATE_PROFILE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPDATE_PROFILE_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MANAGER_UPDATE_PROFILE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UPDATE_PROFILE_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MANAGER_UPDATE_PROFILE().setVisible(true);
+                new UPDATE_PROFILE_EMPLOYEE().setVisible(true);
             }
         });
     }
@@ -392,7 +440,7 @@ public class MANAGER_UPDATE_PROFILE extends javax.swing.JFrame {
     private javax.swing.JTextField Search1;
     private javax.swing.JButton Searchb;
     private javax.swing.JTextField address;
-    private javax.swing.JTextField dob;
+    private com.toedter.calendar.JDateChooser dobb;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fname;
     private javax.swing.JComboBox<String> gender;

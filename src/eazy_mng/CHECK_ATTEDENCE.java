@@ -30,7 +30,7 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
     String Gender= null;
     String Address =null;
     String date=null;
-    String time = null;
+    String Time = null;
     
     /**
      * Creates new form REMOVE_EMPLOYEE
@@ -46,7 +46,7 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
        Name = fullname;
         ID = mng_Id;
         Email = email;
-        time = t1;
+        Time = t1;
         date = d1;
         Phone= p;
         
@@ -171,7 +171,6 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
 
         tii.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tii.setForeground(new java.awt.Color(204, 0, 204));
-        tii.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 255)));
         jPanel3.add(tii, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 230, 20));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -231,7 +230,6 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
 
         daaa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         daaa.setForeground(new java.awt.Color(204, 0, 204));
-        daaa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 255)));
         jPanel3.add(daaa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 190, 20));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -285,7 +283,8 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M();
-       dm.mngname(Name,ID,Email,Phone,date,time);
+       dm.mngname(Name,ID,Email,Phone,date,Time);
+       
        dm.setVisible(true);
        this.dispose();
         
@@ -336,7 +335,9 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         GIVE_ATTEDENCE  ga = new GIVE_ATTEDENCE();
-        ga.gaa(Name,ID,Email,Phone,date,time);
+        ga.gaa(Name,ID,Email,Time,date,Phone);
+        
+       
         ga.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked

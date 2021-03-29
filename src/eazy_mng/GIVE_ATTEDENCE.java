@@ -31,7 +31,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     String Gender= null;
     String Address =null;
     String date=null;
-    String time = null;
+    String ttime = null;
     
     /**
      * Creates new form REMOVE_EMPLOYEE
@@ -44,12 +44,19 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     }
 
     void gaa (String fullname, String mng_Id,String email,String t1,String d1,String p) {
-       Name = fullname;
+        Name = fullname;
         ID = mng_Id;
         Email = email;
-        time = t1;
+        ttime = t1;
         date = d1;
         Phone= p;
+        
+        System.out.println("Name"+Name);
+        System.out.println("idddd"+ID);
+        System.out.println("emlll"+Email);
+        System.out.println("phon"+Phone);
+        System.out.println("dattt"+date);
+        System.out.println("timmm"+ttime);
         
         ab.setText(Name);
         ab.setEditable(false);
@@ -252,7 +259,6 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
 
         tii.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tii.setForeground(new java.awt.Color(204, 0, 204));
-        tii.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 255)));
         jPanel3.add(tii, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 230, 20));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -290,7 +296,6 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
 
         daaa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         daaa.setForeground(new java.awt.Color(204, 0, 204));
-        daaa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(0, 0, 255)));
         jPanel3.add(daaa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 200, 20));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -432,7 +437,13 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M();
-       dm.mngname(Name,ID,Email,Phone,date,time);
+       dm.mngname(Name,ID,Email,Phone,date,ttime);
+       System.out.println("Name"+Name);
+        System.out.println("idddd"+ID);
+        System.out.println("emlll"+Email);
+        System.out.println("phon"+Phone);
+        System.out.println("dattt"+date);
+        System.out.println("timmm"+ttime);
        dm.setVisible(true);
        this.dispose();
         
@@ -481,7 +492,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
                 System.out.println("Nothing Found In this ID");
             
              //Data fetch from database
-            String sql = "Select * From employee_register Where EMP_ID = ?";
+           String sql = "Select * From employee_register Where EMP_ID = ?";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,em_id);
@@ -503,25 +514,13 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
                // System.out.println("Enter Correct Employee Id");
-            }}
-        }catch(Exception e){
+            }} 
+            }catch(Exception e){
             System.out.println("error"+e);
-        }
-//        try{
-//            
-//            if(UPDATEPROFILE_M_DATAOBJECT.validate(em_id))
-//            {System.out.println("EmpppppppppppIDD"+em_id);
-//                JOptionPane.showMessageDialog(this, "Employee Found in This Id");
-//           }else 
-//            JOptionPane.showMessageDialog(this, "Employee ID not found");
-//             
-//        }catch (Exception e){
-//            System.out.println("Exception -"+e);  
-//    } 
-//        
+            }
 //        
     }//GEN-LAST:event_jButton7MouseClicked
-
+    
     public void reset(){
         emp.setEditable(true);
         en.setText("");

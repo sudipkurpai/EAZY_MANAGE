@@ -1342,7 +1342,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("Update Profile");
+        jLabel11.setText("UPDATE PROFILE");
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user.png"))); // NOI18N
@@ -1356,12 +1356,12 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         UPD_PRO.setLayout(UPD_PROLayout);
         UPD_PROLayout.setHorizontalGroup(
             UPD_PROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGap(0, 315, Short.MAX_VALUE)
             .addGroup(UPD_PROLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(UPD_PROLayout.createSequentialGroup()
-                    .addGap(0, 7, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(0, 12, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -2451,52 +2451,19 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         ADD_NEW_EMP ane = new ADD_NEW_EMP();
         
   
-       String Name = mng_name.getText();
-       String ID = mng_id.getText();
-        String t1 = time1.getText();
+      String Name = mng_name.getText();
+        String ID = mng_id.getText();
+         String t1 = time1.getText();
          String d1 = time2.getText();
        
-       ane.mngname(Name, ID, eml, ph, t1, d1);
+       ane.mngname(Name, ID, eml,t1,d1,ph);
         ane.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_add_empMouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         // TODO add your handling code here:
-        int status=0;
-        String llTime=time1.getText();
-        String llDate = time2.getText();
-        String logoutTime=Showtime.getText();
-        String logoutDate = date.getText();
-        
-        LOGOUT L = new LOGOUT();  
-        try {
-            //  Data fetch from database
-            System.out.println("@@@@@@@@@@");
-            Connection con=DATABASE_CONNECTION.getConnection();
-            System.out.println("CONNNNNNNN" +con);
-            PreparedStatement ps=con.prepareStatement("UPDATE manager_session SET LAST_LOGOUT_TIME =?,LAST_LOGOUT_DATE =? WHERE LAST_LOGIN_TIME =?");
-            System.out.println("!!!!!!!!!!!!!!!!!!" +ps);
-            
-            ps.setString(1,logoutTime);
-            
-            ps.setString(2, logoutDate);
-            
-            ps.setString(3, llTime);
-           
-            status = ps.executeUpdate();
-           
-            if(status>0){
-                
-            }else{
-                 System.out.println("ERRORRRRRRRRRRRRRRRRRRRr");
-            }
-        }catch(SQLException e){
-            System.out.println("error"+e);
-        }
-        
-       
-        
+      
         int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Log Out ?");
         if(Yes == 0){
             session();
@@ -2755,7 +2722,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 //       
 //Code By Raghuu
 
-//MANAGER_UPDATE_PROFILE UP = new  MANAGER_UPDATE_PROFILE();
+//MANAGER_UPDATE_PROFILE UP = new  UPDATE_PROFILE_EMPLOYEE();
 //        String name = mng_name.getText();
 //        String ID = mng_id.getText();
 //        String t1 = time1.getText();
@@ -2768,7 +2735,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jLabel83MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel83MouseClicked
         // TODO add your handling code here:
-        MANAGER_UPDATE_PROFILE mup = new MANAGER_UPDATE_PROFILE();
+        UPDATE_PROFILE_EMPLOYEE mup = new UPDATE_PROFILE_EMPLOYEE();
         String name = mng_name.getText();
         String ID = mng_id.getText();
         String t1 = time1.getText();
