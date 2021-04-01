@@ -25,22 +25,28 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
      String Id = null;
      String emll = null;
      String otp;
+     String a;
+     String b;
+     String c;
      int mng_Id;
+     String mng ;
+     String msc;
     /**
      * Creates new form CHANGE_PASS_MAN
      */
     public CHANGE_PASS_MAN() {
         initComponents();
-         pass1.setEditable(false);
+        // pass1.setEditable(false);
                  
-         b.setEnabled(false);
-       // get_otp.setEnabled(true);
+       //  b.setEnabled(false);
+     //   get_otp.setEnabled(true);
     }
     void change (String fullname, String mng_Id,String email,String t1,String d1,String p) {
         time = t1;
         date = d1;
+        Name = fullname;
         ph= p;
-        
+        emll=email;
         mng_name.setText(fullname);
         System.out.println("fullnamegggggg" + fullname);
         mng_id.setText(mng_Id);
@@ -74,13 +80,8 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         mng_id = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        pass1 = new javax.swing.JPasswordField();
-        b = new javax.swing.JButton();
         open = new javax.swing.JLabel();
         hide = new javax.swing.JLabel();
-        open1 = new javax.swing.JLabel();
-        hide1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,13 +98,17 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         get_otp.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         get_otp.setForeground(new java.awt.Color(0, 0, 0));
         get_otp.setText("Get OTP");
-        get_otp.setEnabled(false);
         get_otp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 get_otpMouseClicked(evt);
             }
         });
-        jPanel1.add(get_otp, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 160, 40));
+        get_otp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                get_otpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(get_otp, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 200, 40));
 
         pass.setBackground(new java.awt.Color(204, 255, 204));
         pass.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -205,40 +210,6 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         jLabel15.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/edit (1).png"))); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
-
-        pass1.setBackground(new java.awt.Color(204, 255, 204));
-        pass1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        pass1.setForeground(new java.awt.Color(0, 204, 102));
-        pass1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        pass1.setText("Enter Your OTP");
-        pass1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 102)));
-        pass1.setPreferredSize(new java.awt.Dimension(420, 40));
-        pass1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pass1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pass1FocusLost(evt);
-            }
-        });
-        jPanel1.add(pass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 390, -1));
-
-        b.setBackground(new java.awt.Color(255, 255, 255));
-        b.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        b.setForeground(new java.awt.Color(0, 0, 0));
-        b.setText("Submit");
-        b.setEnabled(false);
-        b.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bMouseClicked(evt);
-            }
-        });
-        jPanel1.add(b, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 160, 40));
-
         open.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         open.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (2).png"))); // NOI18N
         open.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 102)));
@@ -261,28 +232,6 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         });
         jPanel1.add(hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 40, 40));
 
-        open1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        open1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (2).png"))); // NOI18N
-        open1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 102)));
-        open1.setPreferredSize(new java.awt.Dimension(24, 33));
-        open1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                open1MousePressed(evt);
-            }
-        });
-        jPanel1.add(open1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 40, 40));
-
-        hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/visibility (1).png"))); // NOI18N
-        hide1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 102)));
-        hide1.setPreferredSize(new java.awt.Dimension(24, 33));
-        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                hide1MousePressed(evt);
-            }
-        });
-        jPanel1.add(hide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 40, 40));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -291,10 +240,10 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(570, 459));
+        setSize(new java.awt.Dimension(570, 368));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -321,29 +270,6 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passFocusLost
 
-    private void pass1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass1FocusGained
-        // TODO add your handling code here:
-        if(pass1.getText().equals("Enter Your OTP")){
-            
-            pass1.setText("");
-            pass1.setEchoChar('*');
-            pass1.setForeground(new Color(0,204,102));
-        }
-        
-    }//GEN-LAST:event_pass1FocusGained
-
-    private void pass1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pass1FocusLost
-        // TODO add your handling code here:
-        if(pass1.getText().equals("")){
-           
-            pass1.setText("Enter Your OTP");
-            pass1.setEchoChar((char)0);
-            pass1.setForeground(new Color(128,128,128));
-        }else{
-            pass1.setVisible(true);
-        }
-    }//GEN-LAST:event_pass1FocusLost
-
     private void openMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openMousePressed
         // TODO add your handling code here:
         hide.setVisible(true);
@@ -357,20 +283,6 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
         hide.setVisible(false);
         pass.setEchoChar((char)0);
     }//GEN-LAST:event_hideMousePressed
-
-    private void open1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_open1MousePressed
-        // TODO add your handling code here:
-        hide1.setVisible(true);
-        open1.setVisible(false);
-        pass1.setEchoChar('*');
-    }//GEN-LAST:event_open1MousePressed
-
-    private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
-        // TODO add your handling code here:
-        open1.setVisible(true);
-        hide1.setVisible(false);
-        pass1.setEchoChar((char)0);
-    }//GEN-LAST:event_hide1MousePressed
 
     private void Close_bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Close_bMouseClicked
         // TODO add your handling code here:
@@ -407,8 +319,11 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
     }//GEN-LAST:event_Close_bbMouseClicked
 
     private void get_otpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_get_otpMouseClicked
+                      
+    }//GEN-LAST:event_get_otpMouseClicked
+
+    private void get_otpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_get_otpActionPerformed
         // TODO add your handling code here:
-        
         String p_email = mng_id.getText();
         String p_pass = pass.getText();
         
@@ -437,72 +352,69 @@ public class CHANGE_PASS_MAN extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
         try{
-            String Name =mng_name.getText();
+           
             if(p_pass.equals("")){
-                JOptionPane.showMessageDialog(this, "Wrong Password");
+                JOptionPane.showMessageDialog(this, "At first Enter Your Password ");
             }else if(REGISTRATION_DATAOBEJECT.validate(p_email, p_pass)){
                 gen_otp();
-                  pass1.setEnabled(true);
-                 b.setEnabled(true);
-                 get_otp.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "OTP Send To "+" "+Name+" " +"By Email");
-               
-                
-              
-            }else{
+              }else{
                 
                 JOptionPane.showMessageDialog(null,"Enter Correct Password", "Login Error", JOptionPane.ERROR_MESSAGE);
-                 pass1.setEnabled(false);
-                 b.setEnabled(false);
+                 
                  get_otp.setEnabled(true);
             }
         }catch (Exception e){
             System.out.println("Exception -"+e);
         }  
-     
-               
-                 
-                           
-    }//GEN-LAST:event_get_otpMouseClicked
-
-    private void bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bMouseClicked
-        // TODO add your handling code here:
-        
-      try{
-          if("Enter Your OTP".equals(pass1.getText())){
-             JOptionPane.showMessageDialog(null, "OTP Field is blank", "Error", JOptionPane.ERROR_MESSAGE); 
-          }else if (pass1.getText().equals(otp)){
-            System.out.println("OTP Validate Successfully");  
-            JOptionPane.showMessageDialog(null, "OTP Validate Successfully");
-            CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
-            cpm.cpmm(Name, Id, emll, time, date, ph);
-           // System.out.println("emlllll"+emll);
-           // System.out.println("Idddddd"+Id);
-            cpm.setVisible(true);              
-            this.dispose();
-          }else{
-            JOptionPane.showMessageDialog(null, "Enter Currect OTP", "Login Error", JOptionPane.ERROR_MESSAGE);   
-           }
-    }//GEN-LAST:event_bMouseClicked
-catch (Exception e){
-            System.out.println("Exception -"+e);
-        }  }
+    }//GEN-LAST:event_get_otpActionPerformed
+  
+    
    public void gen_otp(){
         Random rand = new Random();
         otp = String.format("%06d",rand.nextInt(1000000));
         System.out.println("YOUR OTP IS "+otp);
-        
-         try{
-              String mng = eml.getText();
-              String msc= "YOUR OTP IS "+otp;
+                 
+               mng = eml.getText();
+               msc= "YOUR OTP IS "+otp;
             MAIL.send(mng,"Welcome"+" "+Name, msc);
-                   
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+            JOptionPane.showMessageDialog(null, "OTP Send To "+" "+Name+" " +"By Email");
+        
+        a= JOptionPane.showInputDialog(this,"Enter Your OTP");
+                 if (a.equals(otp)){
+            
+                     JOptionPane.showMessageDialog(null, "OTP Match");
+                       CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
+                        cpm.cpmm(Name, Id, emll, time, date, ph);
+                         cpm.setVisible(true);              
+                         this.dispose();
+                 }else {
+                     JOptionPane.showMessageDialog(null, "OTP Not Match. Only 2 try Left!");
+                  b = JOptionPane.showInputDialog(this,"Enter Your OTP");
+                 }if(b.equals(otp)){
+                     
+                             JOptionPane.showMessageDialog(null, "OTP Match");
+                                CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
+                                 cpm.cpmm(Name, Id, emll, time, date, ph);
+                                  cpm.setVisible(true);              
+                                 this.dispose();
+                  } else {
+                     JOptionPane.showMessageDialog(null, "OTP Not Match. Only 1 try Left!");
+                     c = JOptionPane.showInputDialog(this,"Enter Your OTP");
+                 }if(c.equals(otp)){
+                        
+                             JOptionPane.showMessageDialog(null, "OTP Match");
+                                CHANGE_PASS_MAN_1 cpm = new CHANGE_PASS_MAN_1(); 
+                                 cpm.cpmm(Name, Id, emll, time, date, ph);
+                                  cpm.setVisible(true);              
+                                 this.dispose();
+                                         
+                      }else{
+                          JOptionPane.showMessageDialog(null, "You estimate 3 attempts on OTP verification! Please, try again after some time.Thank You!");
+                      }
+                      
+                 
+   
     }
-    
     /**
      * @param args the command line arguments
      */
@@ -544,24 +456,19 @@ catch (Exception e){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Close_b;
     private javax.swing.JPanel Close_bb;
-    private javax.swing.JButton b;
     private javax.swing.JLabel eml;
     private javax.swing.JButton get_otp;
     private javax.swing.JLabel hide;
-    private javax.swing.JLabel hide1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel mng_id;
     private javax.swing.JLabel mng_name;
     private javax.swing.JLabel open;
-    private javax.swing.JLabel open1;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JPasswordField pass1;
     // End of variables declaration//GEN-END:variables
 }

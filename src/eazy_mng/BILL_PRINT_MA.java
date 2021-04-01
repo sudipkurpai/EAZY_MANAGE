@@ -5,6 +5,19 @@
  */
 package eazy_mng;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
+
 /**
  *
  * @author Sudip Maiti
@@ -16,12 +29,29 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
      String Name = null;
      String Id = null;
      String emll = null;
+     String f1 = null;
+     int column ;
      
     /**
      * Creates new form BILL_PRINT
      */
     public BILL_PRINT_MA() {
         initComponents();
+         if (total.getText().isEmpty() ){
+              tax.setEnabled(false);
+         }
+          p_name.setEditable(false);
+          desc.setEditable(false);
+          pri.setEditable(false);
+          
+          
+          cal();
+          tax.addActionListener((ActionEvent e) -> {
+                        f1=tax.getSelectedItem().toString();
+                       // System.out.println(""+ f1);
+                        update_val();
+                    });
+         
     }
     void bpm (String fullname, String mng_Id,String email,String t1,String d1,String p) {
         Name = fullname;
@@ -30,7 +60,9 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         time = t1;
         date = d1;
         ph= p;
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,47 +90,71 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        c_eml = new javax.swing.JTextField();
+        c_phone = new javax.swing.JTextField();
+        c_name = new javax.swing.JTextField();
+        b_t = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        inv_no = new javax.swing.JTextField();
+        b_date = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        table = new javax.swing.JTable();
+        all_t = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        quan = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        pro_id = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        pri = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        p_name = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        desc = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        tax = new javax.swing.JComboBox<>();
+        jLabel44 = new javax.swing.JLabel();
+        total2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Address");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("City");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Country");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 60, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Postal Code");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 90, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("INVENTORY MANAGEMENT");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, -1));
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
@@ -107,136 +163,109 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 jLabel19MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 33));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("BILL TO ");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 75, -1));
 
         jLabel3.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Name :-");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        jLabel8.setText("City :-");
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Phone :-");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        jLabel9.setText("Country:-");
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Address:-");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Postal Code :-");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
-        jLabel11.setText("Address :-");
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Email :-");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Invoice No");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Date");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 50, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
-        jLabel14.setText("Invoice Due date");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 110, -1, -1));
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Time");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 110, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        c_eml.setBackground(new java.awt.Color(255, 255, 255));
+        c_eml.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        c_eml.setForeground(new java.awt.Color(0, 0, 0));
+        c_eml.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        c_eml.setBorder(null);
+        c_eml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                c_emlActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 330, 20));
+        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 330, 20));
 
-        jTextField2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        c_phone.setBackground(new java.awt.Color(255, 255, 255));
+        c_phone.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        c_phone.setForeground(new java.awt.Color(0, 0, 0));
+        c_phone.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        c_phone.setBorder(null);
+        c_phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                c_phoneActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 30));
+        jPanel2.add(c_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 270, 20));
 
-        jTextField3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        c_name.setBackground(new java.awt.Color(255, 255, 255));
+        c_name.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        c_name.setForeground(new java.awt.Color(0, 0, 0));
+        c_name.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        c_name.setBorder(null);
+        c_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                c_nameActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 120, 20));
+        jPanel2.add(c_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, 20));
 
-        jTextField4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        b_t.setBackground(new java.awt.Color(255, 255, 255));
+        b_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        b_t.setForeground(new java.awt.Color(0, 0, 0));
+        b_t.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        b_t.setText(":");
+        b_t.setBorder(null);
+        b_t.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                b_tActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, 20));
+        jPanel2.add(b_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, 120, 20));
 
-        jTextField5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField5.setText(":");
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, 120, 20));
-
-        jTextField6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField6.setBorder(null);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -244,9 +273,11 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 jTextField6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 120, 20));
+        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 350, 20));
 
-        jTextField7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField7.setBorder(null);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -256,67 +287,217 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         });
         jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 120, 30));
 
-        jTextField8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField8.setText(":");
-        jTextField8.setBorder(null);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        inv_no.setBackground(new java.awt.Color(255, 255, 255));
+        inv_no.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        inv_no.setForeground(new java.awt.Color(0, 0, 0));
+        inv_no.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inv_no.setText(":");
+        inv_no.setBorder(null);
+        inv_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                inv_noActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 120, 20));
+        jPanel2.add(inv_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 120, 20));
 
-        jTextField9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField9.setText(":");
-        jTextField9.setBorder(null);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        b_date.setBackground(new java.awt.Color(255, 255, 255));
+        b_date.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        b_date.setForeground(new java.awt.Color(0, 0, 0));
+        b_date.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        b_date.setText(":");
+        b_date.setBorder(null);
+        b_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                b_dateActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 120, 20));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 910, 30));
+        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 120, 20));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 910, 10));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Items", "Description", "Quantity", "Price", "Tax", "Amount"
+                "Items", "Description", "Quantity", "Price", "Tax", "Total", "Total With GST"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 870, 260));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(table);
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Print.png"))); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 130, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 870, 200));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Total.png"))); // NOI18N
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, -1, -1));
+        all_t.setBackground(new java.awt.Color(255, 255, 255));
+        all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        all_t.setForeground(new java.awt.Color(0, 0, 0));
+        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(51, 255, 0))); // NOI18N
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 210, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel01.png"))); // NOI18N
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 500, 130, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, -1, -1));
 
-        jTextField10.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jTextField10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
-        jPanel2.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, 130, 40));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Print.png"))); // NOI18N
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, -1, -1));
+
+        quan.setBackground(new java.awt.Color(255, 255, 255));
+        quan.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        quan.setForeground(new java.awt.Color(0, 0, 255));
+        quan.setToolTipText("");
+        quan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(quan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 110, 30));
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel38.setText("Quantity :");
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 30));
+
+        pro_id.setBackground(new java.awt.Color(255, 255, 255));
+        pro_id.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pro_id.setForeground(new java.awt.Color(0, 0, 255));
+        pro_id.setToolTipText("");
+        pro_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pro_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pro_idKeyReleased(evt);
+            }
+        });
+        jPanel2.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 250, 30));
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel39.setText("Search By Product ID:");
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 30));
+
+        pri.setBackground(new java.awt.Color(255, 255, 255));
+        pri.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pri.setForeground(new java.awt.Color(0, 0, 255));
+        pri.setToolTipText("");
+        pri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 120, 30));
+
+        jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel40.setText("Price :");
+        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 50, 30));
+
+        total.setBackground(new java.awt.Color(255, 255, 255));
+        total.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        total.setForeground(new java.awt.Color(0, 0, 255));
+        total.setToolTipText("");
+        total.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 130, 30));
+
+        jLabel41.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel41.setText("Tax :");
+        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 40, 30));
+
+        jButton4.setBackground(new java.awt.Color(51, 255, 153));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 255));
+        jButton4.setText("Search");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 90, -1));
+
+        p_name.setBackground(new java.awt.Color(255, 255, 255));
+        p_name.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        p_name.setForeground(new java.awt.Color(0, 0, 255));
+        p_name.setToolTipText("");
+        p_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 210, 30));
+
+        jLabel29.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel29.setText("Product Name :");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, 30));
+
+        jLabel42.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel42.setText("Total  WithOut GST:");
+        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 140, 30));
+
+        jButton5.setBackground(new java.awt.Color(204, 255, 0));
+        jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 0, 51));
+        jButton5.setText("Add");
+        jButton5.setBorder(null);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, 80, 30));
+
+        jButton6.setBackground(new java.awt.Color(204, 255, 0));
+        jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 0, 51));
+        jButton6.setText("Reset");
+        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 80, 30));
+
+        desc.setBackground(new java.awt.Color(255, 255, 255));
+        desc.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        desc.setForeground(new java.awt.Color(0, 0, 255));
+        desc.setToolTipText("");
+        desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 210, 30));
+
+        jLabel43.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel43.setText("Description:");
+        jPanel2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, 30));
+
+        tax.setBackground(new java.awt.Color(255, 255, 255));
+        tax.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        tax.setForeground(new java.awt.Color(0, 0, 255));
+        tax.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GST 0 %", "GST 5 %", "GST 12 %", "GST 18 %", "GST 28 %" }));
+        tax.setDoubleBuffered(true);
+        tax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(tax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 90, 30));
+
+        jLabel44.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel44.setText("Total  With GST:");
+        jPanel2.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 140, 30));
+
+        total2.setBackground(new java.awt.Color(255, 255, 255));
+        total2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        total2.setForeground(new java.awt.Color(0, 0, 255));
+        total2.setToolTipText("");
+        total2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(total2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 130, 30));
+
+        jButton1.setBackground(new java.awt.Color(0, 51, 255));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("CHECKOUT");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -328,34 +509,30 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(910, 699));
+        setSize(new java.awt.Dimension(910, 716));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void c_emlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_emlActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_c_emlActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void c_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_phoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_c_phoneActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void c_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_c_nameActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void b_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_tActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_b_tActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
@@ -365,13 +542,13 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void inv_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inv_noActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_inv_noActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void b_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_dateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_b_dateActionPerformed
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
@@ -380,6 +557,311 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         dm.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void pro_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pro_idKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pro_idKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String product_idee = pro_id.getText();
+      try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_new_product where Product_id=? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+           
+           if(rs.next()){
+               
+                   
+               String pn= rs.getString("Product_name");
+               String descp= rs.getString("Description");
+               String pr= rs.getString("Unit_price");
+               p_name.setText(pn);
+               p_name.setEditable(false);
+               desc.setText(descp);
+               desc.setEditable(false);
+               pri.setText(pr);
+               pri.setEditable(false);
+               tax.setEnabled(true);
+                            
+                    JOptionPane.showMessageDialog(this, "Product Found");
+                   
+               
+           }else{
+               JOptionPane.showMessageDialog(this, "Product Not Found");
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        String p_nmaee = p_name.getText();
+        String Desc= desc.getText();
+        String St = pri.getText();
+        String Tax = tax.getSelectedItem().toString();
+        String Total = total.getText();
+        String Total2 = total2.getText();
+        String quantit = quan.getText();
+        if(quantit.isEmpty() || p_nmaee.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill up Quantity First");
+        }else if (Tax.equals("GST 0 %") ){
+            JOptionPane.showMessageDialog(this, "Add GST");
+        }else if(!St.equals("")) {
+            
+             DefaultTableModel model = (DefaultTableModel)table.getModel();
+              model.addRow(new Object[]{p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
+                                  total.getText(),total2.getText()
+              });
+        
+           table.selectAll();
+       // System.out.println("Data inserted");
+        JOptionPane.showMessageDialog(this, "Add To Bill Successfully");
+               }
+        else{
+       // System.out.println("Data NOT inserted");
+        JOptionPane.showMessageDialog(this, "Somthing Went Wrong");
+            }
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+       public void cal(){
+        DocumentListener dl = new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+              update_val();  
+                //To change body of generated methods, choose Tools | Templates.
+                
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            
+            protected void update_val(){
+               String f1=pri.getText();
+               String f2=quan.getText();
+               if (!f1.equals("") && f2.equals("")){
+                   double b=Double.parseDouble(pri.getText());
+                   //double  b1=Double.parseDouble(a1.getText());
+                   double c= b;
+                   String e=String.valueOf(c);
+                   total.setText(e);
+               }else if (f1.equals("") && !f2.equals("")){
+                   //double b=Double.parseDouble(a.getText());
+                   double  b1=Double.parseDouble(quan.getText());
+                   double c= b1;
+                   String e=String.valueOf(c);
+                   total.setText(e);
+               }else if (!f1.equals("") && !f2.equals("")){
+                   double b=Double.parseDouble(pri.getText());
+                   double  b1=Double.parseDouble(quan.getText());
+                   double c= b*b1;
+                   String e=String.valueOf(c);
+                   total.setEditable(false);
+                   total.setText(e);
+                   
+               }else{
+                   System.out.println("NONE");
+               }
+                   
+                   
+               
+            }
+
+            
+            
+        };
+        pri.getDocument().addDocumentListener(dl);
+        quan.getDocument().addDocumentListener(dl);
+    }
+       
+       public void update_val(){
+               // System.out.println("hello");
+                        if (f1.equals("GST 5 %") ){
+                            double b=5;
+                            double  b1=Double.parseDouble(total.getText());
+                            double c= (b1*b);
+                            double d= (c/100);
+                            double e= (b1+d);
+                            String f=String.valueOf(e);
+//                            System.out.println("bbbb"+b1);
+//                            System.out.println("cccc"+c);
+//                            System.out.println("dddd"+d);
+//                            System.out.println("fffff"+f);
+                            total2.setEditable(false);
+                            total2.setText(f);
+                            
+                        }else if (f1.equals("GST 12 %") ){
+                            double b=12;
+                            double  b1=Double.parseDouble(total.getText());
+                            double c= (b1*b);
+                            double d= (c/100);
+                            double e= (b1+d);
+                            String f=String.valueOf(e);
+                            total2.setEditable(false);
+                            total2.setText(f);
+                        } else if (f1.equals("GST 18 %") ){
+                            double b=18;
+                            double  b1=Double.parseDouble(total.getText());
+                            double c= (b1*b);
+                            double d= (c/100);
+                            double e= (b1+d);
+                            String f=String.valueOf(e);
+                            total2.setEditable(false);
+                            total2.setText(f);
+                        }else if (f1.equals("GST 28 %") ){
+                            double b=28;
+                            double  b1=Double.parseDouble(total.getText());
+                            double c= (b1*b);
+                            double d= (c/100);
+                            double e= (b1+d);
+                            String f=String.valueOf(e);
+                            total2.setEditable(false);
+                            total2.setText(f);
+                        }else{
+                            
+                           // System.out.println("NONE");
+                        }
+            
+            }
+             
+             
+      
+      
+          
+       
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+         p_name.setText("");
+         desc.setText("");
+         pri.setText("");
+         tax.setSelectedIndex(0);
+         total.setText("");
+         total2.setText("");
+        quan.setText("");
+        pro_id.setText("");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void taxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_taxActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code herd
+//         int i = table.getSelectedRow();
+//     DefaultTableModel model=(DefaultTableModel)table.getModel();
+//        System.out.println(model.getValueAt(i,6).toString());
+//        
+try {
+     String itm = null ;
+     String dsc = null ;
+     String quan = null ;
+     String pri = null ;
+     String tax = null ;
+     String total_wg = null ;
+     String total_g = null ;
+    String Ca_name=c_name.getText();
+    String Ca_eml=c_eml.getText();
+    String Ca_phone=c_phone.getText();
+    String Invoice=inv_no.getText();
+    String C_date=b_date.getText();
+    String C_time=b_t.getText();
+    String Product_id=pro_id.getText();
+    String All_t=all_t.getText();
+    
+    
+    
+      
+    if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+            column = 0;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "^%"+ value);
+                String str =sb.toString();
+              //   System.out.println(str);
+                 itm = str  ;
+                  System.out.println(itm);
+            }
+            
+            column = 1;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                System.out.println(""+value);
+                 StringBuilder sb = new StringBuilder();
+                 sb.append(value);
+                String str = sb.toString();
+                dsc = "^%"+ str+ "^%" ;
+            }
+            column = 2;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                System.out.println(""+value);
+                  StringBuilder sb = new StringBuilder();
+                 sb.append(value);
+                String str = sb.toString();
+                quan = "^%"+ str+ "^%";
+            }
+            column = 3;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                System.out.println(""+value);
+                 StringBuilder sb = new StringBuilder();
+                 sb.append(value);
+                String str = sb.toString();
+                pri = "^%"+ str+ "^%";
+             }
+            column = 4;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                System.out.println(""+value);
+                  StringBuilder sb = new StringBuilder();
+                 sb.append(value);
+                String str = sb.toString();
+                tax = "^%"+ str+ "^%";
+            }
+            column = 5;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                System.out.println(""+value);
+                 StringBuilder sb = new StringBuilder();
+                 sb.append(value);
+                String str = sb.toString();
+                total_wg = "^%"+ str+ "^%";
+            }
+            column = 6;
+            for (int i = 0 ; i < selectedRow.length; i++) {
+              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                System.out.println(""+value);
+                 StringBuilder sb = new StringBuilder();
+                 sb.append(value);
+                String str = sb.toString();
+             total_g = "^%"+ str+ "^%";
+             
+                 }
+        }
+    
+    ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, Invoice, C_date, C_time, Product_id, itm, dsc, quan, pri, tax, total_wg, total_g, All_t);
+    
+}catch(Exception e){
+    System.out.println("Error"+e);
+}
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,6 +902,18 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField all_t;
+    private javax.swing.JTextField b_date;
+    private javax.swing.JTextField b_t;
+    private javax.swing.JTextField c_eml;
+    private javax.swing.JTextField c_name;
+    private javax.swing.JTextField c_phone;
+    private javax.swing.JTextField desc;
+    private javax.swing.JTextField inv_no;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -427,12 +921,19 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -442,16 +943,15 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField p_name;
+    private javax.swing.JTextField pri;
+    private javax.swing.JTextField pro_id;
+    private javax.swing.JTextField quan;
+    private javax.swing.JTable table;
+    private javax.swing.JComboBox<String> tax;
+    private javax.swing.JTextField total;
+    private javax.swing.JTextField total2;
     // End of variables declaration//GEN-END:variables
 }

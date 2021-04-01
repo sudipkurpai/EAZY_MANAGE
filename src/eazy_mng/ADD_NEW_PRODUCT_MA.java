@@ -538,7 +538,8 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         
     
         String Product_id = p_id.getText();
-        String p_nmaee = v_name.getText();
+        String p_nmaee = p_name.getText();
+        String V_nmaee = v_name.getText();
         String Desc= desc.getText();
         String Standerd_cost = s_cost.getText();
         String unit_price = unit_pri.getText();
@@ -568,7 +569,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 //              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
 //                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
 //              });
-        int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product(mng,mng_i, timee, t_id, Product_id, p_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);
+        int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product(mng,mng_i, timee, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);
                            
         int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
         
@@ -587,6 +588,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
          p_id.setText("");
+         p_name.setText("");
          v_name.setText("");
          desc.setText("");
          s_cost.setText("");
@@ -656,7 +658,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
                do
                {
                    Object o []={
-                       rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Description"),rs.getString("Standerd_cost"),rs.getString("Unit_price"),
+                       rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Vendor_Name"),rs.getString("Description"),rs.getString("Standerd_cost"),rs.getString("Unit_price"),
                         rs.getString("Mfg_date"),rs.getString("Exp_date"),rs.getString("Quantity"),rs.getString("Category"),rs.getString("Brand"),rs.getString("Total") };
                     JOptionPane.showMessageDialog(this, "Product Found");
                     model.addRow(o);

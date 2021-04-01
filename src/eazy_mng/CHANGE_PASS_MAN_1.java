@@ -74,7 +74,7 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 160, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 160, 40));
 
         pass.setBackground(new java.awt.Color(204, 255, 204));
         pass.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -194,10 +194,10 @@ public class CHANGE_PASS_MAN_1 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(570, 459));
+        setSize(new java.awt.Dimension(570, 357));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
