@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import javax.swing.JOptionPane;
@@ -61,6 +63,24 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         date = d1;
         ph= p;
         
+    }
+    
+    
+     private static int[] insert(int[] a, int key, int index)
+    {
+        int[] result = new int[a.length + 1];
+ 
+        for (int i = 0; i < index; i++) {
+            result[i] = a[i];
+        }
+ 
+        result[index] = key;
+ 
+        for (int i = index + 1; i <= a.length; i++) {
+            result[i] = a[i - 1];
+        }
+ 
+        return result;
     }
     
 
@@ -124,6 +144,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         total2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -338,13 +359,13 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         all_t.setForeground(new java.awt.Color(0, 0, 0));
         all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(51, 255, 0))); // NOI18N
-        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 210, 50));
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 170, 50));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel01.png"))); // NOI18N
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Print.png"))); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 540, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, -1, -1));
 
         quan.setBackground(new java.awt.Color(255, 255, 255));
         quan.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -498,6 +519,12 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
+
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -772,6 +799,7 @@ try {
      String quan = null ;
      String pri = null ;
      String tax = null ;
+     String str = null;
      String total_wg = null ;
      String total_g = null ;
     String Ca_name=c_name.getText();
@@ -784,79 +812,96 @@ try {
     String All_t=all_t.getText();
     
     
-    
+   
       
     if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
-            column = 0;
+            column = 4;
+            
             for (int i = 0 ; i < selectedRow.length; i++) {
               String value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "^%"+ value);
-                String str =sb.toString();
-              //   System.out.println(str);
-                 itm = str  ;
-                  System.out.println(itm);
+                sb.append( "^"+ value);
+                str =sb.toString();
+                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+                    myList.add(str); 
+                 itm = myList.toString();
             }
+            //   myList.add(str); 
+               
+                System.out.println("itmm"+itm);
+                
             
-            column = 1;
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                System.out.println(""+value);
-                 StringBuilder sb = new StringBuilder();
-                 sb.append(value);
-                String str = sb.toString();
-                dsc = "^%"+ str+ "^%" ;
-            }
-            column = 2;
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                System.out.println(""+value);
-                  StringBuilder sb = new StringBuilder();
-                 sb.append(value);
-                String str = sb.toString();
-                quan = "^%"+ str+ "^%";
-            }
-            column = 3;
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                System.out.println(""+value);
-                 StringBuilder sb = new StringBuilder();
-                 sb.append(value);
-                String str = sb.toString();
-                pri = "^%"+ str+ "^%";
-             }
-            column = 4;
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                System.out.println(""+value);
-                  StringBuilder sb = new StringBuilder();
-                 sb.append(value);
-                String str = sb.toString();
-                tax = "^%"+ str+ "^%";
-            }
-            column = 5;
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                System.out.println(""+value);
-                 StringBuilder sb = new StringBuilder();
-                 sb.append(value);
-                String str = sb.toString();
-                total_wg = "^%"+ str+ "^%";
-            }
-            column = 6;
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                System.out.println(""+value);
-                 StringBuilder sb = new StringBuilder();
-                 sb.append(value);
-                String str = sb.toString();
-             total_g = "^%"+ str+ "^%";
-             
-                 }
+//            column = 1;
+//            for (int i = 0 ; i < selectedRow.length; i++) {
+//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+//              //  System.out.println(""+value);
+//                 StringBuilder sb = new StringBuilder();
+//                 sb.append("^"+value);
+//                String str = sb.toString();
+//                 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+//                myList.add(str);
+//                dsc = myList.toString();
+//            }
+//            column = 2;
+//            for (int i = 0 ; i < selectedRow.length; i++) {
+//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+//             //   System.out.println("^"+value);
+//                  StringBuilder sb = new StringBuilder();
+//                 sb.append("^"+value);
+//                String str = sb.toString();
+//                 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+//                myList.add(str);
+//                quan = myList.toString();
+//            }
+//            column = 3;
+//            for (int i = 0 ; i < selectedRow.length; i++) {
+//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+//              //  System.out.println("^"+value);
+//                 StringBuilder sb = new StringBuilder();
+//                 sb.append("^"+value);
+//                String str = sb.toString();
+//                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+//                myList.add(str);
+//                pri = myList.toString();
+//             }
+//            column = 4;
+//            for (int i = 0 ; i < selectedRow.length; i++) {
+//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+//               // System.out.println("^"+value);
+//                  StringBuilder sb = new StringBuilder();
+//                 sb.append("^"+value);
+//                String str = sb.toString();
+//                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+//                myList.add(str);
+//                tax = myList.toString();
+//            }
+//            column = 5;
+//            for (int i = 0 ; i < selectedRow.length; i++) {
+//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+//             //   System.out.println("^"+value);
+//                 StringBuilder sb = new StringBuilder();
+//                 sb.append("^"+value);
+//                String str = sb.toString();
+//                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+//                myList.add(str);
+//                total_wg = myList.toString();
+//            }
+//            column = 6;
+//            for (int i = 0 ; i < selectedRow.length; i++) {
+//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
+//              //  System.out.println("^"+value);
+//                 StringBuilder sb = new StringBuilder();
+//                 sb.append("^"+value);
+//                String str = sb.toString();
+//             ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+//                myList.add(str);
+//                total_g = myList.toString();
+//             
+//                 }
         }
     
-    ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, Invoice, C_date, C_time, Product_id, itm, dsc, quan, pri, tax, total_wg, total_g, All_t);
+   ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, Invoice, C_date, C_time, Product_id, itm, dsc, quan, pri, tax, total_wg, total_g, All_t);
     
 }catch(Exception e){
     System.out.println("Error"+e);
@@ -914,6 +959,7 @@ try {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
