@@ -23,7 +23,8 @@ public class ID_STORE_FETCH {
                    ps.setString(1, MNG_ID);
                    ps.setString(2, EMP_ID); 
                    ps.setString(3, Transaction_Id);
-                    ps.setString(4, Product_Id);
+                   ps.setString(4, Product_Id);
+                    
                    status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){
@@ -48,4 +49,24 @@ public class ID_STORE_FETCH {
         catch(Exception e){System.out.println(e);}
         return status;
     }
+    
+
+
+    public static int invoice (String INVOICE_NO){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("UPDATE id_store SET INVOICE_NO=?");
+                   ps.setString(1, INVOICE_NO);
+                   
+                    
+                   status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+
+}
 }

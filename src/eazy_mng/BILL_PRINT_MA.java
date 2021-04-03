@@ -7,38 +7,61 @@ package eazy_mng;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
+import static org.eclipse.persistence.expressions.ExpressionOperator.sum;
 
 /**
  *
  * @author Sudip Maiti
  */
 public class BILL_PRINT_MA extends javax.swing.JFrame {
-        String time = null;
+    String itmt = null ;
+     String dsct = null ;
+     String quant = null ;
+     String prit = null ;
+     String taxt = null ;
+     String total_wgt = null ;
+     String total_gt = null ;
+     String time = null;
      String date = null;
      String ph = null;
      String Name = null;
      String Id = null;
      String emll = null;
      String f1 = null;
+     String sumo  = null;
      int column ;
-     
+     String Ttime=null;
+     String iNVOICEE=null;
+     BigInteger Invvvv =null;
+    
+     String invee=null;
+    
     /**
      * Creates new form BILL_PRINT
      */
     public BILL_PRINT_MA() {
         initComponents();
+        id_create();
+        check.setEnabled(false);
+        Timee();
+        all_t.setEditable(false);
+        b_date.setEditable(false);
+        
          if (total.getText().isEmpty() ){
               tax.setEnabled(false);
          }
@@ -62,27 +85,22 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         time = t1;
         date = d1;
         ph= p;
+        b_date.setText(date);
         
     }
-    
-    
-     private static int[] insert(int[] a, int key, int index)
-    {
-        int[] result = new int[a.length + 1];
- 
-        for (int i = 0; i < index; i++) {
-            result[i] = a[i];
-        }
- 
-        result[index] = key;
- 
-        for (int i = index + 1; i <= a.length; i++) {
-            result[i] = a[i - 1];
-        }
- 
-        return result;
+    public void Timee(){
+     new Timer(0,new ActionListener(){
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            java.util.Date d=new java.util.Date ();
+            SimpleDateFormat s=new SimpleDateFormat("hh:mm:ss a");
+            Ttime=(s.format(d)); 
+            b_t.setText(Ttime);
+            // System.out.println("time"+Ttime);
+         }
+     }).start();
+   
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,16 +132,14 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         c_phone = new javax.swing.JTextField();
         c_name = new javax.swing.JTextField();
         b_t = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        addr = new javax.swing.JTextField();
+        pin = new javax.swing.JTextField();
         inv_no = new javax.swing.JTextField();
         b_date = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         all_t = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         quan = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         pro_id = new javax.swing.JTextField();
@@ -143,8 +159,12 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         tax = new javax.swing.JComboBox<>();
         jLabel44 = new javax.swing.JLabel();
         total2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        check = new javax.swing.JButton();
+        ps = new javax.swing.JComboBox<>();
+        bs = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -174,8 +194,8 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("INVENTORY MANAGEMENT");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, -1, -1));
+        jLabel7.setText("EAZY MANAGEMENT");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
 
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
@@ -218,7 +238,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Email :-");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -237,7 +257,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
         c_eml.setBackground(new java.awt.Color(255, 255, 255));
         c_eml.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        c_eml.setForeground(new java.awt.Color(0, 0, 0));
+        c_eml.setForeground(new java.awt.Color(0, 0, 204));
         c_eml.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         c_eml.setBorder(null);
         c_eml.addActionListener(new java.awt.event.ActionListener() {
@@ -245,11 +265,11 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 c_emlActionPerformed(evt);
             }
         });
-        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 330, 20));
+        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 340, 20));
 
         c_phone.setBackground(new java.awt.Color(255, 255, 255));
         c_phone.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        c_phone.setForeground(new java.awt.Color(0, 0, 0));
+        c_phone.setForeground(new java.awt.Color(0, 0, 204));
         c_phone.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         c_phone.setBorder(null);
         c_phone.addActionListener(new java.awt.event.ActionListener() {
@@ -257,11 +277,11 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 c_phoneActionPerformed(evt);
             }
         });
-        jPanel2.add(c_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 270, 20));
+        jPanel2.add(c_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 270, 30));
 
         c_name.setBackground(new java.awt.Color(255, 255, 255));
         c_name.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        c_name.setForeground(new java.awt.Color(0, 0, 0));
+        c_name.setForeground(new java.awt.Color(0, 0, 204));
         c_name.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         c_name.setBorder(null);
         c_name.addActionListener(new java.awt.event.ActionListener() {
@@ -269,50 +289,48 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 c_nameActionPerformed(evt);
             }
         });
-        jPanel2.add(c_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 120, 20));
+        jPanel2.add(c_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 290, 20));
 
         b_t.setBackground(new java.awt.Color(255, 255, 255));
         b_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        b_t.setForeground(new java.awt.Color(0, 0, 0));
+        b_t.setForeground(new java.awt.Color(0, 0, 204));
         b_t.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        b_t.setText(":");
         b_t.setBorder(null);
         b_t.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_tActionPerformed(evt);
             }
         });
-        jPanel2.add(b_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, 120, 20));
+        jPanel2.add(b_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, 110, 20));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        addr.setBackground(new java.awt.Color(255, 255, 255));
+        addr.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        addr.setForeground(new java.awt.Color(0, 0, 204));
+        addr.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        addr.setBorder(null);
+        addr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                addrActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 350, 20));
+        jPanel2.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 350, 20));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField7.setBorder(null);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        pin.setBackground(new java.awt.Color(255, 255, 255));
+        pin.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        pin.setForeground(new java.awt.Color(0, 0, 204));
+        pin.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        pin.setBorder(null);
+        pin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                pinActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 120, 30));
+        jPanel2.add(pin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 170, 30));
 
         inv_no.setBackground(new java.awt.Color(255, 255, 255));
         inv_no.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        inv_no.setForeground(new java.awt.Color(0, 0, 0));
+        inv_no.setForeground(new java.awt.Color(0, 0, 204));
         inv_no.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        inv_no.setText(":");
         inv_no.setBorder(null);
         inv_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,17 +341,19 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
         b_date.setBackground(new java.awt.Color(255, 255, 255));
         b_date.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        b_date.setForeground(new java.awt.Color(0, 0, 0));
+        b_date.setForeground(new java.awt.Color(0, 0, 204));
         b_date.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        b_date.setText(":");
         b_date.setBorder(null);
         b_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_dateActionPerformed(evt);
             }
         });
-        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 120, 20));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 910, 10));
+        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 90, 20));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 204));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 204));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 870, 10));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -357,15 +377,9 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
         all_t.setBackground(new java.awt.Color(255, 255, 255));
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        all_t.setForeground(new java.awt.Color(0, 0, 0));
-        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(51, 255, 0))); // NOI18N
-        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 170, 50));
-
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Cancel01.png"))); // NOI18N
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, -1, -1));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Print.png"))); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, -1, -1));
+        all_t.setForeground(new java.awt.Color(204, 0, 0));
+        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 170, 60));
 
         quan.setBackground(new java.awt.Color(255, 255, 255));
         quan.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -508,43 +522,105 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         total2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(total2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 130, 30));
 
-        jButton1.setBackground(new java.awt.Color(0, 51, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("CHECKOUT");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        check.setBackground(new java.awt.Color(0, 51, 255));
+        check.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        check.setForeground(new java.awt.Color(255, 255, 255));
+        check.setText("CHECKOUT");
+        check.setBorder(null);
+        check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                checkActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
+        jPanel2.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, -1, -1));
+        ps.setBackground(new java.awt.Color(255, 255, 255));
+        ps.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ps.setForeground(new java.awt.Color(0, 0, 255));
+        ps.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "By Cash", "By Card", "By Online" }));
+        ps.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
+        jPanel2.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 140, 60));
+
+        bs.setBackground(new java.awt.Color(255, 255, 255));
+        bs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bs.setForeground(new java.awt.Color(0, 0, 255));
+        bs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending Bill", "Success Bill", "Cancle Bill" }));
+        bs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
+        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, 140, 60));
+
+        jButton2.setBackground(new java.awt.Color(255, 153, 204));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 255));
+        jButton2.setText("CANCLE");
+        jButton2.setBorder(null);
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, 110, 40));
+
+        jButton3.setBackground(new java.awt.Color(51, 153, 0));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 0));
+        jButton3.setText("PRINT");
+        jButton3.setBorder(null);
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 110, 40));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/111refresh.png"))); // NOI18N
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 50, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(910, 716));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    void id_create(){
+        inv_no.setEditable(false);
+         try{
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from id_store");         
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                
+              //  System.out.println("Transaction_Id "+Transaction_Id);
+                iNVOICEE=rs.getString("INVOICE_NO");
+               
+                rs.close();
+                ps.close();
+            }else{
+                JOptionPane.showMessageDialog(null, "NOTHING FOUND IN DATABASE!!!!!!");
+            }
+            con.close();
+           }
+        catch(Exception e){System.out.println(e);}
+       
+        Invvvv = new BigInteger(iNVOICEE);
+        BigInteger nxt = new BigInteger("1");
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+iNVOICEE);
+        System.out.println("#################"+Invvvv);
+        Invvvv = Invvvv.add(nxt);
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+Invvvv);
+        invee = "INVEE"+Invvvv.toString();
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+invee);
+        System.out.println("++++++++++++++++"+Invvvv);
+        inv_no.setText(invee);
+    }
     private void c_emlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_emlActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_c_emlActionPerformed
@@ -561,13 +637,13 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_b_tActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void addrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_addrActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void pinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_pinActionPerformed
 
     private void inv_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inv_noActionPerformed
         // TODO add your handling code here:
@@ -615,11 +691,11 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                pri.setEditable(false);
                tax.setEnabled(true);
                             
-                    JOptionPane.showMessageDialog(this, "Product Found");
+                //    JOptionPane.showMessageDialog(this, "Product Found");
                    
                
            }else{
-               JOptionPane.showMessageDialog(this, "Product Not Found");
+               JOptionPane.showMessageDialog(this, "Enter Currect Product Id");
            }
           
             }catch(Exception e){
@@ -642,7 +718,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         }else if (Tax.equals("GST 0 %") ){
             JOptionPane.showMessageDialog(this, "Add GST");
         }else if(!St.equals("")) {
-            
+            check.setEnabled(true);
              DefaultTableModel model = (DefaultTableModel)table.getModel();
               model.addRow(new Object[]{p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
                                   total.getText(),total2.getText()
@@ -787,21 +863,19 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_taxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
         // TODO add your handling code herd
 //         int i = table.getSelectedRow();
 //     DefaultTableModel model=(DefaultTableModel)table.getModel();
 //        System.out.println(model.getValueAt(i,6).toString());
 //        
 try {
-     String itm = null ;
-     String dsc = null ;
-     String quan = null ;
-     String pri = null ;
-     String tax = null ;
-     String str = null;
-     String total_wg = null ;
-     String total_g = null ;
+     sums(); 
+    String value = null;
+    String str = null;
+    
+    
+     
     String Ca_name=c_name.getText();
     String Ca_eml=c_eml.getText();
     String Ca_phone=c_phone.getText();
@@ -809,105 +883,270 @@ try {
     String C_date=b_date.getText();
     String C_time=b_t.getText();
     String Product_id=pro_id.getText();
-    String All_t=all_t.getText();
-    
-    
+  //  String All_t=all_t.getText();
+    String bill_s=bs.getSelectedItem().toString();
+    String pay_s=ps.getSelectedItem().toString();
    
-      
-    if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-            column = 4;
-            
-            for (int i = 0 ; i < selectedRow.length; i++) {
-              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "^"+ value);
-                str =sb.toString();
-                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-                    myList.add(str); 
-                 itm = myList.toString();
-            }
-            //   myList.add(str); 
-               
-                System.out.println("itmm"+itm);
+    int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Save This Bill ?");
+        if(Yes == 0){
+          fast(); 
+            aaaa();
+            bbbb();
+            cccc();
+            dddd();
+            eeee();
+            ffff();
                 
-            
-//            column = 1;
-//            for (int i = 0 ; i < selectedRow.length; i++) {
-//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-//              //  System.out.println(""+value);
-//                 StringBuilder sb = new StringBuilder();
-//                 sb.append("^"+value);
-//                String str = sb.toString();
-//                 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-//                myList.add(str);
-//                dsc = myList.toString();
-//            }
-//            column = 2;
-//            for (int i = 0 ; i < selectedRow.length; i++) {
-//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-//             //   System.out.println("^"+value);
-//                  StringBuilder sb = new StringBuilder();
-//                 sb.append("^"+value);
-//                String str = sb.toString();
-//                 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-//                myList.add(str);
-//                quan = myList.toString();
-//            }
-//            column = 3;
-//            for (int i = 0 ; i < selectedRow.length; i++) {
-//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-//              //  System.out.println("^"+value);
-//                 StringBuilder sb = new StringBuilder();
-//                 sb.append("^"+value);
-//                String str = sb.toString();
-//                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-//                myList.add(str);
-//                pri = myList.toString();
-//             }
-//            column = 4;
-//            for (int i = 0 ; i < selectedRow.length; i++) {
-//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-//               // System.out.println("^"+value);
-//                  StringBuilder sb = new StringBuilder();
-//                 sb.append("^"+value);
-//                String str = sb.toString();
-//                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-//                myList.add(str);
-//                tax = myList.toString();
-//            }
-//            column = 5;
-//            for (int i = 0 ; i < selectedRow.length; i++) {
-//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-//             //   System.out.println("^"+value);
-//                 StringBuilder sb = new StringBuilder();
-//                 sb.append("^"+value);
-//                String str = sb.toString();
-//                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-//                myList.add(str);
-//                total_wg = myList.toString();
-//            }
-//            column = 6;
-//            for (int i = 0 ; i < selectedRow.length; i++) {
-//              String value = table.getModel().getValueAt(selectedRow[i], column).toString();
-//              //  System.out.println("^"+value);
-//                 StringBuilder sb = new StringBuilder();
-//                 sb.append("^"+value);
-//                String str = sb.toString();
-//             ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-//                myList.add(str);
-//                total_g = myList.toString();
-//             
-//                 }
-        }
-    
-   ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, Invoice, C_date, C_time, Product_id, itm, dsc, quan, pri, tax, total_wg, total_g, All_t);
+            ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo,bill_s,pay_s);   
+            ID_STORE_FETCH.invoice(Invvvv.toString());
+        }else{
+             int No=0;
+                if (No == 0){
+                }
+               }
+           
     
 }catch(Exception e){
     System.out.println("Error"+e);
 }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_checkActionPerformed
 
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        // TODO add your handling code here:
+        int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Creat a New Bill ?");
+        if(Yes == 0){
+         id_create();   
+         check.setEnabled(false);
+         p_name.setText("");
+         desc.setText("");
+         pri.setText("");
+         tax.setSelectedIndex(0);
+         total.setText("");
+         total2.setText("");
+        quan.setText("");
+        c_name.setText("");
+        c_eml.setText("");
+        c_phone.setText("");
+        
+        addr.setText("");
+        pin.setText("");
+        all_t.setText("");
+        pro_id.setText("");
+         DefaultTableModel tm=(DefaultTableModel) table.getModel();
+        while(tm.getRowCount()>0){
+            tm.setRowCount(0);
+        }
+        }else{
+             int No=0;
+                if (No == 0){
+                }
+               }
+       
+        
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    public void fast(){
+        String value = null;
+        String str = null;
+          
+    if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+            column = 0;
+                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myList.add(str); 
+                String it = myList.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                itmt = ppp;
+    }
+    }}
+ public void aaaa(){
+     String value = null;
+     String str = null;
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+    column = 1;
+                ArrayList<String> myListt = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myListt.add(str); 
+                String it = myListt.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+              dsct = ppp;
+            }
+      }
+}   
+    
+ public void bbbb(){
+     String value = null;
+     String str = null;
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+     column = 2;
+                ArrayList<String> myLista = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myLista.add(str); 
+                String it = myLista.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                quant = ppp;
+            }
+      }
+}   
+ public void cccc(){
+     String value = null;
+     String str = null;
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+    column = 3;
+                ArrayList<String> myListb = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myListb.add(str); 
+                String it = myListb.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                prit = ppp;
+            }
+      }
+}   
+ 
+ public void dddd(){
+     String value = null;
+     String str = null;
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+     column = 4;
+                ArrayList<String> myListc = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myListc.add(str); 
+                String it = myListc.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                taxt = ppp;
+            }
+      }
+}   
+ 
+ public void eeee(){
+     String value = null;
+     String str = null;
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+     column = 5;
+                ArrayList<String> myListd = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myListd.add(str); 
+                String it = myListd.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                total_wgt = ppp;
+                
+            }
+      }
+}   
+ 
+ public void ffff(){
+     String value = null;
+     String str = null;
+     
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+    
+                  column = 6;
+                ArrayList<String> myListe = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( "#"+ value);
+                str =sb.toString();
+                myListe.add(str); 
+                String it = myListe.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                total_gt = ppp;
+               
+            }
+      }
+}   
+ public void sums(){
+     double sum=0;
+     for(int i=0;i<table.getRowCount();i++ )
+     {
+       sum=sum+Double.parseDouble(table.getValueAt(i, 6).toString());
+      // System.out.println("sssss");
+     }  
+     sumo = Double.toString(sum);
+    all_t.setText(Double.toString(sum));
+    // System.out.println("sum"+sum);
+ }
+ 
     /**
      * @param args the command line arguments
      */
@@ -947,19 +1186,22 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addr;
     private javax.swing.JTextField all_t;
     private javax.swing.JTextField b_date;
     private javax.swing.JTextField b_t;
+    private javax.swing.JComboBox<String> bs;
     private javax.swing.JTextField c_eml;
     private javax.swing.JTextField c_name;
     private javax.swing.JTextField c_phone;
+    private javax.swing.JButton check;
     private javax.swing.JTextField desc;
     private javax.swing.JTextField inv_no;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -967,7 +1209,6 @@ try {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel29;
@@ -989,11 +1230,11 @@ try {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField p_name;
+    private javax.swing.JTextField pin;
     private javax.swing.JTextField pri;
     private javax.swing.JTextField pro_id;
+    private javax.swing.JComboBox<String> ps;
     private javax.swing.JTextField quan;
     private javax.swing.JTable table;
     private javax.swing.JComboBox<String> tax;

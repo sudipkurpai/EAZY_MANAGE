@@ -162,6 +162,11 @@ public class ALL_BILL extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 204));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search-magnifier-interface-symbol (1).png"))); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 40, 30));
 
         jTextField6.setBackground(new java.awt.Color(255, 255, 255));
@@ -215,6 +220,10 @@ public class ALL_BILL extends javax.swing.JFrame {
        dm.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

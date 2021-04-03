@@ -139,6 +139,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InvoiceActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="20" y="80" width="200" height="30"/>
@@ -228,11 +231,11 @@
                       <Table columnCount="7" rowCount="0">
                         <Column editable="false" title="Invoice No." type="java.lang.Object"/>
                         <Column editable="false" title="Customer Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Date" type="java.lang.Object"/>
+                        <Column editable="false" title="Date" type="java.lang.Object"/>
                         <Column editable="false" title="Time" type="java.lang.Object"/>
                         <Column editable="false" title="Total " type="java.lang.Object"/>
-                        <Column editable="true" title="Payment Status" type="java.lang.Object"/>
-                        <Column editable="true" title="Bill Status" type="java.lang.Object"/>
+                        <Column editable="false" title="Bill Status" type="java.lang.Object"/>
+                        <Column editable="false" title="Payment Status" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -341,7 +344,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="bill_s">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -353,13 +356,12 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
+                  <StringArray count="5">
                     <StringItem index="0" value="All Bill"/>
                     <StringItem index="1" value="Pending Bill"/>
                     <StringItem index="2" value="Success Bill"/>
                     <StringItem index="3" value="Cancle Bill"/>
                     <StringItem index="4" value=" "/>
-                    <StringItem index="5" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>

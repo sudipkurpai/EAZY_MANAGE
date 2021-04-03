@@ -16,11 +16,11 @@ public class ADD_BILL_DATAOBJECT {
     
      public static int add_bill (String C_name, String C_email, 
             String Phone,String Invoice_id, String Date, String Time, String  Product_id, String Product_name, 
-            String Description,String Quality, String Price, String Tax, String Total_without_gst,String Total_with_gst, String All_total){
+            String Description,String Quality, String Price, String Tax, String Total_without_gst,String Total_with_gst, String All_total,String Bill_status,String Payment_status){
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
-                   PreparedStatement ps=con.prepareStatement("INSERT INTO add_bill (C_name, C_email, Phone, Invoice_id , Date, Time,Product_id, Product_name, Description, Quality, Price, Tax, Total_without_gst,Total_with_gst,All_total) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO add_bill (C_name, C_email, Phone, Invoice_id , Date, Time,Product_id, Product_name, Description, Quality, Price, Tax, Total_without_gst,Total_with_gst,All_total,Bill_status,Payment_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                    ps.setString(1, C_name);  
                    System.out.println("111111111"+C_name);
                    ps.setString(2, C_email);
@@ -49,6 +49,8 @@ public class ADD_BILL_DATAOBJECT {
                    ps.setString(14, Total_with_gst);
                   // System.out.println("1010101010"+Category);
                    ps.setString(15, All_total);
+                   ps.setString(16, Bill_status);
+                   ps.setString(17, Payment_status);
                   status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){

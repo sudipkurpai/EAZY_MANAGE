@@ -423,9 +423,9 @@ public class LOGINFROM extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Login Successfully");
                 
                 DASHBOARD_M dm = new DASHBOARD_M();
-                System.out.println("2222222222222222" +timeee);
+            //    System.out.println("2222222222222222" +timeee);
                 
-                dm.mngname(name,mng_Id,eml,phone,date,timeee);  
+              //  dm.mngname(name,mng_Id,eml,phone,date,timeee);  
                 dm.setVisible(true);              
                          
                 this.dispose();
