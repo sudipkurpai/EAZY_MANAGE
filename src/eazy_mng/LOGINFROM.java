@@ -405,8 +405,8 @@ public class LOGINFROM extends javax.swing.JFrame {
                 rs.close();
                 ps.close();
             }else{
-                //JOptionPane.showMessageDialog(null, "Enter Correct User Name");
-                System.out.println("Enter Correct User Name");
+                JOptionPane.showMessageDialog(null, "Enter Correct User Name");
+              //  System.out.println("Enter Correct User Name");
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -425,7 +425,7 @@ public class LOGINFROM extends javax.swing.JFrame {
                 DASHBOARD_M dm = new DASHBOARD_M();
             //    System.out.println("2222222222222222" +timeee);
                 
-              //  dm.mngname(name,mng_Id,eml,phone,date,timeee);  
+                dm.mngname(name,mng_Id,eml,phone,date,timeee);  
                 dm.setVisible(true);              
                          
                 this.dispose();

@@ -8,6 +8,8 @@ package eazy_mng;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,20 +26,26 @@ public class TODAY_BILL extends javax.swing.JFrame {
     String DOB = null;
     String Gender= null;
     String Address =null;
-    String date=null;
+    String date;
     String time = null;
+    String dddda =null;
     /**
      * Creates new form REMOVE_EMPLOYEE
      */
     public TODAY_BILL() {
         initComponents();
+        na.setEditable(false);
+        date();
+        all();
+      
     }
-     void tbb (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+   void tbb (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
         ID = mng_Id;
         Email = email;
         time = t1;
         date = d1;
+    
         Phone= p;
      }
     /**
@@ -62,10 +70,11 @@ public class TODAY_BILL extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        na = new javax.swing.JTextField();
         bill_s = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -115,9 +124,22 @@ public class TODAY_BILL extends javax.swing.JFrame {
         Invoice.setForeground(new java.awt.Color(0, 0, 255));
         Invoice.setText("Enter Invoice No.");
         Invoice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Invoice.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                InvoiceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InvoiceFocusLost(evt);
+            }
+        });
         Invoice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InvoiceActionPerformed(evt);
+            }
+        });
+        Invoice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                InvoiceKeyReleased(evt);
             }
         });
         jPanel3.add(Invoice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 200, 30));
@@ -137,6 +159,11 @@ public class TODAY_BILL extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/replay.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 40, 30));
 
         table.setBackground(new java.awt.Color(255, 255, 255));
@@ -156,6 +183,11 @@ public class TODAY_BILL extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(table);
@@ -178,15 +210,15 @@ public class TODAY_BILL extends javax.swing.JFrame {
         });
         jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 40, 30));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 160, 30));
+        na.setBackground(new java.awt.Color(255, 255, 255));
+        na.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        na.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(na, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 160, 30));
 
         bill_s.setBackground(new java.awt.Color(255, 255, 255));
         bill_s.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bill_s.setForeground(new java.awt.Color(0, 0, 0));
-        bill_s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Bill", "Pending Bill", "Success Bill", "Cancle Bill", " " }));
+        bill_s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Bill", "Pending Bill", "Success Bill", "Cancle Bill" }));
         jPanel3.add(bill_s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 255));
@@ -200,6 +232,17 @@ public class TODAY_BILL extends javax.swing.JFrame {
         jButton5.setForeground(new java.awt.Color(0, 0, 255));
         jButton5.setText("New Bill");
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 90, 30));
+
+        jButton4.setBackground(new java.awt.Color(0, 0, 255));
+        jButton4.setFont(new java.awt.Font("Dialog.plain", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Ok");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 70, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 430));
 
@@ -217,7 +260,133 @@ public class TODAY_BILL extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(770, 480));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+   
+     void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        dddda=s.format(d);
+    }
+    public void all(){
+        if (bill_s.getSelectedItem().equals("All Bill")){
+        try {
+        
+           
+            String sql = "Select * From add_bill where Date = '"+dddda+"' ";
+           // 
+           //'04-02-2021'
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           //  ps.setString(1,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bill Creat Today", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+    }
+     public void Pending(){
+         if (bill_s.getSelectedItem().equals("Pending Bill")){
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where  Bill_status = 'Pending Bill' and Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bill Creat Today", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+     }
+    }
+    
+      public void Succes(){
+          if (bill_s.getSelectedItem().equals("Success Bill")){
+          
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where  Bill_status= 'Success Bill' and Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bill Creat Today", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+          }
+    }
+      public void Cencle(){
+         if (bill_s.getSelectedItem().equals("Cancle Bill")){
+          
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where  Bill_status = 'Cancle Bill' and Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bill Creat Today", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+          }
+    }
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
          DASHBOARD_M dm = new DASHBOARD_M();
@@ -230,23 +399,28 @@ public class TODAY_BILL extends javax.swing.JFrame {
         // TODO add your handling code here:
         String inv = Invoice.getText();
         if (bill_s.getSelectedItem().equals("All Bill")){
+            
          try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id = ? and date = 'date' ";
+            String sql = "Select * From add_bill where Invoice_id = ? and Date = '"+dddda+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,inv);
+          //  ps.setString(2,date);
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
+               String nnn =rs.getString("C_name");
+               na.setText(nnn);
                do
                {
                    Object o []={
                        rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
                    // JOptionPane.showMessageDialog(this, "Product Found");
-                    model.addRow(o);
+                   
+                   model.addRow(o);
                }while (rs.next());
            }else{
                 JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
@@ -260,7 +434,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
          try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status = 'Pending Bill' ";
+            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status = 'Pending Bill' and  Date = '"+dddda+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,inv);
@@ -286,7 +460,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
          try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status= 'Success Bill' ";
+            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status= 'Success Bill' and Date = '"+dddda+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,inv);
@@ -313,7 +487,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
          try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status = 'Cancle Bill' ";
+            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status = 'Cancle Bill' and Date = '"+dddda+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,inv);
@@ -341,6 +515,173 @@ public class TODAY_BILL extends javax.swing.JFrame {
     private void InvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvoiceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InvoiceActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+       all();
+       Pending();
+       Succes();
+       Cencle();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        bill_s.setSelectedIndex(0);
+        Invoice.setText("Enter Invoice No.");
+        na.setText("");
+         DefaultTableModel tm=(DefaultTableModel) table.getModel();
+        while(tm.getRowCount()>0){
+            tm.setRowCount(0);
+        }
+        all();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void InvoiceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InvoiceFocusGained
+        // TODO add your handling code here:
+        if(Invoice.getText().equals("Enter Invoice No.")){
+            
+            Invoice.setText("");
+    }
+    }//GEN-LAST:event_InvoiceFocusGained
+
+    private void InvoiceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InvoiceFocusLost
+        // TODO add your handling code here:
+         if(Invoice.getText().equals("")){
+           
+            Invoice.setText("Enter Invoice No.");
+           
+        }else{
+           Invoice.setVisible(true);
+    }                            
+    }//GEN-LAST:event_InvoiceFocusLost
+
+    private void InvoiceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InvoiceKeyReleased
+        // TODO add your handling code here:
+        
+         String inv = Invoice.getText();
+        if (bill_s.getSelectedItem().equals("All Bill")){
+            
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%'  and Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+          //  ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               String nnn =rs.getString("C_name");
+               na.setText(nnn);
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                   
+                   model.addRow(o);
+               }while (rs.next());
+           }else{
+            //    JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+        else if (bill_s.getSelectedItem().equals("Pending Bill")){
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Pending Bill' and  Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }else if (bill_s.getSelectedItem().equals("Success Bill")){
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status= 'Success Bill' and Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+               // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+        else if (bill_s.getSelectedItem().equals("Cancle Bill")){
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Cancle Bill' and Date = '"+dddda+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+              // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+    
+    }//GEN-LAST:event_InvoiceKeyReleased
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int i = table.getSelectedRow();
+     DefaultTableModel model=(DefaultTableModel)table.getModel();
+     Invoice.setText(model.getValueAt(i,0).toString());
+     na.setText(model.getValueAt(i,1).toString());
+    }//GEN-LAST:event_tableMouseClicked
 
    public void table(){
        String inv = Invoice.getText();
@@ -436,6 +777,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
@@ -446,7 +788,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField na;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
