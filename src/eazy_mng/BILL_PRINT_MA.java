@@ -42,65 +42,51 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
      String Name = null;
      String Id = null;
      String emll = null;
-     String f1 = null;
-     String sumo  = null;
-     int column ;
+     
      String Ttime=null;
-     String iNVOICEE=null;
-     BigInteger Invvvv =null;
+     
     
-     String invee=null;
+     String Inv_no=null;
     
     /**
      * Creates new form BILL_PRINT
      */
     public BILL_PRINT_MA() {
         initComponents();
-        id_create();
-        check.setEnabled(false);
-        Timee();
+      
+     
         all_t.setEditable(false);
         b_date.setEditable(false);
-        
-         if (total.getText().isEmpty() ){
-              tax.setEnabled(false);
-         }
-          p_name.setEditable(false);
-          desc.setEditable(false);
-          pri.setEditable(false);
-          
-          
-          cal();
-          tax.addActionListener((ActionEvent e) -> {
-                        f1=tax.getSelectedItem().toString();
-                       // System.out.println(""+ f1);
-                        update_val();
-                    });
+        b_date.setEditable(false);
+        c_name.setEditable(false);
+        c_eml.setEditable(false);
+        c_phone.setEditable(false);
+        addr.setEditable(false);
+        pin.setEditable(false);
+        inv_no.setEditable(false);
+        all_t.setEditable(false);
+        bs.setEditable(false);
+        pss.setEditable(false);
          
+        // fast();
     }
-    void bpm (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+    void bp (String fullname, String mng_Id,String email,String t1,String d1,String p,String b_inv ) {
+        Inv_no=b_inv;
+        System.out.println("Invvv"+b_inv);
+        inv_no.setText(b_inv);
         Name = fullname;
         Id = mng_Id;
         emll = email;
         time = t1;
         date = d1;
         ph= p;
-        b_date.setText(date);
-        
+      
+       fast();
     }
-    public void Timee(){
-     new Timer(0,new ActionListener(){
-         @Override
-         public void actionPerformed(ActionEvent e) {
-            java.util.Date d=new java.util.Date ();
-            SimpleDateFormat s=new SimpleDateFormat("hh:mm:ss a");
-            Ttime=(s.format(d)); 
-            b_t.setText(Ttime);
-            // System.out.println("time"+Ttime);
-         }
-     }).start();
    
-    }
+   
+    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,6 +97,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -140,34 +127,14 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         all_t = new javax.swing.JTextField();
-        quan = new javax.swing.JTextField();
-        jLabel38 = new javax.swing.JLabel();
-        pro_id = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
-        pri = new javax.swing.JTextField();
-        jLabel40 = new javax.swing.JLabel();
-        total = new javax.swing.JTextField();
-        jLabel41 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        p_name = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        desc = new javax.swing.JTextField();
-        jLabel43 = new javax.swing.JLabel();
-        tax = new javax.swing.JComboBox<>();
-        jLabel44 = new javax.swing.JLabel();
-        total2 = new javax.swing.JTextField();
-        check = new javax.swing.JButton();
-        ps = new javax.swing.JComboBox<>();
+        pss = new javax.swing.JComboBox<>();
         bs = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -205,6 +172,8 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 33));
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 110));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -360,11 +329,11 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Items", "Description", "Quantity", "Price", "Tax", "Total", "Total With GST"
+                "Items", "Description", "", "Quantity", "Price", "Tax", "Total", "Total With GST"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -373,254 +342,113 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(table);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 870, 200));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 870, 340));
 
         all_t.setBackground(new java.awt.Color(255, 255, 255));
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         all_t.setForeground(new java.awt.Color(204, 0, 0));
         all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 170, 60));
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 170, 60));
 
-        quan.setBackground(new java.awt.Color(255, 255, 255));
-        quan.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        quan.setForeground(new java.awt.Color(0, 0, 255));
-        quan.setToolTipText("");
-        quan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(quan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 110, 30));
-
-        jLabel38.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel38.setText("Quantity :");
-        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 30));
-
-        pro_id.setBackground(new java.awt.Color(255, 255, 255));
-        pro_id.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        pro_id.setForeground(new java.awt.Color(0, 0, 255));
-        pro_id.setToolTipText("");
-        pro_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pro_id.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                pro_idKeyReleased(evt);
-            }
-        });
-        jPanel2.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 250, 30));
-
-        jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel39.setText("Search By Product ID:");
-        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 30));
-
-        pri.setBackground(new java.awt.Color(255, 255, 255));
-        pri.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        pri.setForeground(new java.awt.Color(0, 0, 255));
-        pri.setToolTipText("");
-        pri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 120, 30));
-
-        jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel40.setText("Price :");
-        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 50, 30));
-
-        total.setBackground(new java.awt.Color(255, 255, 255));
-        total.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        total.setForeground(new java.awt.Color(0, 0, 255));
-        total.setToolTipText("");
-        total.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 130, 30));
-
-        jLabel41.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel41.setText("Tax :");
-        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 40, 30));
-
-        jButton4.setBackground(new java.awt.Color(51, 255, 153));
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 255));
-        jButton4.setText("Search");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 90, -1));
-
-        p_name.setBackground(new java.awt.Color(255, 255, 255));
-        p_name.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        p_name.setForeground(new java.awt.Color(0, 0, 255));
-        p_name.setToolTipText("");
-        p_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 210, 30));
-
-        jLabel29.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel29.setText("Product Name :");
-        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, 30));
-
-        jLabel42.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel42.setText("Total  WithOut GST:");
-        jPanel2.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 140, 30));
-
-        jButton5.setBackground(new java.awt.Color(204, 255, 0));
-        jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 0, 51));
-        jButton5.setText("Add");
-        jButton5.setBorder(null);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, 80, 30));
-
-        jButton6.setBackground(new java.awt.Color(204, 255, 0));
-        jButton6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 0, 51));
-        jButton6.setText("Reset");
-        jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 80, 30));
-
-        desc.setBackground(new java.awt.Color(255, 255, 255));
-        desc.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        desc.setForeground(new java.awt.Color(0, 0, 255));
-        desc.setToolTipText("");
-        desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 210, 30));
-
-        jLabel43.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel43.setText("Description:");
-        jPanel2.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, 30));
-
-        tax.setBackground(new java.awt.Color(255, 255, 255));
-        tax.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        tax.setForeground(new java.awt.Color(0, 0, 255));
-        tax.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GST 0 %", "GST 5 %", "GST 12 %", "GST 18 %", "GST 28 %" }));
-        tax.setDoubleBuffered(true);
-        tax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taxActionPerformed(evt);
-            }
-        });
-        jPanel2.add(tax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 90, 30));
-
-        jLabel44.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel44.setText("Total  With GST:");
-        jPanel2.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 140, 30));
-
-        total2.setBackground(new java.awt.Color(255, 255, 255));
-        total2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        total2.setForeground(new java.awt.Color(0, 0, 255));
-        total2.setToolTipText("");
-        total2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(total2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 130, 30));
-
-        check.setBackground(new java.awt.Color(0, 51, 255));
-        check.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        check.setForeground(new java.awt.Color(255, 255, 255));
-        check.setText("CHECKOUT");
-        check.setBorder(null);
-        check.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkActionPerformed(evt);
-            }
-        });
-        jPanel2.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
-
-        ps.setBackground(new java.awt.Color(255, 255, 255));
-        ps.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        ps.setForeground(new java.awt.Color(0, 0, 255));
-        ps.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "By Cash", "By Card", "By Online" }));
-        ps.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
-        jPanel2.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 140, 60));
+        pss.setBackground(new java.awt.Color(255, 255, 255));
+        pss.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        pss.setForeground(new java.awt.Color(0, 0, 255));
+        pss.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "By Cash", "By Card", "By Online" }));
+        pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
+        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 140, 60));
 
         bs.setBackground(new java.awt.Color(255, 255, 255));
         bs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         bs.setForeground(new java.awt.Color(0, 0, 255));
-        bs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending Bill", "Success Bill", "Cancle Bill" }));
+        bs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Success Bill" }));
         bs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
-        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, 140, 60));
-
-        jButton2.setBackground(new java.awt.Color(255, 153, 204));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 255));
-        jButton2.setText("CANCLE");
-        jButton2.setBorder(null);
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, 110, 40));
+        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 140, 60));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 0));
         jButton3.setText("PRINT");
         jButton3.setBorder(null);
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 110, 40));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 110, 40));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/111refresh.png"))); // NOI18N
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 50, 40));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 910, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(910, 716));
+        setSize(new java.awt.Dimension(910, 710));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
-    void id_create(){
-        inv_no.setEditable(false);
-         try{
+    public void fast (){
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id = ?  ";
             Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement("select * from id_store");         
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,Inv_no);
+          //  ps.setString(2,date);
             ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-                
-              //  System.out.println("Transaction_Id "+Transaction_Id);
-                iNVOICEE=rs.getString("INVOICE_NO");
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
                
-                rs.close();
-                ps.close();
-            }else{
-                JOptionPane.showMessageDialog(null, "NOTHING FOUND IN DATABASE!!!!!!");
-            }
-            con.close();
+               String nnn =rs.getString("C_name");
+               String bDD =rs.getString("Date");
+               String Btt =rs.getString("Time");
+               String CEML =rs.getString("C_email");
+               String CPPP =rs.getString("Phone");
+               String Addddd =rs.getString("Address");
+               String PNNN =rs.getString("Pin");
+               String INVb =rs.getString("Invoice_id");
+               String Taall =rs.getString("All_total");
+               String BIl =rs.getString("Bill_status");
+               String Pay =rs.getString("Payment_status");
+               
+              b_date.setText(bDD);
+              b_t.setText(Btt);
+              c_name.setText(nnn);
+              c_eml.setText(CEML);
+              c_phone.setText(CPPP);
+              addr.setText(Addddd);
+              pin.setText(PNNN);
+              inv_no.setText(INVb);
+              all_t.setText(Taall);
+              bs.setSelectedItem(BIl);
+        //      ps.setSelectedItem(Pay);
+              
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                   
+                   model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
-        catch(Exception e){System.out.println(e);}
-       
-        Invvvv = new BigInteger(iNVOICEE);
-        BigInteger nxt = new BigInteger("1");
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+iNVOICEE);
-        System.out.println("#################"+Invvvv);
-        Invvvv = Invvvv.add(nxt);
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+Invvvv);
-        invee = "INVEE"+Invvvv.toString();
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+invee);
-        System.out.println("++++++++++++++++"+Invvvv);
-        inv_no.setText(invee);
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        
+            }
+        
     }
+    
     private void c_emlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_emlActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_c_emlActionPerformed
@@ -661,491 +489,14 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
 
-    private void pro_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pro_idKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pro_idKeyReleased
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        String product_idee = pro_id.getText();
-      try {
-        
-             //Data fetch from database
-            String sql = "Select * From add_new_product where Product_id=? ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,product_idee);
-            ResultSet rs=ps.executeQuery();
-           
-           if(rs.next()){
-               
-                   
-               String pn= rs.getString("Product_name");
-               String descp= rs.getString("Description");
-               String pr= rs.getString("Unit_price");
-               p_name.setText(pn);
-               p_name.setEditable(false);
-               desc.setText(descp);
-               desc.setEditable(false);
-               pri.setText(pr);
-               pri.setEditable(false);
-               tax.setEnabled(true);
-                            
-                //    JOptionPane.showMessageDialog(this, "Product Found");
-                   
-               
-           }else{
-               JOptionPane.showMessageDialog(this, "Enter Currect Product Id");
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        
-        String p_nmaee = p_name.getText();
-        String Desc= desc.getText();
-        String St = pri.getText();
-        String Tax = tax.getSelectedItem().toString();
-        String Total = total.getText();
-        String Total2 = total2.getText();
-        String quantit = quan.getText();
-        if(quantit.isEmpty() || p_nmaee.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Fill up Quantity First");
-        }else if (Tax.equals("GST 0 %") ){
-            JOptionPane.showMessageDialog(this, "Add GST");
-        }else if(!St.equals("")) {
-            check.setEnabled(true);
-             DefaultTableModel model = (DefaultTableModel)table.getModel();
-              model.addRow(new Object[]{p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
-                                  total.getText(),total2.getText()
-              });
-        
-           table.selectAll();
-       // System.out.println("Data inserted");
-        JOptionPane.showMessageDialog(this, "Add To Bill Successfully");
-               }
-        else{
-       // System.out.println("Data NOT inserted");
-        JOptionPane.showMessageDialog(this, "Somthing Went Wrong");
-            }
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-       public void cal(){
-        DocumentListener dl = new DocumentListener(){
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-              update_val();  
-                //To change body of generated methods, choose Tools | Templates.
-                
-            }
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-                update_val();
-            }
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                //To change body of generated methods, choose Tools | Templates.
-                update_val();
-            }
-            
-            protected void update_val(){
-               String f1=pri.getText();
-               String f2=quan.getText();
-               if (!f1.equals("") && f2.equals("")){
-                   double b=Double.parseDouble(pri.getText());
-                   //double  b1=Double.parseDouble(a1.getText());
-                   double c= b;
-                   String e=String.valueOf(c);
-                   total.setText(e);
-               }else if (f1.equals("") && !f2.equals("")){
-                   //double b=Double.parseDouble(a.getText());
-                   double  b1=Double.parseDouble(quan.getText());
-                   double c= b1;
-                   String e=String.valueOf(c);
-                   total.setText(e);
-               }else if (!f1.equals("") && !f2.equals("")){
-                   double b=Double.parseDouble(pri.getText());
-                   double  b1=Double.parseDouble(quan.getText());
-                   double c= b*b1;
-                   String e=String.valueOf(c);
-                   total.setEditable(false);
-                   total.setText(e);
-                   
-               }else{
-                   System.out.println("NONE");
-               }
-                   
-                   
-               
-            }
-
-            
-            
-        };
-        pri.getDocument().addDocumentListener(dl);
-        quan.getDocument().addDocumentListener(dl);
-    }
        
-       public void update_val(){
-               // System.out.println("hello");
-                        if (f1.equals("GST 5 %") ){
-                            double b=5;
-                            double  b1=Double.parseDouble(total.getText());
-                            double c= (b1*b);
-                            double d= (c/100);
-                            double e= (b1+d);
-                            String f=String.valueOf(e);
-//                            System.out.println("bbbb"+b1);
-//                            System.out.println("cccc"+c);
-//                            System.out.println("dddd"+d);
-//                            System.out.println("fffff"+f);
-                            total2.setEditable(false);
-                            total2.setText(f);
-                            
-                        }else if (f1.equals("GST 12 %") ){
-                            double b=12;
-                            double  b1=Double.parseDouble(total.getText());
-                            double c= (b1*b);
-                            double d= (c/100);
-                            double e= (b1+d);
-                            String f=String.valueOf(e);
-                            total2.setEditable(false);
-                            total2.setText(f);
-                        } else if (f1.equals("GST 18 %") ){
-                            double b=18;
-                            double  b1=Double.parseDouble(total.getText());
-                            double c= (b1*b);
-                            double d= (c/100);
-                            double e= (b1+d);
-                            String f=String.valueOf(e);
-                            total2.setEditable(false);
-                            total2.setText(f);
-                        }else if (f1.equals("GST 28 %") ){
-                            double b=28;
-                            double  b1=Double.parseDouble(total.getText());
-                            double c= (b1*b);
-                            double d= (c/100);
-                            double e= (b1+d);
-                            String f=String.valueOf(e);
-                            total2.setEditable(false);
-                            total2.setText(f);
-                        }else{
-                            
-                           // System.out.println("NONE");
-                        }
-            
-            }
              
              
       
       
           
        
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-         p_name.setText("");
-         desc.setText("");
-         pri.setText("");
-         tax.setSelectedIndex(0);
-         total.setText("");
-         total2.setText("");
-        quan.setText("");
-        pro_id.setText("");
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void taxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_taxActionPerformed
-
-    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
-        // TODO add your handling code herd
-//         int i = table.getSelectedRow();
-//     DefaultTableModel model=(DefaultTableModel)table.getModel();
-//        System.out.println(model.getValueAt(i,6).toString());
-//        
-try {
-     sums(); 
-    String value = null;
-    String str = null;
-    
-    
-     
-    String Ca_name=c_name.getText();
-    String Ca_eml=c_eml.getText();
-    String Ca_phone=c_phone.getText();
-    String Invoice=inv_no.getText();
-    String C_date=b_date.getText();
-    String C_time=b_t.getText();
-    String Product_id=pro_id.getText();
-  //  String All_t=all_t.getText();
-    String bill_s=bs.getSelectedItem().toString();
-    String pay_s=ps.getSelectedItem().toString();
    
-    int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Save This Bill ?");
-        if(Yes == 0){
-          fast(); 
-            aaaa();
-            bbbb();
-            cccc();
-            dddd();
-            eeee();
-            ffff();
-                
-            ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo,bill_s,pay_s);   
-            ID_STORE_FETCH.invoice(Invvvv.toString());
-        }else{
-             int No=0;
-                if (No == 0){
-                }
-               }
-           
-    
-}catch(Exception e){
-    System.out.println("Error"+e);
-}
-    }//GEN-LAST:event_checkActionPerformed
-
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        // TODO add your handling code here:
-        int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Creat a New Bill ?");
-        if(Yes == 0){
-         id_create();   
-         check.setEnabled(false);
-         p_name.setText("");
-         desc.setText("");
-         pri.setText("");
-         tax.setSelectedIndex(0);
-         total.setText("");
-         total2.setText("");
-        quan.setText("");
-        c_name.setText("");
-        c_eml.setText("");
-        c_phone.setText("");
-        
-        addr.setText("");
-        pin.setText("");
-        all_t.setText("");
-        pro_id.setText("");
-         DefaultTableModel tm=(DefaultTableModel) table.getModel();
-        while(tm.getRowCount()>0){
-            tm.setRowCount(0);
-        }
-        }else{
-             int No=0;
-                if (No == 0){
-                }
-               }
-       
-        
-    }//GEN-LAST:event_jLabel15MouseClicked
-
-    public void fast(){
-        String value = null;
-        String str = null;
-          
-    if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-            column = 0;
-                ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myList.add(str); 
-                String it = myList.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-                itmt = ppp;
-    }
-    }}
- public void aaaa(){
-     String value = null;
-     String str = null;
-      if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-    column = 1;
-                ArrayList<String> myListt = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myListt.add(str); 
-                String it = myListt.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-              dsct = ppp;
-            }
-      }
-}   
-    
- public void bbbb(){
-     String value = null;
-     String str = null;
-      if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-     column = 2;
-                ArrayList<String> myLista = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myLista.add(str); 
-                String it = myLista.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-                quant = ppp;
-            }
-      }
-}   
- public void cccc(){
-     String value = null;
-     String str = null;
-      if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-    column = 3;
-                ArrayList<String> myListb = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myListb.add(str); 
-                String it = myListb.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-                prit = ppp;
-            }
-      }
-}   
- 
- public void dddd(){
-     String value = null;
-     String str = null;
-      if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-     column = 4;
-                ArrayList<String> myListc = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myListc.add(str); 
-                String it = myListc.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-                taxt = ppp;
-            }
-      }
-}   
- 
- public void eeee(){
-     String value = null;
-     String str = null;
-      if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-     column = 5;
-                ArrayList<String> myListd = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myListd.add(str); 
-                String it = myListd.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-                total_wgt = ppp;
-                
-            }
-      }
-}   
- 
- public void ffff(){
-     String value = null;
-     String str = null;
-     
-      if (table.getRowCount() > 0) {
-            int selectedRow[] = table.getSelectedRows();
-    
-                  column = 6;
-                ArrayList<String> myListe = new ArrayList<String>(Arrays.asList(str));
-                for (int i = 0 ; i < selectedRow.length; i++) {
-                value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
-                str =sb.toString();
-                myListe.add(str); 
-                String it = myListe.toString();
-                String regex = "null";
-                String regexx = "]";
-                String regexxx = "[";
-                String reget = ",";
-                String v =   it.replaceAll(regex,"");
-                String p = v.replace(regexx, "");
-                String pp = p.replace(regexxx, "");
-                String ppp = pp.replace(reget, "");
-                total_gt = ppp;
-               
-            }
-      }
-}   
- public void sums(){
-     double sum=0;
-     for(int i=0;i<table.getRowCount();i++ )
-     {
-       sum=sum+Double.parseDouble(table.getValueAt(i, 6).toString());
-      // System.out.println("sssss");
-     }  
-     sumo = Double.toString(sum);
-    all_t.setText(Double.toString(sum));
-    // System.out.println("sum"+sum);
- }
  
     /**
      * @param args the command line arguments
@@ -1176,6 +527,18 @@ try {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1194,33 +557,18 @@ try {
     private javax.swing.JTextField c_eml;
     private javax.swing.JTextField c_name;
     private javax.swing.JTextField c_phone;
-    private javax.swing.JButton check;
-    private javax.swing.JTextField desc;
     private javax.swing.JTextField inv_no;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1228,17 +576,11 @@ try {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField p_name;
     private javax.swing.JTextField pin;
-    private javax.swing.JTextField pri;
-    private javax.swing.JTextField pro_id;
-    private javax.swing.JComboBox<String> ps;
-    private javax.swing.JTextField quan;
+    private javax.swing.JComboBox<String> pss;
     private javax.swing.JTable table;
-    private javax.swing.JComboBox<String> tax;
-    private javax.swing.JTextField total;
-    private javax.swing.JTextField total2;
     // End of variables declaration//GEN-END:variables
 }

@@ -2554,7 +2554,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jPanel54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel54MouseClicked
         // TODO add your handling code here:
-        BILL_PRINT_MA bp = new BILL_PRINT_MA();
+        BILL_MA bp = new BILL_MA();
          String name = mng_name.getText();
          String ID = mng_id.getText();
          String t1 = time1.getText();

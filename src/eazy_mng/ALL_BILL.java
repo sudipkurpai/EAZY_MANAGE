@@ -27,6 +27,7 @@ public class ALL_BILL extends javax.swing.JFrame {
     String Address =null;
     String date=null;
     String time = null;
+    String inv=null;
    // String d1=null;
    // String d2 = null;
     /**
@@ -181,7 +182,7 @@ public class ALL_BILL extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Invoice No.", "Customer Name", "Date", "Time", "Total ", "Payment Status", "Bill Status"
+                "Invoice No.", "Customer Name", "Date", "Time", "Total ", "Bill Status", "Payment Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -321,13 +322,10 @@ public class ALL_BILL extends javax.swing.JFrame {
         }
     }
     
-    
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-         String inv = Invoice.getText();
+    public void allss(){
          if(c1.getDate()== null || c2.getDate()== null){
             // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         if (bill_s.getSelectedItem().equals("All Bill")){
+       //  if (bill_s.getSelectedItem().equals("All Bill")){
             
          try {
         
@@ -357,8 +355,8 @@ public class ALL_BILL extends javax.swing.JFrame {
           
             }catch(Exception e){
             System.out.println("error"+e);
-        }
-         }
+        
+            }
          }else{
           
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
@@ -366,7 +364,7 @@ public class ALL_BILL extends javax.swing.JFrame {
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
        
-        if (bill_s.getSelectedItem().equals("All Bill")){
+      //  if (bill_s.getSelectedItem().equals("All Bill")){
             
          try {
         
@@ -397,11 +395,12 @@ public class ALL_BILL extends javax.swing.JFrame {
             }catch(Exception e){
             System.out.println("error"+e);
         }
-        }
          }
-         if(c1.getDate()== null || c2.getDate()== null){
+    }
+    public void pend(){
+        if(c1.getDate()== null || c2.getDate()== null ){
             // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         if (bill_s.getSelectedItem().equals("Pending Bill")){
+        // if (bill_s.getSelectedItem().equals("Pending Bill")){
              
             
          try {
@@ -434,7 +433,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             }catch(Exception e){
             System.out.println("error"+e);
         }
-         }
+         
          } else{
             
             
@@ -467,9 +466,13 @@ public class ALL_BILL extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
          }
-        if(c1.getDate()== null || c2.getDate()== null){
+    }
+    
+    public void succes(){
+         
+        if(c1.getDate()== null || c2.getDate()== null ){
             // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         if (bill_s.getSelectedItem().equals("Success Bill")){
+       //  if (bill_s.getSelectedItem().equals("Success Bill")){
             
          try {
         
@@ -500,7 +503,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             }catch(Exception e){
             System.out.println("error"+e);
         }
-         }
+         
          }else{
                
          try {
@@ -533,9 +536,12 @@ public class ALL_BILL extends javax.swing.JFrame {
         
         }
          }
-         if(c1.getDate()== null || c2.getDate()== null){
+    }
+    
+    public void cac(){
+        if(c1.getDate()== null || c2.getDate()== null ){
             // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         if (bill_s.getSelectedItem().equals("Cancle Bill")){
+        // if (bill_s.getSelectedItem().equals("Cancle Bill")){
             
          try {
         
@@ -566,8 +572,8 @@ public class ALL_BILL extends javax.swing.JFrame {
             }catch(Exception e){
             System.out.println("error"+e);
         }
-         
-         }else
+         } 
+         else
          { 
          try {
          SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
@@ -598,16 +604,35 @@ public class ALL_BILL extends javax.swing.JFrame {
             System.out.println("error"+e);
        
             }
-            }}
-        
+         }
+    }
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         inv = Invoice.getText();
+        if (bill_s.getSelectedItem().equals("All Bill")){
+            allss();
+        }else if (bill_s.getSelectedItem().equals("Pending Bill")){
+            pend();
+        } else if (bill_s.getSelectedItem().equals("Success Bill")){
+        succes();
+       }if (bill_s.getSelectedItem().equals("Cancle Bill")){
+           cac();
+       }
+  
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        if (bill_s.getSelectedItem().equals("All Bill")){
         all();
+        }else if (bill_s.getSelectedItem().equals("Pending Bill")){
         Pending();
-        Succes();
+        }
+        else  if (bill_s.getSelectedItem().equals("Success Bill")){ 
+                Succes();
+        }else  if (bill_s.getSelectedItem().equals("Cancle Bill")){
         Cencle();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
   
@@ -636,250 +661,528 @@ public class ALL_BILL extends javax.swing.JFrame {
      na.setText(model.getValueAt(i,1).toString());
     }//GEN-LAST:event_tableMouseClicked
 
+    
+    public void all_as(){
+         if(c1.getDate()== null || c2.getDate()== null){ 
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id like '%"+inv+"%' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+          //  ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               String nnn =rs.getString("C_name");
+             //  na.setText(nnn);
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                   
+                   model.addRow(o);
+               }while (rs.next());
+           
+           }else{
+              //  JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+          
+         }else{
+          
+            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+            
+      //  if (bill_s.getSelectedItem().equals("All Bill")){
+            
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%'  and Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+          //  ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               String nnn =rs.getString("C_name");
+           //    na.setText(nnn);
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                   
+                   model.addRow(o);
+               }while (rs.next());
+           }else{
+            //    JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+         
+            }catch(Exception e){
+            System.out.println("error"+e);
+            }
+         }}
+   public void pend_as(){
+            if (c1.getDate()== null || c2.getDate()== null){
+                  try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Pending Bill'  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+             }else{
+                try {
+             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+                
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Pending Bill' and  Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+        }
+        
+  public void suc_as(){
+      
+            if(c1.getDate()== null || c2.getDate()== null){
+                  try {
+                      
+                  
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Success Bill'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+             }else{
+                try {
+        
+            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status= 'Success Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+               // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            }
+        }
+  
+  public void can_as(){
+        if(c1.getDate()== null || c2.getDate()== null){
+          try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Cancle Bill'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            }else{
+         try {
+        
+             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate()); 
+            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Cancle Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+              // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+         
+        
+  }
     private void InvoiceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InvoiceKeyReleased
         // TODO add your handling code here:
-//        String inv = Invoice.getText();
-//         if(c1.getDate()== null || c2.getDate()== null){
-//       //      JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-//          if (bill_s.getSelectedItem().equals("All Bill")){
-//            
-//         try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id like '%"+inv+"%' ";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//           // ps.setString(1,inv);
-//          //  ps.setString(2,date);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               String nnn =rs.getString("C_name");
-//             //  na.setText(nnn);
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                   // JOptionPane.showMessageDialog(this, "Product Found");
-//                   
-//                   model.addRow(o);
-//               }while (rs.next());
-//           
-//           }else{
-//                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//          }
-//         }else{
-//          
-//            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-//            String d1 = s.format(c1.getDate());
-//          //  System.out.println("!@##%$$%$"+d1);
-//            String d2 = s.format(c2.getDate());
-//            
-//        if (bill_s.getSelectedItem().equals("All Bill")){
-//            
-//         try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%'  and Date between '"+d1+"' and '"+d2+"' ";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//           // ps.setString(1,inv);
-//          //  ps.setString(2,date);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               String nnn =rs.getString("C_name");
-//           //    na.setText(nnn);
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                   // JOptionPane.showMessageDialog(this, "Product Found");
-//                   
-//                   model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//            //    JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//        }
-//        else if (bill_s.getSelectedItem().equals("Pending Bill")){
-//            if (c1.getDate()== null || c2.getDate()== null){
-//                  try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Pending Bill'  ";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//          //  ps.setString(1,inv);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                  //  JOptionPane.showMessageDialog(this, "Product Found");
-//                    model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//             }else{
-//                
-//            }
-//            
-//         try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Pending Bill' and  Date between '"+d1+"' and '"+d2+"' ";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//          //  ps.setString(1,inv);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                  //  JOptionPane.showMessageDialog(this, "Product Found");
-//                    model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//        }else if (bill_s.getSelectedItem().equals("Success Bill")){
-//             if(c1.getDate()== null || c2.getDate()== null){
-//                  try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Success Bill'";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//          //  ps.setString(1,inv);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                  //  JOptionPane.showMessageDialog(this, "Product Found");
-//                    model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//             }else{
-//                }try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status= 'Success Bill' and Date between '"+d1+"' and '"+d2+"' ";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//           // ps.setString(1,inv);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                   // JOptionPane.showMessageDialog(this, "Product Found");
-//                    model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//               // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//        }
-//        
-//        else if (bill_s.getSelectedItem().equals("Cancle Bill")){
-//            if(c1.getDate()== null || c2.getDate()== null){
-//                  try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Cancle Bill'";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//          //  ps.setString(1,inv);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                  //  JOptionPane.showMessageDialog(this, "Product Found");
-//                    model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//            }else{
-//         try {
-//        
-//             //Data fetch from database
-//            String sql = "Select * From add_bill where Invoice_id Like '%"+inv+"%' and Bill_status = 'Cancle Bill' and Date between '"+d1+"' and '"+d2+"' ";
-//            Connection con=DATABASE_CONNECTION.getConnection();
-//            PreparedStatement ps=con.prepareStatement(sql);
-//           // ps.setString(1,inv);
-//            ResultSet rs=ps.executeQuery();
-//           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-//           model.setRowCount(0);
-//           if(rs.next()){
-//               do
-//               {
-//                   Object o []={
-//                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-//                   // JOptionPane.showMessageDialog(this, "Product Found");
-//                    model.addRow(o);
-//               }while (rs.next());
-//           }else{
-//              // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-//           }
-//          
-//            }catch(Exception e){
-//            System.out.println("error"+e);
-//        }
-//        }
-//         }
-//         }
+      String id = Invoice.getText();
+         
+       //      JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
+          if (bill_s.getSelectedItem().equals("All Bill")){
+              
+         // all_as();
+          if(c1.getDate()== null || c2.getDate()== null){ 
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id like '%"+id+"%' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+          //  ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               String nnn =rs.getString("C_name");
+             //  na.setText(nnn);
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                   
+                   model.addRow(o);
+               }while (rs.next());
+           
+           }else{
+              //  JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+          }  
+         else{
+          
+            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+            
+      //  if (bill_s.getSelectedItem().equals("All Bill")){
+            
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%'  and Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+          //  ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               String nnn =rs.getString("C_name");
+           //    na.setText(nnn);
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                   
+                   model.addRow(o);
+               }while (rs.next());
+           }else{
+            //    JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+         
+            }catch(Exception e){
+            System.out.println("error"+e);
+            }
+         }
+        
+          }else if (bill_s.getSelectedItem().equals("Pending Bill")){
+            
+       // pend_as();
+       if (c1.getDate()== null || c2.getDate()== null){
+                  try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Pending Bill'  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+             }else{
+                try {
+             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+                
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Pending Bill' and  Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+            
+        }else if (bill_s.getSelectedItem().equals("Success Bill")){
+         //  suc_as();  
+         
+         if(c1.getDate()== null || c2.getDate()== null){
+                  try {
+                      
+                  
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Success Bill'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+             }else{
+                try {
+        
+            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate());
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status= 'Success Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+               // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            }
+        
+        } else if (bill_s.getSelectedItem().equals("Cancle Bill")){
+           // can_as();
+            if(c1.getDate()== null || c2.getDate()== null){
+          try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Cancle Bill'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+          //  ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                  //  JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            }else{
+         try {
+        
+             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+          //  System.out.println("!@##%$$%$"+d1);
+            String d2 = s.format(c2.getDate()); 
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Cancle Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           // ps.setString(1,inv);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+              // JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+         
+        }
     }//GEN-LAST:event_InvoiceKeyReleased
 
     private void InvoiceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InvoiceFocusGained
@@ -913,9 +1216,37 @@ public class ALL_BILL extends javax.swing.JFrame {
        
           // String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+"'  ";
             
-        if (bill_s.getSelectedItem().equals("All Bill")){
+       // if (bill_s.getSelectedItem().equals("All Bill")){
              if(c1.getDate()== null || c2.getDate()== null){
-             JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
+                 try {
+        
+           
+            String sql = "Select * From add_bill  ";
+           // 
+           //'04-02-2021'
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+           //  ps.setString(1,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        
+          //   JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }else{
           
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
@@ -950,14 +1281,42 @@ public class ALL_BILL extends javax.swing.JFrame {
             }catch(Exception e){
             System.out.println("error"+e);
         }
-        }
-        }
+        
+             } 
     }
      public void Pending(){
          
-         if (bill_s.getSelectedItem().equals("Pending Bill")){
+         
               if(c1.getDate()== null || c2.getDate()== null){
-             JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
+                  
+                   try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where  Bill_status = 'Pending Bill' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+              
+                  
+          //   JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }else{
           
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
@@ -990,14 +1349,41 @@ public class ALL_BILL extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
               }
-         }
+         
          
     }
     
       public void Succes(){
-          if (bill_s.getSelectedItem().equals("Success Bill")){
+         
            if(c1.getDate()== null || c2.getDate()== null){
-             JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
+               
+                try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where  Bill_status= 'Success Bill'  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+          
+            // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }else{
           
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
@@ -1030,13 +1416,39 @@ public class ALL_BILL extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
           }
-          }
+          
     }
       public void Cencle(){
            
-         if (bill_s.getSelectedItem().equals("Cancle Bill")){
+        
           if(c1.getDate()== null || c2.getDate()== null){
-             JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
+          
+                try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where  Bill_status = 'Cancle Bill'  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               do
+               {
+                   Object o []={
+                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
+                   // JOptionPane.showMessageDialog(this, "Product Found");
+                    model.addRow(o);
+               }while (rs.next());
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Bills Not Found", JOptionPane.ERROR_MESSAGE);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+              //JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }else{
           
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
@@ -1069,7 +1481,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
           }
-           }
+           
     }
     
     /**

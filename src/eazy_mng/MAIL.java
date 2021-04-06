@@ -23,6 +23,7 @@ class MAIL{
 		props.put("mail.smtp.socketFactory.port", "465"); //SSL Port
 		props.put("mail.smtp.socketFactory.class",
 				"javax.net.ssl.SSLSocketFactory"); //SSL Factory Class
+                props.put("mail.smtp.starttls.enable","true");
 		props.put("mail.smtp.auth", "true"); //Enabling SMTP Authentication
 		props.put("mail.smtp.port", "465"); //SMTP Port
           //get Session   
