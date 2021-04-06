@@ -192,7 +192,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 730, 260));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 730, 210));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 204));

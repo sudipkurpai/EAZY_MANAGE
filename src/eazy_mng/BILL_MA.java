@@ -379,7 +379,7 @@ public class BILL_MA extends javax.swing.JFrame {
         all_t.setBackground(new java.awt.Color(255, 255, 255));
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         all_t.setForeground(new java.awt.Color(204, 0, 0));
-        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 204))); // NOI18N
+        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "ALL TOTAL", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 204))); // NOI18N
         jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 170, 60));
 
         quan.setBackground(new java.awt.Color(255, 255, 255));
@@ -538,7 +538,7 @@ public class BILL_MA extends javax.swing.JFrame {
         ps.setBackground(new java.awt.Color(255, 255, 255));
         ps.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ps.setForeground(new java.awt.Color(0, 0, 255));
-        ps.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "By Cash", "By Card", "By Online" }));
+        ps.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "By Cash", "By Card", "By Online" }));
         ps.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
         jPanel2.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 140, 60));
 
@@ -874,13 +874,14 @@ public class BILL_MA extends javax.swing.JFrame {
 //         int i = table.getSelectedRow();
 //     DefaultTableModel model=(DefaultTableModel)table.getModel();
 //        System.out.println(model.getValueAt(i,6).toString());
-//        
+//   
+
 try {
      sums(); 
-    String value = null;
-    String str = null;
     
     
+    String rea=null;
+    String ref = null;
      
     String Ca_name=c_name.getText();
     String Ca_eml=c_eml.getText();
@@ -894,10 +895,22 @@ try {
   //  String All_t=all_t.getText();
     String bill_s=bs.getSelectedItem().toString();
     String pay_s=ps.getSelectedItem().toString();
-   
+   if (bs.getSelectedItem().equals("-- Select --") || ps.getSelectedItem().equals("-- Select --")){
+    
+    JOptionPane.showMessageDialog(null,"Please Select Bill Status And Payment Status For Continue");
+}
+   else{
     int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Save This Bill ?");
         if(Yes == 0){
-          fast(); 
+            
+            
+            
+            
+            
+            
+            
+            
+            fast(); 
             aaaa();
             bbbb();
             cccc();
@@ -905,7 +918,7 @@ try {
             eeee();
             ffff();
                 
-            ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, addd, Pinn, Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo, bill_s, pay_s);
+            ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, addd, Pinn, Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo, bill_s, pay_s,rea,ref);
                //               add_bill(Ca_name, Ca_eml, Ca_phone,addd,Pinn Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo,bill_s,pay_s);   
             ID_STORE_FETCH.invoice(Invvvv.toString());
             print.setEnabled(true);
@@ -914,11 +927,12 @@ try {
                 if (No == 0){
                 }
                }
-           
+     }
     
 }catch(Exception e){
     System.out.println("Error"+e);
 }
+
     }//GEN-LAST:event_checkActionPerformed
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
@@ -979,10 +993,13 @@ try {
                 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                    System.out.println("vvvvvvv"+value);
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append(value+"#");
                 str =sb.toString();
+                    System.out.println("@@@@@@@" +str);
                 myList.add(str); 
+                System.out.println("sssssssssss"+sb);
                 String it = myList.toString();
                 String regex = "null";
                 String regexx = "]";
@@ -1005,7 +1022,7 @@ try {
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append( value+"#");
                 str =sb.toString();
                 myListt.add(str); 
                 String it = myListt.toString();
@@ -1032,7 +1049,7 @@ try {
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append( value+"#");
                 str =sb.toString();
                 myLista.add(str); 
                 String it = myLista.toString();
@@ -1058,7 +1075,7 @@ try {
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append( value+"#");
                 str =sb.toString();
                 myListb.add(str); 
                 String it = myListb.toString();
@@ -1085,7 +1102,7 @@ try {
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append( value+"#");
                 str =sb.toString();
                 myListc.add(str); 
                 String it = myListc.toString();
@@ -1112,7 +1129,7 @@ try {
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append( value+"#");
                 str =sb.toString();
                 myListd.add(str); 
                 String it = myListd.toString();
@@ -1142,7 +1159,7 @@ try {
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
                 StringBuilder sb = new StringBuilder();
-                sb.append( "#"+ value);
+                sb.append(  value+"#");
                 str =sb.toString();
                 myListe.add(str); 
                 String it = myListe.toString();

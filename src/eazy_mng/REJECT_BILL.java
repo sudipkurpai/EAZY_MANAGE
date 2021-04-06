@@ -5,6 +5,17 @@
  */
 package eazy_mng;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Sudip Maiti
@@ -26,6 +37,14 @@ public class REJECT_BILL extends javax.swing.JFrame {
      */
     public REJECT_BILL() {
         initComponents();
+        rb.setEnabled(false);
+        date();
+        time();
+        na.setEditable(false);
+        b_date.setEditable(false);
+        all_t.setEditable(false);
+        pss.setEditable(false);
+        Bs.setEditable(false);
     
     }
     void cb (String fullname, String mng_Id,String email,String t1,String d1,String p) {
@@ -50,22 +69,30 @@ public class REJECT_BILL extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        inv = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        na = new javax.swing.JTextField();
+        rb = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
+        b_date = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        all_t = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        pss = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        reson = new javax.swing.JTextPane();
         jLabel16 = new javax.swing.JLabel();
+        refund = new javax.swing.JComboBox<>();
+        Bs = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        cbs = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        daaa = new javax.swing.JLabel();
+        tii = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -107,90 +134,165 @@ public class REJECT_BILL extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 50));
 
-        jPanel3.setBackground(new java.awt.Color(210, 169, 251));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 255));
-        jTextField2.setText("  Enter Invoice No.");
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 30));
+        inv.setBackground(new java.awt.Color(255, 255, 255));
+        inv.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        inv.setForeground(new java.awt.Color(0, 0, 255));
+        inv.setText("Enter Invoice No.");
+        inv.setToolTipText("Enter Invoice No");
+        inv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inv.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                invFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                invFocusLost(evt);
+            }
+        });
+        jPanel3.add(inv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 200, 30));
 
         jButton2.setBackground(new java.awt.Color(0, 224, 201));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/replay.png"))); // NOI18N
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 30));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 40, 30));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 204));
         jLabel12.setText("Customer Name :");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 100, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, -1));
 
         jButton7.setBackground(new java.awt.Color(0, 224, 201));
         jButton7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 204));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search-magnifier-interface-symbol (1).png"))); // NOI18N
-        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 40, 30));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 40, 30));
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 160, 30));
+        na.setBackground(new java.awt.Color(255, 255, 255));
+        na.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        na.setForeground(new java.awt.Color(0, 0, 0));
+        na.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(na, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 30));
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 255));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 255, 0));
-        jButton3.setText("Reject Bill");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, 110, 30));
+        rb.setBackground(new java.awt.Color(0, 0, 255));
+        rb.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        rb.setForeground(new java.awt.Color(0, 255, 0));
+        rb.setText("Reject Bill");
+        rb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActionPerformed(evt);
+            }
+        });
+        jPanel3.add(rb, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 110, 40));
 
         jButton5.setBackground(new java.awt.Color(0, 255, 51));
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 255));
         jButton5.setText("New Bill");
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 90, 30));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 90, 30));
 
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 160, 30));
+        b_date.setBackground(new java.awt.Color(255, 255, 255));
+        b_date.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        b_date.setForeground(new java.awt.Color(0, 0, 0));
+        b_date.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 160, 30));
 
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 204));
         jLabel13.setText("Date : ");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 50, -1));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 50, 20));
 
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 160, 30));
+        all_t.setBackground(new java.awt.Color(255, 255, 255));
+        all_t.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        all_t.setForeground(new java.awt.Color(0, 0, 0));
+        all_t.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 160, 30));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 204));
         jLabel14.setText("Total :");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 50, -1));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 50, -1));
 
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 160, 30));
+        pss.setBackground(new java.awt.Color(255, 255, 255));
+        pss.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        pss.setForeground(new java.awt.Color(0, 0, 0));
+        pss.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 160, 30));
 
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel15.setText("Reason for Cancel  Bill :");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 160, -1));
+        jLabel15.setText("Reason for Reject  Bill :");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 230, 30));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(reson);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 730, 110));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 730, 110));
 
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 204));
         jLabel16.setText("Payment Status :");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 100, -1));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 100, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 320));
+        refund.setBackground(new java.awt.Color(204, 255, 255));
+        refund.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        refund.setForeground(new java.awt.Color(0, 0, 153));
+        refund.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "By Cash", "By Online" }));
+        refund.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Money Refund", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel3.add(refund, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, 50));
+
+        Bs.setBackground(new java.awt.Color(255, 255, 255));
+        Bs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bs.setForeground(new java.awt.Color(153, 0, 0));
+        Bs.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(Bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 160, 30));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel17.setText("Bill Status :");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 90, 30));
+
+        cbs.setBackground(new java.awt.Color(204, 255, 255));
+        cbs.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        cbs.setForeground(new java.awt.Color(153, 0, 0));
+        cbs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Reject Bill" }));
+        cbs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel3.add(cbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, 50));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel18.setText("Date : ");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 50, -1));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel19.setText("Time : ");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
+
+        daaa.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        daaa.setForeground(new java.awt.Color(255, 0, 0));
+        daaa.setText("23-07-2030");
+        daaa.setToolTipText("");
+        jPanel3.add(daaa, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 110, 20));
+
+        tii.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tii.setForeground(new java.awt.Color(255, 0, 0));
+        tii.setText("12:25:59  AM");
+        tii.setToolTipText("");
+        jPanel3.add(tii, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 20));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 770, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,10 +305,29 @@ public class REJECT_BILL extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(770, 370));
+        setSize(new java.awt.Dimension(770, 408));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+     void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MMMM-yyyy");
+        daaa.setText(s.format(d));
+    }
+    
+
+    void time() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+                tii.setText(s.format(d));
+            }
+        }
+        ).start();
+    }
+    
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
          DASHBOARD_M dm = new DASHBOARD_M();
@@ -214,6 +335,117 @@ public class REJECT_BILL extends javax.swing.JFrame {
        dm.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        String inve=inv.getText();
+        if (inv.getText().equals("")||inv.getText().equals("Enter Invoice No.")){
+          JOptionPane.showMessageDialog(null, "At First Insert An Invoice No ");
+        }else{
+            
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id = ?  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,inve);
+          //  ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+          
+           
+           if(rs.next()){
+               String nnn =rs.getString("C_name");
+               String bDD =rs.getString("Date");
+               
+               String Taall =rs.getString("All_total");
+               String Pay =rs.getString("Payment_status");
+               String BIl =rs.getString("Bill_status");
+               na.setText(nnn);
+               b_date.setText(bDD);
+               all_t.setText(Taall);
+               pss.setText(Pay);
+               Bs.setText(BIl);
+               rb.setEnabled(true);
+           }else{
+                JOptionPane.showMessageDialog(null,"No Bills Found ", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+                rb.setEnabled(false);
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        
+            }
+        }
+        
+         
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void rbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActionPerformed
+        // TODO add your handling code here:
+       
+            
+        String Dattt=daaa.getText();
+        String ttt=tii.getText();
+        String bsss=cbs.getSelectedItem().toString();
+        String Ref=refund.getSelectedItem().toString();
+        String rea=reson.getText();
+        String invs=inv.getText();
+         if (reson.getText().equals("")){
+             JOptionPane.showMessageDialog(null,"Give A Reson For Reject Bill");
+            
+        }else if(refund.getSelectedItem().equals("-- Select --")||cbs.getSelectedItem().equals("-- Select --")){
+            JOptionPane.showMessageDialog(null,"Slelect Refund Option And Bill Status");
+        }else 
+        {
+            int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Reject This Bill ?");
+        
+        if(Yes == 0){
+            
+        ADD_BILL_DATAOBJECT.Reject_bill(invs, Dattt, ttt, bsss, Ref, rea);
+        
+        }else{
+             int No=0;
+                if (No == 0){
+                }
+               }
+        }
+    }//GEN-LAST:event_rbActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        rb.setEnabled(false);
+        na.setText("");
+        b_date.setText("");
+        all_t.setText("");
+        pss.setText("");
+        Bs.setText("");
+        reson.setText("");
+        refund.setSelectedIndex(0);
+        cbs.setSelectedIndex(0);
+        inv.setText("Enter Invoice No.");
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void invFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_invFocusGained
+        // TODO add your handling code here:
+          if(inv.getText().equals("Enter Invoice No.")){
+            
+           inv.setText("");
+    }
+        
+    }//GEN-LAST:event_invFocusGained
+
+    private void invFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_invFocusLost
+        // TODO add your handling code here:
+        
+        if(inv.getText().equals("")){
+           
+            inv.setText("Enter Invoice No.");
+           
+        }
+        
+    }//GEN-LAST:event_invFocusLost
 
     /**
      * @param args the command line arguments
@@ -282,8 +514,13 @@ public class REJECT_BILL extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Bs;
+    private javax.swing.JTextField all_t;
+    private javax.swing.JTextField b_date;
+    private javax.swing.JComboBox<String> cbs;
+    private javax.swing.JLabel daaa;
+    private javax.swing.JTextField inv;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
@@ -292,16 +529,19 @@ public class REJECT_BILL extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextField na;
+    private javax.swing.JTextField pss;
+    private javax.swing.JButton rb;
+    private javax.swing.JComboBox<String> refund;
+    private javax.swing.JTextPane reson;
+    private javax.swing.JLabel tii;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,11 +16,11 @@ public class ADD_BILL_DATAOBJECT {
     
      public static int add_bill (String C_name, String C_email, 
             String Phone,String Add,String Pin,String Invoice_id, String Date, String Time, String  Product_id, String Product_name, 
-            String Description,String Quality, String Price, String Tax, String Total_without_gst,String Total_with_gst, String All_total,String Bill_status,String Payment_status){
+            String Description,String Quality, String Price, String Tax, String Total_without_gst,String Total_with_gst, String All_total,String Bill_status,String Payment_status,String Refund, String Reson){
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
-                   PreparedStatement ps=con.prepareStatement("INSERT INTO add_bill (C_name, C_email, Phone,Address,Pin, Invoice_id , Date, Time,Product_id, Product_name, Description, Quality, Price, Tax, Total_without_gst,Total_with_gst,All_total,Bill_status,Payment_status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO add_bill (C_name, C_email, Phone,Address,Pin, Invoice_id , Date, Time,Product_id, Product_name, Description, Quantity, Price, Tax, Total_without_gst,Total_with_gst,All_total,Bill_status,Payment_status,Refund_status,Reject_reson) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                    ps.setString(1, C_name);  
                    System.out.println("111111111"+C_name);
                    ps.setString(2, C_email);
@@ -53,6 +53,8 @@ public class ADD_BILL_DATAOBJECT {
                    ps.setString(17, All_total);
                    ps.setString(18, Bill_status);
                    ps.setString(19, Payment_status);
+                    ps.setString(20, Reson);
+                   ps.setString(21, Invoice_id);  
                   status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){
@@ -62,4 +64,28 @@ public class ADD_BILL_DATAOBJECT {
               return status;
 }
     
+
+
+public static int Reject_bill (String Invoice_id,String Date, String Time,String Bill_status,String Refund, String Reson){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("Update add_bill set Date=?, Time=?,Bill_status=?,Refund_status=?,Reject_reson=? where Invoice_id=? ");
+                  
+                   
+                   ps.setString(1, Date);
+                   ps.setString(2, Time);
+                   ps.setString(3, Bill_status);
+                   ps.setString(4, Refund);
+                   ps.setString(5, Reson);
+                   ps.setString(6, Invoice_id);  
+                
+                  status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+}
 }

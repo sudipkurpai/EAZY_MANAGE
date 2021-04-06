@@ -5,24 +5,15 @@
  */
 package eazy_mng;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.math.BigInteger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
-import static org.eclipse.persistence.expressions.ExpressionOperator.sum;
 
 /**
  *
@@ -46,7 +37,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
      String Ttime=null;
      
     
-     String Inv_no=null;
+     String Inv_no="null";
     
     /**
      * Creates new form BILL_PRINT
@@ -65,8 +56,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         pin.setEditable(false);
         inv_no.setEditable(false);
         all_t.setEditable(false);
-        bs.setEditable(false);
-        pss.setEditable(false);
+        
          
         // fast();
     }
@@ -81,7 +71,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         date = d1;
         ph= p;
       
-       fast();
+        fast();
     }
    
    
@@ -127,9 +117,9 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         all_t = new javax.swing.JTextField();
-        pss = new javax.swing.JComboBox<>();
-        bs = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        bs = new javax.swing.JLabel();
+        pss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -318,7 +308,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 b_dateActionPerformed(evt);
             }
         });
-        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 90, 20));
+        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 90, 20));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 204));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 204));
@@ -329,40 +319,18 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Items", "Description", "", "Quantity", "Price", "Tax", "Total", "Total With GST"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(table);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 870, 340));
 
         all_t.setBackground(new java.awt.Color(255, 255, 255));
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        all_t.setForeground(new java.awt.Color(204, 0, 0));
-        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "ALL TOTAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 170, 60));
-
-        pss.setBackground(new java.awt.Color(255, 255, 255));
-        pss.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        pss.setForeground(new java.awt.Color(0, 0, 255));
-        pss.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "By Cash", "By Card", "By Online" }));
-        pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
-        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 140, 60));
-
-        bs.setBackground(new java.awt.Color(255, 255, 255));
-        bs.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        bs.setForeground(new java.awt.Color(0, 0, 255));
-        bs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Success Bill" }));
-        bs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 51, 255))); // NOI18N
-        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 140, 60));
+        all_t.setForeground(new java.awt.Color(153, 0, 0));
+        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, 170, 60));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -370,6 +338,18 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jButton3.setText("PRINT");
         jButton3.setBorder(null);
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 110, 40));
+
+        bs.setBackground(new java.awt.Color(255, 255, 255));
+        bs.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        bs.setForeground(new java.awt.Color(153, 0, 0));
+        bs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 150, 60));
+
+        pss.setBackground(new java.awt.Color(255, 255, 255));
+        pss.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        pss.setForeground(new java.awt.Color(153, 0, 0));
+        pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 150, 60));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 910, 600));
 
@@ -427,17 +407,82 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
               pin.setText(PNNN);
               inv_no.setText(INVb);
               all_t.setText(Taall);
-              bs.setSelectedItem(BIl);
-        //      ps.setSelectedItem(Pay);
+              bs.setText(BIl);
+              pss.setText(Pay);
+              String i = rs.getString("Product_name");
+         //     System.out.println("!!!!!!!!!!"+ i);
+              String actualString = i;
+              String REGEX = "#";
+              Pattern pattern = Pattern.compile(REGEX);
+              String[] array = pattern.split(actualString);
+         //     System.out.println("@@@@@@@@@@"+Arrays.toString(array));
+              model.addColumn("Items", array);
               
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                   // JOptionPane.showMessageDialog(this, "Product Found");
-                   
-                   model.addRow(o);
-               }while (rs.next());
+              String d = rs.getString("Description");
+           //   System.out.println("!!!!!!!!!!"+ d);
+              String actString = d;
+              String REGEX1 = "#";
+              Pattern pattern1 = Pattern.compile(REGEX1);
+              String[] array1 = pattern1.split(actString);
+          //    System.out.println("@@@@@@@@@@"+Arrays.toString(array1));
+              model.addColumn("Description", array1);
+              
+               String q = rs.getString("Quantity");
+           //   System.out.println("!!!!!!!!!!"+ q);
+              String actString1 = q;
+              String REGEX2 = "#";
+              Pattern pattern2 = Pattern.compile(REGEX2);
+              String[] array2 = pattern2.split(actString1);
+           //   System.out.println("@@@@@@@@@@"+Arrays.toString(array2));
+              model.addColumn("Quantity", array2);
+              
+               String pi = rs.getString("Price");
+          //    System.out.println("!!!!!!!!!!"+ pi);
+              String actString3 = pi;
+              String REGEX3 = "#";
+              Pattern pattern3 = Pattern.compile(REGEX3);
+              String[] array3 = pattern3.split(actString3);
+           //   System.out.println("@@@@@@@@@@"+Arrays.toString(array3));
+              model.addColumn("Price", array3);
+              
+               String t = rs.getString("Tax");
+          //    System.out.println("!!!!!!!!!!"+ t);
+              String actString4 = t;
+              String REGEX4 = "#";
+              Pattern pattern4 = Pattern.compile(REGEX4);
+              String[] array4 = pattern4.split(actString4);
+           //   System.out.println("@@@@@@@@@@"+Arrays.toString(array4));
+              
+              model.addColumn("Tax", array4);
+              
+              String twg = rs.getString("Total_without_gst");
+           //   System.out.println("!!!!!!!!!!"+ twg);
+              String actString5 = twg;
+              String REGEX5 = "#";
+              Pattern pattern5 = Pattern.compile(REGEX5);
+              String[] array5 = pattern5.split(actString5);
+            //  System.out.println("@@@@@@@@@@"+Arrays.toString(array5));
+              model.addColumn("Total", array5);
+              
+              String tg = rs.getString("Total_with_gst");
+             
+              String actString6 = tg;
+              String REGEX6 = "#";
+              Pattern pattern6 = Pattern.compile(REGEX6);
+              String[] array6 = pattern6.split(actString6);
+              //System.out.println("@@@@@@@@@@"+Arrays.toString(array6));
+              model.addColumn("Total with GST", array6);
+              
+                
+               // model.addRow(array);
+//               do
+//               {
+//                   Object o []={array1};
+//                       //rs.getString("Product_name"),rs.getString("Description"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Tax"),rs.getString("Total_without_gst"),rs.getString("Total_with_gst")};
+//                   // JOptionPane.showMessageDialog(this, "Product Found");
+//                   
+//                   model.addRow(o);
+//               }while (rs.next());
            }else{
                 JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
@@ -553,7 +598,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     private javax.swing.JTextField all_t;
     private javax.swing.JTextField b_date;
     private javax.swing.JTextField b_t;
-    private javax.swing.JComboBox<String> bs;
+    private javax.swing.JLabel bs;
     private javax.swing.JTextField c_eml;
     private javax.swing.JTextField c_name;
     private javax.swing.JTextField c_phone;
@@ -580,7 +625,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField pin;
-    private javax.swing.JComboBox<String> pss;
+    private javax.swing.JLabel pss;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
