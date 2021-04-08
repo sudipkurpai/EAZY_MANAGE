@@ -62,7 +62,6 @@ public class ALL_BILL extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         Invoice = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -140,12 +139,6 @@ public class ALL_BILL extends javax.swing.JFrame {
             }
         });
         jPanel3.add(Invoice, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 200, 30));
-
-        jButton1.setBackground(new java.awt.Color(0, 204, 51));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 255));
-        jButton1.setText("Download Bill");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 130, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 204));
@@ -227,6 +220,11 @@ public class ALL_BILL extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 255, 0));
         jButton3.setText("Print Bill");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 110, 30));
 
         jButton5.setBackground(new java.awt.Color(0, 255, 51));
@@ -251,7 +249,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         bill_s.setBackground(new java.awt.Color(255, 255, 255));
         bill_s.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bill_s.setForeground(new java.awt.Color(0, 0, 0));
-        bill_s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Bill", "Pending Bill", "Success Bill", "Cancle Bill" }));
+        bill_s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Bill", "Success Bill", "Reject Bill" }));
         jPanel3.add(bill_s, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 140, 30));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 255));
@@ -397,76 +395,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         }
          }
     }
-    public void pend(){
-        if(c1.getDate()== null || c2.getDate()== null ){
-            // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-        // if (bill_s.getSelectedItem().equals("Pending Bill")){
-             
-            
-         try {
-             
-        
-             //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status = 'Pending Bill' ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,inv);
-          //  ps.setString(2,date);
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           if(rs.next()){
-               String nnn =rs.getString("C_name");
-             //  na.setText(nnn);
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                   // JOptionPane.showMessageDialog(this, "Product Found");
-                   
-                   model.addRow(o);
-               }while (rs.next());
-           }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-         
-         } else{
-            
-            
-         try {
-         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-            String d1 = s.format(c1.getDate());
-          //  System.out.println("!@##%$$%$"+d1);
-            String d2 = s.format(c2.getDate());
-             //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id = ? and Bill_status = 'Pending Bill' and  Date between '"+d1+"' and '"+d2+"' ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,inv);
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           if(rs.next()){
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                  //  JOptionPane.showMessageDialog(this, "Product Found");
-                    model.addRow(o);
-               }while (rs.next());
-           }else{
-               JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-         }
-    }
+   
     
     public void succes(){
          
@@ -611,11 +540,9 @@ public class ALL_BILL extends javax.swing.JFrame {
          inv = Invoice.getText();
         if (bill_s.getSelectedItem().equals("All Bill")){
             allss();
-        }else if (bill_s.getSelectedItem().equals("Pending Bill")){
-            pend();
-        } else if (bill_s.getSelectedItem().equals("Success Bill")){
+        }else if (bill_s.getSelectedItem().equals("Success Bill")){
         succes();
-       }if (bill_s.getSelectedItem().equals("Cancle Bill")){
+       }if (bill_s.getSelectedItem().equals("Reject Bill")){
            cac();
        }
   
@@ -625,12 +552,9 @@ public class ALL_BILL extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (bill_s.getSelectedItem().equals("All Bill")){
         all();
-        }else if (bill_s.getSelectedItem().equals("Pending Bill")){
-        Pending();
-        }
-        else  if (bill_s.getSelectedItem().equals("Success Bill")){ 
+        }else   if (bill_s.getSelectedItem().equals("Success Bill")){ 
                 Succes();
-        }else  if (bill_s.getSelectedItem().equals("Cancle Bill")){
+        }else  if (bill_s.getSelectedItem().equals("Reject Bill")){
         Cencle();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -998,69 +922,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             }
          }
         
-          }else if (bill_s.getSelectedItem().equals("Pending Bill")){
-            
-       // pend_as();
-       if (c1.getDate()== null || c2.getDate()== null){
-                  try {
-        
-             //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Pending Bill'  ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-          //  ps.setString(1,inv);
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           if(rs.next()){
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                  //  JOptionPane.showMessageDialog(this, "Product Found");
-                    model.addRow(o);
-               }while (rs.next());
-           }else{
-             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-             }else{
-                try {
-             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-            String d1 = s.format(c1.getDate());
-          //  System.out.println("!@##%$$%$"+d1);
-            String d2 = s.format(c2.getDate());
-                
-        
-             //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Pending Bill' and  Date between '"+d1+"' and '"+d2+"' ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-          //  ps.setString(1,inv);
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           if(rs.next()){
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                  //  JOptionPane.showMessageDialog(this, "Product Found");
-                    model.addRow(o);
-               }while (rs.next());
-           }else{
-             //  JOptionPane.showMessageDialog(null,"Enter Correct Invoice No", "Bill not Found", JOptionPane.ERROR_MESSAGE);
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-        }
-            
-        }else if (bill_s.getSelectedItem().equals("Success Bill")){
+          }else if (bill_s.getSelectedItem().equals("Success Bill")){
          //  suc_as();  
          
          if(c1.getDate()== null || c2.getDate()== null){
@@ -1123,13 +985,13 @@ public class ALL_BILL extends javax.swing.JFrame {
         }
             }
         
-        } else if (bill_s.getSelectedItem().equals("Cancle Bill")){
+        } else if (bill_s.getSelectedItem().equals("Reject Bill")){
            // can_as();
             if(c1.getDate()== null || c2.getDate()== null){
           try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Cancle Bill'";
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Reject Bill'";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
           //  ps.setString(1,inv);
@@ -1158,7 +1020,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate()); 
-            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Cancle Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            String sql = "Select * From add_bill where Invoice_id Like '%"+id+"%' and Bill_status = 'Reject Bill' and Date between '"+d1+"' and '"+d2+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
            // ps.setString(1,inv);
@@ -1210,6 +1072,15 @@ public class ALL_BILL extends javax.swing.JFrame {
          c2.setDate(null);
          allday();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String iiii= Invoice.getText();
+        BILL_PRINT_MA bpm = new BILL_PRINT_MA ();
+        bpm.bp(Name,ID,Email,time,date,Phone, iiii);
+        bpm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     public void all(){
@@ -1284,74 +1155,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         
              } 
     }
-     public void Pending(){
-         
-         
-              if(c1.getDate()== null || c2.getDate()== null){
-                  
-                   try {
-        
-             //Data fetch from database
-            String sql = "Select * From add_bill where  Bill_status = 'Pending Bill' ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           if(rs.next()){
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                   // JOptionPane.showMessageDialog(this, "Product Found");
-                    model.addRow(o);
-               }while (rs.next());
-           }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-              
-                  
-          //   JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         }else{
-          
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-            String d1 = s.format(c1.getDate());
-          //  System.out.println("!@##%$$%$"+d1);
-            String d2 = s.format(c2.getDate());
-        try {
-        
-             //Data fetch from database
-            String sql = "Select * From add_bill where  Bill_status = 'Pending Bill' and Date between '"+d1+"' and '"+d2+"' ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
-           model.setRowCount(0);
-           if(rs.next()){
-               do
-               {
-                   Object o []={
-                       rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                   // JOptionPane.showMessageDialog(this, "Product Found");
-                    model.addRow(o);
-               }while (rs.next());
-           }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-              }
-         
-         
-    }
+     
     
       public void Succes(){
          
@@ -1424,9 +1228,9 @@ public class ALL_BILL extends javax.swing.JFrame {
           if(c1.getDate()== null || c2.getDate()== null){
           
                 try {
-        
+       
              //Data fetch from database
-            String sql = "Select * From add_bill where  Bill_status = 'Cancle Bill'  ";
+            String sql = "Select * From add_bill where  Bill_status = 'Reject Bill'  ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             
@@ -1458,7 +1262,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where  Bill_status = 'Cancle Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            String sql = "Select * From add_bill where  Bill_status = 'Reject Bill' and Date between '"+d1+"' and '"+d2+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             
@@ -1531,7 +1335,6 @@ public class ALL_BILL extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> bill_s;
     private com.toedter.calendar.JDateChooser c1;
     private com.toedter.calendar.JDateChooser c2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

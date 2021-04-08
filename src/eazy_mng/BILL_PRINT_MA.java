@@ -6,6 +6,12 @@
 package eazy_mng;
 
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -87,7 +93,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
+        print = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -124,7 +130,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        print.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,7 +169,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 33));
 
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 110));
+        print.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 110));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -253,14 +259,14 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         b_t.setBackground(new java.awt.Color(255, 255, 255));
         b_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         b_t.setForeground(new java.awt.Color(0, 0, 204));
-        b_t.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        b_t.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         b_t.setBorder(null);
         b_t.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_tActionPerformed(evt);
             }
         });
-        jPanel2.add(b_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, 110, 20));
+        jPanel2.add(b_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 110, 20));
 
         addr.setBackground(new java.awt.Color(255, 255, 255));
         addr.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -289,26 +295,26 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         inv_no.setBackground(new java.awt.Color(255, 255, 255));
         inv_no.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         inv_no.setForeground(new java.awt.Color(0, 0, 204));
-        inv_no.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inv_no.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         inv_no.setBorder(null);
         inv_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inv_noActionPerformed(evt);
             }
         });
-        jPanel2.add(inv_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 120, 20));
+        jPanel2.add(inv_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 120, 20));
 
         b_date.setBackground(new java.awt.Color(255, 255, 255));
         b_date.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         b_date.setForeground(new java.awt.Color(0, 0, 204));
-        b_date.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        b_date.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         b_date.setBorder(null);
         b_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_dateActionPerformed(evt);
             }
         });
-        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 90, 20));
+        jPanel2.add(b_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 90, 20));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 204));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 204));
@@ -329,7 +335,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         all_t.setBackground(new java.awt.Color(255, 255, 255));
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         all_t.setForeground(new java.awt.Color(153, 0, 0));
-        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
+        all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Total", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
         jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, 170, 60));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 0));
@@ -337,6 +343,11 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 0));
         jButton3.setText("PRINT");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 110, 40));
 
         bs.setBackground(new java.awt.Color(255, 255, 255));
@@ -348,10 +359,10 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         pss.setBackground(new java.awt.Color(255, 255, 255));
         pss.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         pss.setForeground(new java.awt.Color(153, 0, 0));
-        pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
+        pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
         jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 150, 60));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 910, 600));
+        print.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 910, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,12 +370,12 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(print, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(print, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(910, 710));
@@ -534,6 +545,43 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        PrinterJob job = PrinterJob.getPrinterJob();
+       String  caa= c_name.getText();
+            job.setJobName(caa+"'s Bill");
+            
+            job.setPrintable((Graphics pg, PageFormat pf, int pageNum) -> {
+                pf.setOrientation(PageFormat.PORTRAIT);
+                if(pageNum > 0){
+                    return Printable.NO_SUCH_PAGE;
+                }                
+                Graphics2D g2 = (Graphics2D)pg;
+                g2.translate(pf.getImageableX(), pf.getImageableY());
+                double theScaleFactor = (567d / 842d);
+                 g2.scale(theScaleFactor, theScaleFactor);
+                
+                //which panel want to print
+                print.print(g2);
+                
+                //after print return state
+                return Printable.PAGE_EXISTS;
+         });
+            //print job complete
+            boolean ok = job.printDialog();
+            if(ok){
+                try{
+                //if success then print  
+                  job.print();
+                }
+                //other wise return error
+                catch (PrinterException ex){
+                    ex.printStackTrace();
+                }
+            }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
        
              
              
@@ -548,27 +596,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BILL_PRINT_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BILL_PRINT_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BILL_PRINT_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BILL_PRINT_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -621,10 +649,10 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField pin;
+    private javax.swing.JPanel print;
     private javax.swing.JLabel pss;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

@@ -110,7 +110,7 @@ public class Test_Class extends javax.swing.JFrame {
                 .addComponent(t)
                 .addGap(61, 61, 61)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,7 +124,7 @@ public class Test_Class extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(611, 921));
+        setSize(new java.awt.Dimension(611, 646));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

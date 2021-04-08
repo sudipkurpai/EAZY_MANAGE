@@ -713,18 +713,24 @@ public class BILL_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String p_nmaee = p_name.getText();
-        String Desc= desc.getText();
         String St = pri.getText();
         String Tax = tax.getSelectedItem().toString();
-        String Total = total.getText();
-        String Total2 = total2.getText();
         String quantit = quan.getText();
         if(quantit.isEmpty() || p_nmaee.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill up Quantity First");
         }else if (Tax.equals("GST 0 %") ){
             JOptionPane.showMessageDialog(this, "Add GST");
         }else if(!St.equals("")) {
+            
             check.setEnabled(true);
+            p_name.setText("");
+            desc.setText("");
+            pri.setText("");
+            tax.setSelectedIndex(0);
+            total.setText("");
+            total2.setText("");
+            quan.setText("");
+            pro_id.setText("");
              DefaultTableModel model = (DefaultTableModel)table.getModel();
               model.addRow(new Object[]{p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
                                   total.getText(),total2.getText()
@@ -1193,27 +1199,6 @@ try {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BILL_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BILL_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BILL_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BILL_MA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
