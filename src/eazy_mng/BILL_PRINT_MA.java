@@ -183,27 +183,27 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Name :-");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 31, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Phone :-");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 30));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Address:-");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, 20));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 20));
 
         jLabel10.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Postal Code :-");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, 30));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Email :-");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, 20));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -230,7 +230,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 c_emlActionPerformed(evt);
             }
         });
-        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 340, 20));
+        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 340, 20));
 
         c_phone.setBackground(new java.awt.Color(255, 255, 255));
         c_phone.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -242,7 +242,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 c_phoneActionPerformed(evt);
             }
         });
-        jPanel2.add(c_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 270, 30));
+        jPanel2.add(c_phone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 270, 30));
 
         c_name.setBackground(new java.awt.Color(255, 255, 255));
         c_name.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -278,7 +278,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 addrActionPerformed(evt);
             }
         });
-        jPanel2.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 350, 20));
+        jPanel2.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 350, 20));
 
         pin.setBackground(new java.awt.Color(255, 255, 255));
         pin.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -290,7 +290,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 pinActionPerformed(evt);
             }
         });
-        jPanel2.add(pin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 170, 30));
+        jPanel2.add(pin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 170, 30));
 
         inv_no.setBackground(new java.awt.Color(255, 255, 255));
         inv_no.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -318,7 +318,7 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 204));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 204));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 870, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 870, 20));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -330,13 +330,13 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 870, 340));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 870, 360));
 
         all_t.setBackground(new java.awt.Color(255, 255, 255));
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         all_t.setForeground(new java.awt.Color(153, 0, 0));
         all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Total", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, 170, 60));
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 541, 170, -1));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -348,19 +348,19 @@ public class BILL_PRINT_MA extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 110, 40));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 100, 40));
 
         bs.setBackground(new java.awt.Color(255, 255, 255));
         bs.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         bs.setForeground(new java.awt.Color(153, 0, 0));
         bs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 150, 60));
+        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 150, 50));
 
         pss.setBackground(new java.awt.Color(255, 255, 255));
         pss.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         pss.setForeground(new java.awt.Color(153, 0, 0));
         pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 150, 60));
+        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 150, 50));
 
         print.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 910, 600));
 
