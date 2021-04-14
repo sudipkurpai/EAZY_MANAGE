@@ -34,7 +34,7 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
     public DASHBOARD_FINAL_EMPLOYEE() {
         initComponents();
         date();
-      time();
+        time();
     }
 
     void empname(String fullname, String emp_Id,String email, String phone,String Date, String Time) {
@@ -1654,7 +1654,7 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
 
     private void jPanel54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel54MouseClicked
         // TODO add your handling code here:
-        BILL_PRINT bp = new BILL_PRINT();
+        BILL_PRINT_EMP bp = new BILL_PRINT_EMP();
         bp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel54MouseClicked
@@ -1705,6 +1705,14 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
 
     private void jPanel59MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel59MouseClicked
         // TODO add your handling code here:
+         PRODUCT_SELL ps = new PRODUCT_SELL();
+         String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         ps.pss(name, Id, eml,t1,d1,ph);
+         ps.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jPanel59MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked

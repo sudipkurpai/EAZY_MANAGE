@@ -61,7 +61,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         phone = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        name = new javax.swing.JTextField();
+        nam = new javax.swing.JTextField();
         eml = new javax.swing.JTextField();
         addr = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -151,10 +151,10 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 100, 40));
 
-        name.setBackground(new java.awt.Color(255, 255, 255));
-        name.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 260, 20));
+        nam.setBackground(new java.awt.Color(255, 255, 255));
+        nam.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        nam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 260, 20));
 
         eml.setBackground(new java.awt.Color(255, 255, 255));
         eml.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -273,8 +273,8 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
                 
                 
                 String Address =rs.getString("ADDRESS");
-                name.setText(" "+Name);
-                name.setEditable(false);
+                nam.setText(" "+Name);
+                nam.setEditable(false);
                 
                 phone.setText(" "+Phone);
                 phone.setEditable(false);
@@ -318,16 +318,14 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
          if(ser.getText().equals("")){
            ser.setText("Enter Employee ID");
             ser.setForeground(new Color(0,0,255));
-        }else{
-            ser.setVisible(true);
         }
     }//GEN-LAST:event_serFocusLost
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         String em_id = ser.getText();
-        String a = name.getText();
-        name.setEditable(false);
+        String a = nam.getText();
+        nam.setEditable(false);
        String b = eml.getText();
         eml.setEditable(false);
      //   String c = phone.getText();
@@ -335,16 +333,20 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
      //   String d = addr.getText();
       addr.setEditable(false);
         String e = res.getText();
+        
         if (em_id.equals("Enter Employee ID")){
         
-          JOptionPane.showMessageDialog(this, "Insert Employee ID First");  
-        }else if (e.equals(""))
+          JOptionPane.showMessageDialog(this, "Insert Employee ID First"); 
+        }else if (a.equals("")){
+            JOptionPane.showMessageDialog(this, "Employee Details Not Found");
+        }else if (e.equals("")){
             JOptionPane.showMessageDialog(this, "Give a Reason for Remove Employee"); 
-        else{
+        }else{
             int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Remove This Employee ?");
         if(Yes == 0){
-            String sql="delete from employee_register where EMP_ID = ?";
+            
             try{
+                 String sql="delete from employee_register where EMP_ID = ?";
                 int i = REGISTRATION_DATAOBEJECT.remove_emp_system(Name, ID, date, time, em_id, a, e);
                 
                 if(i>0){
@@ -377,7 +379,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         ser.setText("Enter Employee ID");
-        name.setText("");
+        nam.setText("");
         eml.setText("");
         phone.setText("");
         addr.setText("");
@@ -438,7 +440,7 @@ public class REMOVE_EMPLOYEE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField name;
+    private javax.swing.JTextField nam;
     private javax.swing.JTextField phone;
     private javax.swing.JTextPane res;
     private javax.swing.JTextField ser;

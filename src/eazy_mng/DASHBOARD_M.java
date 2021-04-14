@@ -1560,10 +1560,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel112.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel112.setForeground(new java.awt.Color(0, 204, 102));
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel112.setText(" MANAGE PRODUCT ");
+        jLabel112.setText("UPDATE PRODUCT ");
 
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/management (1).png"))); // NOI18N
+        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/product-life (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel68Layout = new javax.swing.GroupLayout(jPanel68);
         jPanel68.setLayout(jPanel68Layout);
@@ -1635,6 +1635,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jPanel71.setBackground(new java.awt.Color(204, 255, 204));
         jPanel71.setPreferredSize(new java.awt.Dimension(170, 50));
+        jPanel71.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel71MouseClicked(evt);
+            }
+        });
 
         jLabel115.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel115.setForeground(new java.awt.Color(0, 204, 102));
@@ -2656,12 +2661,12 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jPanel68MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel68MouseClicked
         // TODO add your handling code here:
-        MANAGE_PRODUCT_MA mpm = new  MANAGE_PRODUCT_MA ();
+        UPDATE_PRODUCT mpm = new  UPDATE_PRODUCT ();
         String name = mng_name.getText();
         String ID = mng_id.getText();
         String t1 = time1.getText();
         String d1 = time2.getText();
-        mpm.mpm(name, ID, eml,t1,d1,ph);
+        mpm.up(name, ID, eml,t1,d1,ph);
         mpm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel68MouseClicked
@@ -2778,6 +2783,18 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         at.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel59MouseClicked
+
+    private void jPanel71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel71MouseClicked
+        // TODO add your handling code here:
+        PRODUCT_ID pdd=new PRODUCT_ID();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        pdd.pi(name, ID, eml,t1,d1,ph);
+        pdd.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel71MouseClicked
 
     /**
      * @param args the command line arguments

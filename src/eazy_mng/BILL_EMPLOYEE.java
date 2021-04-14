@@ -28,7 +28,7 @@ import static org.eclipse.persistence.expressions.ExpressionOperator.sum;
  *
  * @author Sudip Maiti
  */
-public class BILL_MA extends javax.swing.JFrame {
+public class BILL_EMPLOYEE extends javax.swing.JFrame {
     String itmt = null ;
      String dsct = null ;
      String quant = null ;
@@ -54,7 +54,7 @@ public class BILL_MA extends javax.swing.JFrame {
     /**
      * Creates new form BILL_PRINT
      */
-    public BILL_MA() {
+    public BILL_EMPLOYEE() {
         initComponents();
         print.setEnabled(false);
         id_create();
@@ -79,9 +79,9 @@ public class BILL_MA extends javax.swing.JFrame {
                     });
          
     }
-    void bpm (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+    void bpm (String fullname, String emp_Id,String email,String t1,String d1,String p) {
         Name = fullname;
-        Id = mng_Id;
+        Id = emp_Id;
         emll = email;
         time = t1;
         date = d1;
@@ -170,7 +170,7 @@ public class BILL_MA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 102));
+        jPanel1.setBackground(new java.awt.Color(32, 64, 81));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 12)); // NOI18N
@@ -661,9 +661,9 @@ public class BILL_MA extends javax.swing.JFrame {
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
-        DASHBOARD_M dm = new DASHBOARD_M();
-        dm.mngname(Name, Id, emll, ph, date, time);
-        dm.setVisible(true);
+        DASHBOARD_FINAL_EMPLOYEE de = new DASHBOARD_FINAL_EMPLOYEE();
+        de.empname(Name, Id, emll, ph, date, time);
+        de.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
 
@@ -722,6 +722,7 @@ public class BILL_MA extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Add GST");
         }else if(!St.equals("")) {
             
+            check.setEnabled(true);
            
              DefaultTableModel model = (DefaultTableModel)table.getModel();
               model.addRow(new Object[]{p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
@@ -731,8 +732,7 @@ public class BILL_MA extends javax.swing.JFrame {
            table.selectAll();
        // System.out.println("Data inserted");
         JOptionPane.showMessageDialog(this, "Add To Bill Successfully");
-         check.setEnabled(true);
-            p_name.setText("");
+         p_name.setText("");
             desc.setText("");
             pri.setText("");
             tax.setSelectedIndex(0);
@@ -740,6 +740,7 @@ public class BILL_MA extends javax.swing.JFrame {
             total2.setText("");
             quan.setText("");
             pro_id.setText("");
+        
                }
         else{
        // System.out.println("Data NOT inserted");
@@ -980,7 +981,7 @@ try {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         // TODO add your handling code here:
-        BILL_PRINT_MA  bpp = new BILL_PRINT_MA();
+        BILL_PRINT_EMP  bpp = new BILL_PRINT_EMP();
         
         String invv=inv_no.getText();
          bpp.bp(Name, Id, emll,time,date,ph,invv);
@@ -1211,7 +1212,7 @@ try {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BILL_MA().setVisible(true);
+                new BILL_EMPLOYEE().setVisible(true);
             }
         });
     }

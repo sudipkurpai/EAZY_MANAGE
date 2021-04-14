@@ -10,14 +10,26 @@ package eazy_mng;
  * @author Sudip Maiti
  */
 public class PRODUCT_SELL extends javax.swing.JFrame {
-
+     String time = null;
+     String date = null;
+     String ph = null;
+     String Name = null;
+     String Id = null;
+     String emll = null;
     /**
      * Creates new form PRODUCT_SALE
      */
     public PRODUCT_SELL() {
         initComponents();
     }
-
+ void pss (String fullname, String emp_Id,String email,String t1,String d1,String p) {
+        Name = fullname;
+        Id = emp_Id;
+        emll = email;
+        time = t1;
+        date = d1;
+        ph= p;
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,6 +42,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -67,28 +80,26 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(172, 186, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 0, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(32, 64, 81));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PRODUCT SELL");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 0, 252, 75));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(439, 439, 439)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 0, 30, 33));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 1176, -1));
 
@@ -138,7 +149,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jSeparator1.setAlignmentY(1.0F);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 1150, 14));
 
-        jTextField1.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField1.setBackground(new java.awt.Color(204, 255, 204));
         jTextField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 255));
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -154,13 +165,13 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jLabel7.setText("Product Name: ");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 110, -1));
 
-        jTextField2.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField2.setBackground(new java.awt.Color(204, 255, 204));
         jTextField2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 0, 255));
         jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 250, 30));
 
-        jTextField3.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField3.setBackground(new java.awt.Color(204, 255, 204));
         jTextField3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 255));
         jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -176,13 +187,13 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jLabel13.setText("Price :");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 40, -1));
 
-        jTextField4.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField4.setBackground(new java.awt.Color(204, 255, 204));
         jTextField4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(0, 0, 255));
         jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 253, 30));
 
-        jTextField5.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField5.setBackground(new java.awt.Color(204, 255, 204));
         jTextField5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 0, 255));
         jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -199,14 +210,14 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jButton2.setText("Search");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(172, 186, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255), 2), "Selling Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14), new java.awt.Color(0, 0, 255))); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 0, 153));
         jLabel15.setText("Sell Product Quantity");
 
-        jTextField6.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField6.setBackground(new java.awt.Color(204, 255, 204));
         jTextField6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 0, 255));
         jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -215,7 +226,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 0, 153));
         jLabel16.setText("Stock After sell");
 
-        jTextField7.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField7.setBackground(new java.awt.Color(204, 255, 204));
         jTextField7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(0, 0, 255));
         jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -224,7 +235,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 0, 153));
         jLabel17.setText("Total");
 
-        jTextField8.setBackground(new java.awt.Color(172, 186, 255));
+        jTextField8.setBackground(new java.awt.Color(204, 255, 204));
         jTextField8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(0, 0, 255));
         jTextField8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
@@ -233,6 +244,11 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         bill.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         bill.setForeground(new java.awt.Color(0, 255, 0));
         bill.setText("Creat Bill");
+        bill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                billActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -293,12 +309,13 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jSeparator2.setAlignmentY(1.0F);
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 113, 1152, 14));
 
-        jComboBox1.setBackground(new java.awt.Color(172, 186, 255));
+        jComboBox1.setBackground(new java.awt.Color(204, 255, 204));
         jComboBox1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(0, 0, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Product", "Minimum Stock", "Out Of Stock", "Expired Products" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 405, 190, 30));
 
+        table.setBackground(new java.awt.Color(204, 255, 204));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -325,6 +342,23 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1177, 684));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        // TODO add your handling code here:
+        DASHBOARD_FINAL_EMPLOYEE de = new DASHBOARD_FINAL_EMPLOYEE();
+        de.empname(Name, Id, emll, ph, date, time);
+        de.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void billActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billActionPerformed
+        // TODO add your handling code here:
+       BILL_EMPLOYEE bp = new  BILL_EMPLOYEE();
+      
+         bp.bpm(Name, Id, emll,time,date,ph);
+        bp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_billActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,6 +389,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

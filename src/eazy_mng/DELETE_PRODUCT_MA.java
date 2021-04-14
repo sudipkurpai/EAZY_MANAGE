@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,8 +33,10 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
      */
     public DELETE_PRODUCT_MA() {
         initComponents();
+        
         time();
         date();
+        table();
         pn.setEditable(false);
         pd.setEditable(false);
         sq.setEditable(false);
@@ -67,14 +70,13 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        reson = new javax.swing.JTextPane();
         jLabel11 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         mmmm = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         mnnn = new javax.swing.JTextField();
@@ -95,6 +97,9 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         cata = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -105,13 +110,13 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setBackground(new java.awt.Color(255, 255, 255));
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Product Id", "Product Name", "Description", "Stock", "Price", "Brand", "Category", "Manager Id", "Manager Name", "Reason", "Date", "Time"
+                "Product Id", "Product Name", "Description", "Stock", "Price", "Brand", "Category", "Reason", "Manager Id", "Manager Name", "Date", "Time"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -122,43 +127,38 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 372, 1090, 360));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 1090, 320));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 51));
+        jButton2.setBackground(new java.awt.Color(51, 51, 255));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Reset");
+        jButton2.setText("Search");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 150, 40));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 150, 40));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Manager Name");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 158, -1));
 
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane2.setViewportView(reson);
 
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 860, 80));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Time :");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, -1));
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Reason For Delete Product :");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 280, 30));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 90, 30));
 
         mmmm.setBackground(new java.awt.Color(255, 255, 255));
         mmmm.setForeground(new java.awt.Color(0, 0, 0));
@@ -194,6 +194,15 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         pro_id.setBackground(new java.awt.Color(255, 255, 255));
         pro_id.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         pro_id.setForeground(new java.awt.Color(0, 0, 0));
+        pro_id.setText("Enter a Product Id :");
+        pro_id.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pro_idFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pro_idFocusLost(evt);
+            }
+        });
         pro_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pro_idKeyReleased(evt);
@@ -205,6 +214,11 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 280, 150, 50));
 
         t2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -256,7 +270,28 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         jLabel14.setText("Category ");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 140, -1));
 
+        jButton4.setBackground(new java.awt.Color(255, 51, 102));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Reset");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, 150, 40));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Reason For Delete Product :");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 280, 30));
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1090, 350));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Deleted Product Details :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 280, 30));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -287,8 +322,8 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setSize(new java.awt.Dimension(1110, 803));
@@ -297,7 +332,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
     void date() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("dd:MM:yyyy");
         d2.setText(s.format(d));
     }
     
@@ -350,21 +385,21 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
                 String catt =rs.getString("Category");
                
                 pn.setText(pnnn);
-                pn.setEditable(false);
+           //     pn.setEditable(false);
                 pd.setText(pddd);
-                pd.setEditable(false);
+             //   pd.setEditable(false);
                 sq.setText(sqq);
-                sq.setEditable(false);
+              //  sq.setEditable(false);
                 pri.setText(prii);
-                pri.setEditable(false);
+              //  pri.setEditable(false);
                 brand.setText(brad);
-                brand.setEditable(false);
+               // brand.setEditable(false);
                 cata.setText(catt);
-                cata.setEditable(false);
+               // cata.setEditable(false);
                 
-                mmmm.setEditable(false);
+             //   mmmm.setEditable(false);
                 
-                mnnn.setEditable(false);
+              //  mnnn.setEditable(false);
                 
                 JOptionPane.showMessageDialog(this, "Product Found");
                 
@@ -378,6 +413,115 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    
+    public void reset(){
+                pro_id.setText("Enter a Product Id :");
+                pn.setText("");
+                pd.setText("");
+                sq.setText("");
+                pri.setText("");
+                brand.setText("");
+                cata.setText("");
+                reson.setText("");
+               }
+    
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void table(){
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From delete_product ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Description"),rs.getString("Quantity"),rs.getString("Price"),
+              rs.getString("Brand"),rs.getString("Category"),rs.getString("Reason"),rs.getString("Manager_id"),rs.getString("Manager_name"),rs.getString("Date"),rs.getString("Time") };
+               model.addRow(o);
+           } 
+           }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String pnn=pn.getText();
+        String rea=reson.getText();
+        if (pnn.equals("")){
+            JOptionPane.showMessageDialog(this, "Select A Product To Delete");
+        }else if(rea.equals("")){
+            JOptionPane.showMessageDialog(this, "Enter a Reason For Delet This Product ");
+        }else {
+           int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Remove This Employee ?");
+        if(Yes == 0){
+                String idd = pro_id.getText();
+                String pdd=pd.getText();
+                String pee=sq.getText();
+                String prii=pri.getText();
+                String brad=brand.getText();
+                String cat=cata.getText();
+                String midd=mmmm.getText();
+                String mname=mnnn.getText();
+                String tii=t2.getText();
+                String dii=d2.getText();
+               
+     int i =  DELECT_PRODUCT_DETAOBJECT.delet(idd, pnn, pdd, pee, prii, brad, cat, rea, midd,mname, dii, tii);
+     
+        try{
+                if(i>0){
+            String sql="delete from add_new_product where Product_id = ?";
+             Connection con=DATABASE_CONNECTION.getConnection();
+                    PreparedStatement ps=con.prepareStatement(sql);
+                    ps.setString(1,idd);
+                    ps.execute();
+                    ps.close();
+                    con.close();
+                    reset();
+                    table(); 
+                    JOptionPane.showMessageDialog(this, "Delete Product Succesfully");
+                  
+                }else{
+                    JOptionPane.showMessageDialog(this, "Product can't Delete"); 
+                }  
+        }catch(Exception exe){
+                System.out.println("exxxx"+exe);
+                
+             }
+        }else{
+                int No = 0;
+                if(No==0){
+                    
+                
+            }
+        }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void pro_idFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pro_idFocusGained
+        // TODO add your handling code here:
+        if(pro_id.getText().equals("Enter a Product Id :"))
+        {
+            pro_id.setText("");
+        }
+    }//GEN-LAST:event_pro_idFocusGained
+
+    private void pro_idFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pro_idFocusLost
+        // TODO add your handling code here:
+        if(pro_id.getText().equals("")){
+           pro_id.setText("Enter a Product Id :"); 
+        }
+    }//GEN-LAST:event_pro_idFocusLost
 
     /**
      * @param args the command line arguments
@@ -423,6 +567,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel d2;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -430,6 +575,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -441,15 +587,15 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField mmmm;
     private javax.swing.JTextField mnnn;
     private javax.swing.JTextField pd;
     private javax.swing.JTextField pn;
     private javax.swing.JTextField pri;
     private javax.swing.JTextField pro_id;
+    private javax.swing.JTextPane reson;
     private javax.swing.JTextField sq;
     private javax.swing.JLabel t2;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
