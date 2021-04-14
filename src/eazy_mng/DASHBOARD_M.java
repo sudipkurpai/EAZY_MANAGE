@@ -2611,9 +2611,8 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         String ID = mng_id.getText();
         String t1 = time1.getText();
         String d1 = time2.getText();
-        String t2 = Showtime.getText();
-        String d2 = date.getText();
-        anp.anp(name, ID, eml,t1,d1,ph,t2,d2);
+       
+        anp.anp(name, ID, eml,t1,d1,ph);
         anp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel26MouseClicked
@@ -2633,7 +2632,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jPanel66MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel66MouseClicked
         // TODO add your handling code here:
-        DELETE_PRODUCT_M dpm = new  DELETE_PRODUCT_M();
+        DELETE_PRODUCT_MA dpm = new  DELETE_PRODUCT_MA();
         String name = mng_name.getText();
         String ID = mng_id.getText();
         String t1 = time1.getText();
