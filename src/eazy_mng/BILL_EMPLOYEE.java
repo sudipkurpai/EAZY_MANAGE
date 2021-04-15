@@ -14,15 +14,12 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
-import static org.eclipse.persistence.expressions.ExpressionOperator.sum;
 
 /**
  *
@@ -56,6 +53,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
      */
     public BILL_EMPLOYEE() {
         initComponents();
+        table();
         print.setEnabled(false);
         id_create();
         check.setEnabled(false);
@@ -138,6 +136,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         inv_no = new javax.swing.JTextField();
         b_date = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        print = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         all_t = new javax.swing.JTextField();
@@ -164,8 +163,9 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         ps = new javax.swing.JComboBox<>();
         bs = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        print = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -266,7 +266,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
                 c_emlActionPerformed(evt);
             }
         });
-        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 340, 20));
+        jPanel2.add(c_eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 300, 20));
 
         c_phone.setBackground(new java.awt.Color(255, 255, 255));
         c_phone.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -314,7 +314,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
                 addrActionPerformed(evt);
             }
         });
-        jPanel2.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 350, 20));
+        jPanel2.add(addr, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 290, 20));
 
         pin.setBackground(new java.awt.Color(255, 255, 255));
         pin.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -355,6 +355,18 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 0, 204));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 204));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 870, 10));
+
+        print.setBackground(new java.awt.Color(51, 153, 0));
+        print.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        print.setForeground(new java.awt.Color(255, 255, 0));
+        print.setText("PRINT");
+        print.setBorder(null);
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        jPanel2.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 540, 110, 40));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -533,7 +545,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
                 checkActionPerformed(evt);
             }
         });
-        jPanel2.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
+        jPanel2.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 130, 40));
 
         ps.setBackground(new java.awt.Color(255, 255, 255));
         ps.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -556,31 +568,39 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, 110, 40));
 
-        print.setBackground(new java.awt.Color(51, 153, 0));
-        print.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        print.setForeground(new java.awt.Color(255, 255, 0));
-        print.setText("PRINT");
-        print.setBorder(null);
-        print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printActionPerformed(evt);
-            }
-        });
-        jPanel2.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 110, 40));
-
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/111refresh.png"))); // NOI18N
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel15MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 50, 40));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 30, 40));
+
+        table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Id", "Quantity"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table2);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 350, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 910, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -595,7 +615,29 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+     public void table()
+{
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From bill_time ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table2.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                   rs.getString("Product_id"),rs.getString("Quantity") };
+               model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
     void id_create(){
         inv_no.setEditable(false);
          try{
@@ -981,6 +1023,20 @@ try {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         // TODO add your handling code here:
+        String idd="hello";
+        try{
+        String sql="delete from bill_time where Master = ?";
+             Connection con=DATABASE_CONNECTION.getConnection();
+                    PreparedStatement ps=con.prepareStatement(sql);
+                    ps.setString(1,idd);
+                    ps.execute();
+                    ps.close();
+                    con.close();
+        }catch(Exception e){
+            
+        } 
+            
+                   
         BILL_PRINT_EMP  bpp = new BILL_PRINT_EMP();
         
         String invv=inv_no.getText();
@@ -1260,6 +1316,7 @@ try {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField p_name;
     private javax.swing.JTextField pin;
@@ -1269,6 +1326,7 @@ try {
     private javax.swing.JComboBox<String> ps;
     private javax.swing.JTextField quan;
     private javax.swing.JTable table;
+    private javax.swing.JTable table2;
     private javax.swing.JComboBox<String> tax;
     private javax.swing.JTextField total;
     private javax.swing.JTextField total2;

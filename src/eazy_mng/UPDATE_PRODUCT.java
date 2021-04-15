@@ -591,7 +591,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
 
     private void updaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updaActionPerformed
         // TODO add your handling code here:
-         String Product_id = p_id.getText();
+        String Product_id = p_id.getText();
         String p_nmaee = v_name.getText();
         String Desc= desc.getText();
         String Standerd_cost = s_cost.getText();
