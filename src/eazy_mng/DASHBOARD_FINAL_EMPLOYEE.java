@@ -1589,7 +1589,7 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Log Out ?");
         if(Yes == 0){
             session();
-            LOGOUT Ll = new LOGOUT(); 
+            LOGOUT_E Ll = new LOGOUT_E(); 
             Ll.setVisible(true);
             this.dispose();
         }else{

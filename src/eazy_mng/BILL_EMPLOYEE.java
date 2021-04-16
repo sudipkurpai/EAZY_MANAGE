@@ -753,7 +753,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        
+         String idd = pro_id.getText();
         String p_nmaee = p_name.getText();
         String St = pri.getText();
         String Tax = tax.getSelectedItem().toString();
@@ -763,7 +763,18 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         }else if (Tax.equals("GST 0 %") ){
             JOptionPane.showMessageDialog(this, "Add GST");
         }else if(!St.equals("")) {
+            try{
+        String sql="delete from bill_time where Product_id = ?";
+             Connection con=DATABASE_CONNECTION.getConnection();
+                    PreparedStatement ps=con.prepareStatement(sql);
+                    ps.setString(1,idd);
+                    ps.execute();
+                    ps.close();
+                    con.close();
+                    table();
+        }catch(Exception e){
             
+        } 
             check.setEnabled(true);
            
              DefaultTableModel model = (DefaultTableModel)table.getModel();
@@ -1023,18 +1034,8 @@ try {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         // TODO add your handling code here:
-        String idd="hello";
-        try{
-        String sql="delete from bill_time where Master = ?";
-             Connection con=DATABASE_CONNECTION.getConnection();
-                    PreparedStatement ps=con.prepareStatement(sql);
-                    ps.setString(1,idd);
-                    ps.execute();
-                    ps.close();
-                    con.close();
-        }catch(Exception e){
-            
-        } 
+       
+        
             
                    
         BILL_PRINT_EMP  bpp = new BILL_PRINT_EMP();

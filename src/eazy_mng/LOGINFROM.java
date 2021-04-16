@@ -289,7 +289,7 @@ public class LOGINFROM extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 199, 95));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Inventory Management");
+        jLabel10.setText("Eazy Management");
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eazy_mng/profile.png"))); // NOI18N

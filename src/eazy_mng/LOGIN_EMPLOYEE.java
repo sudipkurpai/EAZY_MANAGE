@@ -128,11 +128,6 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
                 empFocusLost(evt);
             }
         });
-        emp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                empActionPerformed(evt);
-            }
-        });
         jPanel2.add(emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 329, 40));
 
         open.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -257,7 +252,7 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 199, 95));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Inventory Management");
+        jLabel10.setText("Eazy Management");
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/team.png"))); // NOI18N
@@ -321,10 +316,6 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1003, 653));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_empActionPerformed
 
     private void openMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openMousePressed
         // TODO add your handling code here:
@@ -471,7 +462,7 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
         // TODO add your handling code here:
         Mpassword.setVisible(false);
         Memail.setVisible(false);
-        emp.setText("Manager ID");
+        emp.setText("Employee ID");
         pass.setText("Password");
         pass.setEchoChar((char)0);
         emp.setForeground(new Color(128,128,128));

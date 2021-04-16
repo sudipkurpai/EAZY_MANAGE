@@ -474,7 +474,7 @@
               <Color blue="5f" green="c7" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Inventory Management"/>
+            <Property name="text" type="java.lang.String" value="Eazy Management"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">

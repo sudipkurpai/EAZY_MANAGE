@@ -44,7 +44,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      String PPPP=null;
      String mng_Id = null;
      String emp_id = null;
-     
+    
      
     /**
      * Creates new form ADD_NEW_PRODUCT
@@ -55,10 +55,11 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         mng_id.setEditable(false);
         t2.setEditable(false);
         d2.setEditable(false);
+        quantity1.setEditable(false);
         upda.setEnabled(false);
-        
+         total.setEditable(false);
         id_create();
-        cal();
+        
         table();
         search();
         date();
@@ -197,7 +198,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         d2 = new javax.swing.JTextField();
         t_idd = new javax.swing.JTextField();
         t2 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         p_id = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -228,6 +229,8 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         reset = new javax.swing.JButton();
         upda = new javax.swing.JButton();
+        quantity1 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -290,8 +293,8 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel2.setText("  Date  :");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 18, 50, -1));
+        jLabel2.setText("  Time  :");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 50, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
@@ -335,10 +338,10 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         });
         jPanel3.add(t2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, 140, -1));
 
-        jLabel21.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel21.setText(" Time  :");
-        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(663, 41, 40, -1));
+        jLabel17.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel17.setText("  Date  :");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(661, 18, 50, -1));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 900, 70));
 
@@ -405,7 +408,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
                 quantityKeyTyped(evt);
             }
         });
-        jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 130, 30));
+        jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 50, 30));
 
         catagory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 130, 30));
@@ -512,6 +515,20 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         });
         jPanel2.add(upda, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 110, 120, 40));
 
+        quantity1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        quantity1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                quantity1KeyTyped(evt);
+            }
+        });
+        jPanel2.add(quantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 50, 30));
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("+");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 80, 30, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -584,26 +601,48 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
+        res();
         click();
+        id_create();
+         cal();
         upda.setEnabled(true);
+       
       
     }//GEN-LAST:event_tableMouseClicked
 
     private void updaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updaActionPerformed
         // TODO add your handling code here:
+        String qqq=quantity.getText();
+        if(qqq.equals("")){
+            quantity.setText("0");
+        }
         String Product_id = p_id.getText();
-        String p_nmaee = v_name.getText();
+        String p_nmaee = p_name.getText();
+        String V_nmaee = v_name.getText();
         String Desc= desc.getText();
         String Standerd_cost = s_cost.getText();
         String unit_price = unit_pri.getText();
         String mfg_date = mfg.getText();
         String exp_date = exp.getText();
-        String quantit = quantity.getText();
+        
+        int quantit1 = Integer.parseInt(quantity.getText());
+        int quantit2 = Integer.parseInt(quantity1.getText());
+          
+        int quantit3= quantit1+quantit2;
+        
+        String quantit= Integer.toString(quantit3);
+        String quantitye=quantity.getText();
         String catag = catagory.getText();
         String Brand = brand.getText();
         String DDDD = d2.getText();
         String tttt = t2.getText();
         String totall = total.getText();
+        
+        String mng = mng_name.getText();
+        String mng_i= mng_id.getText();
+        
+        String t_id = t_idd.getText();
+        
 //        double a,b,c ;
 //        a=Double.parseDouble(s_cost.getText());
 //        b=Double.parseDouble(quantity.getText());
@@ -621,14 +660,15 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
 //                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
 //              });
         int i = ADD_NEW_PRODUCT_DETAOBJ.Update_product(Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,DDDD,tttt,Product_id);
-               
-                           
+            ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, DDDD, tttt, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantitye, catag, Brand, totall);
+                       //    mng,mng_i, dddd, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,timee
         int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pro_id);
         
         if(i>0 || j>0){
             res();
             id_create();
             table();
+            
             upda.setEnabled(false);
             
     //    System.out.println("Data inserted");
@@ -643,6 +683,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
 
     public void res(){
         t_idd.setText("");
+       
          p_name.setText("");
          v_name.setText("");
          desc.setText("");
@@ -650,6 +691,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
          unit_pri.setText("");
          mfg.setText("");
          exp.setText("");
+         quantity1.setText("");
          quantity.setText("");
          catagory.setText("");
          brand.setText("");
@@ -661,7 +703,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         res();
      
         upda.setEnabled(false);
-        
+       
         
     
     }//GEN-LAST:event_resetActionPerformed
@@ -721,6 +763,10 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private void t2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_t2ActionPerformed
+
+    private void quantity1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantity1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quantity1KeyTyped
     
     public void search(){
         DocumentListener dl = new DocumentListener(){
@@ -777,26 +823,52 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
             
             protected void update_val(){
                String f1=s_cost.getText();
-               String f2=quantity.getText();
-               if (!f1.equals("") && f2.equals("")){
+               String f2=quantity1.getText();
+               String f3=quantity.getText();
+               if (!f1.equals("") && f2.equals("0")){
                    double b=Double.parseDouble(s_cost.getText());
-                   //double  b1=Double.parseDouble(a1.getText());
-                   double c= b;
+                   double  b1=Double.parseDouble(quantity1.getText());
+                   String bb=Double.toString(b1);
+                   if(bb.equals("0")){
+                   double c= b*0; 
                    String e=String.valueOf(c);
                    total.setText(e);
-               }else if (f1.equals("") && !f2.equals("")){
+                   }else{
+                   double c= b*b1;
+                   String e=String.valueOf(c);
+                   total.setText(e);}
+               }else if (f1.equals("") && !f3.equals("")){
                    //double b=Double.parseDouble(a.getText());
                    double  b1=Double.parseDouble(quantity.getText());
-                   double c= b1;
+                  double  b2=Double.parseDouble(quantity1.getText());
+                   String bbbb=Double.toString(b1);
+                   if(bbbb.equals("")){
+                   double c= b2+0;
                    String e=String.valueOf(c);
                    total.setText(e);
-               }else if (!f1.equals("") && !f2.equals("")){
+                   }else{
+                   double c= b2+b1;
+                   String e=String.valueOf(c);
+                   total.setText(e);}
+               }else if (!f1.equals("") && !f3.equals("")){
                    double b=Double.parseDouble(s_cost.getText());
+                   double  b2=Double.parseDouble(quantity1.getText());
+                   
                    double  b1=Double.parseDouble(quantity.getText());
-                   double c= b*b1;
+                   String bbbb=Double.toString(b1);
+                   if(bbbb.equals("")){
+                   double d= b2+0;
+                   double c= b*d;
                    String e=String.valueOf(c);
                    total.setEditable(false);
                    total.setText(e);
+               } else{
+                       double d= b2+b1;
+                   double c= b*d;
+                   String e=String.valueOf(c);
+                  
+                   total.setText(e);
+                   }
                    
                }else{
                 //   System.out.println("NONE");
@@ -823,10 +895,11 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      unit_pri.setText(model.getValueAt(i,5).toString());
      mfg.setText(model.getValueAt(i,6).toString());
      exp.setText(model.getValueAt(i,7).toString());
-     quantity.setText(model.getValueAt(i,8).toString());
+     quantity1.setText(model.getValueAt(i,8).toString());
      catagory.setText(model.getValueAt(i,9).toString());
      brand.setText(model.getValueAt(i,10).toString());
      total.setText(model.getValueAt(i,11).toString());
+    
     }
 
 
@@ -862,6 +935,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -886,6 +960,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private javax.swing.JTextField p_id;
     private javax.swing.JTextField p_name;
     private javax.swing.JTextField quantity;
+    private javax.swing.JTextField quantity1;
     private javax.swing.JButton reset;
     private javax.swing.JTextField s_cost;
     private javax.swing.JTextField t2;

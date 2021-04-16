@@ -42,6 +42,8 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         datee();
         cal();
         bill.setEnabled(false);
+        total.setEditable(false);
+        afs.setEditable(false);
     }
  void pss (String fullname, String emp_Id,String email,String t1,String d1,String p) {
         Name = fullname;
@@ -104,11 +106,13 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         table2 = new javax.swing.JTable();
+        ssss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setForeground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(32, 64, 81));
@@ -324,11 +328,11 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(4, 4, 4)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(afs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(bill)
-                                .addComponent(bill1))))
+                                .addComponent(bill1))
+                            .addComponent(afs, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(jLabel15)
@@ -415,6 +419,10 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 360, 100));
 
+        ssss.setFont(new java.awt.Font("Dialog", 0, 3)); // NOI18N
+        ssss.setText("jLabel3");
+        jPanel1.add(ssss, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 130, 120, 10));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -490,13 +498,15 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                String css= rs.getString("Quantity");
                String pr= rs.getString("Unit_price");
                String expp= rs.getString("Exp_date");
+               String sss= rs.getString("Standerd_cost");
                p_name.setText(pn);
+               ssss.setText(sss);
                p_name.setEditable(false);
                cs.setText(css);
                cs.setEditable(false);
                pri.setText(pr);
                pri.setEditable(false);
-                exp.setText(expp);
+               exp.setText(expp);
                exp.setEnabled(true);
                             
                 //    JOptionPane.showMessageDialog(this, "Product Found");
@@ -582,20 +592,22 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         String tt=total.getText();
         String dd=d.getText();
         String Product_id=pro_id.getText();
-        String mast="hello";
-        
+        String ss=ssss.getText();
+       double abc=Double.parseDouble(ss)*Double.parseDouble(qu);
+      double abcd= Double.parseDouble(tt)-abc;
+      String aab=Double.toString(abcd);
         if(curs>=qunn){
              DefaultTableModel model = (DefaultTableModel)table2.getModel();
               model.addRow(new Object[]{pro_id.getText(), qun.getText()
               });
-             SELL_DATAOBJECT.bill(Product_id, qu,mast);
+             SELL_DATAOBJECT.bill(Product_id, qu);
             qun.setForeground(new Color(0,0,255));
             cs.setForeground(new Color(0,0,255)); 
            int coun= curs-qunn;
            String count=Integer.toString(coun);
            afs.setText(count);
            cs.setText(count);
-           SELL_DATAOBJECT.sells(en, ei, dd, ti, pn, Product_id, qu, pp, tt);
+           SELL_DATAOBJECT.sells(en, ei, dd, ti, pn, Product_id, qu, pp, tt,aab);
             int status=0;
              try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
@@ -801,6 +813,7 @@ public void table()
     private javax.swing.JTextField pro_id;
     private javax.swing.JTextField qun;
     private javax.swing.JComboBox<String> select;
+    private javax.swing.JLabel ssss;
     private javax.swing.JLabel t;
     private javax.swing.JTable table;
     private javax.swing.JTable table2;

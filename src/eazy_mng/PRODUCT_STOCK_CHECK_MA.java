@@ -5,11 +5,13 @@
  */
 package eazy_mng;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -66,12 +68,10 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jTextField15 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        r1 = new javax.swing.JRadioButton();
+        r3 = new javax.swing.JRadioButton();
+        r2 = new javax.swing.JRadioButton();
         jButton5 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jTextField10 = new javax.swing.JTextField();
@@ -90,6 +90,15 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        sell = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table4 = new javax.swing.JTable();
+        alll = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table3 = new javax.swing.JTable();
+        Pur = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table2 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         pro_id = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -219,52 +228,29 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Purchase & Sell Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 13), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setBackground(new java.awt.Color(192, 192, 255));
-        jTable2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        jTable2.setForeground(new java.awt.Color(0, 0, 0));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Product Id", "Product Name", "Quantity ", "Price", "Profit", "Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 670, 190));
-
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Date Range", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 13), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 204));
-        jRadioButton1.setText("All");
-        jRadioButton1.setToolTipText("");
+        r1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(r1);
+        r1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        r1.setForeground(new java.awt.Color(0, 0, 204));
+        r1.setText("All");
+        r1.setToolTipText("");
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 204));
-        jRadioButton2.setText("Sell");
-        jRadioButton2.setToolTipText("");
+        r3.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(r3);
+        r3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        r3.setForeground(new java.awt.Color(0, 0, 204));
+        r3.setText("Sell");
+        r3.setToolTipText("");
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(0, 0, 204));
-        jRadioButton3.setText("Purchase");
-        jRadioButton3.setToolTipText("");
+        r2.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(r2);
+        r2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        r2.setForeground(new java.awt.Color(0, 0, 204));
+        r2.setText("Purchase");
+        r2.setToolTipText("");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -272,21 +258,21 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(r1)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton3)
+                .addComponent(r2)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton2)
+                .addComponent(r3)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3)
+                    .addComponent(r2)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(r1)
+                        .addComponent(r3)))
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
@@ -413,6 +399,144 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jLabel15.setBounds(470, 50, 120, 20);
 
         jPanel6.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 160));
+
+        sell.setBackground(new java.awt.Color(255, 255, 255));
+
+        table4.setBackground(new java.awt.Color(192, 192, 255));
+        table4.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        table4.setForeground(new java.awt.Color(0, 0, 0));
+        table4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Id", "Product Name", "Quantity ", "Price", "Total", "Profit", "Date", "Time"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(table4);
+
+        javax.swing.GroupLayout sellLayout = new javax.swing.GroupLayout(sell);
+        sell.setLayout(sellLayout);
+        sellLayout.setHorizontalGroup(
+            sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(sellLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        sellLayout.setVerticalGroup(
+            sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+            .addGroup(sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(sellLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel6.add(sell, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 690, 210));
+
+        alll.setBackground(new java.awt.Color(255, 255, 255));
+
+        table3.setBackground(new java.awt.Color(192, 192, 255));
+        table3.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        table3.setForeground(new java.awt.Color(0, 0, 0));
+        table3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Id", "Product Name", "Quantity ", "Price", "Profit", "Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(table3);
+
+        javax.swing.GroupLayout alllLayout = new javax.swing.GroupLayout(alll);
+        alll.setLayout(alllLayout);
+        alllLayout.setHorizontalGroup(
+            alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(alllLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        alllLayout.setVerticalGroup(
+            alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+            .addGroup(alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(alllLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel6.add(alll, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 690, 210));
+
+        Pur.setBackground(new java.awt.Color(255, 255, 255));
+
+        table2.setBackground(new java.awt.Color(192, 192, 255));
+        table2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        table2.setForeground(new java.awt.Color(0, 0, 0));
+        table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Id", "Product Name", "Quantity ", "Price", "Total", "Date", "Time"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table2);
+
+        javax.swing.GroupLayout PurLayout = new javax.swing.GroupLayout(Pur);
+        Pur.setLayout(PurLayout);
+        PurLayout.setHorizontalGroup(
+            PurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(PurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PurLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        PurLayout.setVerticalGroup(
+            PurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+            .addGroup(PurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PurLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel6.add(Pur, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 690, 210));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 710, 450));
 
@@ -623,6 +747,71 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        if (r1.isSelected() == true){
+            Pur.setVisible(false);
+            alll.setVisible(true);
+            sell.setVisible(false);
+
+        }else if(r2.isSelected() == true){
+            Pur.setVisible(true);
+            alll.setVisible(false);
+            sell.setVisible(false);
+            try {
+        
+             //Data fetch from database
+            String sql = "Select * From purchase ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table2.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                   rs.getString("PRODUCT_ID"),rs.getString("PRODUCT_NAME"),rs.getString("QUANTITY"),rs.getString("STANDERD_COST"),
+                        rs.getString("TOTAL"),rs.getString("DATE"),rs.getString("TIME") };
+                   model.addRow(o);
+               table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table2.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            
+            
+        }else if(r3.isSelected() == true){
+             Pur.setVisible(false);
+            alll.setVisible(false);
+            sell.setVisible(true);
+            
+            try {
+        
+             //Data fetch from database
+            String sql = "Select * From sell ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table4.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Price"),
+                    rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time") };
+                   model.addRow(o);
+             //  table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table4.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
       
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -690,6 +879,8 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Pur;
+    private javax.swing.JPanel alll;
     private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser c1;
     private com.toedter.calendar.JDateChooser c2;
@@ -722,12 +913,10 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -742,6 +931,13 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField pro_id;
+    private javax.swing.JRadioButton r1;
+    private javax.swing.JRadioButton r2;
+    private javax.swing.JRadioButton r3;
+    private javax.swing.JPanel sell;
     private javax.swing.JTable table;
+    private javax.swing.JTable table2;
+    private javax.swing.JTable table3;
+    private javax.swing.JTable table4;
     // End of variables declaration//GEN-END:variables
 }

@@ -644,7 +644,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 //                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
 //              });
         int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product(mng,mng_i, dddd, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,timee);
-                           
+         ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, dddd, timee, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);                   
         int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
         
         if(i>0 || j>0){
