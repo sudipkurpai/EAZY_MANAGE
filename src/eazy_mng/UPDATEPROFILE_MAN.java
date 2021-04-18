@@ -212,7 +212,7 @@ public class UPDATEPROFILE_MAN extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
      void Update_Profile(){
-         System.out.println("!!!!!!!!56!");
+      
          String mng_ID = MNG_ID.getText();
         
          try{   

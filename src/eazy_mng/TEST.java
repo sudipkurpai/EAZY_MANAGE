@@ -19,53 +19,53 @@ public class TEST extends javax.swing.JFrame {
      */
     public TEST() {
         initComponents();
-        destructor();
+      //  destructor();
     }
     
-    public void destructor(){
-        DocumentListener d = new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                update_text();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                update_text();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                update_text();
-            }
-            
-            public void update_text(){
-                String a1 =f1.getText();
-                String a2 =f2.getText();
-                if (!a1.equals("") && a2.equals("")){
-                    int a =Integer.parseInt(a1);
-                    int c = a;
-                    String q = String.valueOf(c);
-                    l1.setText(q);
-                }else if (!a2.equals("") && a1.equals("")){
-                    int b =Integer.parseInt(a2);
-                    int c = b;
-                    String q = String.valueOf(c);
-                    l1.setText(q);
-                }else if(!a2.equals("") && !a1.equals("")){
-                    int a =Integer.parseInt(a1);
-                    int b =Integer.parseInt(a2);
-                    int c = a+b;
-                    String q = String.valueOf(c);
-                    l1.setText(q);
-                }else{
-                    System.out.println("NOTHING TO DO");
-                }
-            }
-        };
-        f1.getDocument().addDocumentListener(d);
-        f2.getDocument().addDocumentListener(d);
-    }
+//    public void destructor(){
+//        DocumentListener d = new DocumentListener() {
+//            @Override
+//            public void insertUpdate(DocumentEvent e) {
+//                update_text();
+//            }
+//
+//            @Override
+//            public void removeUpdate(DocumentEvent e) {
+//                update_text();
+//            }
+//
+//            @Override
+//            public void changedUpdate(DocumentEvent e) {
+//                update_text();
+//            }
+//            
+//            public void update_text(){
+//                String a1 =f1.getText();
+//                String a2 =f2.getText();
+//                if (!a1.equals("") && a2.equals("")){
+//                    int a =Integer.parseInt(a1);
+//                    int c = a;
+//                    String q = String.valueOf(c);
+//                    l1.setText(q);
+//                }else if (!a2.equals("") && a1.equals("")){
+//                    int b =Integer.parseInt(a2);
+//                    int c = b;
+//                    String q = String.valueOf(c);
+//                    l1.setText(q);
+//                }else if(!a2.equals("") && !a1.equals("")){
+//                    int a =Integer.parseInt(a1);
+//                    int b =Integer.parseInt(a2);
+//                    int c = a+b;
+//                    String q = String.valueOf(c);
+//                    l1.setText(q);
+//                }else{
+//                    System.out.println("NOTHING TO DO");
+//                }
+//            }
+//        };
+//        f1.getDocument().addDocumentListener(d);
+//        f2.getDocument().addDocumentListener(d);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,8 +80,16 @@ public class TEST extends javax.swing.JFrame {
         f1 = new javax.swing.JTextField();
         f2 = new javax.swing.JTextField();
         l1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,13 +101,17 @@ public class TEST extends javax.swing.JFrame {
                     .addComponent(f1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                     .addComponent(f2)
                     .addComponent(l1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(f1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(f1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(31, 31, 31)
                 .addComponent(f2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
@@ -120,6 +132,18 @@ public class TEST extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+      String t = f1.getText();
+
+if (t.isEmpty()){
+f1.setText("");
+} else {
+f1.setText(t.substring(0, t.length() - t.length()));
+
+}     
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +183,7 @@ public class TEST extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField f1;
     private javax.swing.JTextField f2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel l1;
     // End of variables declaration//GEN-END:variables

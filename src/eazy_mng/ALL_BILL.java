@@ -863,7 +863,7 @@ public class ALL_BILL extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-               String nnn =rs.getString("C_name");
+             //  String nnn =rs.getString("C_name");
              //  na.setText(nnn);
                do
                {

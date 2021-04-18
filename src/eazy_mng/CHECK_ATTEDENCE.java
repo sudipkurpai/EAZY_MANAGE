@@ -198,6 +198,11 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
                 jButton4MouseClicked(evt);
             }
         });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 50, -1, 30));
 
         table.setBackground(new java.awt.Color(255, 255, 255));
@@ -307,10 +312,9 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
         /**/
         
         
-         if(c1.getDate()== null || c2.getDate()== null){
-             JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         }else{
-          try { 
+         if(c1.getDate()!= null && c2.getDate()!= null){
+     
+   try { 
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
             String d1 = s.format(c1.getDate());
             System.out.println("!@##%$$%$"+d1);
@@ -322,17 +326,26 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             DefaultTableModel model =(DefaultTableModel)table.getModel(); 
             model.setRowCount(0);
+            
                 while (rs.next())
+                  //  if(rs.next()){
                 {               
                     Object o []={
+                        
                         rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),rs.getString("MNG_ID"),rs.getString("IN_TIME"),
                    rs.getString("OUT_TIME"),rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
                     model.addRow(o);
 
                 }
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Insert ");
+//            }
             }catch(Exception e){
             System.out.println("error"+e);
         }
+                     
+         }else{
+  JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -358,6 +371,10 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
