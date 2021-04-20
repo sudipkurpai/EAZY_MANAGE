@@ -5,17 +5,79 @@
  */
 package eazy_mng;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Pattern;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class RETURN_PRODUCT extends javax.swing.JFrame {
+    String aa=null;
+     String time = null;
+     String date = null;
+     
+     String ph = null;
+     String Name = null;
+     String Id = null;
+     String emll = null;
+     String trn_id = null;
+     String Product_id = null;
+
 
     /**
      * Creates new form RETURN_PRODUCT
      */
     public RETURN_PRODUCT() {
         initComponents();
+       // reset.setEnabled(false);
+        nn1.setEditable(false);
+        pp1.setEditable(false);
+        ee1.setEditable(false);
+        dd1.setEditable(false);
+        pid1.setEditable(false);
+        pnn1.setEditable(false);
+        date();
+        time();
+    }
+     void rp (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+        Name = fullname;
+        Id = mng_Id;
+        emll = email;
+        time = t1;
+        date = d1;
+        ph= p;
+     }
+    
+    void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        d2.setText(s.format(d));
+        
+    }
+    
+
+    void time() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+                t2.setText(s.format(d));
+            }
+        }
+        ).start();
     }
 
     /**
@@ -27,37 +89,47 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        r = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel13 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reson = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        qtt = new javax.swing.JTextField();
+        pid1 = new javax.swing.JTextField();
+        pnn1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        r1 = new javax.swing.JRadioButton();
+        r2 = new javax.swing.JRadioButton();
+        drop = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        reset = new javax.swing.JButton();
+        ser = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        inv = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        nn1 = new javax.swing.JTextField();
+        ee1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        dd1 = new javax.swing.JTextField();
+        pp1 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        d2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        t2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,174 +138,480 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 340, 30));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (2)_1.png"))); // NOI18N
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 710, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("First Name");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 110, 20));
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (3)_1.png"))); // NOI18N
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 710, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Last Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 100, 20));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Product Information", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 340, 30));
+        reson.setBackground(new java.awt.Color(255, 255, 255));
+        reson.setColumns(20);
+        reson.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        reson.setForeground(new java.awt.Color(0, 0, 0));
+        reson.setRows(5);
+        jScrollPane1.setViewportView(reson);
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Email");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 70, 20));
-
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 340, 30));
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Phone ");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 70, 20));
-
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 340, 30));
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 340, 30));
-
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 340, 30));
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Order Date");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 20));
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Oder ID");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 70, 20));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(32, 64, 81)), "Oder Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 24), new java.awt.Color(32, 64, 81))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 740, 320));
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Product Name :");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 140, 30));
-
-        jTextField7.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField7.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 370, 30));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Product  ID :");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 140, 30));
-
-        jTextField8.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField8.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 370, 30));
-
-        jLabel11.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Quantity  :");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 140, 30));
-
-        jTextField9.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField9.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 370, 30));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 710, 60));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Reason for Return  :");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 180, 30));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 180, 30));
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Quantity  :");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 100, 30));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 370, 110));
+        qtt.setBackground(new java.awt.Color(255, 255, 255));
+        qtt.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        qtt.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(qtt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 310, -1));
+
+        pid1.setBackground(new java.awt.Color(255, 255, 255));
+        pid1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        pid1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(pid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 26, 310, -1));
+
+        pnn1.setBackground(new java.awt.Color(255, 255, 255));
+        pnn1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        pnn1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(pnn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 280, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Product Name :");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, 140, 30));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Product  ID :");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 26, -1, 30));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Product is opened :");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 190, 40));
+        jLabel13.setText("Product is/are Opened :");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, 40));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jRadioButton1.setText("YES");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 624, -1, 30));
+        r1.setBackground(new java.awt.Color(255, 255, 255));
+        r.add(r1);
+        r1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        r1.setForeground(new java.awt.Color(51, 51, 51));
+        r1.setText("YES");
+        jPanel3.add(r1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, -1, 40));
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("NO");
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 624, -1, 30));
+        r2.setBackground(new java.awt.Color(255, 255, 255));
+        r.add(r2);
+        r2.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        r2.setForeground(new java.awt.Color(0, 0, 0));
+        r2.setText("NO");
+        r2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(r2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, -1, 40));
 
-        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(32, 64, 81)), "Product information & Reason for Return", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 20), new java.awt.Color(32, 64, 81))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 324, 740, 360));
+        drop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Refund Successful", "Pending for Verification" }));
+        jPanel3.add(drop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 365, 30));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (2)_1.png"))); // NOI18N
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Refund Status :");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 140, 30));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (3)_1.png"))); // NOI18N
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 690, -1, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 960, 240));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Customer Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        reset.setBackground(new java.awt.Color(0, 224, 201));
+        reset.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        reset.setForeground(new java.awt.Color(255, 0, 0));
+        reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/replay.png"))); // NOI18N
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
+        jPanel4.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 40, 30));
+
+        ser.setBackground(new java.awt.Color(0, 224, 201));
+        ser.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ser.setForeground(new java.awt.Color(0, 0, 204));
+        ser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/search-magnifier-interface-symbol (1).png"))); // NOI18N
+        ser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ser, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 40, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Name :");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, 30));
+
+        inv.setBackground(new java.awt.Color(255, 255, 255));
+        inv.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        inv.setForeground(new java.awt.Color(0, 0, 0));
+        inv.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        jPanel4.add(inv, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 280, 30));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Email :");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, 30));
+
+        nn1.setBackground(new java.awt.Color(255, 255, 255));
+        nn1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        nn1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(nn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 310, 30));
+
+        ee1.setBackground(new java.awt.Color(255, 255, 255));
+        ee1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        ee1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(ee1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 310, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Phone : ");
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 80, 30));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Order Date :");
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 120, 30));
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("Invoice No :");
+        jPanel4.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, 30));
+
+        dd1.setBackground(new java.awt.Color(255, 255, 255));
+        dd1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        dd1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(dd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 310, 30));
+
+        pp1.setBackground(new java.awt.Color(255, 255, 255));
+        pp1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        pp1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(pp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 310, 30));
+
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText(" Date :");
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 70, 30));
+
+        d2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        d2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(d2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 110, 30));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Time :");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 60, 30));
+
+        t2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        t2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.add(t2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, 110, 30));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 960, 170));
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        table.getTableHeader().setReorderingAllowed(false);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(table);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 960, 150));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 590, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("X");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 30, -1));
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Return Product");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 70));
+        jLabel14.setText("RETURN PRODUCT");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 360, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
-        setSize(new java.awt.Dimension(790, 827));
+        setSize(new java.awt.Dimension(1000, 705));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void r2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_r2ActionPerformed
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        // TODO add your handling code here:
+         DASHBOARD_M dm = new DASHBOARD_M();
+        dm.mngname(Name, Id, emll, ph, date, time);
+        dm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
+        // TODO add your handling code here:
+       //  Remove();
+       // Remove1();
+              inv.setText("");
+              dd1.setText("");
+              
+              nn1.setText("");
+              ee1.setText("");
+              pp1.setText("");
+              pid1.setText("");
+              pnn1.setText("");
+              reson.setText("");
+              drop.setSelectedIndex(0);
+           //   r1.setSelected(false);
+           //   r2.setSelected(false);
+             // ButtonGroup m= r.
+              r.clearSelection();
+       DefaultTableModel tm=(DefaultTableModel) table.getModel();
+        while(tm.getColumnCount()>0){
+            tm.setColumnCount(0);
+        }
+           inv.setEditable(true);
+                 
+            ser.setEnabled(true);
+    }//GEN-LAST:event_resetActionPerformed
+public void fast (){
+    String Inv_no=inv.getText();
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_bill where Invoice_id = ?  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,Inv_no);
+         //   ps.setString(2,date);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               inv.setEditable(false);
+                ser.setEnabled(false);
+               String nnn =rs.getString("C_name");
+               String bDD =rs.getString("Date");
+             //  String Btt =rs.getString("Time");
+               String CEML =rs.getString("C_email");
+               String CPPP =rs.getString("Phone");
+               
+              dd1.setText(bDD);
+              
+              nn1.setText(nnn);
+              ee1.setText(CEML);
+              pp1.setText(CPPP);
+             
+                String j = rs.getString("Product_id");
+           
+         //     System.out.println("!!!!!!!!!!"+ i);
+              String actualString9 = j;
+              String REGEX9 = "#";
+              Pattern pattern9 = Pattern.compile(REGEX9);
+              String[] array9 = pattern9.split(actualString9);
+         //     System.out.println("@@@@@@@@@@"+Arrays.toString(array));
+              model.addColumn("Items Id", array9);
+          //    model.addColumn(array9);
+                     
+              
+              String i = rs.getString("Product_name");
+         //     System.out.println("!!!!!!!!!!"+ i);
+              String actualString = i;
+              String REGEX = "#";
+              Pattern pattern = Pattern.compile(REGEX);
+              String[] array = pattern.split(actualString);
+         //     System.out.println("@@@@@@@@@@"+Arrays.toString(array));
+              model.addColumn("Items", array);
+            //   model.addColumn(array);
+               
+              String d = rs.getString("Description");
+           //   System.out.println("!!!!!!!!!!"+ d);
+              String actString = d;
+              String REGEX1 = "#";
+              Pattern pattern1 = Pattern.compile(REGEX1);
+              String[] array1 = pattern1.split(actString);
+          //    System.out.println("@@@@@@@@@@"+Arrays.toString(array1));
+        //     model.addColumn(array1);
+          model.addColumn("Description", array1);
+              
+               String q = rs.getString("Quantity");
+           //   System.out.println("!!!!!!!!!!"+ q);
+              String actString1 = q;
+              String REGEX2 = "#";
+              Pattern pattern2 = Pattern.compile(REGEX2);
+              String[] array2 = pattern2.split(actString1);
+           //   System.out.println("@@@@@@@@@@"+Arrays.toString(array2));
+              model.addColumn("Quantity", array2);
+           //  model.addColumn(array2);
+              
+               String pi = rs.getString("Price");
+          //    System.out.println("!!!!!!!!!!"+ pi);
+              String actString3 = pi;
+              String REGEX3 = "#";
+              Pattern pattern3 = Pattern.compile(REGEX3);
+              String[] array3 = pattern3.split(actString3);
+           //   System.out.println("@@@@@@@@@@"+Arrays.toString(array3));
+            // model.addColumn(array3); 
+           model.addColumn("Price", array3);
+              
+            
+              
+             
+              
+              String tg = rs.getString("Total_with_gst");
+             
+              String actString6 = tg;
+              String REGEX6 = "#";
+              Pattern pattern6 = Pattern.compile(REGEX6);
+              String[] array6 = pattern6.split(actString6);
+              //System.out.println("@@@@@@@@@@"+Arrays.toString(array6));
+           //   model.addColumn(array6);
+             model.addColumn  ("Total with GST", array6);
+            
+             
+             
+              
+                
+               // model.addRow(array);
+//               do
+//               {
+//                   Object o []={array1};
+//                       //rs.getString("Product_name"),rs.getString("Description"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Tax"),rs.getString("Total_without_gst"),rs.getString("Total_with_gst")};
+//                   // JOptionPane.showMessageDialog(this, "Product Found");
+//                   
+//                   model.addRow(o);
+//               }while (rs.next());
+           }else{
+               inv.setEditable(true);
+                JOptionPane.showMessageDialog(null,"No Bills Available In This Invoice No", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+               ser.setEnabled(true);
+               
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        
+            }
+        
+    }
+ 
+    private void serActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serActionPerformed
+        // TODO add your handling code here:
+       
+        fast();
+        reset.setEnabled(true);
+       
+
+    }//GEN-LAST:event_serActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+         int i = table.getSelectedRow();
+     DefaultTableModel model=(DefaultTableModel)table.getModel();
+     pid1.setText(model.getValueAt(i,0).toString());
+     pnn1.setText(model.getValueAt(i,1).toString());
+    
+        
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+         redio();
+        
+        String invs=inv.getText();
+        String C_name=nn1.getText();
+        String c_pho=pp1.getText();
+        String c_eml=ee1.getText();
+        String o_date=dd1.getText();
+        String p_id=pid1.getText();
+        String p_name=pnn1.getText();
+        String qtt1=qtt.getText();
+      
+          
+        
+        String d3=d2.getText();
+        String t3=t2.getText();
+        String re=reson.getText();
+        String  dro=drop.getSelectedItem().toString();
+        
+        if(C_name.equals("")||p_id.equals("") ){
+            JOptionPane.showMessageDialog(null,"Fill Up All Feild");
+           
+        }else if(r.getSelection()==null)
+        {
+             JOptionPane.showMessageDialog(null,"Set Product is Opend or Not");
+        }else if (re.equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Give a Reson For Return Product");
+        }else if (drop.getSelectedItem().equals("-- Select --"))
+        {
+            JOptionPane.showMessageDialog(null,"Select Refund Status");
+        }else{
+        DELECT_PRODUCT_DETAOBJECT.ret(C_name, c_pho, c_eml, invs, o_date, dro, p_name, p_id, qtt1,aa, re, d3, t3);
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+public void redio(){
+   
+    if(r1.isSelected()==true){
+        aa = r1.getText();
+        }else if(r2.isSelected()==true){
+        aa = r2.getText();
+        }
+    
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -271,6 +649,11 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel d2;
+    private javax.swing.JTextField dd1;
+    private javax.swing.JComboBox<String> drop;
+    private javax.swing.JTextField ee1;
+    private javax.swing.JTextField inv;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -280,28 +663,33 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField nn1;
+    private javax.swing.JTextField pid1;
+    private javax.swing.JTextField pnn1;
+    private javax.swing.JTextField pp1;
+    private javax.swing.JTextField qtt;
+    private javax.swing.ButtonGroup r;
+    private javax.swing.JRadioButton r1;
+    private javax.swing.JRadioButton r2;
+    private javax.swing.JButton reset;
+    private javax.swing.JTextArea reson;
+    private javax.swing.JButton ser;
+    private javax.swing.JLabel t2;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

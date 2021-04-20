@@ -125,8 +125,18 @@ String time = null;
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         pro_id.setBackground(new java.awt.Color(255, 255, 255));
-        pro_id.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        pro_id.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        pro_id.setForeground(new java.awt.Color(0, 0, 204));
+        pro_id.setText("Enter Product ID :");
         pro_id.setBorder(null);
+        pro_id.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pro_idFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pro_idFocusLost(evt);
+            }
+        });
         pro_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pro_idKeyReleased(evt);
@@ -146,10 +156,15 @@ String time = null;
         });
         jPanel4.add(closs, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 20, 20));
 
-        jButton5.setBackground(new java.awt.Color(255, 153, 255));
+        jButton5.setBackground(new java.awt.Color(255, 102, 0));
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 51, 255));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Reset");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 80, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 70));
@@ -335,6 +350,28 @@ String time = null;
             System.out.println("error"+e);
         }
     }//GEN-LAST:event_pro_idKeyReleased
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        pro_id.setText("Enter Product ID :");
+        table();
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void pro_idFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pro_idFocusGained
+        // TODO add your handling code here:
+        if(pro_id.getText().equals("Enter Product ID :")){
+            pro_id.setText("");
+        }
+    }//GEN-LAST:event_pro_idFocusGained
+
+    private void pro_idFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pro_idFocusLost
+        // TODO add your handling code here:
+        if(pro_id.getText().equals(""))
+        {
+            pro_id.setText("Enter Product ID :");
+        }
+    }//GEN-LAST:event_pro_idFocusLost
        
         
  

@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BILL_EMPLOYEE extends javax.swing.JFrame {
     String itmt = null ;
+   String  Pidd =null;
      String dsct = null ;
      String quant = null ;
      String prit = null ;
@@ -373,11 +374,11 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Items", "Description", "Quantity", "Price", "Tax", "Total", "Total With GST"
+                "Item ID", "Items", "Description", "Quantity", "Price", "Tax", "Total", "Total With GST"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -778,7 +779,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
             check.setEnabled(true);
            
              DefaultTableModel model = (DefaultTableModel)table.getModel();
-              model.addRow(new Object[]{p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
+              model.addRow(new Object[]{pro_id.getText(),p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
                                   total.getText(),total2.getText()
               });
         
@@ -972,6 +973,7 @@ try {
             
             
             fast(); 
+            aaaa1();
             aaaa();
             bbbb();
             cccc();
@@ -979,7 +981,7 @@ try {
             eeee();
             ffff();
                 
-            ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, addd, Pinn, Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo, bill_s, pay_s,rea,ref);
+            ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, addd, Pinn, Invoice, C_date, C_time, Pidd, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo, bill_s, pay_s,rea,ref);
                //               add_bill(Ca_name, Ca_eml, Ca_phone,addd,Pinn Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo,bill_s,pay_s);   
             ID_STORE_FETCH.invoice(Invvvv.toString());
             print.setEnabled(true);
@@ -1062,9 +1064,9 @@ try {
                 StringBuilder sb = new StringBuilder();
                 sb.append(value+"#");
                 str =sb.toString();
-                    System.out.println("@@@@@@@" +str);
+                   // System.out.println("@@@@@@@" +str);
                 myList.add(str); 
-                System.out.println("sssssssssss"+sb);
+               // System.out.println("sssssssssss"+sb);
                 String it = myList.toString();
                 String regex = "null";
                 String regexx = "]";
@@ -1074,15 +1076,43 @@ try {
                 String p = v.replace(regexx, "");
                 String pp = p.replace(regexxx, "");
                 String ppp = pp.replace(reget, "");
-                itmt = ppp;
+                Pidd = ppp;
     }
     }}
- public void aaaa(){
+    
+    public void aaaa1(){
      String value = null;
      String str = null;
       if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
     column = 1;
+                ArrayList<String> myListt = new ArrayList<String>(Arrays.asList(str));
+                for (int i = 0 ; i < selectedRow.length; i++) {
+                value = table.getModel().getValueAt(selectedRow[i], column).toString();
+                StringBuilder sb = new StringBuilder();
+                sb.append( value+"#");
+                str =sb.toString();
+                myListt.add(str); 
+                String it = myListt.toString();
+                String regex = "null";
+                String regexx = "]";
+                String regexxx = "[";
+                String reget = ",";
+                String v =   it.replaceAll(regex,"");
+                String p = v.replace(regexx, "");
+                String pp = p.replace(regexxx, "");
+                String ppp = pp.replace(reget, "");
+                itmt = ppp;
+            }
+      }
+}
+    
+ public void aaaa(){
+     String value = null;
+     String str = null;
+      if (table.getRowCount() > 0) {
+            int selectedRow[] = table.getSelectedRows();
+    column = 2;
                 ArrayList<String> myListt = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
@@ -1109,7 +1139,7 @@ try {
      String str = null;
       if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
-     column = 2;
+     column = 3;
                 ArrayList<String> myLista = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
@@ -1135,7 +1165,7 @@ try {
      String str = null;
       if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
-    column = 3;
+    column = 4;
                 ArrayList<String> myListb = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
@@ -1162,7 +1192,7 @@ try {
      String str = null;
       if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
-     column = 4;
+     column = 5;
                 ArrayList<String> myListc = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
@@ -1189,7 +1219,7 @@ try {
      String str = null;
       if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
-     column = 5;
+     column = 6;
                 ArrayList<String> myListd = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
@@ -1219,7 +1249,7 @@ try {
       if (table.getRowCount() > 0) {
             int selectedRow[] = table.getSelectedRows();
     
-                  column = 6;
+                  column = 7;
                 ArrayList<String> myListe = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();

@@ -14,9 +14,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.jar.Attributes.Name;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -649,6 +652,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel106.setText("Out of Stock");
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/out-of-stock.png"))); // NOI18N
+        jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel48MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel63Layout = new javax.swing.GroupLayout(jPanel63);
         jPanel63.setLayout(jPanel63Layout);
@@ -1590,6 +1598,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/product-return.png"))); // NOI18N
+        jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel32MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel69Layout = new javax.swing.GroupLayout(jPanel69);
         jPanel69.setLayout(jPanel69Layout);
@@ -2611,7 +2624,12 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void jPanel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel26MouseClicked
         // TODO add your handling code here:
-        ADD_NEW_PRODUCT_MA anp = new ADD_NEW_PRODUCT_MA();
+        ADD_NEW_PRODUCT_MA anp = null;
+        try {
+            anp = new ADD_NEW_PRODUCT_MA();
+        } catch (ParseException ex) {
+            Logger.getLogger(DASHBOARD_M.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String name = mng_name.getText();
         String ID = mng_id.getText();
         String t1 = time1.getText();
@@ -2795,6 +2813,30 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         pdd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel71MouseClicked
+
+    private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
+        // TODO add your handling code here:
+        RETURN_PRODUCT rep=new RETURN_PRODUCT();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        rep.rp(name, ID, eml,t1,d1,ph);
+        rep.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel32MouseClicked
+
+    private void jLabel48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel48MouseClicked
+        // TODO add your handling code here:
+         OUT_OF_STOCK ofs=new OUT_OF_STOCK();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        ofs.oos(name, ID, eml,t1,d1,ph);
+        ofs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel48MouseClicked
 
     /**
      * @param args the command line arguments

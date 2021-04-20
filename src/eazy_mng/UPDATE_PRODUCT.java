@@ -13,8 +13,11 @@ import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
@@ -208,7 +211,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         unit_pri = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        mfg = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         quantity = new javax.swing.JTextField();
         catagory = new javax.swing.JTextField();
@@ -218,7 +220,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         desc = new javax.swing.JTextPane();
         jLabel15 = new javax.swing.JLabel();
-        exp = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         brand = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -231,6 +232,8 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         upda = new javax.swing.JButton();
         quantity1 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        exp = new com.toedter.calendar.JDateChooser();
+        mfg = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -394,9 +397,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel10.setText("Selling Price :");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 80, 30));
 
-        mfg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 130, 30));
-
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 204));
         jLabel11.setText("Mfg Date :");
@@ -435,9 +435,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
         jLabel15.setText("Expiry Date :");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 70, 30));
-
-        exp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 30));
 
         jLabel16.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 204));
@@ -529,6 +526,12 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel21.setText("+");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 80, 30, 30));
 
+        exp.setDateFormatString("dd-MM-yyyy");
+        jPanel2.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 30));
+
+        mfg.setDateFormatString("dd-MM-yyyy");
+        jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 130, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -602,7 +605,11 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
         res();
-        click();
+         try {
+             click();
+         } catch (ParseException ex) {
+             Logger.getLogger(UPDATE_PRODUCT.class.getName()).log(Level.SEVERE, null, ex);
+         }
         id_create();
          cal();
         upda.setEnabled(true);
@@ -622,8 +629,9 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         String Desc= desc.getText();
         String Standerd_cost = s_cost.getText();
         String unit_price = unit_pri.getText();
-        String mfg_date = mfg.getText();
-        String exp_date = exp.getText();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        String mfg_date =  s.format(mfg.getDate());
+        String exp_date = s.format(exp.getDate());
         
         int quantit1 = Integer.parseInt(quantity.getText());
         int quantit2 = Integer.parseInt(quantity1.getText());
@@ -689,8 +697,8 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
          desc.setText("");
          s_cost.setText("");
          unit_pri.setText("");
-         mfg.setText("");
-         exp.setText("");
+         mfg.setDate(null);
+         exp.setDate(null);
          quantity1.setText("");
          quantity.setText("");
          catagory.setText("");
@@ -884,7 +892,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         s_cost.getDocument().addDocumentListener(dl);
         quantity.getDocument().addDocumentListener(dl);
     }
-    public void click(){
+    public void click() throws ParseException{
      int i = table.getSelectedRow();
      DefaultTableModel model=(DefaultTableModel)table.getModel();
      p_id.setText(model.getValueAt(i,0).toString());
@@ -893,8 +901,11 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      desc.setText(model.getValueAt(i,3).toString());
      s_cost.setText(model.getValueAt(i,4).toString());
      unit_pri.setText(model.getValueAt(i,5).toString());
-     mfg.setText(model.getValueAt(i,6).toString());
-     exp.setText(model.getValueAt(i,7).toString());
+     
+     Date abcd = new SimpleDateFormat("dd-MM-yyyy").parse(model.getValueAt(i,6).toString());
+     mfg.setDate(abcd);
+     Date abcc = new SimpleDateFormat("dd-MM-yyyy").parse(model.getValueAt(i,7).toString());
+     exp.setDate(abcc);
      quantity1.setText(model.getValueAt(i,8).toString());
      catagory.setText(model.getValueAt(i,9).toString());
      brand.setText(model.getValueAt(i,10).toString());
@@ -926,7 +937,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private javax.swing.JTextField catagory;
     private javax.swing.JTextField d2;
     private javax.swing.JTextPane desc;
-    private javax.swing.JTextField exp;
+    private com.toedter.calendar.JDateChooser exp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -954,7 +965,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField mfg;
+    private com.toedter.calendar.JDateChooser mfg;
     private javax.swing.JTextField mng_id;
     private javax.swing.JTextField mng_name;
     private javax.swing.JTextField p_id;

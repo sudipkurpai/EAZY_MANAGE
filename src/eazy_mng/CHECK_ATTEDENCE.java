@@ -326,20 +326,17 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             DefaultTableModel model =(DefaultTableModel)table.getModel(); 
             model.setRowCount(0);
-            
+            if (rs.next()) {
                 while (rs.next())
-                  //  if(rs.next()){
-                {               
-                    Object o []={
-                        
-                        rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),rs.getString("MNG_ID"),rs.getString("IN_TIME"),
-                   rs.getString("OUT_TIME"),rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
-                    model.addRow(o);
+                    {               
+                        Object o []={rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),rs.getString("MNG_ID"),rs.getString("IN_TIME"),
+                       rs.getString("OUT_TIME"),rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
+                        model.addRow(o);
 
-                }
-//            }else{
-//                JOptionPane.showMessageDialog(this, "Insert ");
-//            }
+                    }
+            }else{
+                JOptionPane.showMessageDialog(this, "No Data Found");
+            }
             }catch(Exception e){
             System.out.println("error"+e);
         }

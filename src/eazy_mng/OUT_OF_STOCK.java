@@ -33,7 +33,7 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
         initComponents();
         auto();
     }
-     void snp (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+     void oos (String fullname, String mng_Id,String email,String t1,String d1,String p) {
         Name = fullname;
         Id = mng_Id;
         emll = email;
