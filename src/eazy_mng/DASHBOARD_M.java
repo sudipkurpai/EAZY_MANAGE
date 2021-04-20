@@ -679,6 +679,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel72.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel72.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel72MouseClicked(evt);
+            }
+        });
 
         jLabel116.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel116.setForeground(new java.awt.Color(0, 204, 102));
@@ -1590,6 +1595,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel69.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel69.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel69MouseClicked(evt);
+            }
+        });
 
         jLabel113.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel113.setForeground(new java.awt.Color(0, 204, 102));
@@ -1598,11 +1608,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/product-return.png"))); // NOI18N
-        jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel32MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel69Layout = new javax.swing.GroupLayout(jPanel69);
         jPanel69.setLayout(jPanel69Layout);
@@ -2814,18 +2819,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel71MouseClicked
 
-    private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
-        // TODO add your handling code here:
-        RETURN_PRODUCT rep=new RETURN_PRODUCT();
-        String name = mng_name.getText();
-        String ID = mng_id.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        rep.rp(name, ID, eml,t1,d1,ph);
-        rep.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel32MouseClicked
-
     private void jLabel48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel48MouseClicked
         // TODO add your handling code here:
          OUT_OF_STOCK ofs=new OUT_OF_STOCK();
@@ -2837,6 +2830,30 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         ofs.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel48MouseClicked
+
+    private void jPanel72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel72MouseClicked
+        // TODO add your handling code here:
+         AVAILABLE_STOCK as=new AVAILABLE_STOCK();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        as.avs(name, ID, eml,t1,d1,ph);
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel72MouseClicked
+
+    private void jPanel69MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel69MouseClicked
+        // TODO add your handling code here:
+         RETURN_PRODUCT rep=new RETURN_PRODUCT();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        rep.rp(name, ID, eml,t1,d1,ph);
+        rep.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel69MouseClicked
 
     /**
      * @param args the command line arguments
