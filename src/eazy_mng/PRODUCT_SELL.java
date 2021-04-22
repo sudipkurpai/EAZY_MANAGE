@@ -568,14 +568,8 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                }else{
                    System.out.println("NONE");
                }
-                   
-                   
-               
-            }
-
-            
-            
-        };
+               }
+               };
         pri.getDocument().addDocumentListener(dl);
         qun.getDocument().addDocumentListener(dl);
     }

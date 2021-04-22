@@ -5,17 +5,76 @@
  */
 package eazy_mng;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class PRODUCT_LOST extends javax.swing.JFrame {
 
+    String ID = null;
+    String Name = null;
+    String Phone = null;
+    String Email = null;
+    String DOB = null;
+    String Gender= null;
+    String Address =null;
+    String date=null;
+    String time = null;
+    int c;
     /**
      * Creates new form PRODUCT_LOST
      */
     public PRODUCT_LOST() {
         initComponents();
+        table();
+        date();
+        time();
+        cal();
+        
+        Pro_name.setEditable(false);
+        pri.setEditable(false);
+        loss_am.setEditable(false);
+    }
+    
+     void plost (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+       Name = fullname;
+        ID = mng_Id;
+        Email = email;
+        time = t1;
+        date = d1;
+        Phone= p;
+    }
+      void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        d0.setText(s.format(d));
+    }
+    
+
+    void time() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+                t0.setText(s.format(d));
+            }
+        }
+        ).start();
     }
 
     /**
@@ -28,163 +87,440 @@ public class PRODUCT_LOST extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        t0 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        Pro_name = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        pri = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        how_loss = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        qun = new javax.swing.JTextField();
+        pro_id = new javax.swing.JTextField();
+        from = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        loss_am = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        go = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        d0 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(32, 64, 81));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("X");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 50, 50));
-
-        jPanel3.setBackground(new java.awt.Color(32, 64, 81));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 47, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PRODUCT LOST");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 73));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 330, 60));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Date of Lost (if Possible\n) :");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, 34));
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 0, 102));
+        jLabel7.setText("Time :");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 60, 40));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 470, 34));
+        t0.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        t0.setForeground(new java.awt.Color(0, 0, 204));
+        jPanel2.add(t0, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 270, 40));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Time of Lost (if Passible) :");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, 34));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 35, 218), 2));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 470, 40));
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Approximate Location Item Lost from : ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, 34));
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Product ID :");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, 34));
-
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 593, 34));
+        Pro_name.setBackground(new java.awt.Color(255, 255, 255));
+        Pro_name.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        Pro_name.setForeground(new java.awt.Color(0, 0, 204));
+        Pro_name.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel4.add(Pro_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 560, 34));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(0, 153, 0));
         jLabel6.setText("Product Name :");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, 34));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 34));
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 563, 34));
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel5.setText("Product ID :");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 34));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Today's Date");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 34));
+        pri.setBackground(new java.awt.Color(255, 255, 255));
+        pri.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        pri.setForeground(new java.awt.Color(0, 0, 204));
+        pri.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel4.add(pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 180, 34));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Product Decription (Model and Serial,if Available) :");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, 34));
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel4.setText("Approximate  Item Lost from Where : ");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, 34));
 
-        jTextField11.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField11.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 384, 32));
+        how_loss.setColumns(20);
+        how_loss.setRows(5);
+        jScrollPane1.setViewportView(how_loss);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 690, 90));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel13.setText("How the Product is Lost  :");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, 34));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel12.setText("Product Price :");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 130, 34));
+
+        qun.setBackground(new java.awt.Color(255, 255, 255));
+        qun.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        qun.setForeground(new java.awt.Color(0, 0, 204));
+        qun.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        qun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                qunKeyTyped(evt);
+            }
+        });
+        jPanel4.add(qun, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 150, 34));
+
+        pro_id.setBackground(new java.awt.Color(255, 255, 255));
+        pro_id.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        pro_id.setForeground(new java.awt.Color(0, 0, 204));
+        pro_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel4.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 510, 34));
+
+        from.setBackground(new java.awt.Color(255, 255, 255));
+        from.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        from.setForeground(new java.awt.Color(0, 0, 204));
+        from.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel4.add(from, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 390, 32));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel11.setText("Lost Product Quantity  :");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, 34));
+
+        loss_am.setBackground(new java.awt.Color(255, 255, 255));
+        loss_am.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        loss_am.setForeground(new java.awt.Color(0, 0, 204));
+        loss_am.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel4.add(loss_am, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 520, 34));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel14.setText("Total Amount Loss  :");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, 34));
+
+        go.setBackground(new java.awt.Color(0, 153, 0));
+        go.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        go.setForeground(new java.awt.Color(255, 255, 255));
+        go.setText("Go");
+        go.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goActionPerformed(evt);
+            }
+        });
+        jPanel4.add(go, new org.netbeans.lib.awtextra.AbsoluteConstraints(656, 10, 70, 30));
 
         jButton1.setBackground(new java.awt.Color(204, 0, 0));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cancel");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 650, -1, -1));
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 100, 34));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 255));
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Send");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 650, 96, -1));
+        jButton3.setBackground(new java.awt.Color(0, 0, 255));
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 96, 34));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 260, 40));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 750, 400));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 0, 102));
+        jLabel15.setText("Date :");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 60, 40));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 700, 240));
+        d0.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        d0.setForeground(new java.awt.Color(0, 0, 204));
+        jPanel2.add(d0, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 270, 40));
+
+        table.setBackground(new java.awt.Color(255, 255, 255));
+        table.setForeground(new java.awt.Color(0, 0, 204));
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Product Id", "Product Name", "Price", "Lost Quantity", "Loss Amount", "Lost Place", "How Lost", "Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 750, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(832, 675));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goActionPerformed
+        // TODO add your handling code here:
+        
+         String product_idee = pro_id.getText();
+      try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_new_product where Product_id=? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if(rs.next()){
+               table();
+               pro_id.setEditable(false);
+               go.setEnabled(false);
+             c =Integer.parseInt(rs.getString("Quantity"));
+             
+           String pn=rs.getString("Product_name");
+           String cost=rs.getString("Standerd_cost");
+           Pro_name.setText(pn);
+           pri.setText(cost);
+//            
+           }else{
+               JOptionPane.showMessageDialog(this, "Product Not Found");
+               table();
+               pro_id.setEditable(true);
+                go.setEnabled(true);
+                pro_id.setText("");
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+                
+    }//GEN-LAST:event_goActionPerformed
+
+    
+ public void table()
+{
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From product_lost ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Price"),rs.getString("Lost_quantity"),rs.getString("Loss_amount"),rs.getString("Location"),
+              rs.getString("How_lost"),rs.getString("Date")};
+           
+               model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         reset();
+    }//GEN-LAST:event_jButton1ActionPerformed
+public void reset(){
+     pro_id.setText("");
+          Pro_name.setText("");
+          pri.setText("");
+          qun.setText("");
+          loss_am.setText("");
+          from.setText("");
+          how_loss.setText("");
+          pro_id.setEditable(true);
+          go.setEnabled(true);
+         table();
+}
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        DASHBOARD_M dm = new DASHBOARD_M();
+        dm.mngname(Name,ID,Email,Phone,date,time);
+        dm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+      String pi=  pro_id.getText();
+      String pnn=  Pro_name.getText();
+      String prii=  pri.getText();
+      String lq=  qun.getText();
+      
+      int a=c-Integer.parseInt(lq);
+      String b= Integer.toString(a);
+       // System.out.println("hello"+a);
+      String amount=loss_am.getText();
+      String lost_from=  from.getText();
+      String howLost=  how_loss.getText();
+      String Ddd=  d0.getText();
+      String Ttt=  t0.getText();
+      
+      if(pnn.equals("")){
+          JOptionPane.showMessageDialog(this, "Select The Losted Product");
+      }else if(lq.equals("")||lq.equals("0")){
+          JOptionPane.showMessageDialog(this, "Put Lost Product Quantity");
+          
+      }else if(howLost.equals(""))
+      {
+          JOptionPane.showMessageDialog(this, "Explain How the Product Losted");
+      }else if(c<Integer.parseInt(lq)){
+          JOptionPane.showMessageDialog(this, "You put Lost Product Quantity More Then Stock");
+      } 
+      
+      else{
+           int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Those Prodects Losted  ?");
+        if(Yes == 0){
+           DELECT_PRODUCT_DETAOBJECT.Lost(pi, pnn, prii, lq, amount, lost_from, howLost, Ddd, Ttt);
+         ADD_NEW_PRODUCT_DETAOBJ.lost_update(lq, b);
+           reset();
+        }else{
+             int No=0;
+                if (No == 0){
+                }
+               }
+      }   
+      
+              
+      
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void qunKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qunKeyTyped
+        // TODO add your handling code here:
+         if(evt.getKeyChar()>= '0' && evt.getKeyChar()<= '9'){
+         qun.setEditable(true);
+      }else if(evt.getKeyChar()==KeyEvent.VK_BACK_SPACE)
+      {
+         qun.setEditable(true);
+      }
+      else {
+          evt.consume();
+          //  s_cost.setEditable(false);
+          JOptionPane.showMessageDialog(this, "Enter Only Number Value");
+      }
+    }//GEN-LAST:event_qunKeyTyped
+public void cal(){
+        DocumentListener dl = new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+              update_val();  
+                //To change body of generated methods, choose Tools | Templates.
+                
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                //To change body of generated methods, choose Tools | Templates.
+                update_val();
+            }
+            
+            protected void update_val(){
+               String f1=pri.getText();
+               String f2=qun.getText();
+               if (!f1.equals("") && f2.equals("")){
+                   double b=Double.parseDouble(pri.getText());
+                   //double  b1=Double.parseDouble(a1.getText());
+                   double c= b;
+                   String e=String.valueOf(c);
+                   loss_am.setText(e);
+               }else if (f1.equals("") && !f2.equals("")){
+                   //double b=Double.parseDouble(a.getText());
+                   double  b1=Double.parseDouble(qun.getText());
+                   double c= b1;
+                   String e=String.valueOf(c);
+                   loss_am.setText(e);
+               }else if (!f1.equals("") && !f2.equals("")){
+                   double b=Double.parseDouble(pri.getText());
+                   double  b1=Double.parseDouble(qun.getText());
+                   double c= b*b1;
+                   String e=String.valueOf(c);
+                   
+                   loss_am.setText(e);
+                   
+               }else{
+                  // System.out.println("NONE");
+                   loss_am.setText("0");
+               }
+                  
+            }
+        };
+         pri.getDocument().addDocumentListener(dl);
+        qun.getDocument().addDocumentListener(dl);
+                }
     /**
      * @param args the command line arguments
      */
@@ -222,27 +558,34 @@ public class PRODUCT_LOST extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Pro_name;
+    private javax.swing.JLabel d0;
+    private javax.swing.JTextField from;
+    private javax.swing.JButton go;
+    private javax.swing.JTextArea how_loss;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField loss_am;
+    private javax.swing.JTextField pri;
+    private javax.swing.JTextField pro_id;
+    private javax.swing.JTextField qun;
+    private javax.swing.JLabel t0;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

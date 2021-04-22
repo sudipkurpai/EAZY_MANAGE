@@ -22,7 +22,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                    Connection con=DATABASE_CONNECTION.getConnection();  
                    PreparedStatement ps=con.prepareStatement("INSERT INTO add_new_product (Manager_name, Man_id, Date,Time, Transaction_id , Product_id, Product_name,Vendor_Name, Description, Standerd_cost, Unit_price, Mfg_date, Exp_date, Quantity, Category, Brand,Total) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                    ps.setString(1, Manager_name);  
-                   System.out.println("111111111"+Manager_name);
+             //      System.out.println("111111111"+Manager_name);
                    ps.setString(2, Man_id);
                  // System.out.println("22222"+Man_id);
                    ps.setString(3, Date);
@@ -59,7 +59,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
               }catch(Exception e){
                   System.out.println(e);
               }
-              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+         //     System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
 }
     
@@ -72,9 +72,9 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                    
                    ps.setString(1, Description);
                    ps.setString(2, Standerd_cost);
-                   System.out.println("8888888888"+Standerd_cost);
+            //       System.out.println("8888888888"+Standerd_cost);
                    ps.setString(3, Unit_price);
-                   System.out.println("999999999"+Unit_price);
+            //       System.out.println("999999999"+Unit_price);
                    ps.setString(4, Mfg_date);
                    ps.setString(5, Exp_date);
                    ps.setString(6, Quantity);
@@ -85,7 +85,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                      ps.setString(11, Time);
                    ps.setString(12, Product_id);
                     
-                   System.out.println("Producttt"+Product_id);
+              //     System.out.println("Producttt"+Product_id);
                   status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){
@@ -105,7 +105,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                  
                    
                    ps.setString(1, Manager_name);  
-                   System.out.println("111111111"+Manager_name);
+            //       System.out.println("111111111"+Manager_name);
                    ps.setString(2, Man_id);
                  // System.out.println("22222"+Man_id);
                    ps.setString(3, Date);
@@ -138,9 +138,30 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                   status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){
-                  System.out.println("helllo"+e);
+              //    System.out.println("helllo"+e);
               }
-              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+            //  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+     }
+     public static int lost_update (  String Quantity,String Product_id){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("Update add_new_product set   Quantity=? where Product_id =?");
+                 
+                   
+                  
+                   ps.setString(1, Quantity);
+                  
+                   ps.setString(2, Product_id);
+                    
+                 //  System.out.println("Producttt"+Product_id);
+                  status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+            //  System.out.println("upddddddddddddddproooooo"+status);
               return status;
      }
 }

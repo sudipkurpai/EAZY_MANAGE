@@ -188,6 +188,11 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
                 SearchbMouseClicked(evt);
             }
         });
+        Searchb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchbActionPerformed(evt);
+            }
+        });
         jPanel2.add(Searchb, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 125, 45));
 
         Search1.setBackground(new java.awt.Color(255, 255, 255));
@@ -399,6 +404,10 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
            Search1.setVisible(true);
         }
     }//GEN-LAST:event_Search1FocusLost
+
+    private void SearchbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchbActionPerformed
 
     /**
      * @param args the command line arguments

@@ -75,4 +75,32 @@ public class DELECT_PRODUCT_DETAOBJECT {
               return status;
 
  }
+     
+      public static int Lost  (String Product_id, String Product_name, String Price, 
+            String Lost_quantity, String Loss_amount, String Location, String How_lost,String Date,String Time){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO product_lost (Product_id,Product_name,Price,Lost_quantity,"
+                           + "Loss_amount,Location,How_lost,Date,Time) VALUES (?,?,?,?,?,?,?,?,?)");
+                   ps.setString(1, Product_id);
+                   ps.setString(2, Product_name);
+                   ps.setString(3, Price);
+                   ps.setString(4, Lost_quantity);
+                   ps.setString(5, Loss_amount);
+                   ps.setString(6, Location);
+                   ps.setString(7, How_lost);
+                  
+                   ps.setString(8, Date);
+                   ps.setString(9, Time);
+                            
+                   status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+
+ }
 }
