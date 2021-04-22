@@ -650,6 +650,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         String mng_i= mng_id.getText();
         
         String t_id = t_idd.getText();
+        String aa= "Purches";
         
 //        double a,b,c ;
 //        a=Double.parseDouble(s_cost.getText());
@@ -670,7 +671,9 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         int i = ADD_NEW_PRODUCT_DETAOBJ.Update_product(Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,DDDD,tttt,Product_id);
             ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, DDDD, tttt, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantitye, catag, Brand, totall);
                        //    mng,mng_i, dddd, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,timee
-        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pro_id);
+         ADD_NEW_PRODUCT_DETAOBJ.s_p(aa, V_nmaee, DDDD, tttt, Product_id, p_nmaee, Standerd_cost, quantit, totall);
+                       
+                       int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pro_id);
         
         if(i>0 || j>0){
             res();

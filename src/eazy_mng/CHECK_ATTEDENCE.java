@@ -327,13 +327,21 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
             DefaultTableModel model =(DefaultTableModel)table.getModel(); 
             model.setRowCount(0);
             if (rs.next()) {
-                while (rs.next())
-                    {               
-                        Object o []={rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),rs.getString("MNG_ID"),rs.getString("IN_TIME"),
-                       rs.getString("OUT_TIME"),rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
-                        model.addRow(o);
+//                while (rs.next())
+//                    {               
+//                        Object o []={rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),
+//                            rs.getString("MNG_ID"),rs.getString("IN_TIME"),rs.getString("OUT_TIME"),
+//                            rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
+//                        model.addRow(o);
+//                    }
 
-                    }
+                do {                    
+                    Object o []={rs.getString("EMP_ID"),rs.getString("EMP_NAME"),rs.getString("ATTENDANCE_BY"),
+                            rs.getString("MNG_ID"),rs.getString("IN_TIME"),rs.getString("OUT_TIME"),
+                            rs.getString("BREAK_TIME"),rs.getString("DATE"),rs.getString("STATUS") };
+                    model.addRow(o);
+                } while (rs.next());
+
             }else{
                 JOptionPane.showMessageDialog(this, "No Data Found");
             }

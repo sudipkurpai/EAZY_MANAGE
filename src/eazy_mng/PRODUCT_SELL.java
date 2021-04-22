@@ -31,6 +31,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
      String Name = null;
      String Id = null;
      String emll = null;
+     String ts;
     /**
      * Creates new form PRODUCT_SALE
      */
@@ -486,12 +487,15 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         
              //Data fetch from database
             String sql = "Select * From add_new_product where Product_id=? ";
+            String sql2 = "Select * From sell where Product_id=? ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps1=con.prepareStatement(sql2);
             ps.setString(1,product_idee);
+            ps1.setString(1,product_idee);
             ResultSet rs=ps.executeQuery();
-           
-           if(rs.next()){
+            ResultSet rs1 =ps1.executeQuery();
+           if(rs.next()&& rs1.next()){
                
                    
                String pn= rs.getString("Product_name");
@@ -499,6 +503,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                String pr= rs.getString("Unit_price");
                String expp= rs.getString("Exp_date");
                String sss= rs.getString("Standerd_cost");
+               ts= rs1.getString("Total_sell");
                p_name.setText(pn);
                ssss.setText(sss);
                p_name.setEditable(false);
@@ -566,7 +571,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                    total.setText(e);
                    
                }else{
-                   System.out.println("NONE");
+                 //  System.out.println("NONE");
                }
                }
                };
@@ -587,9 +592,15 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         String dd=d.getText();
         String Product_id=pro_id.getText();
         String ss=ssss.getText();
+        int tss=Integer.parseInt(ts)+Integer.parseInt(qu);
+        String tts=Integer.toString(tss);
+        String aa="Sell";
+        String vv=null;
+      //  System.out.println("tssss"+tts);
        double abc=Double.parseDouble(ss)*Double.parseDouble(qu);
       double abcd= Double.parseDouble(tt)-abc;
       String aab=Double.toString(abcd);
+      
         if(curs>=qunn){
              DefaultTableModel model = (DefaultTableModel)table2.getModel();
               model.addRow(new Object[]{pro_id.getText(), qun.getText()
@@ -601,7 +612,11 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
            String count=Integer.toString(coun);
            afs.setText(count);
            cs.setText(count);
-           SELL_DATAOBJECT.sells(en, ei, dd, ti, pn, Product_id, qu, pp, tt,aab);
+           
+          SELL_DATAOBJECT.sells(en, ei, dd, ti, pn, Product_id, qu, pp, tt,aab,tts);
+          ADD_NEW_PRODUCT_DETAOBJ.s_p(aa, vv, dd, ti, Product_id, pn, pp, qu, tt);
+           SELL_DATAOBJECT.total(Product_id, tts);
+           table();
             int status=0;
              try{
                    Connection con=DATABASE_CONNECTION.getConnection();  

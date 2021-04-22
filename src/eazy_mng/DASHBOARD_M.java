@@ -118,9 +118,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel72 = new javax.swing.JPanel();
         jLabel116 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
-        jPanel73 = new javax.swing.JPanel();
-        jLabel117 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
         jPanel74 = new javax.swing.JPanel();
         jLabel118 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
@@ -669,35 +666,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel73.setBackground(new java.awt.Color(204, 255, 204));
-
-        jLabel117.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel117.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel117.setText("SOLD REPORT");
-
-        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sold-report.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel73Layout = new javax.swing.GroupLayout(jPanel73);
-        jPanel73.setLayout(jPanel73Layout);
-        jPanel73Layout.setHorizontalGroup(
-            jPanel73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel117, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel73Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-        );
-        jPanel73Layout.setVerticalGroup(
-            jPanel73Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel73Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel117)
-                .addGap(2, 2, 2))
-        );
-
         jPanel74.setBackground(new java.awt.Color(204, 255, 204));
         jPanel74.setPreferredSize(new java.awt.Dimension(170, 50));
         jPanel74.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -774,12 +742,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addGroup(stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel72, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(74, 74, 74)
-                .addGroup(stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(stockLayout.createSequentialGroup()
+                        .addComponent(jPanel72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
+                        .addComponent(jPanel63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70))
         );
@@ -793,9 +760,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel73, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel74, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel74, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(241, 241, 241))
         );
@@ -1899,6 +1864,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         sales.setPreferredSize(new java.awt.Dimension(810, 630));
 
         jPanel13.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel13MouseClicked(evt);
+            }
+        });
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel37.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -2844,6 +2814,18 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel74MouseClicked
 
+    private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
+        // TODO add your handling code here:
+         SEELS_REPORT srp =new SEELS_REPORT();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        srp.srr(name, ID, eml,t1,d1,ph);
+        srp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel13MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2913,7 +2895,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
-    private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
@@ -2970,7 +2951,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
@@ -3039,7 +3019,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel70;
     private javax.swing.JPanel jPanel71;
     private javax.swing.JPanel jPanel72;
-    private javax.swing.JPanel jPanel73;
     private javax.swing.JPanel jPanel74;
     private javax.swing.JPanel jPanel76;
     private javax.swing.JPanel jPanel77;

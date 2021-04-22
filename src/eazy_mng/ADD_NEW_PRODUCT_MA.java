@@ -48,13 +48,14 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
      String PPPP=null;
      String mng_Id = null;
      String emp_id = null;
-     
+    
      
     /**
      * Creates new form ADD_NEW_PRODUCT
      */
     public ADD_NEW_PRODUCT_MA() throws ParseException {
         initComponents();
+       
         mng_name.setEditable(false);
         mng_id.setEditable(false);
         t2.setEditable(false);
@@ -644,6 +645,8 @@ exp.setDate(date);
         String timee = t2.getText();
         String t_id = t_idd.getText();
         String totall = total.getText();
+         
+         String aa="Purches";
 //        double a,b,c ;
 //        a=Double.parseDouble(s_cost.getText());
 //        b=Double.parseDouble(quantity.getText());
@@ -677,7 +680,8 @@ exp.setDate(date);
         {
             int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product(mng,mng_i, dddd, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,timee);
          ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, dddd, timee, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);                   
-        int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
+        ADD_NEW_PRODUCT_DETAOBJ.s_p(aa, V_nmaee, dddd, timee, Product_id, p_nmaee, Standerd_cost, quantit, totall);
+         int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
         
         if(i>0 || j>0){
             table();

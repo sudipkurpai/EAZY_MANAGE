@@ -16,12 +16,12 @@ public class SELL_DATAOBJECT {
     
  public static int sells (String Employee_name, String Emp_id, String Date, 
             String Time, String Product_name, String Product_id, String Quantity, 
-            String Price,String Total,String Profit){
+            String Price,String Total,String Profit,String Total_sell){
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
                    PreparedStatement ps=con.prepareStatement("INSERT INTO sell (Employee_name,Emp_id,Date,Time,"
-                           + "Product_name,Product_id,Quantity,Price,Total,Profit) VALUES (?,?,?,?,?,?,?,?,?,?)");
+                           + "Product_name,Product_id,Quantity,Price,Total,Profit,Total_sell) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
                    ps.setString(1, Employee_name);
                    ps.setString(2, Emp_id);
                    ps.setString(3, Date);
@@ -32,6 +32,7 @@ public class SELL_DATAOBJECT {
                    ps.setString(8, Price);
                    ps.setString(9, Total); 
                     ps.setString(10, Profit);
+                    ps.setString(11, Total_sell);
                    status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){
@@ -57,4 +58,22 @@ public class SELL_DATAOBJECT {
              // System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
  }   
+ 
+ public static int total (String Product_id, String Total_sell )
+           {
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("update  sell set Total_sell =? where Product_id =  ? ");
+                   ps.setString(1, Total_sell);
+                   ps.setString(2, Product_id);
+                   status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+             // System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+ }   
+ 
     }

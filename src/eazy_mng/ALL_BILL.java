@@ -301,7 +301,7 @@ public class ALL_BILL extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-               String nnn =rs.getString("C_name");
+             
              //  na.setText(nnn);
                do
                {
@@ -337,7 +337,7 @@ public class ALL_BILL extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-               String nnn =rs.getString("C_name");
+              
              //  na.setText(nnn);
                do
                {
@@ -1085,20 +1085,14 @@ public class ALL_BILL extends javax.swing.JFrame {
     
     public void all(){
        
-          // String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+"'  ";
-            
-       // if (bill_s.getSelectedItem().equals("All Bill")){
-             if(c1.getDate()== null || c2.getDate()== null){
+           if(c1.getDate()== null || c2.getDate()== null){
                  try {
         
            
-            String sql = "Select * From add_bill  ";
-           // 
-           //'04-02-2021'
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-           //  ps.setString(1,date);
-            ResultSet rs=ps.executeQuery();
+           String sql = "Select * From add_bill  ";
+           Connection con=DATABASE_CONNECTION.getConnection();
+           PreparedStatement ps=con.prepareStatement(sql);
+           ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
@@ -1106,7 +1100,6 @@ public class ALL_BILL extends javax.swing.JFrame {
                {
                    Object o []={
                        rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                   // JOptionPane.showMessageDialog(this, "Product Found");
                     model.addRow(o);
                }while (rs.next());
            }else{
@@ -1116,25 +1109,19 @@ public class ALL_BILL extends javax.swing.JFrame {
             }catch(Exception e){
             System.out.println("error"+e);
         }
-        
-          //   JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
-         }else{
+        }else{
           
             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
             String d1 = s.format(c1.getDate());
-          //  System.out.println("!@##%$$%$"+d1);
-            String d2 = s.format(c2.getDate());
+           String d2 = s.format(c2.getDate());
              
         try {
         
            
             String sql = "Select * From add_bill where Date between '"+d1+"' and '"+d2+"' ";
-           // 
-           //'04-02-2021'
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-           //  ps.setString(1,date);
-            ResultSet rs=ps.executeQuery();
+           ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
@@ -1142,7 +1129,6 @@ public class ALL_BILL extends javax.swing.JFrame {
                {
                    Object o []={
                        rs.getString("Invoice_id"),rs.getString("C_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("All_total"),rs.getString("Bill_status"),rs.getString("Payment_status")};
-                   // JOptionPane.showMessageDialog(this, "Product Found");
                     model.addRow(o);
                }while (rs.next());
            }else{
