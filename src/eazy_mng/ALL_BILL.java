@@ -327,12 +327,12 @@ public class ALL_BILL extends javax.swing.JFrame {
             
          try {
         
-             //Data fetch from database
+            
             String sql = "Select * From add_bill where Invoice_id = ?  ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,inv);
-          //  ps.setString(2,date);
+         
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
@@ -348,7 +348,7 @@ public class ALL_BILL extends javax.swing.JFrame {
                    model.addRow(o);
                }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available This Invoice", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){

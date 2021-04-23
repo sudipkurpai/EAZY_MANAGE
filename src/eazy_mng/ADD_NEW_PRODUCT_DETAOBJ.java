@@ -170,7 +170,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
-                   PreparedStatement ps=con.prepareStatement("INSERT INTO s_p_all (Status, Vendor_name, Data,Time,  Product_id, p_name, Price, Quantity, Total, ) VALUES (?,?,?,?,?,?,?,?,?)");
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO s_p_all (Status, Vendor_name, Data,Time,  Product_id, p_name, Price, Quantity, Total ) VALUES (?,?,?,?,?,?,?,?,?)");
                  
                    
                    ps.setString(1, Status);  
@@ -196,7 +196,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                   status=ps.executeUpdate();
                    con.close();
               }catch(Exception e){
-              //    System.out.println("helllo"+e);
+                 System.out.println("helllo"+e);
               }
             //  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;

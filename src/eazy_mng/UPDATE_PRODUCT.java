@@ -62,7 +62,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         upda.setEnabled(false);
          total.setEditable(false);
         id_create();
-        
+      //  cal();
         table();
         search();
         date();
@@ -403,7 +403,18 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 60, 30));
 
         quantity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        quantity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                quantityFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                quantityFocusLost(evt);
+            }
+        });
         quantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                quantityKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 quantityKeyTyped(evt);
             }
@@ -605,12 +616,13 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
         res();
+        id_create();
          try {
              click();
          } catch (ParseException ex) {
              Logger.getLogger(UPDATE_PRODUCT.class.getName()).log(Level.SEVERE, null, ex);
          }
-        id_create();
+        
          cal();
         upda.setEnabled(true);
        
@@ -778,6 +790,27 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private void quantity1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantity1KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_quantity1KeyTyped
+
+    private void quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityKeyReleased
+        // TODO add your handling code here:
+//        if(quantity.getText().equals("")){
+//            quantity.setText("0");
+//        }
+    }//GEN-LAST:event_quantityKeyReleased
+
+    private void quantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityFocusGained
+        // TODO add your handling code here:
+//        if(quantity.getText().equals("0")){
+//           quantity.setText("");
+//       }
+    }//GEN-LAST:event_quantityFocusGained
+
+    private void quantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityFocusLost
+        // TODO add your handling code here:
+//        if(quantity.getText().equals("")){
+//           quantity.setText("0");
+//       }
+    }//GEN-LAST:event_quantityFocusLost
     
     public void search(){
         DocumentListener dl = new DocumentListener(){
@@ -833,47 +866,54 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
             }
             
             protected void update_val(){
+               // try{
                String f1=s_cost.getText();
-               String f2=quantity1.getText();
+               
                String f3=quantity.getText();
-               if (!f1.equals("") && f2.equals("0")){
+               if (!f1.equals("") && f3.equals("")){
                    double b=Double.parseDouble(s_cost.getText());
                    double  b1=Double.parseDouble(quantity1.getText());
-                   String bb=Double.toString(b1);
-                   if(bb.equals("0")){
-                   double c= b*0; 
-                   String e=String.valueOf(c);
+                  
+                   if(Double.toString(b1).equals("0")){
+//                  
+                   double d= b*1;
+                   String e=String.valueOf(d);
                    total.setText(e);
                    }else{
-                   double c= b*b1;
+                   double  b2=Double.parseDouble(quantity.getText());
+                       System.out.println("Hello");
+                   double a= b2+b1;
+                   double c= b*a;
                    String e=String.valueOf(c);
-                   total.setText(e);}
+                   total.setText(e);
+                 }
                }else if (f1.equals("") && !f3.equals("")){
                    //double b=Double.parseDouble(a.getText());
-                   double  b1=Double.parseDouble(quantity.getText());
+                  double  b1=Double.parseDouble(quantity.getText());
                   double  b2=Double.parseDouble(quantity1.getText());
-                   String bbbb=Double.toString(b1);
-                   if(bbbb.equals("")){
-                   double c= b2+0;
+                   
+                   if(Double.toString(b2).equals("0")){
+                   double c= b1+0;
                    String e=String.valueOf(c);
                    total.setText(e);
                    }else{
                    double c= b2+b1;
                    String e=String.valueOf(c);
-                   total.setText(e);}
+                   total.setText(e);
+                 }
                }else if (!f1.equals("") && !f3.equals("")){
                    double b=Double.parseDouble(s_cost.getText());
                    double  b2=Double.parseDouble(quantity1.getText());
                    
                    double  b1=Double.parseDouble(quantity.getText());
-                   String bbbb=Double.toString(b1);
-                   if(bbbb.equals("")){
-                   double d= b2+0;
-                   double c= b*d;
+                  
+                   if(Double.toString(b2).equals("0")){
+                  
+                   double c= b*b1;
                    String e=String.valueOf(c);
                    total.setEditable(false);
                    total.setText(e);
-               } else{
+                   } else{
                        double d= b2+b1;
                    double c= b*d;
                    String e=String.valueOf(c);
@@ -882,18 +922,22 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
                    }
                    
                }else{
-                //   System.out.println("NONE");
+                //  System.out.println("NONE");
                }
                    
                    
                
-            }
-
             
+ //}catch(Exception e){
+          //  System.out.println("sss"+e);
+}
+         //   }
             
         };
+   
         s_cost.getDocument().addDocumentListener(dl);
         quantity.getDocument().addDocumentListener(dl);
+       
     }
     public void click() throws ParseException{
      int i = table.getSelectedRow();

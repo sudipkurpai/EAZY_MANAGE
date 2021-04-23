@@ -503,6 +503,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                String pr= rs.getString("Unit_price");
                String expp= rs.getString("Exp_date");
                String sss= rs.getString("Standerd_cost");
+               
                ts= rs1.getString("Total_sell");
                p_name.setText(pn);
                ssss.setText(sss);

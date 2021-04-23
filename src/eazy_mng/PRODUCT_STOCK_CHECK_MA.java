@@ -77,6 +77,25 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         r1 = new javax.swing.JRadioButton();
         r3 = new javax.swing.JRadioButton();
         r2 = new javax.swing.JRadioButton();
+        All = new javax.swing.JPanel();
+        Status = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        ttt1 = new javax.swing.JTextField();
+        Pric = new javax.swing.JTextField();
+        qqt = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        piid = new javax.swing.JTextField();
+        vvname = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        ddd1 = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        pnnam = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        TOTALL1 = new javax.swing.JTextField();
         ssel = new javax.swing.JPanel();
         Paaaa = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -329,8 +348,146 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
 
         jPanel6.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 240, 50));
 
+        All.setBackground(new java.awt.Color(143, 206, 254));
+        All.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255), 2), "All Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
+        All.setLayout(null);
+
+        Status.setBackground(new java.awt.Color(255, 255, 255));
+        Status.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        Status.setForeground(new java.awt.Color(0, 0, 204));
+        Status.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatusActionPerformed(evt);
+            }
+        });
+        All.add(Status);
+        Status.setBounds(30, 40, 180, 20);
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel38.setText("Product ID :");
+        All.add(jLabel38);
+        jLabel38.setBounds(250, 70, 80, 20);
+
+        jLabel39.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel39.setText("Price :");
+        All.add(jLabel39);
+        jLabel39.setBounds(30, 130, 110, 20);
+
+        ttt1.setBackground(new java.awt.Color(255, 255, 255));
+        ttt1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        ttt1.setForeground(new java.awt.Color(0, 0, 204));
+        ttt1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        All.add(ttt1);
+        ttt1.setBounds(30, 90, 180, 20);
+
+        Pric.setBackground(new java.awt.Color(255, 255, 255));
+        Pric.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        Pric.setForeground(new java.awt.Color(0, 0, 204));
+        Pric.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        All.add(Pric);
+        Pric.setBounds(30, 150, 180, 20);
+
+        qqt.setBackground(new java.awt.Color(255, 255, 255));
+        qqt.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        qqt.setForeground(new java.awt.Color(0, 0, 204));
+        qqt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        All.add(qqt);
+        qqt.setBounds(250, 150, 180, 20);
+
+        jLabel40.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel40.setText("Status :");
+        All.add(jLabel40);
+        jLabel40.setBounds(30, 20, 120, 20);
+
+        piid.setBackground(new java.awt.Color(255, 255, 255));
+        piid.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        piid.setForeground(new java.awt.Color(0, 0, 204));
+        piid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        All.add(piid);
+        piid.setBounds(250, 90, 180, 20);
+
+        vvname.setBackground(new java.awt.Color(255, 255, 255));
+        vvname.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        vvname.setForeground(new java.awt.Color(0, 0, 204));
+        vvname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        All.add(vvname);
+        vvname.setBounds(250, 40, 180, 20);
+
+        jLabel41.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel41.setText("Product Name :");
+        All.add(jLabel41);
+        jLabel41.setBounds(470, 70, 110, 20);
+
+        ddd1.setBackground(new java.awt.Color(255, 255, 255));
+        ddd1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        ddd1.setForeground(new java.awt.Color(0, 0, 204));
+        ddd1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        All.add(ddd1);
+        ddd1.setBounds(470, 40, 170, 20);
+
+        jLabel42.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel42.setText("Vendor Name :");
+        All.add(jLabel42);
+        jLabel42.setBounds(250, 20, 120, 20);
+
+        jLabel43.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel43.setText("Quantity :");
+        All.add(jLabel43);
+        jLabel43.setBounds(250, 130, 140, 20);
+
+        pnnam.setBackground(new java.awt.Color(255, 255, 255));
+        pnnam.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        pnnam.setForeground(new java.awt.Color(0, 0, 204));
+        pnnam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnnam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pnnamActionPerformed(evt);
+            }
+        });
+        All.add(pnnam);
+        pnnam.setBounds(470, 90, 170, 20);
+
+        jLabel44.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel44.setText("Date :");
+        All.add(jLabel44);
+        jLabel44.setBounds(470, 20, 40, 20);
+
+        jLabel45.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel45.setText("Time :");
+        All.add(jLabel45);
+        jLabel45.setBounds(30, 70, 40, 20);
+
+        jLabel47.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel47.setText("Total :");
+        All.add(jLabel47);
+        jLabel47.setBounds(470, 130, 140, 20);
+
+        TOTALL1.setBackground(new java.awt.Color(255, 255, 255));
+        TOTALL1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        TOTALL1.setForeground(new java.awt.Color(0, 0, 204));
+        TOTALL1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        TOTALL1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TOTALL1ActionPerformed(evt);
+            }
+        });
+        All.add(TOTALL1);
+        TOTALL1.setBounds(470, 150, 170, 20);
+
+        jPanel6.add(All, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 190));
+
         ssel.setBackground(new java.awt.Color(143, 206, 254));
-        ssel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "All Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        ssel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2), "Sell Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 13), new java.awt.Color(0, 0, 204))); // NOI18N
         ssel.setLayout(null);
 
         Paaaa.setBackground(new java.awt.Color(255, 255, 255));
@@ -470,8 +627,8 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
 
         jPanel6.add(ssel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 190));
 
-        ppur.setBackground(new java.awt.Color(255, 255, 255));
-        ppur.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Date Range", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        ppur.setBackground(new java.awt.Color(143, 206, 254));
+        ppur.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2), "Purches Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 255))); // NOI18N
         ppur.setLayout(null);
 
         ppro_id1.setBackground(new java.awt.Color(255, 255, 255));
@@ -486,17 +643,17 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(ppro_id1);
         ppro_id1.setBounds(20, 40, 190, 20);
 
-        jLabel19.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(153, 0, 102));
         jLabel19.setText("Product ID :");
         ppur.add(jLabel19);
-        jLabel19.setBounds(20, 20, 70, 20);
+        jLabel19.setBounds(20, 20, 80, 20);
 
-        jLabel25.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel25.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(153, 0, 102));
         jLabel25.setText("Standard Cast :");
         ppur.add(jLabel25);
-        jLabel25.setBounds(20, 60, 110, 20);
+        jLabel25.setBounds(20, 60, 120, 20);
 
         scost.setBackground(new java.awt.Color(255, 255, 255));
         scost.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -505,11 +662,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(scost);
         scost.setBounds(20, 80, 190, 20);
 
-        jLabel26.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel26.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(153, 0, 102));
         jLabel26.setText("Manager ID :");
         ppur.add(jLabel26);
-        jLabel26.setBounds(20, 140, 130, 20);
+        jLabel26.setBounds(20, 140, 140, 20);
 
         cata.setBackground(new java.awt.Color(255, 255, 255));
         cata.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -525,11 +682,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(brand);
         brand.setBounds(240, 120, 190, 20);
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 0, 102));
         jLabel6.setText("Manager  Name :");
         ppur.add(jLabel6);
-        jLabel6.setBounds(240, 140, 120, 20);
+        jLabel6.setBounds(240, 140, 130, 20);
 
         uprice.setBackground(new java.awt.Color(255, 255, 255));
         uprice.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -538,11 +695,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(uprice);
         uprice.setBounds(240, 80, 190, 20);
 
-        jLabel27.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel27.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(153, 0, 102));
         jLabel27.setText("Unit Price :");
         ppur.add(jLabel27);
-        jLabel27.setBounds(240, 60, 140, 20);
+        jLabel27.setBounds(240, 60, 150, 20);
 
         Pronaa1.setBackground(new java.awt.Color(255, 255, 255));
         Pronaa1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -551,11 +708,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(Pronaa1);
         Pronaa1.setBounds(240, 40, 190, 20);
 
-        jLabel28.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel28.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(153, 0, 102));
         jLabel28.setText("Product Name :");
         ppur.add(jLabel28);
-        jLabel28.setBounds(240, 20, 91, 20);
+        jLabel28.setBounds(240, 20, 100, 20);
 
         vname.setBackground(new java.awt.Color(255, 255, 255));
         vname.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -564,17 +721,17 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(vname);
         vname.setBounds(470, 40, 180, 20);
 
-        jLabel33.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel33.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(153, 0, 102));
         jLabel33.setText("Vendor Name :");
         ppur.add(jLabel33);
-        jLabel33.setBounds(470, 20, 120, 20);
+        jLabel33.setBounds(470, 20, 130, 20);
 
-        jLabel29.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel29.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(153, 0, 102));
         jLabel29.setText("Quantity :");
         ppur.add(jLabel29);
-        jLabel29.setBounds(470, 60, 140, 20);
+        jLabel29.setBounds(470, 60, 150, 20);
 
         qun1.setBackground(new java.awt.Color(255, 255, 255));
         qun1.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -588,11 +745,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(qun1);
         qun1.setBounds(470, 80, 180, 20);
 
-        jLabel34.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel34.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(153, 0, 102));
         jLabel34.setText("Date :");
         ppur.add(jLabel34);
-        jLabel34.setBounds(470, 140, 40, 20);
+        jLabel34.setBounds(470, 140, 50, 20);
 
         d5.setBackground(new java.awt.Color(255, 255, 255));
         d5.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -608,11 +765,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(t5);
         t5.setBounds(570, 160, 80, 20);
 
-        jLabel30.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(153, 0, 102));
         jLabel30.setText("Time :");
         ppur.add(jLabel30);
-        jLabel30.setBounds(570, 140, 40, 20);
+        jLabel30.setBounds(570, 140, 50, 20);
 
         mnii.setBackground(new java.awt.Color(255, 255, 255));
         mnii.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -621,11 +778,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(mnii);
         mnii.setBounds(20, 160, 190, 20);
 
-        jLabel35.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel35.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(153, 0, 102));
         jLabel35.setText("Catagory :");
         ppur.add(jLabel35);
-        jLabel35.setBounds(20, 100, 110, 20);
+        jLabel35.setBounds(20, 100, 120, 20);
 
         mnamee.setBackground(new java.awt.Color(255, 255, 255));
         mnamee.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -634,11 +791,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(mnamee);
         mnamee.setBounds(240, 160, 190, 20);
 
-        jLabel36.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel36.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(153, 0, 102));
         jLabel36.setText("Total :");
         ppur.add(jLabel36);
-        jLabel36.setBounds(470, 100, 140, 20);
+        jLabel36.setBounds(470, 100, 150, 20);
 
         TOTALL.setBackground(new java.awt.Color(255, 255, 255));
         TOTALL.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -652,11 +809,11 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         ppur.add(TOTALL);
         TOTALL.setBounds(470, 120, 180, 20);
 
-        jLabel37.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel37.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(153, 0, 102));
         jLabel37.setText("Brand :");
         ppur.add(jLabel37);
-        jLabel37.setBounds(240, 100, 140, 20);
+        jLabel37.setBounds(240, 100, 150, 20);
 
         jPanel6.add(ppur, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 190));
 
@@ -972,7 +1129,7 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1239,6 +1396,64 @@ public void aa1(){
             System.out.println("error"+e);
         }
     }
+    
+    public void cc1(){
+        
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From s_p_all ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table3.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                   rs.getString("Status"),rs.getString("Date"),rs.getString("Time"),rs.getString("Vendor_name"),rs.getString("Product_id"),
+                            rs.getString("P_name"),rs.getString("Price"),rs.getString("Quantity"),rs.getString("Total") };
+                   model.addRow(o);
+               table3.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table3.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
+    public void cc2(){
+        
+    try {
+         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+          
+            String sql = "Select * From s_p_all Where Date between '"+d1+"' and '"+d2+"'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table3.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                   rs.getString("Status"),rs.getString("Date"),rs.getString("Time"),rs.getString("Vendor_name"),rs.getString("Product_id"),
+                            rs.getString("P_name"),rs.getString("Price"),rs.getString("Quantity"),rs.getString("Total") };
+                   model.addRow(o);
+               table3.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table3.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if(c1.getDate()!=null&& c2.getDate()==null){
@@ -1247,13 +1462,18 @@ public void aa1(){
          if(c1.getDate()== null && c2.getDate()!= null){
             JOptionPane.showMessageDialog(this, "Insert Both Date First");
         }else{
-        if (r1.isSelected() == true){
-            ssel.setVisible(false);
-             ppur.setVisible(false);
-            Pur.setVisible(false);
-            alll.setVisible(true);
-            sell.setVisible(false);
-
+       if (r1.isSelected() == true){
+                ssel.setVisible(false);
+                ppur.setVisible(false);
+                Pur.setVisible(false);
+                alll.setVisible(true);
+                sell.setVisible(false);
+                All.setVisible(true);
+                if(c1.getDate()==null&& c2.getDate()==null){
+            cc1();
+            }else{
+              cc2();  
+            }
         }else if(r2.isSelected() == true){
         
             ssel.setVisible(false);
@@ -1261,7 +1481,7 @@ public void aa1(){
             Pur.setVisible(true);
             alll.setVisible(false);
             sell.setVisible(false);
-            
+            All.setVisible(false);
             if(c1.getDate()==null&& c2.getDate()==null){
             aa();
             }else{
@@ -1274,6 +1494,7 @@ public void aa1(){
              Pur.setVisible(false);
             alll.setVisible(false);
             sell.setVisible(true);
+            All.setVisible(false);
             if(c1.getDate()==null&& c2.getDate()==null){
            bb2();
             }else{
@@ -1428,11 +1649,18 @@ public void aa1(){
        String Search = search.getText();
         
         if (r1.isSelected() == true){
-            ssel.setVisible(false);
-             ppur.setVisible(false);
-            Pur.setVisible(false);
-            alll.setVisible(true);
-            sell.setVisible(false);
+                ssel.setVisible(false);
+                ppur.setVisible(false);
+                Pur.setVisible(false);
+                alll.setVisible(true);
+                sell.setVisible(false);
+                All.setVisible(true);
+                if(c1.getDate()==null&& c2.getDate()==null){
+            cc1();
+            }else{
+              cc2();  
+            }
+            
 
         }else if(r2.isSelected() == true){
             
@@ -1441,7 +1669,7 @@ public void aa1(){
             Pur.setVisible(true);
             alll.setVisible(false);
             sell.setVisible(false);
-            
+            All.setVisible(false);
             if(c1.getDate()==null&& c2.getDate()==null){
             try {
         
@@ -1505,6 +1733,7 @@ public void aa1(){
              Pur.setVisible(false);
             alll.setVisible(false);
             sell.setVisible(true);
+            All.setVisible(false);
             if(c1.getDate()==null&& c2.getDate()==null){
             try {
         
@@ -1567,20 +1796,28 @@ public void aa1(){
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         search.setText("");
-//         String t = search.getText();
-//
-//if (t.isEmpty()){
-//search.setText("");
-//} else {
-//search.setText(t.substring(0, t.length() - t.length()));
-//}
- if(r2.isSelected() == true){
+ if (r1.isSelected() == true){
+                ssel.setVisible(false);
+                ppur.setVisible(false);
+                Pur.setVisible(false);
+                alll.setVisible(true);
+                sell.setVisible(false);
+                All.setVisible(true);
+                if(c1.getDate()==null&& c2.getDate()==null){
+            cc1();
+            }else{
+              cc2();  
+            }
+            
+
+        }else if(r2.isSelected() == true){
         
             ssel.setVisible(false);
             ppur.setVisible(true);
             Pur.setVisible(true);
             alll.setVisible(false);
             sell.setVisible(false);
+            All.setVisible(false);
 if(c1.getDate()==null&& c2.getDate()==null){
             aa();
             }else{
@@ -1592,6 +1829,7 @@ if(c1.getDate()==null&& c2.getDate()==null){
              Pur.setVisible(false);
             alll.setVisible(false);
             sell.setVisible(true);
+            All.setVisible(false);
             if(c1.getDate()==null&& c2.getDate()==null){
            bb2();
             }else{
@@ -1604,7 +1842,7 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private void searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFocusGained
         // TODO add your handling code here:
         String ss = search.getText();
-        if(ss.equals("Enter Product Id")){
+        if(ss.equals("-: Enter Product Id :-")){
             search.setText("");
         }
             
@@ -1614,9 +1852,21 @@ if(c1.getDate()==null&& c2.getDate()==null){
         // TODO add your handling code here:
          String ss = search.getText();
         if(ss.equals("")){
-            search.setText("Enter Product Id");
+            search.setText("-: Enter Product Id :-");
         }
     }//GEN-LAST:event_searchFocusLost
+
+    private void StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatusActionPerformed
+
+    private void pnnamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnnamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnnamActionPerformed
+
+    private void TOTALL1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TOTALL1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TOTALL1ActionPerformed
 
    public void reset(){
                 ppro_id.setText("");
@@ -1731,14 +1981,18 @@ if(c1.getDate()==null&& c2.getDate()==null){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel All;
     private javax.swing.JTextField EMPII;
     private javax.swing.JTextField EMPP;
     private javax.swing.JTextField PII;
     private javax.swing.JTextField Paaaa;
+    private javax.swing.JTextField Pric;
     private javax.swing.JTextField Pronaa1;
     private javax.swing.JPanel Pur;
     private javax.swing.JTextField QQW;
+    private javax.swing.JTextField Status;
     private javax.swing.JTextField TOTALL;
+    private javax.swing.JTextField TOTALL1;
     private javax.swing.JTextField Taa;
     private javax.swing.JPanel alll;
     private javax.swing.JTextField brand;
@@ -1748,6 +2002,7 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private javax.swing.JTextField cata;
     private javax.swing.JTextField d0;
     private javax.swing.JTextField d5;
+    private javax.swing.JTextField ddd1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1783,7 +2038,16 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -1806,10 +2070,13 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private javax.swing.JTextField mnamee;
     private javax.swing.JTextField mnii;
     private javax.swing.JTextField pfff;
+    private javax.swing.JTextField piid;
+    private javax.swing.JTextField pnnam;
     private javax.swing.JTextField ppro_id;
     private javax.swing.JTextField ppro_id1;
     private javax.swing.JPanel ppur;
     private javax.swing.JTextField pro_id;
+    private javax.swing.JTextField qqt;
     private javax.swing.JTextField qun1;
     private javax.swing.JRadioButton r1;
     private javax.swing.JRadioButton r2;
@@ -1824,7 +2091,9 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private javax.swing.JTable table2;
     private javax.swing.JTable table3;
     private javax.swing.JTable table4;
+    private javax.swing.JTextField ttt1;
     private javax.swing.JTextField uprice;
     private javax.swing.JTextField vname;
+    private javax.swing.JTextField vvname;
     // End of variables declaration//GEN-END:variables
 }
