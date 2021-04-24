@@ -1177,13 +1177,23 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         
         c1.setDate(null);
         c2.setDate(null);
-        if(r2.isSelected() == true){
+        if (r1.isSelected() == true){
+                ssel.setVisible(false);
+                ppur.setVisible(false);
+                Pur.setVisible(false);
+                alll.setVisible(true);
+                sell.setVisible(false);
+                All.setVisible(true);
+                
+            cc1();
+            }else if(r2.isSelected() == true){
             
             ssel.setVisible(false);
             ppur.setVisible(true);
             Pur.setVisible(true);
             alll.setVisible(false);
             sell.setVisible(false);
+            All.setVisible(false);
             try {
         
              //Data fetch from database
@@ -1209,12 +1219,12 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
             System.out.println("error"+e);
         }
             }else if(r3.isSelected() == true){
-              ssel.setVisible(true);
+             ssel.setVisible(true);
              ppur.setVisible(false);
              Pur.setVisible(false);
-            alll.setVisible(false);
-            sell.setVisible(true);
-           
+             alll.setVisible(false);
+             sell.setVisible(true);
+             All.setVisible(false);
             try {
         
              //Data fetch from database

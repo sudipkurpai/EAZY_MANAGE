@@ -22,7 +22,7 @@ import javax.swing.table.JTableHeader;
  *
  * @author Sudip Maiti
  */
-public class TODAY_SELL extends javax.swing.JFrame {
+public class MONTHLY_SELL extends javax.swing.JFrame {
     String ID = null;
     String Name = null;
     String Phone = null;
@@ -32,13 +32,25 @@ public class TODAY_SELL extends javax.swing.JFrame {
     /**
      * Creates new form TODAY_SELL
      */
-    public TODAY_SELL() {
+    public MONTHLY_SELL() {
         initComponents();
         date();
         time();
         Sell();
+        
+        ppro_id.setEditable(false);
+        EMP.setEditable(false);
+        EMPII.setEditable(false);
+        d0.setEditable(false);
+        t0.setEditable(false);
+        QQW.setEditable(false);
+        Paaaa.setEditable(false);
+        Taa.setEditable(false);
+        PII.setEditable(false);
+        pfff.setEditable(false);
+        toot.setEditable(false);
     }
-void tss (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+void mss (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
         ID = mng_Id;
         Email = email;
@@ -76,7 +88,7 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
         EMPII = new javax.swing.JTextField();
         d0 = new javax.swing.JTextField();
         PII = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        toot = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         QQW = new javax.swing.JTextField();
         t0 = new javax.swing.JTextField();
@@ -91,8 +103,14 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
+        c2 = new com.toedter.calendar.JDateChooser();
+        c1 = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -112,14 +130,14 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("TODAY'S SELL");
+        jLabel21.setText("MONTHLY SELL");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(339, 339, 339)
+                .addGap(338, 338, 338)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1))
@@ -144,11 +162,11 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel3.setText("DATE :- ");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 30));
+        jLabel3.setText("To :");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 30, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel4.setForeground(new java.awt.Color(255, 102, 0));
         jLabel4.setText("TIME :- ");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 80, 30));
 
@@ -158,14 +176,14 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
 
         pro_id.setBackground(new java.awt.Color(255, 255, 255));
         pro_id.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        pro_id.setForeground(new java.awt.Color(0, 0, 204));
+        pro_id.setForeground(new java.awt.Color(255, 102, 0));
         pro_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         pro_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pro_idKeyReleased(evt);
             }
         });
-        jPanel3.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 190, 30));
+        jPanel3.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 190, 30));
 
         table.setBackground(new java.awt.Color(153, 204, 255));
         table.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
@@ -238,10 +256,10 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
         PII.setForeground(new java.awt.Color(0, 0, 204));
         PII.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
 
-        jTextField12.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jTextField12.setForeground(new java.awt.Color(0, 0, 204));
-        jTextField12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        toot.setBackground(new java.awt.Color(255, 255, 255));
+        toot.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        toot.setForeground(new java.awt.Color(0, 0, 204));
+        toot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
 
         jButton1.setBackground(new java.awt.Color(204, 0, 153));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -336,7 +354,7 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
                         .addGap(40, 40, 40)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(toot, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(Paaaa, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
@@ -414,7 +432,7 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Taa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pfff, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(toot, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(QQW, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
@@ -423,6 +441,17 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
         );
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 880, 220));
+
+        jButton4.setBackground(new java.awt.Color(0, 153, 0));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Go");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 153, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -433,13 +462,38 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 102, 0));
         jLabel17.setText("Product ID :");
         jLabel17.setToolTipText("");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 127, 20));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 127, 20));
+
+        c2.setDateFormatString("dd-MM-yyyy");
+        jPanel3.add(c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 180, 30));
+
+        c1.setDateFormatString("dd-MM-yyyy");
+        jPanel3.add(c1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 180, 30));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel5.setText("DATE :- ");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 80, 30));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel18.setText("From :");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 60, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circular-arrow.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 153)));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 30, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -541,7 +595,7 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
                 Taa.setText(too);
                 PII.setText(pprii);
                 pfff.setText(pprof);
-                jTextField12.setText(tss);
+                toot.setText(tss);
 
                 rs.close();
                 ps.close();
@@ -555,7 +609,7 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
     
     }//GEN-LAST:event_tableMouseClicked
 public void res(){
-    ppro_id.setText("");
+                ppro_id.setText("");
                 EMP.setText("");
                 EMPII.setText("");
                 d0.setText("");
@@ -565,18 +619,18 @@ public void res(){
                 Taa.setText("");
                 PII.setText("");
                 pfff.setText("");
-                jTextField12.setText("");
+                toot.setText("");
 }
      public void Sell(){
-          String da=dd.getText();
+          
         try {
         
              //Data fetch from database
-            String sql = "Select * From sell where Date = ? ";
+            String sql = "Select * From sell   ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             
-            ps.setString(1,da);
+           // ps.setString(1,da);
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
@@ -602,7 +656,12 @@ public void res(){
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here
         pro_id.setText("");
-        Sell();
+        if(c1.getDate()==null&& c2.getDate()==null){
+           bb2();
+            }else{
+                
+                bb21();
+            }
         res();
        
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -610,39 +669,157 @@ public void res(){
     private void pro_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pro_idKeyReleased
         // TODO add your handling code here:
          String aa=pro_id.getText();
-        String da=dd.getText();
-          try {
+      //  String da=dd.getText();
+          if(c1.getDate()==null&& c2.getDate()==null){
+            try {
         
-            
-            String sql = "Select * From sell where Product_id Like '%"+aa+"%' and Date =?   ";
+             //Data fetch from database
+            String sql = "Select * From sell Where Product_id like '%"+aa+"%'";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,da);
-         
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
-           if(rs.next()){
-              
-             //  na.setText(nnn);
-               do
-               {
-                   Object o []={
-                       rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time")};
+           while (rs.next())
+           {
+               
+               Object o []={
                   
-                   
+                    rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time")};
                    model.addRow(o);
-               }while (rs.next());
-           }else{
-                JOptionPane.showMessageDialog(null,"No Sell Available  Today", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+             //  table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
            }
-          
             }catch(Exception e){
             System.out.println("error"+e);
-        
-            }
+        }
+            }else{
+                try {
+        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+            
+            String sql = "Select * From sell Where date between '"+d1+"' and '"+d2+"' and Product_id like '%"+aa+"%' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                    rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time")};
+                   model.addRow(o);
+             //  table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+          }
             
     }//GEN-LAST:event_pro_idKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         if(c1.getDate()==null&& c2.getDate()==null){
+           bb2();
+            }else{
+                
+                bb21();
+            }
+       
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void bb2(){
+         try {
+        
+             //Data fetch from database
+            String sql = "Select * From sell ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                    rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time")};
+                   model.addRow(o);
+             //  table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }
+    
+    public void bb21(){
+        try {
+        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+            
+            String sql = "Select * From sell Where date between '"+d1+"' and '"+d2+"' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                    rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time")};
+                   model.addRow(o);
+             //  table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }
+    
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        c1.setDate(null);
+        c2.setDate(null);
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From sell ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                    rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total"),rs.getString("Profit"),rs.getString("Date"),rs.getString("Time")};
+                   model.addRow(o);
+             //  table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -661,20 +838,21 @@ public void res(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TODAY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MONTHLY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TODAY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MONTHLY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TODAY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MONTHLY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TODAY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MONTHLY_SELL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TODAY_SELL().setVisible(true);
+                new MONTHLY_SELL().setVisible(true);
             }
         });
     }
@@ -686,10 +864,13 @@ public void res(){
     private javax.swing.JTextField Paaaa;
     private javax.swing.JTextField QQW;
     private javax.swing.JTextField Taa;
+    private com.toedter.calendar.JDateChooser c1;
+    private com.toedter.calendar.JDateChooser c2;
     private javax.swing.JTextField d0;
     private javax.swing.JLabel dd;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -699,9 +880,12 @@ public void res(){
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -711,12 +895,12 @@ public void res(){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField pfff;
     private javax.swing.JTextField ppro_id;
     private javax.swing.JTextField pro_id;
     private javax.swing.JTextField t0;
     private javax.swing.JTable table;
+    private javax.swing.JTextField toot;
     private javax.swing.JLabel tt;
     // End of variables declaration//GEN-END:variables
 }

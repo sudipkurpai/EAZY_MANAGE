@@ -1861,6 +1861,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel13.add(jLabel130, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 160, -1));
 
         jPanel27.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel27MouseClicked(evt);
+            }
+        });
         jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel61.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -1905,6 +1910,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel5.add(jLabel126, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, -1));
 
         jPanel28.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel28MouseClicked(evt);
+            }
+        });
         jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel68.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -1924,6 +1934,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel28.add(jLabel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, -1));
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel9MouseClicked(evt);
+            }
+        });
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel75.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -2830,6 +2845,50 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         dr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel28MouseClicked
+        // TODO add your handling code here:
+        MONTHLY_SELL  dr =new MONTHLY_SELL();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        dr.mss(name, ID, eml,t1,d1,ph);
+        
+        dr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel28MouseClicked
+
+    private void jPanel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel27MouseClicked
+        // TODO add your handling code here:
+         AVERAGE_SELL  dr =new AVERAGE_SELL();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        dr.ass(name, ID, eml,t1,d1,ph);
+        
+        dr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel27MouseClicked
+
+    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+        // TODO add your handling code here:
+        SALES_TARGET  dr = null;
+        try {
+            dr = new SALES_TARGET();
+        } catch (ParseException ex) {
+            Logger.getLogger(DASHBOARD_M.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        dr.Sell_t(name, ID, eml,t1,d1,ph);
+        
+        dr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel9MouseClicked
 
     /**
      * @param args the command line arguments
