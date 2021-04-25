@@ -681,7 +681,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
 //                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
 //              });
         int i = ADD_NEW_PRODUCT_DETAOBJ.Update_product(Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,DDDD,tttt,Product_id);
-            ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, DDDD, tttt, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantitye, catag, Brand, totall);
+           ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, DDDD, tttt, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantitye, catag, Brand, totall);
                        //    mng,mng_i, dddd, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,timee
          ADD_NEW_PRODUCT_DETAOBJ.s_p(aa, V_nmaee, DDDD, tttt, Product_id, p_nmaee, Standerd_cost, quantit, totall);
                        

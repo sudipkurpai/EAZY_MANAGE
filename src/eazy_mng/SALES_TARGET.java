@@ -380,7 +380,7 @@ public class SALES_TARGET extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         DASHBOARD_M dm = new DASHBOARD_M();
-     //   dm.mngname(Name,Id,emll,ph,date,time);
+       dm.mngname(Name,ID,Email,Phone,date,time);
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked

@@ -5,19 +5,55 @@
  */
 package eazy_mng;
 
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class PRODUCT_REPORT extends javax.swing.JFrame {
-
+    String dd=null;
+    String tt=null;
+     String time = null;
+     String date = null;
+     String ph = null;
+     String Name = null;
+     String Id = null;
+     String emll = null;
     /**
-     * Creates new form PRODUCT_REPORT
+     * Creates new form PRODUCT_REPORT1
      */
     public PRODUCT_REPORT() {
         initComponents();
+        date();
+        time();
+        table();
+        
+         pnn2.setEditable(false);
+         pc1.setEditable(false);
+        pba.setEditable(false);
+        pds.setEditable(false);
     }
-
+void pre (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+        Name = fullname;
+        Id = mng_Id;
+        emll = email;
+        time = t1;
+        date = d1;
+        ph= p;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,113 +64,389 @@ public class PRODUCT_REPORT extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        pro1 = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
+        pnn1 = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        pro_id = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        report = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pds = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        pnn2 = new javax.swing.JTextField();
+        pc1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        pba = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("X");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 20, -1));
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Product Report");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 60));
+        jLabel1.setText("PRODUCT REPORT");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 360, 50));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/RaghuSearch.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+        pnn1.setBackground(new java.awt.Color(255, 255, 255));
+        pnn1.setForeground(new java.awt.Color(0, 0, 0));
+        pnn1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pnn1KeyReleased(evt);
+            }
+        });
+        jPanel2.add(pnn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 290, 40));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (23).png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, -1, -1));
+        jButton5.setBackground(new java.awt.Color(255, 0, 0));
+        jButton5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Reset");
+        jButton5.setBorder(null);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 90, 40));
 
-        pro1.setBackground(new java.awt.Color(255, 255, 255));
-        pro1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
-        pro1.setForeground(new java.awt.Color(102, 255, 0));
-        pro1.setModel(new javax.swing.table.DefaultTableModel(
+        jButton1.setBackground(new java.awt.Color(0, 0, 204));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Search");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, 40));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel3.setText("Product ID :");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 100, 20));
+
+        pro_id.setBackground(new java.awt.Color(255, 255, 255));
+        pro_id.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 360, 40));
+
+        jButton6.setBackground(new java.awt.Color(204, 0, 51));
+        jButton6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Reset");
+        jButton6.setBorder(null);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 90, 40));
+
+        table.setBackground(new java.awt.Color(255, 255, 255));
+        table.setForeground(new java.awt.Color(0, 0, 0));
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "product ID", "Product Name", "Decription", "Unit Price", "Mfg Date", "ExperyDate", "Quantity", "Category", "Brand", "Total"
+                "Product ID", "Product Name", "Date", "Time", "Product Catagory", "Product Brand", "Product Description", "Product Report"
             }
-        ));
-        jScrollPane1.setViewportView(pro1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1160, 640));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(table);
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Date From :");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 920, 150));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (2)_1.png"))); // NOI18N
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 820, -1, -1));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
+        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button_1.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 820, -1, -1));
+        report.setBackground(new java.awt.Color(255, 255, 255));
+        report.setColumns(20);
+        report.setForeground(new java.awt.Color(0, 0, 0));
+        report.setRows(5);
+        jScrollPane2.setViewportView(report);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button (4)_1.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 820, -1, -1));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 900, 70));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 180, 30));
+        jButton2.setBackground(new java.awt.Color(0, 153, 0));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Save");
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 290, 110, 40));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("To");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 30, 30));
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel7.setText("Product Report :");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 30));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 180, 30));
+        pds.setBackground(new java.awt.Color(255, 255, 255));
+        pds.setColumns(20);
+        pds.setForeground(new java.awt.Color(0, 0, 0));
+        pds.setRows(5);
+        jScrollPane1.setViewportView(pds);
 
-        jButton1.setBackground(new java.awt.Color(51, 255, 51));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 204));
-        jButton1.setText("Search");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 120, 40));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 900, 70));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel2.setText("Product Description :");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 170, 30));
+
+        pnn2.setBackground(new java.awt.Color(255, 255, 255));
+        pnn2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(pnn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 290, 40));
+
+        pc1.setBackground(new java.awt.Color(255, 255, 255));
+        pc1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(pc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 290, 40));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel4.setText("Product Catagory  :");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 150, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel6.setText(" Product Name:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 30));
+
+        pba.setBackground(new java.awt.Color(255, 255, 255));
+        pba.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(pba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 290, 40));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel5.setText("Product Brand :");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 130, 30));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 920, 340));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel8.setText("Product ID :");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(956, 731));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        dd =s.format(d);
+    }
+
+    void time() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+                tt =s.format(d);
+            }
+        }
+        ).start();
+
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         String product_idee = pro_id.getText();
+      try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_new_product where Product_id = ? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+           
+           if(rs.next()){
+           String pnn= rs.getString("Product_name");
+           String desc= rs.getString("Description");
+           String cat=rs.getString("Category");
+           String bra= rs.getString("Brand");
+          pnn2.setText(pnn);
+          pc1.setText(cat);
+          pba.setText(bra);
+          pds.setText(desc);
+            
+            
+                 //   JOptionPane.showMessageDialog(this, "Product Found");
+                   
+           }else{
+               JOptionPane.showMessageDialog(this, "Product Not Found");
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String pn1= pnn2.getText();
+         String pct1= pc1.getText();
+         String pbra1= pba.getText();
+         String des1= pds.getText();
+         String pid1= pro_id.getText();
+         String rpo= report.getText();
+         if(pn1.equals("")){
+             JOptionPane.showMessageDialog(this, "Fill up All Feild First");
+         } else if(rpo.equals("")){
+             JOptionPane.showMessageDialog(this, "Give a product Report");
+         }else {
+            // 
+             ADD_NEW_PRODUCT_DETAOBJ.product_rep(pn1, pid1, dd, tt, pct1, pbra1, des1, rpo);
+             JOptionPane.showMessageDialog(this, "product Report Saved");
+             table();
+             pc1.setText("");
+          pba.setText("");
+          pds.setText("");
+         pro_id.setText("");
+       report.setText("");
+       pnn2.setText("");
+         }
+          
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void table(){
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From product_report  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  //Product_name, Product_id, Date, Time , Category, Brand, Description, Report
+                   rs.getString("Product_name"),rs.getString("Product_id"),rs.getString("Date"),rs.getString("Time"),rs.getString("Category"),
+                            rs.getString("Brand"),rs.getString("Description"),rs.getString("Report") };
+                   model.addRow(o);
+               table.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+             }
+    }
+    private void pnn1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnn1KeyReleased
+        // TODO add your handling code here:
+        String p01=pnn1.getText();
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From product_report Where Product_id like '%"+p01+"%' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  //Product_name, Product_id, Date, Time , Category, Brand, Description, Report
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Date"),rs.getString("Time"),rs.getString("Category"),
+                            rs.getString("Brand"),rs.getString("Description"),rs.getString("Report") };
+                   model.addRow(o);
+               table.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+             }
+    }//GEN-LAST:event_pnn1KeyReleased
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        pnn1.setText("");
+        table();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here: String pn1= pnn2.getText();
+        pc1.setText("");
+          pba.setText("");
+          pds.setText("");
+         pro_id.setText("");
+       report.setText("");
+       pnn2.setText("");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        DASHBOARD_M dm = new DASHBOARD_M();
+        dm.mngname(Name,Id,emll,ph,date,time);
+        dm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,8 +486,9 @@ public class PRODUCT_REPORT extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -187,7 +500,17 @@ public class PRODUCT_REPORT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable pro1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField pba;
+    private javax.swing.JTextField pc1;
+    private javax.swing.JTextArea pds;
+    private javax.swing.JTextField pnn1;
+    private javax.swing.JTextField pnn2;
+    private javax.swing.JTextField pro_id;
+    private javax.swing.JTextArea report;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

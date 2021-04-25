@@ -372,7 +372,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         sta.setBackground(new java.awt.Color(255, 255, 255));
         sta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         sta.setForeground(new java.awt.Color(0, 0, 0));
-        sta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Present", "Half Day", "Absent", " " }));
+        sta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Present", "Leave", "Absent", " " }));
         jPanel3.add(sta, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 180, 160, 30));
 
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N

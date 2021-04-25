@@ -30,11 +30,18 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
      * Creates new form PRODUCT_STOCK_CHECK_MA
      */
     public PRODUCT_STOCK_CHECK_MA() {
+               
         initComponents();
-        table();
-        Edit();
          ssel.setVisible(false);
-         ppur.setVisible(false);
+                ppur.setVisible(false);
+                Pur.setVisible(false);
+                alll.setVisible(true);
+                sell.setVisible(false);
+                All.setVisible(true);
+        table();
+        cc1();
+        Edit();
+         
         
     }
     void psc (String fullname, String mng_Id,String email,String t1,String d1,String p) {
@@ -96,6 +103,9 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         TOTALL1 = new javax.swing.JTextField();
+        alll = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table3 = new javax.swing.JTable();
         ssel = new javax.swing.JPanel();
         Paaaa = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -147,9 +157,6 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         sell = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         table4 = new javax.swing.JTable();
-        alll = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        table3 = new javax.swing.JTable();
         Pur = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table2 = new javax.swing.JTable();
@@ -485,6 +492,57 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         TOTALL1.setBounds(470, 150, 170, 20);
 
         jPanel6.add(All, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 190));
+
+        alll.setBackground(new java.awt.Color(255, 255, 255));
+
+        table3.setBackground(new java.awt.Color(192, 192, 255));
+        table3.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
+        table3.setForeground(new java.awt.Color(0, 0, 0));
+        table3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Status", "Date", "Time ", "Vender Name", "Product Id", "Product Name", "Price", "Quantity", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table3MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(table3);
+
+        javax.swing.GroupLayout alllLayout = new javax.swing.GroupLayout(alll);
+        alll.setLayout(alllLayout);
+        alllLayout.setHorizontalGroup(
+            alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(alllLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        alllLayout.setVerticalGroup(
+            alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+            .addGroup(alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(alllLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel6.add(alll, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 690, 220));
 
         ssel.setBackground(new java.awt.Color(143, 206, 254));
         ssel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2), "Sell Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 13), new java.awt.Color(0, 0, 204))); // NOI18N
@@ -868,52 +926,6 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         );
 
         jPanel6.add(sell, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 690, 220));
-
-        alll.setBackground(new java.awt.Color(255, 255, 255));
-
-        table3.setBackground(new java.awt.Color(192, 192, 255));
-        table3.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        table3.setForeground(new java.awt.Color(0, 0, 0));
-        table3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Product Id", "Product Name", "Quantity ", "Price", "Profit", "Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(table3);
-
-        javax.swing.GroupLayout alllLayout = new javax.swing.GroupLayout(alll);
-        alll.setLayout(alllLayout);
-        alllLayout.setHorizontalGroup(
-            alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
-            .addGroup(alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(alllLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        alllLayout.setVerticalGroup(
-            alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-            .addGroup(alllLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(alllLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jPanel6.add(alll, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 690, 220));
 
         Pur.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1573,7 +1585,9 @@ public void aa1(){
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        reset();reset2();
+        reset();
+        reset2();
+        reset3();
         
 //        if (r1.isSelected() == true){
 //              // reset();
@@ -1666,9 +1680,58 @@ public void aa1(){
                 sell.setVisible(false);
                 All.setVisible(true);
                 if(c1.getDate()==null&& c2.getDate()==null){
-            cc1();
-            }else{
-              cc2();  
+           try {
+        
+             //Data fetch from database
+            String sql = "Select * From s_p_all Where Product_id like '%"+Search+"%' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table3.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                   rs.getString("Status"),rs.getString("Date"),rs.getString("Time"),rs.getString("Vendor_name"),rs.getString("Product_id"),
+                            rs.getString("P_name"),rs.getString("Price"),rs.getString("Quantity"),rs.getString("Total") };
+                   model.addRow(o);
+               table3.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table3.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+             }
+       }else{
+               try {
+         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+          
+            String sql = "Select * From s_p_all Where Date between '"+d1+"' and '"+d2+"' and Product_id like '%"+Search+"%'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table3.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                   rs.getString("Status"),rs.getString("Date"),rs.getString("Time"),rs.getString("Vendor_name"),rs.getString("Product_id"),
+                            rs.getString("P_name"),rs.getString("Price"),rs.getString("Quantity"),rs.getString("Total") };
+                   model.addRow(o);
+               table3.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table3.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
             }
             
 
@@ -1878,6 +1941,56 @@ if(c1.getDate()==null&& c2.getDate()==null){
         // TODO add your handling code here:
     }//GEN-LAST:event_TOTALL1ActionPerformed
 
+    private void table3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseClicked
+        // TODO add your handling code here:
+          int i = table3.getSelectedRow();
+     DefaultTableModel model=(DefaultTableModel)table3.getModel();
+      String bb=model.getValueAt(i,2).toString();
+      String aa= model.getValueAt(i,1).toString();
+        //System.out.println("aaa"+aa);
+     
+     try{   
+            String sql = "Select * from s_p_all Where Date = ? and Time =?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,aa);
+            ps.setString(2,bb);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+//                rs.getString("Status"),rs.getString("Date"),rs.getString("Time"),rs.getString("Vendor_name"),rs.getString("Product_id"),
+//                            rs.getString("P_name"),rs.getString("Price"),rs.getString("Quantity"),rs.getString("Total") };
+                String emn=rs.getString("Status");
+                String dddd=rs.getString("Date"); 
+                String tttt=rs.getString("Time");
+                String ppnn=rs.getString("Vendor_name");
+                String ppiii=rs.getString("Product_id");
+                String add =rs.getString("P_name");
+                String emii=rs.getString("Price"); 
+                String too=rs.getString("Quantity");
+                String pprii=rs.getString("Total");
+               
+                Status.setText(emn);
+                vvname.setText(ppnn);
+                ddd1.setText(dddd);
+                ttt1.setText(tttt);
+                piid.setText(ppiii);
+                pnnam.setText(add);
+                Pric.setText(emii);
+                qqt.setText(too);
+                TOTALL1.setText(pprii);
+                
+                
+                rs.close();
+                ps.close();
+            }else{
+                JOptionPane.showMessageDialog(null, "NOTHING FOUND IN DATABASE!!!!!!");
+            }
+            con.close();
+           }
+        catch(Exception e){System.out.println(e);
+        }
+    }//GEN-LAST:event_table3MouseClicked
+
    public void reset(){
                 ppro_id.setText("");
                 EMPP.setText("");
@@ -1906,6 +2019,17 @@ if(c1.getDate()==null&& c2.getDate()==null){
                 TOTALL.setText("");
                 mnii.setText("");
    }
+   public void reset3(){
+       Status.setText("");
+                vvname.setText("");
+                ddd1.setText("");
+                ttt1.setText("");
+                piid.setText("");
+                pnnam.setText("");
+                Pric.setText("");
+                qqt.setText("");
+                TOTALL1.setText("");
+   }
    public void Edit(){
                 ppro_id.setEditable(false);
                 EMPP.setEditable(false);
@@ -1930,6 +2054,14 @@ if(c1.getDate()==null&& c2.getDate()==null){
                 mnamee.setEditable(false);
                 TOTALL.setEditable(false);
                 mnii.setEditable(false);
+                vvname.setEditable(false);
+                ddd1.setEditable(false);
+                ttt1.setEditable(false);
+                piid.setEditable(false);
+                pnnam.setEditable(false);
+                Pric.setEditable(false);
+                qqt.setEditable(false);
+                TOTALL1.setEditable(false);
 
     }
     

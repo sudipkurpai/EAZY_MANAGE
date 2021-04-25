@@ -1666,6 +1666,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         report.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel17.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel17MouseClicked(evt);
+            }
+        });
 
         jLabel70.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel70.setForeground(new java.awt.Color(0, 204, 102));
@@ -1692,6 +1697,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel19.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel19MouseClicked(evt);
+            }
+        });
 
         jLabel72.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel72.setForeground(new java.awt.Color(0, 204, 102));
@@ -1744,6 +1754,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel40.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel40MouseClicked(evt);
+            }
+        });
 
         jLabel74.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel74.setForeground(new java.awt.Color(0, 204, 102));
@@ -2889,6 +2904,47 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         dr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void jPanel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel40MouseClicked
+        // TODO add your handling code here:
+        COMPLAIN dr =new COMPLAIN();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        dr.comp(name, ID, eml,t1,d1,ph);
+        
+        dr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel40MouseClicked
+
+    private void jPanel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseClicked
+        // TODO add your handling code here:
+         EMPLOYEE_REPORT dr =new EMPLOYEE_REPORT();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        dr.err(name, ID, eml,t1,d1,ph);
+        
+        dr.setVisible(true);
+        this.dispose();
+                       
+    }//GEN-LAST:event_jPanel19MouseClicked
+
+    private void jPanel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel17MouseClicked
+        //TODO add your handling code here:
+        
+         PRODUCT_REPORT dr =new PRODUCT_REPORT();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        dr.pre(name, ID, eml,t1,d1,ph);
+        
+        dr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel17MouseClicked
 
     /**
      * @param args the command line arguments

@@ -5,19 +5,49 @@
  */
 package eazy_mng;
 
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author RAGHUNATH DAS
  */
 public class COMPLAIN extends javax.swing.JFrame {
-
+ String ID = null;
+    String Name = null;
+    String Phone = null;
+    String Email = null;
+    String date=null;
+    String time = null;
+    String t0=null;
+    String d0 = null;
     /**
      * Creates new form COMPLAIN
      */
     public COMPLAIN() {
         initComponents();
+        date();
+        time();
+        table();
     }
 
+     void comp (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+       Name = fullname;
+        ID = mng_Id;
+        Email = email;
+        time = t1;
+        date = d1;
+        Phone= p;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,24 +59,24 @@ public class COMPLAIN extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        emp = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        empn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        empe = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        ph = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        complainn = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField5 = new javax.swing.JTextField();
+        table = new javax.swing.JTable();
+        emmp = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -56,7 +86,7 @@ public class COMPLAIN extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -64,42 +94,54 @@ public class COMPLAIN extends javax.swing.JFrame {
         jLabel3.setText("Employee ID :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 131, 30));
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        emp.setBackground(new java.awt.Color(255, 255, 255));
+        emp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                empActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 300, 34));
+        jPanel1.add(emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 300, 34));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        empn.setBackground(new java.awt.Color(255, 255, 255));
+        empn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Employee Name:");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        empe.setBackground(new java.awt.Color(255, 255, 255));
+        empe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Employee Name:");
+        jLabel6.setText("Employee Email:");
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
+        ph.setBackground(new java.awt.Color(255, 255, 255));
+        ph.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Employee Name:");
+        jLabel9.setText("Employee Phone:");
 
-        jScrollPane2.setViewportView(jTextPane1);
+        complainn.setBackground(new java.awt.Color(255, 255, 255));
+        complainn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        complainn.setForeground(new java.awt.Color(0, 0, 204));
+        jScrollPane2.setViewportView(complainn);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -109,6 +151,11 @@ public class COMPLAIN extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Save");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -127,11 +174,11 @@ public class COMPLAIN extends javax.swing.JFrame {
                             .addGap(100, 100, 100)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(empn, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(empe, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(30, 30, 30)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ph, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -145,9 +192,9 @@ public class COMPLAIN extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(empn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(empe, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ph, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,35 +206,51 @@ public class COMPLAIN extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 830, 260));
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 0));
+        jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Reset");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Manager Name", "Manager ID", "Date ", "Time", "Employee Name", "Employee Id", "Emp Email", "Emp Phone", "Complain"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(table);
+
+        emmp.setBackground(new java.awt.Color(255, 255, 255));
+        emmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        emmp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emmpKeyReleased(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Employee Name:");
+        jLabel7.setText("Employee ID \\ Name :");
 
-        jButton4.setBackground(new java.awt.Color(0, 153, 0));
+        jButton4.setBackground(new java.awt.Color(102, 0, 204));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Reset");
@@ -204,14 +267,14 @@ public class COMPLAIN extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(3, 3, 3)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(emmp, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)
-                        .addGap(0, 343, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -221,7 +284,7 @@ public class COMPLAIN extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(emmp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
@@ -247,7 +310,7 @@ public class COMPLAIN extends javax.swing.JFrame {
                 jLabel10MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,22 +330,191 @@ public class COMPLAIN extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(872, 662));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+ void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        d0= s.format(d);
+    }
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    void time() {
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+                t0=s.format(d);
+            }
+        }
+        ).start();
+
+    }
+    
+    private void empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_empActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
         DASHBOARD_M dm = new DASHBOARD_M();
-       // dm.mngname(Name,ID,Email,Phone,date,time);
+        dm.mngname(Name,ID,Email,Phone,date,time);
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+ emmp.setText("");
+        table();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         String em_id = emp.getText();
+      
+      
+   
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From employee_register Where EMP_ID = ?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,em_id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                emp.setEditable(false);
+               
+                String f_name =rs.getString("FIRST_NAME");
+              //   System.out.println("EMpppppp "+f_name);
+                String l_name =rs.getString("LAST_NAME");
+                  String full = f_name+" "+l_name;
+               //  System.out.println("pppnnn "+l_name);
+                String Phone =rs.getString("MOBILE_NO");
+                 
+                String Email =rs.getString("EMAIL");
+               
+                empn.setText(full);
+                empn.setEditable(false);
+                
+                ph.setText(Phone);
+                ph.setEditable(false);
+                empe.setText(Email);
+                empe.setEditable(false);
+            
+                
+                
+             
+                
+               
+                rs.close();
+                ps.close();
+            }else{
+                 emp.setEditable(true);
+                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
+                //System.out.println("Enter Correct Employee Id");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String em_id = emp.getText();
+        String enn = empn.getText();
+        String phh = ph.getText();
+        String emll = empe.getText();
+        String com= complainn.getText();
+        String zz="warning";
+        if(enn.equals("")){
+            JOptionPane.showMessageDialog(null, "Search an Employee");
+        }else 
+            if (com.equals("")){
+            JOptionPane.showMessageDialog(null, "Write a Complain");
+        }else
+            {
+            int yes=JOptionPane.showConfirmDialog(this, "Are You Sure Need to Complain the Employee ?");
+        
+            if (yes ==0){
+             int i= COMPLAIN_DATAOBEJECT.COMP(Name, ID, d0, t0, enn, em_id, phh, emll, com);
+            if(i>0){
+            MAIL.send(emll, zz, com);
+            JOptionPane.showMessageDialog(null, "Email Send to "+" "+enn);
+            }
+            
+        
+           //    Manager_Name, Manager_id, Date,Time, Employee_Name, Employeee_id,Employee_Phone,Employee_email,Complain
+        }else{ int No=0;
+                if (No == 0){
+                }
+               }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+     public void table()
+{
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From complain ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  // Manager_Name, Manager_id, Date,Time, Employee_Name, ,Employee_Phone,Employee_email,Complain
+                   rs.getString("Manager_Name"),rs.getString("Manager_id"),rs.getString("Date"),rs.getString("Time"),rs.getString("Employee_Name"),rs.getString("Employeee_id"),
+                   rs.getString("Employee_Phone"),rs.getString("Employee_email"),rs.getString("Complain") };
+               model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         emp.setEditable(true);
+      emp.setText("");
+        empn.setText("");
+         ph.setText("");
+        empe.setText("");
+        complainn.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void emmpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emmpKeyReleased
+        // TODO add your handling code here:
+        String em_id = emmp.getText();
+        try {
+        
+             //Data fetch from database
+            String sql = "Select * From complain where Employee_Name like '%"+em_id+"%' or Employeee_id like '%"+em_id+"%' ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           if (rs.next()){
+         do  {
+               
+               Object o []={
+                  // Manager_Name, Manager_id, Date,Time, Employee_Name, ,Employee_Phone,Employee_email,Complain
+                   rs.getString("Manager_Name"),rs.getString("Manager_id"),rs.getString("Date"),rs.getString("Time"),rs.getString("Employee_Name"),rs.getString("Employeee_id"),
+                   rs.getString("Employee_Phone"),rs.getString("Employee_email"),rs.getString("Complain") };
+               model.addRow(o);
+               
+           }while (rs.next());
+           }else{
+               JOptionPane.showMessageDialog(null, "  Complain Not Found In This Employee ID ");
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }//GEN-LAST:event_emmpKeyReleased
 
     /**
      * @param args the command line arguments
@@ -321,6 +553,11 @@ public class COMPLAIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane complainn;
+    private javax.swing.JTextField emmp;
+    private javax.swing.JTextField emp;
+    private javax.swing.JTextField empe;
+    private javax.swing.JTextField empn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -339,12 +576,7 @@ public class COMPLAIN extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextField ph;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

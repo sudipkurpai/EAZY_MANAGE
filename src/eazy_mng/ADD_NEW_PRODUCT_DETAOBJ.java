@@ -170,7 +170,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
         int status=0;
               try{
                    Connection con=DATABASE_CONNECTION.getConnection();  
-                   PreparedStatement ps=con.prepareStatement("INSERT INTO s_p_all (Status, Vendor_name, Data,Time,  Product_id, p_name, Price, Quantity, Total ) VALUES (?,?,?,?,?,?,?,?,?)");
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO s_p_all (Status, Vendor_name, Date,Time,  Product_id, p_name, Price, Quantity, Total ) VALUES (?,?,?,?,?,?,?,?,?)");
                  
                    
                    ps.setString(1, Status);  
@@ -179,7 +179,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
                  // System.out.println("22222"+Man_id);
                    ps.setString(3, Date);
                   // System.out.println("333333"+EMAIL);
-                   ps.setString(4, Date);
+                   ps.setString(4, Time);
                  //  System.out.println("4444444444"+ Transaction_id);
                    ps.setString(5, Product_id);
                  //  System.out.println("55555551"+Product_id);
@@ -201,4 +201,28 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
             //  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
      }
+     
+     public static int product_rep (String Product_name, String Product_id, String Date,String Time, String Category, String Brand, String Description, 
+            String Report){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("INSERT INTO product_report (Product_name, Product_id, Date, Time , Category, Brand, Description, Report) VALUES (?,?,?,?,?,?,?,?)");
+                   ps.setString(1, Product_name);  
+                   ps.setString(2, Product_id);
+                   ps.setString(3, Date);
+                   ps.setString(4, Time);
+                   ps.setString(5, Category);
+                   ps.setString(6, Brand);
+                   ps.setString(7, Description);
+                   ps.setString(8, Report);
+                  
+                  status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;
+}
 }
