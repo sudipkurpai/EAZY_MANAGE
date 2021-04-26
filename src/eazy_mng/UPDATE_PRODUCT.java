@@ -90,7 +90,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
  
  void date() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         d2.setText(s.format(d));
     }
     

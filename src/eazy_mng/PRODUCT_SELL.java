@@ -441,7 +441,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
 
      void date (){
       Date da=new Date ();
-      SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+      SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
       d.setText(s.format(da));     
      }
       void datee (){

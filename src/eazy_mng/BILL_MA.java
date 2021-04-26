@@ -14,15 +14,14 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
-import static org.eclipse.persistence.expressions.ExpressionOperator.sum;
+
 
 /**
  *
@@ -56,7 +55,9 @@ public class BILL_MA extends javax.swing.JFrame {
      * Creates new form BILL_PRINT
      */
     public BILL_MA() {
+        
         initComponents();
+        datee();
         print.setEnabled(false);
         id_create();
         check.setEnabled(false);
@@ -87,8 +88,14 @@ public class BILL_MA extends javax.swing.JFrame {
         time = t1;
         date = d1;
         ph= p;
-        b_date.setText(date);
         
+        
+    }
+     void datee() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        b_date.setText(s.format(d));
+    //     System.out.println("aa"+s.format(d));
     }
     public void Timee(){
      new Timer(0,new ActionListener(){
@@ -927,7 +934,7 @@ try {
             dddd();
             eeee();
             ffff();
-            System.out.println("Product_id"+Product_id);
+          //  System.out.println("Product_id"+Product_id);
                 
             ADD_BILL_DATAOBJECT.add_bill(Ca_name, Ca_eml, Ca_phone, addd, Pinn, Invoice, C_date, C_time, Pidd, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo, bill_s, pay_s,rea,ref);
                //               add_bill(Ca_name, Ca_eml, Ca_phone,addd,Pinn Invoice, C_date, C_time, Product_id, itmt, dsct, quant, prit, taxt, total_wgt, total_gt, sumo,bill_s,pay_s);   

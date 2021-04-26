@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -85,8 +86,13 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         time = t1;
         date = d1;
         ph= p;
-        b_date.setText(date);
+      
         
+    }
+    void date() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        b_date.setText(s.format(d));
     }
     public void Timee(){
      new Timer(0,new ActionListener(){

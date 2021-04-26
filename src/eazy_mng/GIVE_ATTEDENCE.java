@@ -40,6 +40,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         initComponents();
         date();
         time();
+        date1();
         
     }
 
@@ -60,7 +61,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         
         ab.setText(Name);
         ab.setEditable(false);
-        dd.setText(date);
+       
         dd.setEditable(false);
         mng_id.setText(ID);
         mng_id.setEditable(false);
@@ -127,6 +128,12 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("EEEE-dd-MMMM-yyyy");
         daaa.setText(s.format(d));
+    }
+    void date1() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        dd.setText(s.format(d));
+        
     }
     
 

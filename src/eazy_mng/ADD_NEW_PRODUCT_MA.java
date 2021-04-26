@@ -72,7 +72,7 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
 
 Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
 exp.setDate(date);
- mfg.setDate(date);     
+mfg.setDate(date);     
        
        
     }
@@ -94,7 +94,7 @@ exp.setDate(date);
  
  void date() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         d2.setText(s.format(d));
         
     }
@@ -262,7 +262,7 @@ exp.setDate(date);
                 jLabel18MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 6, 20, 20));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 20, 20));
 
         Product_id.setBackground(new java.awt.Color(255, 255, 255));
         Product_id.setForeground(new java.awt.Color(0, 0, 0));
