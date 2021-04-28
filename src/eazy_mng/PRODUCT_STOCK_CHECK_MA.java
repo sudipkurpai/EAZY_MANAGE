@@ -229,6 +229,7 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 40, 90, -1));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Sale");
         jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
 
@@ -1100,7 +1101,7 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(102, 255, 102));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Search");
+        jButton2.setText("Reset");
         jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 64, 2), 1, true));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1135,13 +1136,16 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(pro_id, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(pro_id, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 116, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1333,7 +1337,7 @@ public void aa(){
 }
 public void aa1(){
     try {
-                    SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+                    SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());
@@ -1391,7 +1395,7 @@ public void aa1(){
     
     public void bb21(){
         try {
-        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
              String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());
@@ -1424,7 +1428,7 @@ public void aa1(){
     try {
         
              //Data fetch from database
-            String sql = "Select * From s_p_all ";
+            String sql = "Select * From s_p_all";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
@@ -1449,7 +1453,7 @@ public void aa1(){
     public void cc2(){
         
     try {
-         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+         SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-yyyy");
             String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());
@@ -1529,7 +1533,8 @@ public void aa1(){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        pro_id.setText("");
+        table();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1578,7 +1583,7 @@ public void aa1(){
             }
             con.close();
            }
-        catch(Exception e){System.out.println(e);
+        catch(Exception e){System.out.println("aaaa0"+e);
         }
     
     }//GEN-LAST:event_table4MouseClicked
@@ -2084,7 +2089,7 @@ if(c1.getDate()==null&& c2.getDate()==null){
                
            }
             }catch(Exception e){
-            System.out.println("error"+e);
+           System.out.println("error"+e);
         }
 }
     /**

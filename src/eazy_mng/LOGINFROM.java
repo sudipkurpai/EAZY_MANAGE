@@ -391,17 +391,17 @@ public class LOGINFROM extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 eml =rs.getString("Email");
-                System.out.println("EMAILLLLLLLL "+eml);
+             //   System.out.println("EMAILLLLLLLL "+eml);
                 phone =rs.getString("MOBILE_NO");
-                System.out.println("EMAILLLLLLLL "+phone);
+             //   System.out.println("EMAILLLLLLLL "+phone);
                 String fname =rs.getString("FIRST_NAME");
-                System.out.println("FIRST NAME "+fname);
+              //  System.out.println("FIRST NAME "+fname);
                 String lname =rs.getString("LAST_NAME");
-                System.out.println("LAST NAME "+lname);
+               // System.out.println("LAST NAME "+lname);
                 name = fname+" "+lname;
-                System.out.println("FULL NAME "+name);
+               // System.out.println("FULL NAME "+name);
                 mng_Id =rs.getString("MNG_ID");
-                System.out.println("MNGGGGGGGGGGGGG "+mng_Id);
+               // System.out.println("MNGGGGGGGGGGGGG "+mng_Id);
                 rs.close();
                 ps.close();
             }else{
@@ -433,6 +433,8 @@ public class LOGINFROM extends javax.swing.JFrame {
                 email.setForeground(Color.RED);
                 pass.setForeground(Color.RED);
                 JOptionPane.showMessageDialog(null,"Enter Correct Details", "Login Error", JOptionPane.ERROR_MESSAGE);
+                Memail.setVisible(false);
+                Mpassword.setVisible(false);
                 email.setText("Manager ID");
                 pass.setText("Password");
                 pass.setEchoChar((char)0);
@@ -548,17 +550,17 @@ public class LOGINFROM extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 eml =rs.getString("Email");
-                System.out.println("EMAILLLLLLLL "+eml);
+          //      System.out.println("EMAILLLLLLLL "+eml);
                 phone =rs.getString("MOBILE_NO");
-                System.out.println("EMAILLLLLLLL "+phone);
+          //      System.out.println("EMAILLLLLLLL "+phone);
                 String fname =rs.getString("FIRST_NAME");
-                System.out.println("FIRST NAME "+fname);
+            //    System.out.println("FIRST NAME "+fname);
                 String lname =rs.getString("LAST_NAME");
-                System.out.println("LAST NAME "+lname);
+            //    System.out.println("LAST NAME "+lname);
                 name = fname+" "+lname;
-                System.out.println("FULL NAME "+name);
+          //      System.out.println("FULL NAME "+name);
                 mng_Id =rs.getString("MNG_ID");
-                System.out.println("MNGGGGGGGGGGGGG "+mng_Id);
+           //     System.out.println("MNGGGGGGGGGGGGG "+mng_Id);
                 rs.close();
                 ps.close();
             }else{
@@ -580,7 +582,7 @@ public class LOGINFROM extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Login Successfully");
                 
                 DASHBOARD_M dm = new DASHBOARD_M();
-                System.out.println("2222222222222222" +timeee);
+        //        System.out.println("2222222222222222" +timeee);
                 
                 dm.mngname(name,mng_Id,eml,phone,date,timeee);  
                 dm.setVisible(true);              

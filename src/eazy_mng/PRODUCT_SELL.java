@@ -32,6 +32,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
      String Id = null;
      String emll = null;
      String ts;
+     String dd=null;
     /**
      * Creates new form PRODUCT_SALE
      */
@@ -40,11 +41,16 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         table();
         time();
         date();
+        date1();
         datee();
         cal();
         bill.setEnabled(false);
         total.setEditable(false);
         afs.setEditable(false);
+        p_name.setEditable(false);
+        cs.setEditable(false);
+        pri.setEditable(false);
+         exp.setEnabled(false);
     }
  void pss (String fullname, String emp_Id,String email,String t1,String d1,String p) {
         Name = fullname;
@@ -449,6 +455,11 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
       SimpleDateFormat s=new SimpleDateFormat("EEEE");
       d1.setText(s.format(da)); 
   }
+      void date1 (){
+      Date da=new Date ();
+      SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
+      dd=s.format(da);     
+     }
   void time(){
      new Timer(0,new ActionListener(){
          @Override
@@ -507,13 +518,13 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                ts= rs1.getString("Total_sell");
                p_name.setText(pn);
                ssss.setText(sss);
-               p_name.setEditable(false);
+               
                cs.setText(css);
-               cs.setEditable(false);
+              
                pri.setText(pr);
-               pri.setEditable(false);
+              
                exp.setText(expp);
-               exp.setEnabled(true);
+              
                             
                 //    JOptionPane.showMessageDialog(this, "Product Found");
                    
@@ -597,7 +608,6 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         String tts=Integer.toString(tss);
         String aa="Sell";
         String vv=null;
-      //  System.out.println("tssss"+tts);
        double abc=Double.parseDouble(ss)*Double.parseDouble(qu);
       double abcd= Double.parseDouble(tt)-abc;
       String aab=Double.toString(abcd);
@@ -644,11 +654,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
     }//GEN-LAST:event_bill1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//        All Product
-//   Minimum Stock
-//  Out Of Stock
-// Expired Products
+        
         if(select.getSelectedItem().equals("All Product")){
             
             table();
@@ -704,7 +710,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         }  else if(select.getSelectedItem().equals("Expired Products")){
             
     try {
-        String dd=d.getText();
+       
              //Data fetch from database
             String sql = "Select * From add_new_product where Exp_date <= '"+dd+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();

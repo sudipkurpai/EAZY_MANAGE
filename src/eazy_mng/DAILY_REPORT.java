@@ -46,7 +46,7 @@ String Dd;
         sell.setVisible(false);
         All.setVisible(true);
         
-        Dd=dd.getText();
+        date1();
         cc1();
     }
      void drr (String fullname, String mng_Id,String email,String t1,String d1,String p) {
@@ -949,8 +949,13 @@ String Dd;
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
         dd.setText(s.format(d));
+        
     }
-
+void date1() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        Dd=s.format(d);
+}
     void time() {
         new Timer(0, new ActionListener() {
             @Override

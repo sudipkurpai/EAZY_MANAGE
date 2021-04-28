@@ -141,16 +141,16 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         );
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel9MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Go");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -299,6 +299,11 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         jLabel21.setBounds(610, 10, 70, 36);
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -306,11 +311,6 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sudip Maiti\\Desktop\\icons\\search.png 20.png")); // NOI18N
         jLabel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel20MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -355,6 +355,11 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         jLabel24.setBounds(20, 130, 168, 36);
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+        });
 
         jLabel25.setBackground(new java.awt.Color(255, 255, 255));
         jLabel25.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -362,11 +367,6 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circular-arrow.png"))); // NOI18N
         jLabel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel25MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -434,6 +434,11 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         });
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel7MouseClicked(evt);
+            }
+        });
 
         jLabel26.setBackground(new java.awt.Color(255, 255, 255));
         jLabel26.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -441,11 +446,6 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circular-arrow.png"))); // NOI18N
         jLabel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel26MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -471,11 +471,6 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/circular-arrow.png"))); // NOI18N
         jLabel27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -568,8 +563,8 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table2.getModel(); 
            model.setRowCount(0);
-           while (rs.next())
-           {
+          if (rs.next()){
+         do  {
                
                Object o []={
                   
@@ -580,7 +575,10 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
                table2.setForeground(Color.BLUE);
                JTableHeader tableHeader = table2.getTableHeader();
                tableHeader. setBackground(Color.GREEN);
-           }
+           }while (rs.next());
+          }else {
+              JOptionPane.showMessageDialog(this,"No Purches Report Found");
+          }
             }catch(Exception e){
             System.out.println("error"+e);
              }
@@ -617,10 +615,99 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
             
     }//GEN-LAST:event_pro_idKeyReleased
 
-    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
         // TODO add your handling code here:
+        click();
+    }//GEN-LAST:event_table2MouseClicked
+
+    private void clossMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clossMouseClicked
+        // TODO add your handling code here:\
+        DASHBOARD_M dm = new DASHBOARD_M();
         
-        String em_id = trn_id.getText();
+        dm.mngname(Name,Id,emll,ph,date,time);
+        dm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_clossMouseClicked
+
+    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+        // TODO add your handling code here:
+        pro_id.setText("");
+        if(c1.getDate()==null&& c2.getDate()==null){
+            aa();
+            }else{
+              aa1();  
+            }
+    }//GEN-LAST:event_jPanel8MouseClicked
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+        // TODO add your handling code here:
+         trn_id.setText("");
+              mname1.setText("");
+                
+                mid1.setText("");
+                
+                dd1.setText("");
+               
+                vna1.setText("");
+               
+                 pid1.setText("");
+                pna1.setText("");
+                pri1.setText("");
+                mfg1.setText("");
+                
+                exp1.setText("");
+                
+                qun1.setText("");
+               
+                catg1.setText("");
+               
+                 bra1.setText("");
+                tot1.setText("");
+    }//GEN-LAST:event_jPanel6MouseClicked
+
+    private void jPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseClicked
+        // TODO add your handling code here:
+         c1.setDate(null);
+        c2.setDate(null);
+          try {
+        
+             //Data fetch from database
+            String sql = "Select * From purchase ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table2.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  
+                    rs.getString("TRANSACTION_ID"),rs.getString("MANAGER_NAME"),rs.getString("MAN_ID"),rs.getString("DATE"),
+                        rs.getString("TIME"),rs.getString("VENDOR_NAME"),rs.getString("PRODUCT_ID"),rs.getString("PRODUCT_NAME"),rs.getString("STANDERD_COST"),rs.getString("MFG_DATE"),rs.getString("EXP_DATE"),
+                      rs.getString("QUANTITY"),rs.getString("CATEGORY"),  rs.getString("BRAND"),rs.getString("TOTAL") };
+                   model.addRow(o);
+               table2.setForeground(Color.BLUE);
+               JTableHeader tableHeader = table2.getTableHeader();
+               tableHeader. setBackground(Color.GREEN);
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+            }
+    }//GEN-LAST:event_jPanel7MouseClicked
+
+    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+        // TODO add your handling code here:
+         if(c1.getDate()==null&& c2.getDate()==null){
+            aa();
+            }else{
+              aa1();  
+            }  
+    }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+         String em_id = trn_id.getText();
       
       
    
@@ -669,110 +756,14 @@ void pr (String fullname, String mng_Id,String email,String t1,String d1,String 
                 rs.close();
                 ps.close();
             }else{
-                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
+                JOptionPane.showMessageDialog(this, "Product Not Found in this Product Id");
                 
             }
         }catch(Exception e){
             System.out.println("error"+e);
         }
     
-    }//GEN-LAST:event_jLabel20MouseClicked
-
-    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
-        // TODO add your handling code here:
-        click();
-    }//GEN-LAST:event_table2MouseClicked
-
-    private void clossMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clossMouseClicked
-        // TODO add your handling code here:\
-        DASHBOARD_M dm = new DASHBOARD_M();
-        
-        dm.mngname(Name,Id,emll,ph,date,time);
-        dm.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_clossMouseClicked
-
-    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
-        // TODO add your handling code here:
-        
-           trn_id.setText("");
-              mname1.setText("");
-                
-                mid1.setText("");
-                
-                dd1.setText("");
-               
-                vna1.setText("");
-               
-                 pid1.setText("");
-                pna1.setText("");
-                pri1.setText("");
-                mfg1.setText("");
-                
-                exp1.setText("");
-                
-                qun1.setText("");
-               
-                catg1.setText("");
-               
-                 bra1.setText("");
-                tot1.setText("");
-    }//GEN-LAST:event_jLabel25MouseClicked
-
-    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-        // TODO add your handling code here:
-        c1.setDate(null);
-        c2.setDate(null);
-          try {
-        
-             //Data fetch from database
-            String sql = "Select * From purchase ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-           DefaultTableModel model =(DefaultTableModel)table2.getModel(); 
-           model.setRowCount(0);
-           while (rs.next())
-           {
-               
-               Object o []={
-                  
-                    rs.getString("TRANSACTION_ID"),rs.getString("MANAGER_NAME"),rs.getString("MAN_ID"),rs.getString("DATE"),
-                        rs.getString("TIME"),rs.getString("VENDOR_NAME"),rs.getString("PRODUCT_ID"),rs.getString("PRODUCT_NAME"),rs.getString("STANDERD_COST"),rs.getString("MFG_DATE"),rs.getString("EXP_DATE"),
-                      rs.getString("QUANTITY"),rs.getString("CATEGORY"),  rs.getString("BRAND"),rs.getString("TOTAL") };
-                   model.addRow(o);
-               table2.setForeground(Color.BLUE);
-               JTableHeader tableHeader = table2.getTableHeader();
-               tableHeader. setBackground(Color.GREEN);
-           }
-            }catch(Exception e){
-            System.out.println("error"+e);
-            }
-    }//GEN-LAST:event_jLabel26MouseClicked
-
-    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel27MouseClicked
-
-    private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
-        // TODO add your handling code here:
-        pro_id.setText("");
-        if(c1.getDate()==null&& c2.getDate()==null){
-            aa();
-            }else{
-              aa1();  
-            }
-    }//GEN-LAST:event_jPanel8MouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-         if(c1.getDate()==null&& c2.getDate()==null){
-            aa();
-            }else{
-              aa1();  
-            }        
-            
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_jPanel5MouseClicked
 
      public void click() {
      int i = table2.getSelectedRow();

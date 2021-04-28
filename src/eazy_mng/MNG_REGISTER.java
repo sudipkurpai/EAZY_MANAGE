@@ -88,13 +88,13 @@ public class MNG_REGISTER extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 Mng_Id=rs.getString("MNG_ID");
-                System.out.println("MANAGER ID "+Mng_Id);
+               // System.out.println("MANAGER ID "+Mng_Id);
                 emp_id=rs.getString("EMP_ID");
-                System.out.println("EMPLOYEE ID "+emp_id);
+              //  System.out.println("EMPLOYEE ID "+emp_id);
                 Transaction_Id=rs.getString("TRANSACTION_ID");
-                System.out.println("Transaction_Id "+Transaction_Id);
+               // System.out.println("Transaction_Id "+Transaction_Id);
                 pro_Id=rs.getString("PRODUCT_ID");
-                 System.out.println("Product_Id "+pro_Id);
+              //   System.out.println("Product_Id "+pro_Id);
                 rs.close();
                 ps.close();
             }else{
@@ -106,13 +106,13 @@ public class MNG_REGISTER extends javax.swing.JFrame {
         
         mng_id = new BigInteger(Mng_Id);
         BigInteger nxt = new BigInteger("1");
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+Mng_Id);
-        System.out.println("#################"+mng_id);
+       // System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+Mng_Id);
+      //  System.out.println("#################"+mng_id);
         mng_id = mng_id.add(nxt);
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+mng_id);
+      //  System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+mng_id);
         mng = "INVM"+mng_id.toString();
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+mng);
-        System.out.println("++++++++++++++++"+mng_id);
+     //   System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+mng);
+     //   System.out.println("++++++++++++++++"+mng_id);
         Mng_id.setText(mng);
     }
     private static final String A ="^(?:(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|" +
@@ -769,7 +769,7 @@ public class MNG_REGISTER extends javax.swing.JFrame {
                 int i = REGISTRATION_DATAOBEJECT.inventory_management_system(fName, lName,mail,ph,mng, password, c_pass,add,gen,td,dob);
                 int j = ID_STORE_FETCH.insert_id(mng_id.toString(), emp_id,Transaction_Id,pro_Id);
               if(i>0 && j>0){
-                System.out.println("Data inserted");
+               // System.out.println("Data inserted");
                 JOptionPane.showMessageDialog(this, "Your Account Sucessfully Created"); 
                 new LOGINFROM().setVisible(true);
                 this.dispose();
@@ -784,7 +784,7 @@ public class MNG_REGISTER extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "Both Password Not Same");
              }
              }else {
-               JOptionPane.showMessageDialog(null, "Password between 8 and 20 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
+               JOptionPane.showMessageDialog(null, "Password between 8 and 30 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
         
         }
         

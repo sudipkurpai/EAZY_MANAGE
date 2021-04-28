@@ -224,7 +224,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="311" y="63" width="810" height="630"/>
+              <AbsoluteConstraints x="311" y="53" width="810" height="640"/>
             </Constraint>
           </Constraints>
 
@@ -257,7 +257,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                      <EmptySpace pref="68" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jPanel3" pref="146" max="32767" attributes="0"/>
                           <Component id="jPanel4" max="32767" attributes="0"/>
@@ -870,6 +870,9 @@
                   <Color blue="cc" green="ff" red="cc" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel63MouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -913,9 +916,6 @@
                       <Image iconType="3" name="/image/out-of-stock.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel48MouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1093,7 +1093,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="311" y="63" width="810" height="640"/>
+              <AbsoluteConstraints x="311" y="53" width="810" height="650"/>
             </Constraint>
           </Constraints>
 
@@ -1138,7 +1138,7 @@
                           <Component id="jPanel61" pref="151" max="32767" attributes="0"/>
                           <Component id="add_emp3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="221" max="32767" attributes="0"/>
+                      <EmptySpace pref="237" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1208,6 +1208,9 @@
                   <Color blue="cc" green="ff" red="cc" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel57MouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -1244,9 +1247,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="Remove Employee"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel98MouseClicked"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
                   <Properties>
@@ -1460,9 +1460,6 @@
                       <Image iconType="3" name="/image/student-profile.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel83MouseClicked"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel122">
                   <Properties>
@@ -1475,9 +1472,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value=" Employee Profile Update"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel122MouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1530,7 +1524,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Welcome ,"/>
+                <Property name="text" type="java.lang.String" value="Welcome "/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1945,9 +1939,6 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="LOGOUT"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel22MouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -2178,7 +2169,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="311" y="63" width="810" height="630"/>
+              <AbsoluteConstraints x="311" y="53" width="810" height="640"/>
             </Constraint>
           </Constraints>
 
@@ -2228,7 +2219,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="jPanel70" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2614,7 +2605,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="311" y="63" width="810" height="630"/>
+              <AbsoluteConstraints x="311" y="53" width="810" height="640"/>
             </Constraint>
           </Constraints>
 
@@ -2651,7 +2642,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jPanel40" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="249" max="32767" attributes="0"/>
+                      <EmptySpace pref="259" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2819,6 +2810,9 @@
                   <Dimension value="[170, 137]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel44MouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -2858,9 +2852,6 @@
                       <Image iconType="3" name="/image/working report.png"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel55MouseClicked"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -2877,7 +2868,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="311" y="63" width="810" height="630"/>
+              <AbsoluteConstraints x="311" y="53" width="810" height="640"/>
             </Constraint>
           </Constraints>
 
@@ -2922,7 +2913,7 @@
                               <Component id="jPanel27" min="-2" pref="137" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="238" max="32767" attributes="0"/>
+                      <EmptySpace pref="248" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3211,7 +3202,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="311" y="63" width="810" height="630"/>
+              <AbsoluteConstraints x="311" y="53" width="810" height="640"/>
             </Constraint>
           </Constraints>
 
@@ -3243,7 +3234,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="jPanel64" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace pref="238" max="32767" attributes="0"/>
+                      <EmptySpace pref="248" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

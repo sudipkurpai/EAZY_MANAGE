@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
@@ -151,6 +152,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         jLabel13.setText("Manager Name");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 158, -1));
 
+        reson.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153), 2));
         jScrollPane2.setViewportView(reson);
 
         jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 860, 80));
@@ -162,6 +164,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         mmmm.setBackground(new java.awt.Color(255, 255, 255));
         mmmm.setForeground(new java.awt.Color(0, 0, 0));
+        mmmm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(mmmm, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 226, 34));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -171,10 +174,12 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         mnnn.setBackground(new java.awt.Color(255, 255, 255));
         mnnn.setForeground(new java.awt.Color(0, 0, 0));
+        mnnn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(mnnn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 226, 34));
 
         pd.setBackground(new java.awt.Color(255, 255, 255));
         pd.setForeground(new java.awt.Color(0, 0, 0));
+        pd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(pd, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 226, 34));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -184,6 +189,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         pn.setBackground(new java.awt.Color(255, 255, 255));
         pn.setForeground(new java.awt.Color(0, 0, 0));
+        pn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(pn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 226, 34));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -195,6 +201,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         pro_id.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         pro_id.setForeground(new java.awt.Color(0, 0, 0));
         pro_id.setText("Enter a Product Id :");
+        pro_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         pro_id.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 pro_idFocusGained(evt);
@@ -236,6 +243,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         sq.setBackground(new java.awt.Color(255, 255, 255));
         sq.setForeground(new java.awt.Color(0, 0, 0));
+        sq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 226, 34));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -245,6 +253,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         brand.setBackground(new java.awt.Color(255, 255, 255));
         brand.setForeground(new java.awt.Color(0, 0, 0));
+        brand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 226, 34));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -254,6 +263,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         pri.setBackground(new java.awt.Color(255, 255, 255));
         pri.setForeground(new java.awt.Color(0, 0, 0));
+        pri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(pri, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 120, 226, 34));
 
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -263,6 +273,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
 
         cata.setBackground(new java.awt.Color(255, 255, 255));
         cata.setForeground(new java.awt.Color(0, 0, 0));
+        cata.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel4.add(cata, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 226, 34));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -329,7 +340,7 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1110, 803));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     void date() {
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("dd:MM:yyyy");
@@ -460,8 +471,8 @@ public class DELETE_PRODUCT_MA extends javax.swing.JFrame {
         String rea=reson.getText();
         if (pnn.equals("")){
             JOptionPane.showMessageDialog(this, "Select A Product To Delete");
-        }else if(rea.equals("")){
-            JOptionPane.showMessageDialog(this, "Enter a Reason For Delet This Product ");
+        }else if(rea.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter a Reason For Delete This Product ");
         }else {
            int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Remove This Employee ?");
         if(Yes == 0){

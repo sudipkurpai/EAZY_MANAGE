@@ -70,9 +70,9 @@ public class ADD_NEW_PRODUCT_MA extends javax.swing.JFrame {
         time();
         String dd = 31 + "-" + 12 + "-" + 0001;
 
-Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
-exp.setDate(date);
-mfg.setDate(date);     
+Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
+exp.setDate(date1);
+mfg.setDate(date1);     
        
        
     }
@@ -244,6 +244,7 @@ mfg.setDate(date);
         save = new javax.swing.JButton();
         mfg = new com.toedter.calendar.JDateChooser();
         exp = new com.toedter.calendar.JDateChooser();
+        reset1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -301,7 +302,7 @@ mfg.setDate(date);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Transaction", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Transaction", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -368,7 +369,7 @@ mfg.setDate(date);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel7.setText("Vendor Name");
+        jLabel7.setText("Vendor Name :");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 90, 30));
 
         v_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -500,7 +501,7 @@ mfg.setDate(date);
 
         reset.setBackground(new java.awt.Color(204, 204, 0));
         reset.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        reset.setForeground(new java.awt.Color(255, 255, 255));
+        reset.setForeground(new java.awt.Color(204, 0, 102));
         reset.setText("Reset");
         reset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
         reset.addActionListener(new java.awt.event.ActionListener() {
@@ -508,7 +509,7 @@ mfg.setDate(date);
                 resetActionPerformed(evt);
             }
         });
-        jPanel2.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 120, 40));
+        jPanel2.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 160, 120, 30));
 
         new1.setBackground(new java.awt.Color(12, 186, 38));
         new1.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
@@ -520,7 +521,7 @@ mfg.setDate(date);
                 new1ActionPerformed(evt);
             }
         });
-        jPanel2.add(new1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 120, 40));
+        jPanel2.add(new1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 120, 30));
 
         save.setBackground(new java.awt.Color(10, 171, 218));
         save.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
@@ -532,13 +533,25 @@ mfg.setDate(date);
                 saveActionPerformed(evt);
             }
         });
-        jPanel2.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, 120, 40));
+        jPanel2.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, 120, 30));
 
         mfg.setDateFormatString("dd-MM-yyyy");
         jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 130, 30));
 
         exp.setDateFormatString("dd-MM-yyyy");
         jPanel2.add(exp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 30));
+
+        reset1.setBackground(new java.awt.Color(153, 0, 255));
+        reset1.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        reset1.setForeground(new java.awt.Color(255, 255, 255));
+        reset1.setText("Update");
+        reset1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51)));
+        reset1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reset1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(reset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -657,7 +670,7 @@ mfg.setDate(date);
 /*|| !exp_date.equals(s)*/       
        
         
-        if(Product_id.isEmpty() || p_nmaee.isEmpty()||V_nmaee.isEmpty()||Standerd_cost.isEmpty() ||unit_price.isEmpty() ||quantit.isEmpty() || Brand.isEmpty()){
+        if(Product_id.isEmpty() || p_nmaee.isEmpty()||V_nmaee.isEmpty()||Standerd_cost.isEmpty() ||unit_price.isEmpty() ||quantit.isEmpty() || Brand.isEmpty()|| catag.isEmpty()){
            JOptionPane.showMessageDialog(this, "Fill up all field first");  
             
         }else if(mfg_date.equals("31-12-0001")||exp_date.equals("31-12-0001")){
@@ -679,11 +692,14 @@ mfg.setDate(date);
        
         {
             int i = ADD_NEW_PRODUCT_DETAOBJ.add_new_product(mng,mng_i, dddd, t_id, Product_id, p_nmaee,V_nmaee, Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall,timee);
-         ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, dddd, timee, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);                   
-        ADD_NEW_PRODUCT_DETAOBJ.s_p(aa, V_nmaee, dddd, timee, Product_id, p_nmaee, Standerd_cost, quantit, totall);
-         int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
+         
+         
         
-        if(i>0 || j>0){
+        if(i>0){ 
+            ID_STORE_FETCH.insert_id(mng_Id, emp_id, ttttt_Id.toString(),pppp_Id.toString());
+        
+            ADD_NEW_PRODUCT_DETAOBJ.purchase(V_nmaee, mng,mng_i, dddd, timee, t_id, Product_id, p_nmaee,Desc, Standerd_cost, unit_price, mfg_date, exp_date, quantit, catag, Brand, totall);                   
+        ADD_NEW_PRODUCT_DETAOBJ.s_p(aa, V_nmaee, dddd, timee, Product_id, p_nmaee, Standerd_cost, quantit, totall);
             table();
            // res();
             save.setEnabled(false);
@@ -698,15 +714,18 @@ mfg.setDate(date);
                
     }//GEN-LAST:event_saveActionPerformed
 
-    public void res(){
+    public void res() throws ParseException{
         t_idd.setText("");
          p_name.setText("");
          v_name.setText("");
          desc.setText("");
          s_cost.setText("");
          unit_pri.setText("");
-         mfg.setDate(null);
-         exp.setDate(null);
+         String dd = 31 + "-" + 12 + "-" + 0001;
+
+Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
+exp.setDate(date1);
+mfg.setDate(date1);  
          quantity.setText("");
          catagory.setText("");
          brand.setText("");
@@ -714,19 +733,27 @@ mfg.setDate(date);
          p_id.setText("");
     }
     private void new1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new1ActionPerformed
-        // TODO add your handling code here:
-         res();
+         try {
+             // TODO add your handling code here:
+             res();
+         } catch (ParseException ex) {
+             Logger.getLogger(ADD_NEW_PRODUCT_MA.class.getName()).log(Level.SEVERE, null, ex);
+         }
          id_create();
          save.setEnabled(true);
          
     }//GEN-LAST:event_new1ActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        // TODO add your handling code here:
-        res();
-        save.setEnabled(false);
-       
-        new1.setEnabled(true);
+         try {
+             // TODO add your handling code here:
+             res();
+             save.setEnabled(false);
+             
+             new1.setEnabled(true);
+         } catch (ParseException ex) {
+             Logger.getLogger(ADD_NEW_PRODUCT_MA.class.getName()).log(Level.SEVERE, null, ex);
+         }
         
     
     }//GEN-LAST:event_resetActionPerformed
@@ -785,6 +812,17 @@ mfg.setDate(date);
     private void mng_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mng_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mng_nameActionPerformed
+
+    private void reset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset1ActionPerformed
+        // TODO add your handling code here:
+         UPDATE_PRODUCT mpm = new  UPDATE_PRODUCT ();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+       
+        mpm.up(name, ID, emll,time,date,ph);
+        mpm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_reset1ActionPerformed
     
     public void search(){
         DocumentListener dl = new DocumentListener(){
@@ -959,6 +997,7 @@ mfg.setDate(date);
     private javax.swing.JTextField p_name;
     private javax.swing.JTextField quantity;
     private javax.swing.JButton reset;
+    private javax.swing.JButton reset1;
     private javax.swing.JTextField s_cost;
     private javax.swing.JButton save;
     private javax.swing.JTextField t2;

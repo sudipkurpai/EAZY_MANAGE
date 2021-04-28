@@ -91,7 +91,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
               }catch(Exception e){
                   System.out.println(e);
               }
-              System.out.println("upddddddddddddddproooooo"+status);
+          //    System.out.println("upddddddddddddddproooooo"+status);
               return status;
     }
      public static int purchase (String vendor_name,String Manager_name, String Man_id,  String Date , String Time,
@@ -222,7 +222,7 @@ public class ADD_NEW_PRODUCT_DETAOBJ {
               }catch(Exception e){
                   System.out.println(e);
               }
-              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+           //   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
 }
 }

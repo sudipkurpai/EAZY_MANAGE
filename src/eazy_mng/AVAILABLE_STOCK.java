@@ -285,8 +285,8 @@ public class AVAILABLE_STOCK extends javax.swing.JFrame {
                
                Object o []={
                   
-                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Unit_price"),
-                        rs.getString("Quantity") };
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price")
+                         };
                      model.addRow(o);
                      
                 table.setForeground(new Color(123, 17, 58));
@@ -309,8 +309,7 @@ public class AVAILABLE_STOCK extends javax.swing.JFrame {
                
                Object o []={
                   
-                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Unit_price"),
-                        rs.getString("Quantity") };
+                    rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price") };
                      model.addRow(o);
                      
                 table.setForeground(new Color(0, 128, 0));
@@ -335,14 +334,14 @@ public class AVAILABLE_STOCK extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-           while (rs.next())
+          do 
            {
                
                Object o []={
-              rs.getString("Product_id") ,  rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price")   };
+              rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price")   };
                model.addRow(o);
                
-           }
+           } while (rs.next());
            }else{
                JOptionPane.showMessageDialog(this, "Inter Currect Product Id");
            }
@@ -361,17 +360,16 @@ public class AVAILABLE_STOCK extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-           while (rs.next())
+          do
            {
                
                Object o []={
                   
-                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Unit_price"),
-                        rs.getString("Quantity") };
+                    rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price") };
                      model.addRow(o);
                      
                 table.setForeground(new Color(123, 17, 58));
-           }
+           } while (rs.next());
            }else{
                JOptionPane.showMessageDialog(this, "Inter Currect Product Id");
            }
@@ -389,17 +387,16 @@ public class AVAILABLE_STOCK extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-           while (rs.next())
+           do
            {
                
                Object o []={
                   
-                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Unit_price"),
-                        rs.getString("Quantity") };
+                   rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price") };
                      model.addRow(o);
                      
                 table.setForeground(new Color(0, 128, 0));
-           }
+           } while (rs.next());
            }else{
                JOptionPane.showMessageDialog(this, "Inter Currect Product Id");
            }
@@ -431,7 +428,7 @@ public void table(){
            {
                
                Object o []={
-              rs.getString("Product_id") ,  rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price")   };
+              rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Unit_price")};
                model.addRow(o);
                table.setForeground(new Color(0, 0, 128));
               

@@ -37,6 +37,13 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         initComponents();
         date();
         time();
+        Update.setVisible(false);
+        bill.setVisible(false);
+        sales.setVisible(false);
+        report.setVisible(false);
+        product.setVisible(false);
+        mng_emp.setVisible(false);
+        stock.setVisible(false);
     }
 
   
@@ -540,7 +547,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         homeLayout.setVerticalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -558,7 +565,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                 .addGap(41, 41, 41))
         );
 
-        jPanel1.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 630));
+        jPanel1.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 53, 810, 640));
 
         stock.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -598,6 +605,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel63.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel63.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel63MouseClicked(evt);
+            }
+        });
 
         jLabel106.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel106.setForeground(new java.awt.Color(0, 204, 102));
@@ -605,11 +617,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel106.setText("OUT OF STOCK");
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/out-of-stock.png"))); // NOI18N
-        jLabel48.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel48MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel63Layout = new javax.swing.GroupLayout(jPanel63);
         jPanel63.setLayout(jPanel63Layout);
@@ -808,16 +815,16 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         );
 
         jPanel57.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel57.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel57MouseClicked(evt);
+            }
+        });
 
         jLabel98.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel98.setForeground(new java.awt.Color(0, 204, 102));
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel98.setText("Remove Employee");
-        jLabel98.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel98MouseClicked(evt);
-            }
-        });
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fired.png"))); // NOI18N
 
@@ -950,21 +957,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/student-profile.png"))); // NOI18N
-        jLabel83.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel83MouseClicked(evt);
-            }
-        });
 
         jLabel122.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         jLabel122.setForeground(new java.awt.Color(0, 204, 102));
         jLabel122.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel122.setText(" Employee Profile Update");
-        jLabel122.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel122MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout add_emp3Layout = new javax.swing.GroupLayout(add_emp3);
         add_emp3.setLayout(add_emp3Layout);
@@ -1018,10 +1015,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel61, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                     .addComponent(add_emp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
-        jPanel1.add(mng_emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 640));
+        jPanel1.add(mng_emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 53, 810, 650));
 
         navbar.setBackground(new java.awt.Color(0, 204, 102));
         navbar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 102)));
@@ -1034,7 +1031,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
-        jLabel4.setText("Welcome ,");
+        jLabel4.setText("Welcome ");
         navbar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 280, 41));
 
         homen.setBackground(new java.awt.Color(255, 204, 0));
@@ -1259,11 +1256,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("LOGOUT");
-        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel22MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout LOGOUTaaLayout = new javax.swing.GroupLayout(LOGOUTaa);
         LOGOUTaa.setLayout(LOGOUTaaLayout);
@@ -1655,10 +1647,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addComponent(jPanel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        jPanel1.add(product, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 630));
+        jPanel1.add(product, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 53, 810, 640));
 
         report.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1757,6 +1749,11 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jPanel44.setBackground(new java.awt.Color(204, 255, 204));
         jPanel44.setPreferredSize(new java.awt.Dimension(170, 137));
+        jPanel44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel44MouseClicked(evt);
+            }
+        });
 
         jLabel78.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel78.setForeground(new java.awt.Color(0, 204, 102));
@@ -1765,11 +1762,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/working report.png"))); // NOI18N
-        jLabel55.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel55MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
@@ -1815,10 +1807,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(38, 38, 38)
                 .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
-        jPanel1.add(report, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 630));
+        jPanel1.add(report, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 53, 810, 640));
 
         sales.setBackground(new java.awt.Color(255, 255, 255));
         sales.setPreferredSize(new java.awt.Dimension(810, 630));
@@ -1977,10 +1969,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, salesLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
-        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 630));
+        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 53, 810, 640));
 
         bill.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2106,10 +2098,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
                     .addComponent(jPanel76, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addComponent(jPanel64, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
-        jPanel1.add(bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 63, 810, 630));
+        jPanel1.add(bill, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 53, 810, 640));
 
         Update.setBackground(new java.awt.Color(255, 255, 255));
         Update.setPreferredSize(new java.awt.Dimension(810, 6));
@@ -2351,9 +2343,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         // TODO add your handling code here:      
         
         ADD_NEW_EMP ane = new ADD_NEW_EMP();
-        
-  
-      String Name = mng_name.getText();
+       String Name = mng_name.getText();
         String ID = mng_id.getText();
          String t1 = time1.getText();
          String d1 = time2.getText();
@@ -2362,14 +2352,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         ane.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_add_empMouseClicked
-
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        // TODO add your handling code here:
-      
-        
-       
-
-    }//GEN-LAST:event_jLabel22MouseClicked
 
     public void session(){
         int status = 0;
@@ -2454,6 +2436,15 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     private void add_emp3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_emp3MouseClicked
         // TODO add your handling code here:
+         UPDATE_PROFILE_EMPLOYEE mup = new UPDATE_PROFILE_EMPLOYEE();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        mup.udpe(name, ID, eml,t1,d1,ph);
+        mup.setVisible(true);
+        
+        this.dispose();
         
     }//GEN-LAST:event_add_emp3MouseClicked
 
@@ -2485,10 +2476,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         bp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel54MouseClicked
-
-    private void jLabel122MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel122MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel122MouseClicked
 
     private void jLabel119MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel119MouseClicked
         // TODO add your handling code here:
@@ -2609,31 +2596,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 //        
     }//GEN-LAST:event_UPDATEPROFILE_EMPMouseClicked
 
-    private void jLabel83MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel83MouseClicked
-        // TODO add your handling code here:
-        UPDATE_PROFILE_EMPLOYEE mup = new UPDATE_PROFILE_EMPLOYEE();
-        String name = mng_name.getText();
-        String ID = mng_id.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        mup.udpe(name, ID, eml,t1,d1,ph);
-        mup.setVisible(true);
-        
-        this.dispose();
-    }//GEN-LAST:event_jLabel83MouseClicked
-
-    private void jLabel98MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel98MouseClicked
-        // TODO add your handling code here:
-        REMOVE_EMPLOYEE re = new REMOVE_EMPLOYEE();
-         String name = mng_name.getText();
-        String ID = mng_id.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        re.ree(name, ID, eml,t1,d1,ph);
-        re.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel98MouseClicked
-
     private void jPanel64MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel64MouseClicked
         // TODO add your handling code here:
         REJECT_BILL CB = new REJECT_BILL();
@@ -2717,18 +2679,6 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         pdd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jPanel71MouseClicked
-
-    private void jLabel48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel48MouseClicked
-        // TODO add your handling code here:
-         OUT_OF_STOCK ofs=new OUT_OF_STOCK();
-        String name = mng_name.getText();
-        String ID = mng_id.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        ofs.oos(name, ID, eml,t1,d1,ph);
-        ofs.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel48MouseClicked
 
     private void jPanel72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel72MouseClicked
         // TODO add your handling code here:
@@ -2918,7 +2868,33 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel17MouseClicked
 
-    private void jLabel55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel55MouseClicked
+    private void jPanel57MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel57MouseClicked
+        // TODO add your handling code here:
+         REMOVE_EMPLOYEE re = new REMOVE_EMPLOYEE();
+         String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        re.ree(name, ID, eml,t1,d1,ph);
+        re.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel57MouseClicked
+
+    private void jPanel63MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel63MouseClicked
+        // TODO add your handling code here:
+        OUT_OF_STOCK ofs=new OUT_OF_STOCK();
+        String name = mng_name.getText();
+        String ID = mng_id.getText();
+        String t1 = time1.getText();
+        String d1 = time2.getText();
+        ofs.oos(name, ID, eml,t1,d1,ph);
+        ofs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel63MouseClicked
+
+    private void jPanel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel44MouseClicked
+        // TODO add your handling code here:
+        
         try {
             // TODO add your handling code here:
             //  WORKING_REPORT
@@ -2934,7 +2910,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(DASHBOARD_M.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jLabel55MouseClicked
+    }//GEN-LAST:event_jPanel44MouseClicked
 
     /**
      * @param args the command line arguments

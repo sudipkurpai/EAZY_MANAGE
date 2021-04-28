@@ -38,6 +38,9 @@ public class COMPLAIN extends javax.swing.JFrame {
         date();
         time();
         table();
+         empn.setEditable(false);
+         ph.setEditable(false);
+         empe.setEditable(false);
     }
 
      void comp (String fullname, String mng_Id,String email,String t1,String d1,String p) {

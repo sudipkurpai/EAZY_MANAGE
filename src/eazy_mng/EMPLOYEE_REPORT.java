@@ -360,7 +360,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
         }
             }else{
                 try {
-                    SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+                    SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());
@@ -410,8 +410,18 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
      dii.setText(model.getValueAt(i,2).toString());
      tii.setText(model.getValueAt(i,3).toString());
      rttt.setText(model.getValueAt(i,4).toString());
-     wnn.setText(model.getValueAt(i,5).toString());
-     wii.setText(model.getValueAt(i,6).toString());
+     String yy=(model.getValueAt(i,5).toString());
+      if (yy.isEmpty()){
+        wnn.setText("-------------");
+    }else{
+        wnn.setText(yy);
+    }
+   String xx=(model.getValueAt(i,6).toString());
+    if (xx.isEmpty()){
+        wii.setText("-------------");
+    }else{
+        wii.setText(xx);
+    }
      ree.setText(model.getValueAt(i,7).toString());
     
     }//GEN-LAST:event_table3MouseClicked
@@ -460,7 +470,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
                tableHeader.setBackground(Color.GREEN);
            }while (rs.next());
            }else{
-               JOptionPane.showMessageDialog(this, "No Report Found");
+             //  JOptionPane.showMessageDialog(this, "No Report Found");
            }
             }catch(Exception e){
             System.out.println("error"+e);

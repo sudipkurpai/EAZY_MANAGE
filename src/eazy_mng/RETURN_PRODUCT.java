@@ -153,6 +153,7 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
         reson.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         reson.setForeground(new java.awt.Color(0, 0, 0));
         reson.setRows(5);
+        reson.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jScrollPane1.setViewportView(reson);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 710, 60));
@@ -169,17 +170,20 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
 
         qtt.setBackground(new java.awt.Color(255, 255, 255));
         qtt.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        qtt.setForeground(new java.awt.Color(0, 0, 0));
+        qtt.setForeground(new java.awt.Color(0, 0, 204));
+        qtt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel3.add(qtt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 310, -1));
 
         pid1.setBackground(new java.awt.Color(255, 255, 255));
         pid1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        pid1.setForeground(new java.awt.Color(0, 0, 0));
+        pid1.setForeground(new java.awt.Color(0, 0, 204));
+        pid1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel3.add(pid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 26, 310, -1));
 
         pnn1.setBackground(new java.awt.Color(255, 255, 255));
         pnn1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        pnn1.setForeground(new java.awt.Color(0, 0, 0));
+        pnn1.setForeground(new java.awt.Color(0, 0, 204));
+        pnn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel3.add(pnn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 280, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -216,7 +220,9 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
         });
         jPanel3.add(r2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, -1, 40));
 
+        drop.setForeground(new java.awt.Color(0, 0, 204));
         drop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Refund Successful", "Pending for Verification" }));
+        drop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel3.add(drop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 365, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -259,7 +265,8 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
 
         inv.setBackground(new java.awt.Color(255, 255, 255));
         inv.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        inv.setForeground(new java.awt.Color(0, 0, 0));
+        inv.setForeground(new java.awt.Color(0, 0, 204));
+        inv.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         inv.setMargin(new java.awt.Insets(1, 1, 1, 1));
         jPanel4.add(inv, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 280, 30));
 
@@ -270,12 +277,14 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
 
         nn1.setBackground(new java.awt.Color(255, 255, 255));
         nn1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        nn1.setForeground(new java.awt.Color(0, 0, 0));
+        nn1.setForeground(new java.awt.Color(0, 0, 204));
+        nn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel4.add(nn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 310, 30));
 
         ee1.setBackground(new java.awt.Color(255, 255, 255));
         ee1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        ee1.setForeground(new java.awt.Color(0, 0, 0));
+        ee1.setForeground(new java.awt.Color(0, 0, 204));
+        ee1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel4.add(ee1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 310, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -295,12 +304,14 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
 
         dd1.setBackground(new java.awt.Color(255, 255, 255));
         dd1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        dd1.setForeground(new java.awt.Color(0, 0, 0));
+        dd1.setForeground(new java.awt.Color(0, 0, 204));
+        dd1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel4.add(dd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 310, 30));
 
         pp1.setBackground(new java.awt.Color(255, 255, 255));
         pp1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        pp1.setForeground(new java.awt.Color(0, 0, 0));
+        pp1.setForeground(new java.awt.Color(0, 0, 204));
+        pp1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 0), 2));
         jPanel4.add(pp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 310, 30));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -406,7 +417,7 @@ public class RETURN_PRODUCT extends javax.swing.JFrame {
        // Remove1();
               inv.setText("");
               dd1.setText("");
-              
+              qtt.setText("");
               nn1.setText("");
               ee1.setText("");
               pp1.setText("");
@@ -600,6 +611,30 @@ public void fast (){
             JOptionPane.showMessageDialog(null,"Select Refund Status");
         }else{
         DELECT_PRODUCT_DETAOBJECT.ret(C_name, c_pho, c_eml, invs, o_date, dro, p_name, p_id, qtt1,aa, re, d3, t3);
+        JOptionPane.showMessageDialog(null, "Product Return Accept");
+        inv.setText("");
+              dd1.setText("");
+              qtt.setText("");
+              nn1.setText("");
+              ee1.setText("");
+              pp1.setText("");
+              pid1.setText("");
+              pnn1.setText("");
+              reson.setText("");
+              drop.setSelectedIndex(0);
+           //   r1.setSelected(false);
+           //   r2.setSelected(false);
+             // ButtonGroup m= r.
+              r.clearSelection();
+       DefaultTableModel tm=(DefaultTableModel) table.getModel();
+        while(tm.getColumnCount()>0){
+            tm.setColumnCount(0);
+        }
+           inv.setEditable(true);
+                 
+            ser.setEnabled(true);
+                                     
+        
         }
     }//GEN-LAST:event_jLabel1MouseClicked
 public void redio(){

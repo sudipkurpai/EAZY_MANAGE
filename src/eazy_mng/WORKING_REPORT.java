@@ -42,6 +42,9 @@ public class WORKING_REPORT extends javax.swing.JFrame {
         initComponents();
         date();
         time();
+        pp1.setVisible(false);
+        p01.setVisible(false);
+        p02.setVisible(false);
         tp1.setEditable(false);
         te.setEditable(false);
         tl.setEditable(false);
@@ -55,6 +58,7 @@ public class WORKING_REPORT extends javax.swing.JFrame {
 Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
 c3.setDate(date);
 c4.setDate(date); 
+
      }
         
  void wr (String fullname, String mng_Id,String email,String t1,String d1,String p) {
@@ -296,17 +300,16 @@ c4.setDate(date);
         p02.setLayout(p02Layout);
         p02Layout.setHorizontalGroup(
             p02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p02Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+            .addGroup(p02Layout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 49, Short.MAX_VALUE))
         );
         p02Layout.setVerticalGroup(
             p02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p02Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p02Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pp1Layout = new javax.swing.GroupLayout(pp1);
@@ -385,13 +388,13 @@ c4.setDate(date);
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(237, 237, 237))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tp1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(196, 196, 196))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1013,22 +1016,16 @@ public void dd2(){
        public void x(){
            int count2 =a1.getRowCount();
                 ta2.setText(Integer.toString(count2));
-              tl2.setText("");
-                tp1.setText("");
                 System.out.println("aaa"+Integer.toString(count2));
        }
        public void y(){
     int count1 =l1.getRowCount();
                tl2.setText(Integer.toString(count1));
-               tp1.setText("");
-                ta2.setText("");
                 System.out.println("lll"+Integer.toString(count1));
 }
        public void z(){
             int count =p1.getRowCount();
                 tp1.setText(Integer.toString(count));
-              tl2.setText("");
-                ta2.setText("");
                 System.out.println("ppp"+Integer.toString(count));
                  
                 

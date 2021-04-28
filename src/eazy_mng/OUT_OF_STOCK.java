@@ -178,7 +178,6 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,8 +185,8 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -213,7 +212,7 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1020, 802));
+        setSize(new java.awt.Dimension(1020, 491));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -238,19 +237,7 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
             DefaultTableModel model =(DefaultTableModel)table.getModel(); 
             model.setRowCount(0);
            while(rs.next()){
-                String  product_ideoo =rs.getString("Product_id");
-                System.out.println("EMpppppp "+product_ideoo);
-                String product_nameyy =rs.getString("Product_name");
-                System.out.println("pppnnn "+product_nameyy);
-                String quantity =rs.getString("Quantity");
-                System.out.println("qqqqnnn "+quantity);
-
-                String dddd =rs.getString("Date");
-               // System.out.println("uuppp "+unitprice);
-
-                // JOptionPane.showMessageDialog(this, "Product Found");
-
-                
+            
 {
                
                Object o []={
@@ -268,7 +255,8 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
     }
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
-        
+        pro_id.setText("");
+        auto();
     }//GEN-LAST:event_searchActionPerformed
 
     private void searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchMouseClicked
@@ -297,16 +285,17 @@ public class OUT_OF_STOCK extends javax.swing.JFrame {
             model.setRowCount(0);
           
            
-           while (rs.next()){
+          if (rs.next()){
+              do{
                
               Object o []={
                    rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Date") };
         model.addRow(o);
-             }
-//           }else {
-//                JOptionPane.showMessageDialog(this, "This Product Stock Available ");
-//                
-//            }
+             } while (rs.next());
+           }else {
+                JOptionPane.showMessageDialog(this, "This Product Stock Available ");
+                
+            }
         }catch(Exception e){
             System.out.println("error"+e);
         }

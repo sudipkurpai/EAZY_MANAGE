@@ -957,7 +957,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      catagory.setText(model.getValueAt(i,9).toString());
      brand.setText(model.getValueAt(i,10).toString());
      total.setText(model.getValueAt(i,11).toString());
-    
+    quantity.setText("0");
     }
 
 
