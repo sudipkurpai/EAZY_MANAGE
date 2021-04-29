@@ -328,18 +328,18 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
         // TODO add your handling code here:
         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
         String dob = s.format(dobb.getDate());
-        System.out.println("dateee"+dob);
+      //  System.out.println("dateee"+dob);
         String add = addr.getText();
         String gen2 = gen.getSelectedItem().toString();
-        System.out.println("@@@@@@@@@ "+gen2);
+       // System.out.println("@@@@@@@@@ "+gen2);
         int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_m(dob, add, gen2, ID);
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
-                System.out.println("Data inserted");
+                //System.out.println("Data inserted");
                 JOptionPane.showMessageDialog(this, "Your Profile Update Sucessfully "); 
                 
            }else{
-                System.out.println("Data NOT inserted");
+              //  System.out.println("Data NOT inserted");
                 JOptionPane.showMessageDialog(this, "Your Profile Not Update Sucessfully"); 
            }
     }//GEN-LAST:event_jLabel16MouseClicked

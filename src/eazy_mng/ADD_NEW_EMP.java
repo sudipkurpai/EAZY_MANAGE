@@ -96,11 +96,11 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 mng_Id=rs.getString("MNG_ID");
-                System.out.println("MANAGER ID "+mng_Id);
+               // System.out.println("MANAGER ID "+mng_Id);
                 emp_Id=rs.getString("EMP_ID");
-                System.out.println("EMPLOYEE ID "+emp_Id);
+              //  System.out.println("EMPLOYEE ID "+emp_Id);
                 Transaction_Id=rs.getString("TRANSACTION_ID");
-                System.out.println("Transaction_Id "+Transaction_Id);
+              //  System.out.println("Transaction_Id "+Transaction_Id);
                 Product_id=rs.getString("PRODUCT_ID");
                
                 rs.close();
@@ -114,13 +114,13 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         
         emp_id = new BigInteger(emp_Id);
         BigInteger nxt = new BigInteger("1");
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+emp_Id);
-        System.out.println("#################"+emp_id);
+      //  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+emp_Id);
+      //  System.out.println("#################"+emp_id);
         emp_id = emp_id.add(nxt);
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+emp_id);
-        emp = "INVEE"+emp_id.toString();
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+emp);
-        System.out.println("++++++++++++++++"+emp_id);
+     //   System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+emp_id);
+        emp = "EAZY_E"+emp_id.toString();
+    //    System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+emp);
+     //   System.out.println("++++++++++++++++"+emp_id);
         Emp_id.setText(emp);
     }
 
@@ -561,46 +561,6 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        String fName = firstname.getText();
-        String lName = lastname.getText();
-        String ph = phone3.getText();
-        String mail = email.getText();
-        String password = pass.getText();
-        String c_pass = conf_pass.getText();
-        String add = address.getText();
-        String gen = jComboBox1.getSelectedItem().toString() ;
-        
-        //Date from Calender and set Format for date
-        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
-        String dob = s.format(DOB.getDate());
-        System.out.println("!@##%$$%$"+dob);
-        //////////////
-
-        if(fName.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Fill up all field first");
-        }
-        else if(password.equals(c_pass) ){
-            int i = ADD_NEW_EMP_DATAOBEJECT.inventory_management (fName, lName, mail, ph,emp, password,c_pass,dob, add, gen,Name,ID,date,time);
-            
-            
-            int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id.toString(),Transaction_Id,Product_id);
-            if(i>0 || j>0){
-                System.out.println("Data inserted");
-                JOptionPane.showMessageDialog(this, "Add Employee Successfully");
-                conf_pass.setText("");
-
-            }else{
-                System.out.println("Data NOT inserted");
-                JOptionPane.showMessageDialog(this, "Eployee Can Not Added");
-            }
-        }else {
-            JOptionPane.showMessageDialog(this, "Both Password Not Same");
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel28MouseClicked
-
     private void firstnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_firstnameFocusGained
         // TODO add your handling code here:
         if(firstname.getText().equals("First Name")){
@@ -806,6 +766,53 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Close_bMouseClicked
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        // TODO add your handling code here:
+         String fName = firstname.getText();
+        String lName = lastname.getText();
+        String ph = phone3.getText();
+        String mail = email.getText();
+        String password = pass.getText();
+        String c_pass = conf_pass.getText();
+        String add = address.getText();
+        String gen = jComboBox1.getSelectedItem().toString() ;
+        
+        //Date from Calender and set Format for date
+        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+        String dob = s.format(DOB.getDate());
+      //  System.out.println("!@##%$$%$"+dob);
+        //////////////
+
+        if(fName.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill up all field first");
+        }
+        else if(password.equals(c_pass) ){
+            int i = ADD_NEW_EMP_DATAOBEJECT.inventory_management (fName, lName, mail, ph,emp, password,c_pass,dob, add, gen,Name,ID,date,time);
+            
+            
+            int j = ID_STORE_FETCH.insert_id(mng_Id, emp_id.toString(),Transaction_Id,Product_id);
+            if(i>0 || j>0){
+                System.out.println("Data inserted");
+                JOptionPane.showMessageDialog(this, "Add Employee Successfully");
+                conf_pass.setText("");
+                firstname.setText("");
+                lastname.setText("");
+                phone3.setText("");
+                email.setText("");
+                pass.setText("");
+               DOB.setDate(null);
+                address.setText("");
+               jComboBox1.setSelectedIndex(0);
+
+            }else{
+              //  System.out.println("Data NOT inserted");
+                JOptionPane.showMessageDialog(this, "Eployee Can Not Added");
+            }
+        }else {
+            JOptionPane.showMessageDialog(this, "Both Password Not Same");
+        }
+    }//GEN-LAST:event_jLabel28MouseClicked
 
     /**
      * @param args the command line arguments

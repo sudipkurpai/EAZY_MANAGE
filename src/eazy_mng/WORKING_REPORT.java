@@ -159,10 +159,12 @@ c4.setDate(date);
         emp.setBackground(new java.awt.Color(255, 255, 255));
         emp.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         emp.setForeground(new java.awt.Color(0, 0, 204));
+        emp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
         en.setBackground(new java.awt.Color(255, 255, 255));
         en.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         en.setForeground(new java.awt.Color(0, 0, 204));
+        en.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 153, 51));
@@ -175,6 +177,7 @@ c4.setDate(date);
         dep.setBackground(new java.awt.Color(255, 255, 255));
         dep.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         dep.setForeground(new java.awt.Color(0, 0, 204));
+        dep.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 153, 51));
@@ -183,10 +186,12 @@ c4.setDate(date);
         tp1.setBackground(new java.awt.Color(255, 255, 255));
         tp1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         tp1.setForeground(new java.awt.Color(0, 0, 204));
+        tp1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
         ta2.setBackground(new java.awt.Color(255, 255, 255));
         ta2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         ta2.setForeground(new java.awt.Color(0, 0, 204));
+        ta2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 153, 51));
@@ -199,6 +204,7 @@ c4.setDate(date);
         tl2.setBackground(new java.awt.Color(255, 255, 255));
         tl2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         tl2.setForeground(new java.awt.Color(0, 0, 204));
+        tl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
 
         c3.setDateFormatString("dd-MM-yyyy");
 
@@ -379,7 +385,7 @@ c4.setDate(date);
                             .addComponent(ta2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dep, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -468,6 +474,7 @@ c4.setDate(date);
         tl.setBackground(new java.awt.Color(255, 255, 255));
         tl.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         tl.setForeground(new java.awt.Color(0, 0, 204));
+        tl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(tl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 110, 40));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -478,6 +485,7 @@ c4.setDate(date);
         ta.setBackground(new java.awt.Color(255, 255, 255));
         ta.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         ta.setForeground(new java.awt.Color(0, 0, 204));
+        ta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(ta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 310, 110, 40));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -494,6 +502,7 @@ c4.setDate(date);
         te.setBackground(new java.awt.Color(255, 255, 255));
         te.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         te.setForeground(new java.awt.Color(0, 0, 204));
+        te.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(te, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 110, 40));
 
         c2.setDateFormatString("dd-MM-yyyy");

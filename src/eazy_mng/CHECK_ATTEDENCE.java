@@ -315,11 +315,11 @@ public class CHECK_ATTEDENCE extends javax.swing.JFrame {
          if(c1.getDate()!= null && c2.getDate()!= null){
      
    try { 
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
-            System.out.println("!@##%$$%$"+d1);
+           // System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
-            System.out.println("!@##%$$%$"+d2);
+          //  System.out.println("!@##%$$%$"+d2);
             String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+"'  ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);           

@@ -110,7 +110,7 @@ public class MNG_REGISTER extends javax.swing.JFrame {
       //  System.out.println("#################"+mng_id);
         mng_id = mng_id.add(nxt);
       //  System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+mng_id);
-        mng = "INVM"+mng_id.toString();
+        mng = "EAZY_M"+mng_id.toString();
      //   System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+mng);
      //   System.out.println("++++++++++++++++"+mng_id);
         Mng_id.setText(mng);

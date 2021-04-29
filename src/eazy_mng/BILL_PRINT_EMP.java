@@ -100,7 +100,6 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -126,6 +125,8 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         bs = new javax.swing.JLabel();
         pss = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -159,15 +160,6 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("EAZY MANAGEMENT");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, -1));
-
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 33));
 
         print.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 110));
 
@@ -336,7 +328,7 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
         all_t.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         all_t.setForeground(new java.awt.Color(153, 0, 0));
         all_t.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Total", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 541, 170, -1));
+        jPanel2.add(all_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 140, -1));
 
         jButton3.setBackground(new java.awt.Color(51, 153, 0));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -348,19 +340,38 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 100, 40));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 540, 90, 40));
 
         bs.setBackground(new java.awt.Color(255, 255, 255));
         bs.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         bs.setForeground(new java.awt.Color(153, 0, 0));
         bs.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Bill Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 150, 50));
+        jPanel2.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 140, 50));
 
         pss.setBackground(new java.awt.Color(255, 255, 255));
         pss.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         pss.setForeground(new java.awt.Color(153, 0, 0));
         pss.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)), "Payment Status", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 0, 204))); // NOI18N
-        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 150, 50));
+        jPanel2.add(pss, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, 150, 50));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("SIGNATURE");
+        jLabel15.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(0, 0, 255)));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 570, 220, 20));
+
+        jButton4.setBackground(new java.awt.Color(204, 0, 51));
+        jButton4.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("EXIT");
+        jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 540, 90, 40));
 
         print.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 910, 600));
 
@@ -537,14 +548,6 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_b_dateActionPerformed
 
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-        // TODO add your handling code here:
-          DASHBOARD_FINAL_EMPLOYEE de = new DASHBOARD_FINAL_EMPLOYEE();
-        de.empname(Name, Id, emll, ph, date, time);
-        de.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jLabel19MouseClicked
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
@@ -581,6 +584,14 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         DASHBOARD_FINAL_EMPLOYEE de = new DASHBOARD_FINAL_EMPLOYEE();
+        de.empname(Name, Id, emll, ph, date, time);
+        de.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
        
              
@@ -632,13 +643,14 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
     private javax.swing.JTextField c_phone;
     private javax.swing.JTextField inv_no;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

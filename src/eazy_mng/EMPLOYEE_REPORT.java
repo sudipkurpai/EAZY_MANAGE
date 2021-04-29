@@ -77,12 +77,13 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ree = new javax.swing.JTextArea();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton3.setBackground(new java.awt.Color(0, 0, 204));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -116,10 +117,10 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         c2.setDateFormatString("dd-MM-yyyy");
-        jPanel1.add(c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 140, 40));
+        jPanel1.add(c2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 190, 40));
 
         c1.setDateFormatString("dd-MM-yyyy");
-        jPanel1.add(c1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, 40));
+        jPanel1.add(c1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 40));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -131,7 +132,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 70, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 70, 40));
 
         table3.setBackground(new java.awt.Color(255, 255, 255));
         table3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -176,6 +177,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
         empi.setBackground(new java.awt.Color(255, 255, 255));
         empi.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         empi.setForeground(new java.awt.Color(0, 0, 0));
+        empi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         empi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 empiKeyReleased(evt);
@@ -193,7 +195,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 90, 40));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 90, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153), 2), "All Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 15), new java.awt.Color(0, 0, 204))); // NOI18N
@@ -201,30 +203,37 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
 
         enn.setBackground(new java.awt.Color(255, 255, 255));
         enn.setForeground(new java.awt.Color(0, 0, 0));
+        enn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(enn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 230, 40));
 
         rttt.setBackground(new java.awt.Color(255, 255, 255));
         rttt.setForeground(new java.awt.Color(0, 0, 0));
+        rttt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(rttt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 230, 40));
 
         wnn.setBackground(new java.awt.Color(255, 255, 255));
         wnn.setForeground(new java.awt.Color(0, 0, 0));
+        wnn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(wnn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 230, 40));
 
         eii.setBackground(new java.awt.Color(255, 255, 255));
         eii.setForeground(new java.awt.Color(0, 0, 0));
+        eii.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(eii, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 230, 40));
 
         dii.setBackground(new java.awt.Color(255, 255, 255));
         dii.setForeground(new java.awt.Color(0, 0, 0));
+        dii.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(dii, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 230, 40));
 
         wii.setBackground(new java.awt.Color(255, 255, 255));
         wii.setForeground(new java.awt.Color(0, 0, 0));
+        wii.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(wii, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 230, 40));
 
         tii.setBackground(new java.awt.Color(255, 255, 255));
         tii.setForeground(new java.awt.Color(0, 0, 0));
+        tii.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.add(tii, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 230, 40));
 
         jButton4.setBackground(new java.awt.Color(204, 0, 51));
@@ -259,11 +268,6 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
         jLabel10.setText("Report Type :");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, 30));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Employee ID :");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 140, 30));
-
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Report :");
@@ -281,11 +285,22 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
 
         ree.setColumns(20);
         ree.setRows(5);
+        ree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jScrollPane2.setViewportView(ree);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 770, -1));
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Employee ID :");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 140, 30));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 1070, 310));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Employee ID :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 140, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,7 +412,11 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         empi.setText("");
-        cc1();
+        if(c1.getDate()==null&& c2.getDate()==null){
+            cc1();
+            }else{
+              cc2();  
+            }
     }//GEN-LAST:event_jButton5ActionPerformed
 
    
@@ -479,7 +498,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
     public void cc2(){
         
     try {
-         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+         SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());
@@ -567,6 +586,7 @@ void err (String fullname, String mng_Id,String email,String t1,String d1,String
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

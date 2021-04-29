@@ -29,14 +29,28 @@ public class TODAY_SELL extends javax.swing.JFrame {
     String Email = null;
     String date=null;
     String time = null;
+    String zz;
     /**
      * Creates new form TODAY_SELL
      */
     public TODAY_SELL() {
         initComponents();
+         ppro_id.setEditable(false);
+        EMP.setEditable(false);
+        EMPII.setEditable(false);
+        d0.setEditable(false);
+        t0.setEditable(false);
+        QQW.setEditable(false);
+        Paaaa.setEditable(false);
+        Taa.setEditable(false);
+        PII.setEditable(false);
+        pfff.setEditable(false);
+        jTextField12.setEditable(false);
         date();
+        date1();
         time();
         Sell();
+        
     }
 void tss (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
@@ -475,6 +489,10 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
         dd.setText(s.format(d));
+    }void date1() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        zz=s.format(d);
     }
 
     void time() {
@@ -555,7 +573,7 @@ void tss (String fullname, String mng_Id,String email,String t1,String d1,String
     
     }//GEN-LAST:event_tableMouseClicked
 public void res(){
-    ppro_id.setText("");
+                ppro_id.setText("");
                 EMP.setText("");
                 EMPII.setText("");
                 d0.setText("");
@@ -568,7 +586,7 @@ public void res(){
                 jTextField12.setText("");
 }
      public void Sell(){
-          String da=dd.getText();
+         
         try {
         
              //Data fetch from database
@@ -576,7 +594,7 @@ public void res(){
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             
-            ps.setString(1,da);
+            ps.setString(1,zz);
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
@@ -592,7 +610,7 @@ public void res(){
                    model.addRow(o);
                }while (rs.next());
            }else{
-               JOptionPane.showMessageDialog(null,"No Sell Available  Today", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+               //JOptionPane.showMessageDialog(null,"No Sell Available  Today", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){
@@ -610,14 +628,14 @@ public void res(){
     private void pro_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pro_idKeyReleased
         // TODO add your handling code here:
          String aa=pro_id.getText();
-        String da=dd.getText();
+       
           try {
         
             
             String sql = "Select * From sell where Product_id Like '%"+aa+"%' and Date =?   ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,da);
+            ps.setString(1,zz);
          
             ResultSet rs=ps.executeQuery();
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 

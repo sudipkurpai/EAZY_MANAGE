@@ -47,7 +47,7 @@ public class SALES_TARGET extends javax.swing.JFrame {
         table();
 
     Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
-     d3.setDate(date);
+     
      d4.setDate(date);
     }
     void Sell_t (String fullname, String mng_Id,String email,String t1,String d1,String p) {
@@ -114,11 +114,6 @@ public class SALES_TARGET extends javax.swing.JFrame {
         });
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -167,11 +162,6 @@ public class SALES_TARGET extends javax.swing.JFrame {
         d1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 153)));
         d1.setForeground(new java.awt.Color(0, 0, 0));
         d1.setDateFormatString("dd-MM-yyyy");
-        d1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                d1MouseClicked(evt);
-            }
-        });
         jPanel2.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 240, 40));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 204));
@@ -237,11 +227,6 @@ public class SALES_TARGET extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Save");
         jButton3.setBorder(null);
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -298,11 +283,6 @@ public class SALES_TARGET extends javax.swing.JFrame {
                 jButton4MouseClicked(evt);
             }
         });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
         jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 80, 40));
 
         q.setBackground(new java.awt.Color(255, 255, 255));
@@ -345,11 +325,6 @@ public class SALES_TARGET extends javax.swing.JFrame {
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Reset");
         jButton6.setBorder(null);
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
-            }
-        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -376,19 +351,13 @@ public class SALES_TARGET extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        // TODO add your handling code here:
-
-        DASHBOARD_M dm = new DASHBOARD_M();
-       dm.mngname(Name,ID,Email,Phone,date,time);
-        dm.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel18MouseClicked
-
-    void date() {
+    void date() throws ParseException {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         d0.setText(s.format(d));
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(s.format(d));
+        d3.setDate(date);
+        
     }
 
     void time() {
@@ -411,29 +380,30 @@ public class SALES_TARGET extends javax.swing.JFrame {
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
           DASHBOARD_M dm = new DASHBOARD_M();
-  //  dm.mngname(Name,Id,emll,ph,date,time);
+    dm.mngname(Name,ID,Email,Phone,date,time);
     dm.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        id.setText("");
+        try {
+            // TODO add your handling code here:
+            id.setText("");
+            pn.setText("");
+            q.setText("");
+            d.setText("");
+            date();
+            String dd = 31 + "-" + 12 + "-" +0001;
+            
+            
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
+            
+            d4.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(SALES_TARGET.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
     }//GEN-LAST:event_jButton2MouseClicked
-
-    private void d1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d1MouseClicked
-        // TODO add your handling code here:
-         
-    }//GEN-LAST:event_d1MouseClicked
-
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        // TODO add your handling code here:
-          pn.setText("");
-          q.setText("");
-        //   d3.setText("");
-         //   d4.setText("");
-             d.setText("");
-    }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
@@ -491,15 +461,6 @@ public void table()
             System.out.println("error"+e);
         }
 }
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-          
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         String p_id = id.getText();
@@ -510,7 +471,7 @@ public void table()
        
         String dd0=d0.getText();
         String tt0=t0.getText();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         String dd =  s.format(d3.getDate());
         String dd1 =  s.format(d4.getDate());
       
@@ -519,8 +480,8 @@ public void table()
             JOptionPane.showMessageDialog(this, "Fill up all field first");
         }else if (quan.equals("")){
             JOptionPane.showMessageDialog(this, "Enter Tatget quantity");
-        }else  if(dd.equals("31-12-0001")&&dd1.equals("31-12-0001")){
-            JOptionPane.showMessageDialog(this, "Give Both Target Date ");
+        }else  if(dd1.equals("31-12-0001")){
+            JOptionPane.showMessageDialog(this, "Give  Target Date ");
         }   else if(dec.equals("")){
              JOptionPane.showMessageDialog(this, "Give Target Descprition");
         }else{
@@ -582,7 +543,7 @@ public void bb2(){
     
     public void bb21() throws SQLException{
         try {
-        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
              String d5 = s.format(d1.getDate());
          
             String d6 = s.format(d2.getDate());

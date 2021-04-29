@@ -275,25 +275,25 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
         // TODO add your handling code here:
         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
         String dob = s.format(dobb.getDate());
-        System.out.println("dateee"+dob);
+       // System.out.println("dateee"+dob);
         String add = address.getText();
         
         String gen = gender.getSelectedItem().toString();
-        System.out.println("@@@@@@@@@ "+gen);
+       // System.out.println("@@@@@@@@@ "+gen);
         String emp_idd=Search1.getText();
-        System.out.println("empppppp"+emp_idd);
+      //  System.out.println("empppppp"+emp_idd);
         
         
         int i = UPDATEPROFILE_M_DATAOBJECT.updateprofile_emp(dob, add, gen,emp_idd);
         
             //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
            if(i>0){
-                System.out.println("Data inserted");
-                JOptionPane.showMessageDialog(this, "Your Profile Update Sucessfully "); 
+               // System.out.println("Data inserted");
+                JOptionPane.showMessageDialog(this, "Employee Profile Update Sucessfully "); 
                 
            }else{
-                System.out.println("Data NOT inserted");
-                JOptionPane.showMessageDialog(this, "Your Profile Not Update Sucessfully"); 
+               // System.out.println("Data NOT inserted");
+                JOptionPane.showMessageDialog(this, "Employee Profile Not Update Sucessfully"); 
            }
        
     }//GEN-LAST:event_jLabel16MouseClicked

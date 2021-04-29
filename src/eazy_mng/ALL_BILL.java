@@ -218,7 +218,7 @@ public class ALL_BILL extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 0, 255));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 255, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Print Bill");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,8 +337,8 @@ public class ALL_BILL extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-              
-             //  na.setText(nnn);
+              String nnn=rs.getString("C_name");
+               na.setText(nnn);
                do
                {
                    Object o []={
@@ -357,7 +357,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             }
          }else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -415,8 +415,8 @@ public class ALL_BILL extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-               String nnn =rs.getString("C_name");
-             //  na.setText(nnn);
+            String nnn=rs.getString("C_name");
+               na.setText(nnn);
                do
                {
                    Object o []={
@@ -426,7 +426,7 @@ public class ALL_BILL extends javax.swing.JFrame {
                    model.addRow(o);
                }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available in This Invoice Id", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){
@@ -436,7 +436,7 @@ public class ALL_BILL extends javax.swing.JFrame {
          }else{
                
          try {
-           SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+           SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -485,7 +485,7 @@ public class ALL_BILL extends javax.swing.JFrame {
            model.setRowCount(0);
            if(rs.next()){
                String nnn =rs.getString("C_name");
-             //  na.setText(nnn);
+               na.setText(nnn);
                do
                {
                    Object o []={
@@ -495,7 +495,7 @@ public class ALL_BILL extends javax.swing.JFrame {
                    model.addRow(o);
                }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available in This Invoice Id", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){
@@ -505,7 +505,7 @@ public class ALL_BILL extends javax.swing.JFrame {
          else
          { 
          try {
-         SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+         SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -574,6 +574,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         while(tm.getRowCount()>0){
             tm.setRowCount(0);
         }
+        allday();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -621,7 +622,7 @@ public class ALL_BILL extends javax.swing.JFrame {
           
          }else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -687,7 +688,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         }
              }else{
                 try {
-             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -752,7 +753,7 @@ public class ALL_BILL extends javax.swing.JFrame {
              }else{
                 try {
         
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -812,7 +813,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             }else{
          try {
         
-             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate()); 
@@ -884,7 +885,7 @@ public class ALL_BILL extends javax.swing.JFrame {
           }  
          else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -903,7 +904,7 @@ public class ALL_BILL extends javax.swing.JFrame {
            DefaultTableModel model =(DefaultTableModel)table.getModel(); 
            model.setRowCount(0);
            if(rs.next()){
-               String nnn =rs.getString("C_name");
+              
            //    na.setText(nnn);
                do
                {
@@ -956,7 +957,7 @@ public class ALL_BILL extends javax.swing.JFrame {
              }else{
                 try {
         
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -1016,7 +1017,7 @@ public class ALL_BILL extends javax.swing.JFrame {
             }else{
          try {
         
-             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate()); 
@@ -1075,11 +1076,14 @@ public class ALL_BILL extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(na.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please Select a Bill From Table/Search ");
         String iiii= Invoice.getText();
         BILL_PRINT_MA bpm = new BILL_PRINT_MA ();
         bpm.bp(Name,ID,Email,time,date,Phone, iiii);
         bpm.setVisible(true);
         this.dispose();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
@@ -1103,7 +1107,7 @@ public class ALL_BILL extends javax.swing.JFrame {
                     model.addRow(o);
                }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available ", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){
@@ -1111,7 +1115,7 @@ public class ALL_BILL extends javax.swing.JFrame {
         }
         }else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
            String d2 = s.format(c2.getDate());
              
@@ -1166,7 +1170,7 @@ public class ALL_BILL extends javax.swing.JFrame {
                     model.addRow(o);
                }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available ", "BillS Not Found", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){
@@ -1176,14 +1180,14 @@ public class ALL_BILL extends javax.swing.JFrame {
             // JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
         try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where  Bill_status= 'Success Bill' and Date between '"+d1+"' and '"+d2+"' ";
+            String sql = "Select * From add_bill where  Bill_status = 'Success Bill' and Date between '"+d1+"' and '"+d2+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             
@@ -1232,7 +1236,7 @@ public class ALL_BILL extends javax.swing.JFrame {
                     model.addRow(o);
                }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Bills Not Found", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available ", "Bills Not Found", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){
@@ -1241,7 +1245,7 @@ public class ALL_BILL extends javax.swing.JFrame {
               //JOptionPane.showMessageDialog(this, "Insert Both Date First For Search");
          }else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());

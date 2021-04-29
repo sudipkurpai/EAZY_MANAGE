@@ -41,6 +41,7 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         date();
         time();
         date1();
+         table();
         
     }
 
@@ -257,9 +258,9 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         save.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         save.setForeground(new java.awt.Color(0, 0, 255));
         save.setText("Save");
-        save.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveMouseClicked(evt);
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
             }
         });
         jPanel3.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 160, 30));
@@ -324,9 +325,9 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 204));
         jButton7.setText("Search");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
             }
         });
         jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, 30));
@@ -460,78 +461,6 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
        this.dispose();
         
     }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        // TODO add your handling code here:
-        reset();
-        String em_id=emp.getText();
-        String datttt=dd.getText();
-         try {
-            String sql1 = "Select * From attendance Where EMP_ID = ? and DATE = ? ";
-            Connection con1=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps1=con1.prepareStatement(sql1);
-            ps1.setString(1,em_id);
-            ps1.setString(2,datttt);
-            ResultSet rs1=ps1.executeQuery();
-            if(em_id.equals("")||em_id.equals("Enter Employee ID")){
-            JOptionPane.showMessageDialog(this, "Insert Employee ID First");    
-                
-            }else if(rs1.next()){
-                emp.setEditable(false);
-                String nnn =rs1.getString("EMP_NAME");
-                String in_timee =rs1.getString("IN_TIME");
-                String out_timee =rs1.getString("OUT_TIME");
-                String break_timee =rs1.getString("BREAK_TIME");
-                String Status =rs1.getString("STATUS");
-                en.setText(nnn);
-                en.setEditable(false);
-                in_t.setText(in_timee);
-                
-                o_t.setText(out_timee);
-               // o_t.setEditable(false);
-                b_t.setText(break_timee);
-               // b_t.setEditable(false);
-                sta.setSelectedItem(Status);
-              //  sta.setEditable(false);
-              
-                
-                table();
-                enable();                
-                rs1.close();
-                ps1.close();
-            }else{
-                
-                System.out.println("Nothing Found In this ID");
-            
-             //Data fetch from database
-           String sql = "Select * From employee_register Where EMP_ID = ?";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,em_id);
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-               // String emp_id =rs.getString("EMP_ID");
-                String f_name =rs.getString("FIRST_NAME");
-                 System.out.println("EMpppppp "+f_name);
-                String l_name =rs.getString("LAST_NAME");
-                 System.out.println("pppnnn "+l_name);
-               String nnn=f_name+l_name;
-               
-                en.setText(nnn);
-                en.setEditable(false);
-                table();
-                enable();
-                rs.close();
-                ps.close();
-            }else{
-                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
-               // System.out.println("Enter Correct Employee Id");
-            }} 
-            }catch(Exception e){
-            System.out.println("error"+e);
-            }
-//        
-    }//GEN-LAST:event_jButton7MouseClicked
     
     public void reset(){
         emp.setEditable(true);
@@ -545,60 +474,19 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
         }
         
     }
-    private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
-        // TODO add your handling code here:
-        
-        String empe=emp.getText();
-        String namee=en.getText();
-        String mngg=ab.getText();
-        String mngii=mng_id.getText();
-        String in_time=in_t.getText();
-        String out_time=o_t.getText();
-        String break_t=b_t.getText();
-        String Datee=dd.getText();
-        String status=sta.getSelectedItem().toString();
-        
-         if(empe.isEmpty() || in_time.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Fill Up In Time First");
-        }
-        else {
-            
-//             DefaultTableModel model = (DefaultTableModel)table.getModel();
-//              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
-//                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
-//              });
-        int i = ATTEDENCE_DATAOBJ.atten(empe, namee, mngg, mngii, in_time, out_time, break_t, Datee, status);
-        
-        
-        if(i>0){
-            table();
-       // System.out.println("Data inserted");
-        JOptionPane.showMessageDialog(this, "Employee In Time Attedence Successfully");
-        
-        reset();
-        emp.setText("Enter Employee ID");
-               
-        } else{
-       // System.out.println("Data NOT inserted");
-        JOptionPane.showMessageDialog(this, "Attedence not done");
-            }
-        }
-    
-    }//GEN-LAST:event_saveMouseClicked
-
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
         // TODO add your handling code here:\
          in_t.setEditable(false);
         String empe = emp.getText();  
-        System.out.println("emppp"+empe);
+        //System.out.println("emppp"+empe);
         String out_t = o_t.getText();
-        System.out.println("outttttt"+out_t);
+      //  System.out.println("outttttt"+out_t);
         String br_t = b_t.getText();
-        System.out.println("breeeeeeak"+br_t);
+     //   System.out.println("breeeeeeak"+br_t);
         String staa = sta.getSelectedItem().toString();
-        System.out.println("staaaaa"+staa);
+     //   System.out.println("staaaaa"+staa);
         String daaaa = dd.getText();
-        System.out.println("dateeeee"+daaaa);
+     //   System.out.println("dateeeee"+daaaa);
        
         
         int i = ATTEDENCE_DATAOBJ.update( out_t, br_t, staa,empe,daaaa);
@@ -648,6 +536,118 @@ public class GIVE_ATTEDENCE extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        // TODO add your handling code here:
+         String empe=emp.getText();
+        String namee=en.getText();
+        String mngg=ab.getText();
+        String mngii=mng_id.getText();
+        String in_time=in_t.getText();
+        String out_time=o_t.getText();
+        String break_t=b_t.getText();
+        String Datee=dd.getText();
+        String status=sta.getSelectedItem().toString();
+        
+         if(empe.isEmpty() || in_time.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Fill Up In Time First");
+        }
+        else {
+            
+//             DefaultTableModel model = (DefaultTableModel)table.getModel();
+//              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
+//                                  mfg.getText(),exp.getText(),quantity.getText(),catagory.getText(),brand.getText(),total.getText()
+//              });
+        int i = ATTEDENCE_DATAOBJ.atten(empe, namee, mngg, mngii, in_time, out_time, break_t, Datee, status);
+        
+        
+        if(i>0){
+            table();
+       // System.out.println("Data inserted");
+        JOptionPane.showMessageDialog(this, "Employee In Time Attedence Successfully");
+        
+        reset();
+        emp.setText("Enter Employee ID");
+               
+        } else{
+       // System.out.println("Data NOT inserted");
+        JOptionPane.showMessageDialog(this, "Attedence not done");
+            }
+        }
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         reset();
+        String em_id=emp.getText();
+        String datttt=dd.getText();
+        if(em_id.equals("")||em_id.equals("Enter Employee ID")){
+            JOptionPane.showMessageDialog(this, "Insert Employee ID First");    
+                
+            }else {
+         try {
+            String sql1 = "Select * From attendance Where EMP_ID = ? and DATE = ? ";
+            Connection con1=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps1=con1.prepareStatement(sql1);
+            ps1.setString(1,em_id);
+            ps1.setString(2,datttt);
+            ResultSet rs1=ps1.executeQuery();
+            if(rs1.next()){
+                emp.setEditable(false);
+                String nnn =rs1.getString("EMP_NAME");
+                String in_timee =rs1.getString("IN_TIME");
+                String out_timee =rs1.getString("OUT_TIME");
+                String break_timee =rs1.getString("BREAK_TIME");
+                String Status =rs1.getString("STATUS");
+                en.setText(nnn);
+                en.setEditable(false);
+                in_t.setText(in_timee);
+                
+                o_t.setText(out_timee);
+               // o_t.setEditable(false);
+                b_t.setText(break_timee);
+               // b_t.setEditable(false);
+                sta.setSelectedItem(Status);
+              //  sta.setEditable(false);
+              
+                
+                table();
+                enable();                
+                rs1.close();
+                ps1.close();
+            }else{
+                
+              //  System.out.println("Nothing Found In this ID");
+            
+             //Data fetch from database
+           String sql = "Select * From employee_register Where EMP_ID = ?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,em_id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+               // String emp_id =rs.getString("EMP_ID");
+                String f_name =rs.getString("FIRST_NAME");
+                 System.out.println("EMpppppp "+f_name);
+                String l_name =rs.getString("LAST_NAME");
+                 System.out.println("pppnnn "+l_name);
+               String nnn=f_name+l_name;
+               
+                en.setText(nnn);
+                en.setEditable(false);
+                table();
+                enable();
+                rs.close();
+                ps.close();
+            }else{
+                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
+               // System.out.println("Enter Correct Employee Id");
+            }} 
+            }catch(Exception e){
+            System.out.println("error"+e);
+            }
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
     
     /**
      * @param args the command line arguments

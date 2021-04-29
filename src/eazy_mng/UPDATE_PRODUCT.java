@@ -48,6 +48,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      String mng_Id = null;
      String emp_id = null;
     
+    
      
     /**
      * Creates new form ADD_NEW_PRODUCT
@@ -61,8 +62,9 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         quantity1.setEditable(false);
         upda.setEnabled(false);
          total.setEditable(false);
+       
         id_create();
-      //  cal();
+       // cal();
         table();
         search();
         date();
@@ -412,9 +414,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
             }
         });
         quantity.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                quantityKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 quantityKeyTyped(evt);
             }
@@ -617,7 +616,10 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         // TODO add your handling code here:
         res();
         id_create();
+          
          try {
+             quantity1.setText("0");
+             quantity.setText("0");
              click();
          } catch (ParseException ex) {
              Logger.getLogger(UPDATE_PRODUCT.class.getName()).log(Level.SEVERE, null, ex);
@@ -791,25 +793,19 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_quantity1KeyTyped
 
-    private void quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityKeyReleased
-        // TODO add your handling code here:
-//        if(quantity.getText().equals("")){
-//            quantity.setText("0");
-//        }
-    }//GEN-LAST:event_quantityKeyReleased
-
     private void quantityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityFocusGained
         // TODO add your handling code here:
-//        if(quantity.getText().equals("0")){
-//           quantity.setText("");
-//       }
+        if(quantity.getText().equals("0")){
+            quantity.setText("");
+        }
+            
     }//GEN-LAST:event_quantityFocusGained
 
     private void quantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityFocusLost
         // TODO add your handling code here:
-//        if(quantity.getText().equals("")){
-//           quantity.setText("0");
-//       }
+         if(quantity.getText().equals("")){
+            quantity.setText("0");
+         }
     }//GEN-LAST:event_quantityFocusLost
     
     public void search(){
@@ -866,72 +862,74 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
             }
             
             protected void update_val(){
-               // try{
-               String f1=s_cost.getText();
-               
-               String f3=quantity.getText();
-               if (!f1.equals("") && f3.equals("")){
+                String f1=s_cost.getText();
+               String f2=quantity.getText();
+               String f3=quantity1.getText();
+               if (!f1.equals("") && f2.equals("")&&f3.equals("0")){
                    double b=Double.parseDouble(s_cost.getText());
-                   double  b1=Double.parseDouble(quantity1.getText());
-                  
-                   if(Double.toString(b1).equals("0")){
-//                  
-                   double d= b*1;
-                   String e=String.valueOf(d);
-                   total.setText(e);
-                   }else{
-                   double  b2=Double.parseDouble(quantity.getText());
-                       System.out.println("Hello");
-                   double a= b2+b1;
-                   double c= b*a;
+                   //double  b1=Double.parseDouble(a1.getText());
+                   double c= b;
                    String e=String.valueOf(c);
                    total.setText(e);
-                 }
-               }else if (f1.equals("") && !f3.equals("")){
+               }else if (f1.equals("") && !f2.equals("")&& f3.equals("0")){
                    //double b=Double.parseDouble(a.getText());
-                  double  b1=Double.parseDouble(quantity.getText());
-                  double  b2=Double.parseDouble(quantity1.getText());
-                   
-                   if(Double.toString(b2).equals("0")){
-                   double c= b1+0;
-                   String e=String.valueOf(c);
-                   total.setText(e);
-                   }else{
-                   double c= b2+b1;
-                   String e=String.valueOf(c);
-                   total.setText(e);
-                 }
-               }else if (!f1.equals("") && !f3.equals("")){
-                   double b=Double.parseDouble(s_cost.getText());
-                   double  b2=Double.parseDouble(quantity1.getText());
-                   
                    double  b1=Double.parseDouble(quantity.getText());
-                  
-                   if(Double.toString(b2).equals("0")){
-                  
+                   double c= b1;
+                   String e=String.valueOf(c);
+                   total.setText(e);
+               }else if (!f1.equals("") && !f2.equals("")&&f3.equals("0")){
+                   double b=Double.parseDouble(s_cost.getText());
+                   double  b1=Double.parseDouble(quantity.getText());
                    double c= b*b1;
                    String e=String.valueOf(c);
                    total.setEditable(false);
                    total.setText(e);
-                   } else{
-                       double d= b2+b1;
+                   
+               }else if (f1.equals("") && f2.equals("")&&!f3.equals("")){
+                   
+                   double  b1=Double.parseDouble(quantity1.getText());
+                  
+                   String e=String.valueOf(b1);
+                   total.setEditable(false);
+                   total.setText(e);
+                   
+               }else if (!f1.equals("") && f2.equals("")&&!f3.equals("")){
+                   double b=Double.parseDouble(s_cost.getText());
+                   double  b1=Double.parseDouble(quantity1.getText());
+                   double c= b*b1;
+                   String e=String.valueOf(c);
+                   total.setEditable(false);
+                   total.setText(e);
+                   
+               }else if (f1.equals("") && !f2.equals("")&&!f3.equals("")){
+                   double b=Double.parseDouble(quantity.getText());
+                   double  b1=Double.parseDouble(quantity.getText());
+                   double c= b+b1;
+                   String e=String.valueOf(c);
+                   total.setEditable(false);
+                   total.setText(e);
+                   
+               }else {
+                   if (!f1.equals("") && !f2.equals("")&&!f3.equals("")){
+                   double b=Double.parseDouble(s_cost.getText());
+                   
+                   double  b1=Double.parseDouble(quantity.getText());
+                   double  b2=Double.parseDouble(quantity1.getText());
+                   double d=b1+b2;
                    double c= b*d;
                    String e=String.valueOf(c);
-                  
+                   total.setEditable(false);
                    total.setText(e);
-                   }
-                   
-               }else{
-                //  System.out.println("NONE");
                }
-                   
+               
+               
+               }   
                    
                
+           
             
- //}catch(Exception e){
-          //  System.out.println("sss"+e);
-}
-         //   }
+            
+            }
             
         };
    
@@ -957,7 +955,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      catagory.setText(model.getValueAt(i,9).toString());
      brand.setText(model.getValueAt(i,10).toString());
      total.setText(model.getValueAt(i,11).toString());
-    quantity.setText("0");
+    
     }
 
 

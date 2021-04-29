@@ -626,13 +626,13 @@ public class BILL_MA extends javax.swing.JFrame {
        
         Invvvv = new BigInteger(iNVOICEE);
         BigInteger nxt = new BigInteger("1");
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+iNVOICEE);
-        System.out.println("#################"+Invvvv);
+       // System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+iNVOICEE);
+       // System.out.println("#################"+Invvvv);
         Invvvv = Invvvv.add(nxt);
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+Invvvv);
-        invee = "INVEE"+Invvvv.toString();
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+invee);
-        System.out.println("++++++++++++++++"+Invvvv);
+      //  System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+Invvvv);
+        invee = "EAZY_I"+Invvvv.toString();
+      //  System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+invee);
+     //   System.out.println("++++++++++++++++"+Invvvv);
         inv_no.setText(invee);
     }
     private void c_emlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_emlActionPerformed

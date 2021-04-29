@@ -216,7 +216,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 0, 255));
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 255, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Print Bill");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,6 +229,11 @@ public class TODAY_BILL extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 255));
         jButton5.setText("New Bill");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 90, 30));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 255));
@@ -261,7 +266,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
    
      void date() {
         Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         dddda=s.format(d);
     }
     public void all(){
@@ -636,6 +641,15 @@ public class TODAY_BILL extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        BILL_MA bp = new BILL_MA();
+        
+         bp.bpm(Name,ID,Email,time,date,Phone);
+        bp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
    public void table(){
        String inv = Invoice.getText();
    
@@ -643,7 +657,7 @@ public class TODAY_BILL extends javax.swing.JFrame {
            try {
         
              //Data fetch from database
-            String sql = "Select * From add_bill where  date = 'date' ";
+            String sql = "Select * From add_bill where  date = '"+dddda+"' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,inv);

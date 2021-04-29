@@ -38,6 +38,14 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         date();
         time();
         table();
+         pro_id.setEditable(false);
+         prd_nm.setEditable(false);
+         price.setEditable(false);
+         datee.setEditable(false);
+         quanti.setEditable(false);
+         total_s.setEditable(false);
+         Top.setEditable(false);
+         prof.setEditable(false);
     }
      void srr (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
@@ -242,7 +250,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         pro_id.setBackground(new java.awt.Color(255, 255, 255));
         pro_id.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         pro_id.setForeground(new java.awt.Color(0, 0, 255));
-        jPanel3.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 230, 50));
+        jPanel3.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 230, 50));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 0, 51));
@@ -258,13 +266,13 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         prd_nm.setBackground(new java.awt.Color(255, 255, 255));
         prd_nm.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         prd_nm.setForeground(new java.awt.Color(0, 0, 255));
-        jPanel3.add(prd_nm, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 230, 50));
+        jPanel3.add(prd_nm, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 230, 50));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 0, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel7.setText("Price  ");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 230, 30));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 230, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 0, 51));
@@ -275,13 +283,13 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         datee.setBackground(new java.awt.Color(255, 255, 255));
         datee.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         datee.setForeground(new java.awt.Color(0, 0, 255));
-        jPanel3.add(datee, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 230, 50));
+        jPanel3.add(datee, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 230, 50));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 0, 51));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Product ID");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 230, 30));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 230, 30));
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 0, 51));
@@ -299,12 +307,12 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(153, 0, 51));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Date");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 230, 30));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 40, 230, 30));
 
         price.setBackground(new java.awt.Color(255, 255, 255));
         price.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         price.setForeground(new java.awt.Color(0, 0, 255));
-        jPanel3.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 230, 50));
+        jPanel3.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 230, 50));
 
         Top.setBackground(new java.awt.Color(255, 255, 255));
         Top.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -315,7 +323,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(153, 0, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Product Name");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 230, 30));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 230, 30));
 
         quanti.setBackground(new java.awt.Color(255, 255, 255));
         quanti.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -417,7 +425,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
           }  
          else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -488,7 +496,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
              }else{
                 try {
         
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());
@@ -549,7 +557,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
             }else{
          try {
         
-             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate()); 
@@ -612,7 +620,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
             }else{
          try {
         
-             SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+             SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate()); 
@@ -671,7 +679,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         }
         }else{
           
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
             String d2 = s.format(c2.getDate());
              
@@ -737,6 +745,10 @@ public class SEELS_REPORT extends javax.swing.JFrame {
         while(sudip.getRowCount()>0){
             sudip.setRowCount(0);
         } 
+        c1.setDate(null);
+        c2.setDate(null);
+        sell_s.setSelectedIndex(0);
+         table();
          pro_id.setText("");
          prd_nm.setText("");
          price.setText("");
@@ -745,7 +757,7 @@ public class SEELS_REPORT extends javax.swing.JFrame {
          total_s.setText("");
          Top.setText("");
          prof.setText("");
-         table();
+        
     }//GEN-LAST:event_searchActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -840,7 +852,7 @@ public void mini(){
              }else{
                 try {
         
-            SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
             String d1 = s.format(c1.getDate());
           //  System.out.println("!@##%$$%$"+d1);
             String d2 = s.format(c2.getDate());

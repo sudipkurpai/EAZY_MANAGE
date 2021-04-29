@@ -150,7 +150,7 @@ mfg.setDate(date1);
     //    System.out.println("#################"+trn_id);
         ttttt_Id = ttttt_Id.add(nxt);
    //     System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+ttttt_Id);
-        t_idd.setText("EMNG_T"+ttttt_Id);
+        t_idd.setText("EAZY_T"+ttttt_Id);
         
         
         pppp_Id= new BigInteger(pro_id);
@@ -159,7 +159,7 @@ mfg.setDate(date1);
      //   System.out.println("#################"+pro_id);
         pppp_Id = pppp_Id.add(aaa);
     //    System.out.println("%%%%%%%%%%%%%%%%%%%%%%"+pppp_Id);
-        p_id.setText("EMNG_P"+pppp_Id);
+        p_id.setText("EAZY_P"+pppp_Id);
     }
   public void table()
 {

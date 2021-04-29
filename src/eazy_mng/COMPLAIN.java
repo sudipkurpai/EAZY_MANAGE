@@ -443,6 +443,12 @@ public class COMPLAIN extends javax.swing.JFrame {
             if(i>0){
             MAIL.send(emll, zz, com);
             JOptionPane.showMessageDialog(null, "Email Send to "+" "+enn);
+             emp.setEditable(true);
+             emp.setText("");
+             empn.setText("");
+             ph.setText("");
+             empe.setText("");
+             complainn.setText("");
             }
             
         
@@ -512,7 +518,7 @@ public class COMPLAIN extends javax.swing.JFrame {
                
            }while (rs.next());
            }else{
-               JOptionPane.showMessageDialog(null, "  Complain Not Found In This Employee ID ");
+               JOptionPane.showMessageDialog(null, "Complain Not Found In This Employee ID ");
            }
             }catch(Exception e){
             System.out.println("error"+e);

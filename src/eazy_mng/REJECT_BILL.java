@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -31,6 +31,7 @@ public class REJECT_BILL extends javax.swing.JFrame {
     String date=null;
     String time = null;
     String emp_id;
+    String zz;
 
     /**
      * Creates new form REMOVE_EMPLOYEE
@@ -39,6 +40,7 @@ public class REJECT_BILL extends javax.swing.JFrame {
         initComponents();
         rb.setEnabled(false);
         date();
+        date1();
         time();
         na.setEditable(false);
         b_date.setEditable(false);
@@ -186,9 +188,9 @@ public class REJECT_BILL extends javax.swing.JFrame {
         na.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.add(na, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 30));
 
-        rb.setBackground(new java.awt.Color(0, 0, 255));
+        rb.setBackground(new java.awt.Color(255, 0, 51));
         rb.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        rb.setForeground(new java.awt.Color(0, 255, 0));
+        rb.setForeground(new java.awt.Color(255, 255, 255));
         rb.setText("Reject Bill");
         rb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +203,11 @@ public class REJECT_BILL extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 0, 255));
         jButton5.setText("New Bill");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 90, 30));
 
         b_date.setBackground(new java.awt.Color(255, 255, 255));
@@ -314,7 +321,11 @@ public class REJECT_BILL extends javax.swing.JFrame {
         SimpleDateFormat s = new SimpleDateFormat("dd-MMMM-yyyy");
         daaa.setText(s.format(d));
     }
-    
+    void date1() {
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        zz=s.format(d);
+    }
 
     void time() {
         new Timer(0, new ActionListener() {
@@ -385,7 +396,7 @@ public class REJECT_BILL extends javax.swing.JFrame {
         // TODO add your handling code here:
        
             
-        String Dattt=daaa.getText();
+        
         String ttt=tii.getText();
         String bsss=cbs.getSelectedItem().toString();
         String Ref=refund.getSelectedItem().toString();
@@ -402,8 +413,18 @@ public class REJECT_BILL extends javax.swing.JFrame {
         
         if(Yes == 0){
             
-        ADD_BILL_DATAOBJECT.Reject_bill(invs, Dattt, ttt, bsss, Ref, rea);
-        
+        ADD_BILL_DATAOBJECT.Reject_bill(invs, zz, ttt, bsss, Ref, rea);
+        JOptionPane.showMessageDialog(null,"Bill Reject Succesfully");
+         rb.setEnabled(false);
+        na.setText("");
+        b_date.setText("");
+        all_t.setText("");
+        pss.setText("");
+        Bs.setText("");
+        reson.setText("");
+        refund.setSelectedIndex(0);
+        cbs.setSelectedIndex(0);
+        inv.setText("Enter Invoice No.");
         }else{
              int No=0;
                 if (No == 0){
@@ -446,6 +467,16 @@ public class REJECT_BILL extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_invFocusLost
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+          BILL_MA bp = new BILL_MA();
+         
+          
+         bp.bpm(Name,ID,Email,date,time,Phone);
+        bp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
