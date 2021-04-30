@@ -139,7 +139,7 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 0, 30, 33));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, 1176, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 0, 204));
