@@ -271,6 +271,11 @@ public class SALES_TARGET extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 80, 40));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 204));
@@ -488,6 +493,24 @@ public void table()
       
              SELL_TARGET_DATAOBJECT.SELL_T(Name, ID, dd0, tt0, p_id, proname, dd, dd1, quan, dec);
              JOptionPane.showMessageDialog(this, "Sell Target Save");
+             try {
+            // TODO add your handling code here:
+            id.setText("");
+            pn.setText("");
+            q.setText("");
+            d.setText("");
+            date();
+            String zz = 31 + "-" + 12 + "-" +0001;
+            
+            
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(zz);
+            
+            d4.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(SALES_TARGET.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
+             table();
                    
            // MANAGER_MANE,MANAGER_ID,DATE,TIME, "PRODUCT_ID,PRODUCT_NAME,FROM_DATE,TO_DATE,QUANTITY,DRSCRIPTION"
           
@@ -514,6 +537,10 @@ public void table()
             }
             }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 public void bb2(){
          try {
         

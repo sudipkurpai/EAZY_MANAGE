@@ -506,7 +506,7 @@ public class BILL_PRINT_EMP extends javax.swing.JFrame {
 //                   model.addRow(o);
 //               }while (rs.next());
            }else{
-                JOptionPane.showMessageDialog(null,"No Bills Available Between This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"No Bills Available  This Date", "Something Went Wrong!!", JOptionPane.ERROR_MESSAGE);
            }
           
             }catch(Exception e){

@@ -60,6 +60,7 @@ public class BILL_EMPLOYEE extends javax.swing.JFrame {
         id_create();
         check.setEnabled(false);
         Timee();
+        date();
         all_t.setEditable(false);
         b_date.setEditable(false);
         
@@ -970,14 +971,7 @@ try {
    else{
     int Yes = JOptionPane.showConfirmDialog(null, "Are Your Sure Want to Save This Bill ?");
         if(Yes == 0){
-            
-            
-            
-            
-            
-            
-            
-            
+             
             fast(); 
             aaaa1();
             aaaa();

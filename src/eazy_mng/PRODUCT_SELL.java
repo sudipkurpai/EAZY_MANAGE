@@ -498,15 +498,15 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
         
              //Data fetch from database
             String sql = "Select * From add_new_product where Product_id=? ";
-            String sql2 = "Select * From sell where Product_id=? ";
+           
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-            PreparedStatement ps1=con.prepareStatement(sql2);
+           
             ps.setString(1,product_idee);
-            ps1.setString(1,product_idee);
+            
             ResultSet rs=ps.executeQuery();
-            ResultSet rs1 =ps1.executeQuery();
-           if(rs.next()&& rs1.next()){
+          
+           if(rs.next()){
                
                    
                String pn= rs.getString("Product_name");
@@ -515,7 +515,9 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
                String expp= rs.getString("Exp_date");
                String sss= rs.getString("Standerd_cost");
                
-               ts= rs1.getString("Total_sell");
+               
+              
+               zz();
                p_name.setText(pn);
                ssss.setText(sss);
                
@@ -539,7 +541,41 @@ public class PRODUCT_SELL extends javax.swing.JFrame {
     
         
     }//GEN-LAST:event_jButton2ActionPerformed
-
+ public void zz(){
+     String product_idee = pro_id.getText();
+     try {
+        
+             //Data fetch from database
+            
+            String sql2 = "Select * From sell where Product_id=? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+          
+            PreparedStatement ps1=con.prepareStatement(sql2);
+            
+            ps1.setString(1,product_idee);
+           
+            ResultSet rs1 =ps1.executeQuery();
+           if(rs1.next()){
+               
+                   
+               
+               
+               
+               ts= rs1.getString("Total_sell");
+              
+              
+                            
+                //    JOptionPane.showMessageDialog(this, "Product Found");
+                   
+               
+           }else{
+               ts="0";
+           }
+          
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+ }
      public void cal(){
         DocumentListener dl = new DocumentListener(){
             @Override
