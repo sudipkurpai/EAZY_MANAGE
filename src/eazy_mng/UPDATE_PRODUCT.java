@@ -215,7 +215,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         quantity = new javax.swing.JTextField();
-        catagory = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
@@ -236,6 +235,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         exp = new com.toedter.calendar.JDateChooser();
         mfg = new com.toedter.calendar.JDateChooser();
+        catagory = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -420,9 +420,6 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         });
         jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 50, 30));
 
-        catagory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 130, 30));
-
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 204));
         jLabel13.setText("Category :");
@@ -542,6 +539,9 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         mfg.setDateFormatString("dd-MM-yyyy");
         jPanel2.add(mfg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 130, 30));
 
+        catagory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Appliances", "Arts, Crafts, & Sewing", "Automotive Parts & Accessories", "Baby", "Beauty & Personal Care", "Books", "CDs & Vinyl", "Cell Phones & Accessories", "Clothing, Shoes and Jewelry", "Collectibles & Fine Art", "Computers", "Electronics", "Garden & Outdoor", "Grocery & Gourmet Food", "Handmade", "Health, Household & Baby Care", "Home & Kitchen", "Industrial & Scientific", "Kindle", "Luggage & Travel Gear", "Musical Instruments", "Office Products", "Pet Supplies", "Sports & Outdoors", "Tools & Home Improvement", "Toys & Games", "Video Games" }));
+        jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 130, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -654,7 +654,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         
         String quantit= Integer.toString(quantit3);
         String quantitye=quantity.getText();
-        String catag = catagory.getText();
+        String catag = catagory.getSelectedItem().toString();
         String Brand = brand.getText();
         String DDDD = d2.getText();
         String tttt = t2.getText();
@@ -675,8 +675,10 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
         //total.setText(""+c);
         if(Product_id.isEmpty() || p_nmaee.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill up all field first");
-        }
-        else {
+        }else if(catagory.getSelectedItem().equals("-- Select --"))    {
+            JOptionPane.showMessageDialog(this, "Select A Catagory"); 
+            
+        } else {
             
 //             DefaultTableModel model = (DefaultTableModel)table.getModel();
 //              model.addRow(new Object[]{p_id.getText(), p_name.getText(),desc.getText(),s_cost.getText(),unit_pri.getText(),
@@ -718,7 +720,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
          exp.setDate(null);
          quantity1.setText("");
          quantity.setText("");
-         catagory.setText("");
+         catagory.setSelectedIndex(0);
          brand.setText("");
          total.setText("");
          p_id.setText("");
@@ -952,7 +954,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
      Date abcc = new SimpleDateFormat("dd-MM-yyyy").parse(model.getValueAt(i,7).toString());
      exp.setDate(abcc);
      quantity1.setText(model.getValueAt(i,8).toString());
-     catagory.setText(model.getValueAt(i,9).toString());
+     catagory.setSelectedItem(model.getValueAt(i,9).toString());
      brand.setText(model.getValueAt(i,10).toString());
      total.setText(model.getValueAt(i,11).toString());
     
@@ -979,7 +981,7 @@ public class UPDATE_PRODUCT extends javax.swing.JFrame {
     private javax.swing.JTextField Product_id;
     private javax.swing.JButton Search;
     private javax.swing.JTextField brand;
-    private javax.swing.JTextField catagory;
+    private javax.swing.JComboBox<String> catagory;
     private javax.swing.JTextField d2;
     private javax.swing.JTextPane desc;
     private com.toedter.calendar.JDateChooser exp;

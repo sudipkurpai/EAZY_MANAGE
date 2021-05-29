@@ -30,7 +30,7 @@ public class ID_STORE_FETCH {
               }catch(Exception e){
                   System.out.println(e);
               }
-              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+           //   System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
               return status;
     }
     public static boolean validate(String mng_id,String emp_id,String Transaction_Id) throws SQLException

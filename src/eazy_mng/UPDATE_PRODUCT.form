@@ -529,20 +529,6 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="catagory">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder/>
-              </Border>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="620" y="120" width="130" height="30"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -932,6 +918,50 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="380" y="160" width="130" height="30"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="catagory">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="28">
+                <StringItem index="0" value="-- Select --"/>
+                <StringItem index="1" value="Appliances"/>
+                <StringItem index="2" value="Arts, Crafts, &amp; Sewing"/>
+                <StringItem index="3" value="Automotive Parts &amp; Accessories"/>
+                <StringItem index="4" value="Baby"/>
+                <StringItem index="5" value="Beauty &amp; Personal Care"/>
+                <StringItem index="6" value="Books"/>
+                <StringItem index="7" value="CDs &amp; Vinyl"/>
+                <StringItem index="8" value="Cell Phones &amp; Accessories"/>
+                <StringItem index="9" value="Clothing, Shoes and Jewelry"/>
+                <StringItem index="10" value="Collectibles &amp; Fine Art"/>
+                <StringItem index="11" value="Computers"/>
+                <StringItem index="12" value="Electronics"/>
+                <StringItem index="13" value="Garden &amp; Outdoor"/>
+                <StringItem index="14" value="Grocery &amp; Gourmet Food"/>
+                <StringItem index="15" value="Handmade"/>
+                <StringItem index="16" value="Health, Household &amp; Baby Care"/>
+                <StringItem index="17" value="Home &amp; Kitchen"/>
+                <StringItem index="18" value="Industrial &amp; Scientific"/>
+                <StringItem index="19" value="Kindle"/>
+                <StringItem index="20" value="Luggage &amp; Travel Gear"/>
+                <StringItem index="21" value="Musical Instruments"/>
+                <StringItem index="22" value="Office Products"/>
+                <StringItem index="23" value="Pet Supplies"/>
+                <StringItem index="24" value="Sports &amp; Outdoors"/>
+                <StringItem index="25" value="Tools &amp; Home Improvement"/>
+                <StringItem index="26" value="Toys &amp; Games"/>
+                <StringItem index="27" value="Video Games"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="620" y="120" width="130" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

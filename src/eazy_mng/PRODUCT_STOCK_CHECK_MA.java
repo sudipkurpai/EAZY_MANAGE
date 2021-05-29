@@ -71,9 +71,9 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        pp = new javax.swing.JTextField();
+        iq = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
         jTextField15 = new javax.swing.JTextField();
@@ -244,27 +244,27 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         jLabel24.setText("Inventory Qty");
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, -1, -1));
 
-        jTextField12.setBackground(new java.awt.Color(16, 16, 134));
-        jTextField12.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jTextField12.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField12.setBorder(null);
-        jTextField12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField12ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 160, 50));
-
         jLabel20.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Purchase");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
 
-        jTextField16.setBackground(new java.awt.Color(205, 0, 202));
-        jTextField16.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        jTextField16.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField16.setBorder(null);
-        jPanel2.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 160, 50));
+        pp.setBackground(new java.awt.Color(16, 16, 134));
+        pp.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        pp.setForeground(new java.awt.Color(255, 255, 255));
+        pp.setBorder(null);
+        pp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pp, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 160, 50));
+
+        iq.setBackground(new java.awt.Color(205, 0, 202));
+        iq.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
+        iq.setForeground(new java.awt.Color(255, 255, 255));
+        iq.setBorder(null);
+        jPanel2.add(iq, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 160, 50));
 
         jTextField13.setBackground(new java.awt.Color(128, 0, 1));
         jTextField13.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
@@ -1272,9 +1272,9 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField13ActionPerformed
 
-    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+    private void ppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField12ActionPerformed
+    }//GEN-LAST:event_ppActionPerformed
 
     private void pro_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pro_idKeyReleased
         // TODO add your handling code here:
@@ -2150,6 +2150,7 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private javax.swing.JTextField d0;
     private javax.swing.JTextField d5;
     private javax.swing.JTextField ddd1;
+    private javax.swing.JTextField iq;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2209,16 +2210,15 @@ if(c1.getDate()==null&& c2.getDate()==null){
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField mnamee;
     private javax.swing.JTextField mnii;
     private javax.swing.JTextField pfff;
     private javax.swing.JTextField piid;
     private javax.swing.JTextField pnnam;
+    private javax.swing.JTextField pp;
     private javax.swing.JTextField ppro_id;
     private javax.swing.JTextField ppro_id1;
     private javax.swing.JPanel ppur;

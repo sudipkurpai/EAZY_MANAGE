@@ -11,6 +11,7 @@ import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,7 +69,7 @@ public class BILL_MA extends javax.swing.JFrame {
          if (total.getText().isEmpty() ){
               tax.setEnabled(false);
          }
-          p_name.setEditable(false);
+         
           desc.setEditable(false);
           pri.setEditable(false);
           
@@ -151,14 +152,11 @@ public class BILL_MA extends javax.swing.JFrame {
         all_t = new javax.swing.JTextField();
         quan = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        pro_id = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         pri = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        p_name = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -174,6 +172,10 @@ public class BILL_MA extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         print = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        t1 = new javax.swing.JComboBox<>();
+        t2 = new javax.swing.JComboBox<>();
+        t3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -402,21 +404,9 @@ public class BILL_MA extends javax.swing.JFrame {
         jLabel38.setText("Quantity :");
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 30));
 
-        pro_id.setBackground(new java.awt.Color(255, 255, 255));
-        pro_id.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        pro_id.setForeground(new java.awt.Color(0, 0, 255));
-        pro_id.setToolTipText("");
-        pro_id.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pro_id.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                pro_idKeyReleased(evt);
-            }
-        });
-        jPanel2.add(pro_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 250, 30));
-
         jLabel39.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel39.setText("Search By Product ID:");
+        jLabel39.setText("Product Catagory:");
         jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 30));
 
         pri.setBackground(new java.awt.Color(255, 255, 255));
@@ -443,28 +433,10 @@ public class BILL_MA extends javax.swing.JFrame {
         jLabel41.setText("Tax :");
         jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 40, 30));
 
-        jButton4.setBackground(new java.awt.Color(51, 255, 153));
-        jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 255));
-        jButton4.setText("Search");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 90, -1));
-
-        p_name.setBackground(new java.awt.Color(255, 255, 255));
-        p_name.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        p_name.setForeground(new java.awt.Color(0, 0, 255));
-        p_name.setToolTipText("");
-        p_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(p_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 210, 30));
-
         jLabel29.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel29.setText("Product Name :");
-        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, -1, 30));
+        jLabel29.setText("Product ID :");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, 30));
 
         jLabel42.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(0, 0, 255));
@@ -584,6 +556,35 @@ public class BILL_MA extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 50, 40));
 
+        jLabel30.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel30.setText("Product Name :");
+        jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, 30));
+
+        t1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Appliances", "Arts, Crafts, & Sewing", "Automotive Parts & Accessories", "Baby", "Beauty & Personal Care", "Books", "CDs & Vinyl", "Cell Phones & Accessories", "Clothing, Shoes and Jewelry", "Collectibles & Fine Art", "Computers", "Electronics", "Garden & Outdoor", "Grocery & Gourmet Food", "Handmade", "Health, Household & Baby Care", "Home & Kitchen", "Industrial & Scientific", "Kindle", "Luggage & Travel Gear", "Musical Instruments", "Office Products", "Pet Supplies", "Sports & Outdoors", "Tools & Home Improvement", "Toys & Games", "Video Games" }));
+        t1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 220, 30));
+
+        t2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --" }));
+        t2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(t2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 180, 30));
+
+        t3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --" }));
+        t3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(t3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 200, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -675,52 +676,10 @@ public class BILL_MA extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
 
-    private void pro_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pro_idKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pro_idKeyReleased
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        String product_idee = pro_id.getText();
-      try {
-        
-             //Data fetch from database
-            String sql = "Select * From add_new_product where Product_id=? ";
-            Connection con=DATABASE_CONNECTION.getConnection();
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,product_idee);
-            ResultSet rs=ps.executeQuery();
-           
-           if(rs.next()){
-               
-                   
-               String pn= rs.getString("Product_name");
-               String descp= rs.getString("Description");
-               String pr= rs.getString("Unit_price");
-               p_name.setText(pn);
-               p_name.setEditable(false);
-               desc.setText(descp);
-               desc.setEditable(false);
-               pri.setText(pr);
-               pri.setEditable(false);
-               tax.setEnabled(true);
-                            
-                //    JOptionPane.showMessageDialog(this, "Product Found");
-                   
-               
-           }else{
-               JOptionPane.showMessageDialog(this, "Enter Currect Product Id");
-           }
-          
-            }catch(Exception e){
-            System.out.println("error"+e);
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
-        String p_nmaee = p_name.getText();
+        String p_nmaee = t2.getSelectedItem().toString();
         String St = pri.getText();
         String Tax = tax.getSelectedItem().toString();
         String quantit = quan.getText();
@@ -732,7 +691,7 @@ public class BILL_MA extends javax.swing.JFrame {
             
            
              DefaultTableModel model = (DefaultTableModel)table.getModel();
-              model.addRow(new Object[]{pro_id.getText(),p_name.getText(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
+              model.addRow(new Object[]{t3.getSelectedItem().toString(),t2.getSelectedItem().toString(), desc.getText(),quan.getText(),pri.getText(),tax.getSelectedItem(),
                                   total.getText(),total2.getText()
               });
         
@@ -740,14 +699,15 @@ public class BILL_MA extends javax.swing.JFrame {
        // System.out.println("Data inserted");
         JOptionPane.showMessageDialog(this, "Add To Bill Successfully");
          check.setEnabled(true);
-            p_name.setText("");
+            t1.setSelectedIndex(0);
+            t2.setSelectedIndex(0);
             desc.setText("");
             pri.setText("");
             tax.setSelectedIndex(0);
             total.setText("");
             total2.setText("");
             quan.setText("");
-            pro_id.setText("");
+            t3.setSelectedIndex(0);
                }
         else{
        // System.out.println("Data NOT inserted");
@@ -799,7 +759,7 @@ public class BILL_MA extends javax.swing.JFrame {
                    total.setText(e);
                    
                }else{
-                   System.out.println("NONE");
+                 //  System.out.println("NONE");
                }
                    
                    
@@ -822,10 +782,7 @@ public class BILL_MA extends javax.swing.JFrame {
                             double d= (c/100);
                             double e= (b1+d);
                             String f=String.valueOf(e);
-//                            System.out.println("bbbb"+b1);
-//                            System.out.println("cccc"+c);
-//                            System.out.println("dddd"+d);
-//                            System.out.println("fffff"+f);
+              
                             total2.setEditable(false);
                             total2.setText(f);
                             
@@ -870,14 +827,15 @@ public class BILL_MA extends javax.swing.JFrame {
        
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-         p_name.setText("");
+        t1.setSelectedIndex(0);
          desc.setText("");
          pri.setText("");
          tax.setSelectedIndex(0);
          total.setText("");
          total2.setText("");
         quan.setText("");
-        pro_id.setText("");
+        t2.setSelectedIndex(0);
+        t3.setSelectedIndex(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void taxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxActionPerformed
@@ -906,7 +864,7 @@ try {
     String Invoice=inv_no.getText();
     String C_date=b_date.getText();
     String C_time=b_t.getText();
-    String Product_id=pro_id.getText();
+    String Product_id=t3.getSelectedItem().toString();
     
     
   //  String All_t=all_t.getText();
@@ -961,7 +919,9 @@ try {
          print.setEnabled(false);   
          id_create();   
          check.setEnabled(false);
-         p_name.setText("");
+          t1.setSelectedIndex(0);
+          t2.setSelectedIndex(0);
+          t3.setSelectedIndex(0);
          desc.setText("");
          pri.setText("");
          tax.setSelectedIndex(0);
@@ -975,7 +935,7 @@ try {
         addr.setText("");
         pin.setText("");
         all_t.setText("");
-        pro_id.setText("");
+       
          DefaultTableModel tm=(DefaultTableModel) table.getModel();
         while(tm.getRowCount()>0){
             tm.setRowCount(0);
@@ -1001,6 +961,700 @@ try {
         
     }//GEN-LAST:event_printActionPerformed
 
+    private void t1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t1ActionPerformed
+        // TODO add your handling code here:
+        if (t1.getSelectedItem().equals("Appliances")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+               //     System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Arts, Crafts, & Sewing")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Automotive Parts & Accessories")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                //    System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Baby")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Beauty & Personal Care")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Books")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                  //  System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("CDs & Vinyl")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+               //     System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Cell Phones & Accessories")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Clothing, Shoes and Jewelry")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+             //       System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Collectibles & Fine Art")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Computers")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Electronics")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                //    System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Garden & Outdoor")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+               //     System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Grocery & Gourmet Food")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Handmade")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Health, Household & Baby Care")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Home & Kitchen")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Industrial & Scientific")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+             //       System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else
+            if (t1.getSelectedItem().equals("Kindle")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Luggage & Travel Gear")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                //    System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Musical Instruments")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Office Products")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                 //   System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Pet Supplies")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+              //      System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Sports & Outdoors")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+             //       System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Tools & Home Improvement")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                 //   System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Toys & Games")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                 //   System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } else if (t1.getSelectedItem().equals("Video Games")) {
+            String ff= t1.getSelectedItem().toString();
+            try {
+
+                String sql = "Select * From add_new_product where Category = ? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,ff);
+                ResultSet rs=ps.executeQuery();
+                t2.removeAllItems();
+                t2.addItem("-- Select --");
+                while(rs.next()){
+                    String aa[]={
+                        rs.getString("Product_name")} ;
+
+                  //  System.out.println(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    t2.addItem(Arrays.toString(aa).replace("[", "").replace("]", ""));
+                    //   t2.setSelectedItem(null);
+                }
+
+            }   catch (SQLException ex) {
+                System.out.println("1"+ex);
+            }
+        } 
+    }//GEN-LAST:event_t1ActionPerformed
+
+    private void t2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t2ActionPerformed
+        // TODO add your handling code here:
+
+        if(t2.getItemCount()!=0){
+            String product_idee =t2.getSelectedItem().toString();
+            try {
+
+                //Data fetch from database
+                String sql = "Select * From add_new_product where Product_name=? ";
+
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,product_idee);
+                ResultSet rs=ps.executeQuery();
+
+                t3.removeAllItems();
+                t3.addItem("-- Select --");
+                while(rs.next()){
+
+                    String[] aa={
+                        rs.getString("Product_id")};
+
+                  //  System.out.println("aaa"+Arrays.toString(aa).replace("[","").replace("]",""));
+
+                    t3.addItem(Arrays.toString(aa).replace("[","").replace("]",""));
+                    // t3.setSelectedItem(null);
+                }
+            }catch(Exception e){
+                System.out.println("error2"+e);
+            }
+        }else{
+
+        }
+    }//GEN-LAST:event_t2ActionPerformed
+
+    private void t3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t3ActionPerformed
+        // TODO add your handling code here:
+        if(t3.getItemCount()!=0){
+            String product_idee =t3.getSelectedItem().toString();
+          //  System.out.println(product_idee);
+            try {
+
+                //Data fetch from database
+                String sql = "Select * From add_new_product where Product_id=? ";
+                Connection con=DATABASE_CONNECTION.getConnection();
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.setString(1,product_idee);
+                ResultSet rs=ps.executeQuery();
+                if(rs.next()){
+
+                    String descp= rs.getString("Description");
+                    String pr= rs.getString("Unit_price");
+                    desc.setText(descp);
+                    //System.out.println("des"+descp);
+                    desc.setEditable(false);
+                    pri.setText(pr);
+                    pri.setEditable(false);
+                    tax.setEnabled(true);
+                }
+            }catch(Exception e){
+                System.out.println("error3"+e);
+            }
+        }else{
+
+        }
+    }//GEN-LAST:event_t3ActionPerformed
+
     public void fast(){
         String value = null;
         String str = null;
@@ -1011,7 +1665,7 @@ try {
                 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(str));
                 for (int i = 0 ; i < selectedRow.length; i++) {
                 value = table.getModel().getValueAt(selectedRow[i], column).toString();
-                    System.out.println("vvvvvvv"+value);
+                   // System.out.println("vvvvvvv"+value);
                 StringBuilder sb = new StringBuilder();
                 sb.append(value+"#");
                 str =sb.toString();
@@ -1268,7 +1922,6 @@ try {
     private javax.swing.JTextField desc;
     private javax.swing.JTextField inv_no;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -1282,6 +1935,7 @@ try {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -1299,13 +1953,14 @@ try {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField p_name;
     private javax.swing.JTextField pin;
     private javax.swing.JTextField pri;
     private javax.swing.JButton print;
-    private javax.swing.JTextField pro_id;
     private javax.swing.JComboBox<String> ps;
     private javax.swing.JTextField quan;
+    private javax.swing.JComboBox<String> t1;
+    private javax.swing.JComboBox<String> t2;
+    private javax.swing.JComboBox<String> t3;
     private javax.swing.JTable table;
     private javax.swing.JComboBox<String> tax;
     private javax.swing.JTextField total;

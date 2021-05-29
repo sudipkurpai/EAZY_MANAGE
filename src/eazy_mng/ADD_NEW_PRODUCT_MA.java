@@ -224,7 +224,6 @@ mfg.setDate(date1);
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         quantity = new javax.swing.JTextField();
-        catagory = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
@@ -245,6 +244,7 @@ mfg.setDate(date1);
         mfg = new com.toedter.calendar.JDateChooser();
         exp = new com.toedter.calendar.JDateChooser();
         reset1 = new javax.swing.JButton();
+        catagory = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -421,9 +421,6 @@ mfg.setDate(date1);
         });
         jPanel2.add(quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 130, 30));
 
-        catagory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 130, 30));
-
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 204));
         jLabel13.setText("Category :");
@@ -474,11 +471,6 @@ mfg.setDate(date1);
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
-            }
-        });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(table);
@@ -553,6 +545,9 @@ mfg.setDate(date1);
         });
         jPanel2.add(reset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 120, 30));
 
+        catagory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Select --", "Appliances", "Arts, Crafts, & Sewing", "Automotive Parts & Accessories", "Baby", "Beauty & Personal Care", "Books", "CDs & Vinyl", "Cell Phones & Accessories", "Clothing, Shoes and Jewelry", "Collectibles & Fine Art", "Computers", "Electronics", "Garden & Outdoor", "Grocery & Gourmet Food", "Handmade", "Health, Household & Baby Care", "Home & Kitchen", "Industrial & Scientific", "Kindle", "Luggage & Travel Gear", "Musical Instruments", "Office Products", "Pet Supplies", "Sports & Outdoors", "Tools & Home Improvement", "Toys & Games", "Video Games" }));
+        jPanel2.add(catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 130, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -623,17 +618,6 @@ mfg.setDate(date1);
        
     }//GEN-LAST:event_SearchMouseClicked
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-         try {
-             // TODO add your handling code here:
-             click();
-         } catch (ParseException ex) {
-             Logger.getLogger(ADD_NEW_PRODUCT_MA.class.getName()).log(Level.SEVERE, null, ex);
-         }
-       
-        save.setEnabled(false);
-    }//GEN-LAST:event_tableMouseClicked
-
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         // TODO add your handling code here:
         
@@ -650,7 +634,7 @@ mfg.setDate(date1);
         String exp_date = s.format(exp.getDate());
         
         String quantit = quantity.getText();
-        String catag = catagory.getText();
+        String catag = catagory.getSelectedItem().toString();
         String Brand = brand.getText();
         String mng = mng_name.getText();
         String mng_i= mng_id.getText();
@@ -672,6 +656,8 @@ mfg.setDate(date1);
         
         if(Product_id.isEmpty() || p_nmaee.isEmpty()||V_nmaee.isEmpty()||Standerd_cost.isEmpty() ||unit_price.isEmpty() ||quantit.isEmpty() || Brand.isEmpty()|| catag.isEmpty()){
            JOptionPane.showMessageDialog(this, "Fill up all field first");  
+        }else if(catagory.getSelectedItem().equals("-- Select --"))    {
+            JOptionPane.showMessageDialog(this, "Select A Catagory"); 
             
         }else if(mfg_date.equals("31-12-0001")||exp_date.equals("31-12-0001")){
             JOptionPane.showMessageDialog(this, "Date Choose From  Calendar ");
@@ -727,18 +713,18 @@ Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(dd);
 exp.setDate(date1);
 mfg.setDate(date1);  
          quantity.setText("");
-         catagory.setText("");
+         catagory.setSelectedIndex(0);
          brand.setText("");
          total.setText("");
          p_id.setText("");
     }
     private void new1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new1ActionPerformed
-         try {
-             // TODO add your handling code here:
-             res();
-         } catch (ParseException ex) {
-             Logger.getLogger(ADD_NEW_PRODUCT_MA.class.getName()).log(Level.SEVERE, null, ex);
-         }
+//         try {
+//             // TODO add your handling code here:
+//             res();
+//         } catch (ParseException ex) {
+//             Logger.getLogger(ADD_NEW_PRODUCT_MA.class.getName()).log(Level.SEVERE, null, ex);
+//         }
          id_create();
          save.setEnabled(true);
          
@@ -914,25 +900,7 @@ mfg.setDate(date1);
         s_cost.getDocument().addDocumentListener(dl);
         quantity.getDocument().addDocumentListener(dl);
     }
-    public void click() throws ParseException{
-     int i = table.getSelectedRow();
-     DefaultTableModel model=(DefaultTableModel)table.getModel();
-     p_id.setText(model.getValueAt(i,0).toString());
-     p_name.setText(model.getValueAt(i,1).toString());
-     v_name.setText(model.getValueAt(i,2).toString());
-     desc.setText(model.getValueAt(i,3).toString());
-     s_cost.setText(model.getValueAt(i,4).toString());
-     unit_pri.setText(model.getValueAt(i,5).toString());
-     
-     Date abcd = new SimpleDateFormat("dd-MM-yyyy").parse(model.getValueAt(i,6).toString());
-     mfg.setDate(abcd);
-     Date abcc = new SimpleDateFormat("dd-MM-yyyy").parse(model.getValueAt(i,7).toString());
-     exp.setDate(abcc);
-     quantity.setText(model.getValueAt(i,8).toString());
-     catagory.setText(model.getValueAt(i,9).toString());
-     brand.setText(model.getValueAt(i,10).toString());
-     total.setText(model.getValueAt(i,11).toString());
-    }
+    
 
 
     /**
@@ -959,7 +927,7 @@ mfg.setDate(date1);
     private javax.swing.JTextField Product_id;
     private javax.swing.JButton Search;
     private javax.swing.JTextField brand;
-    private javax.swing.JTextField catagory;
+    private javax.swing.JComboBox<String> catagory;
     private javax.swing.JTextField d2;
     private javax.swing.JTextPane desc;
     private com.toedter.calendar.JDateChooser exp;
