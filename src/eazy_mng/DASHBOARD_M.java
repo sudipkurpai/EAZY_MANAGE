@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.jar.Attributes.Name;
 import java.util.logging.Level;
@@ -44,6 +45,15 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         product.setVisible(false);
         mng_emp.setVisible(false);
         stock.setVisible(false);
+        product();
+        sell();
+        purchase();
+        employee();
+        complain();
+        profit();
+        Last30();
+        Return();
+        lost();
     }
 
   
@@ -98,23 +108,23 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         home = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
+        pp = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel44 = new javax.swing.JLabel();
+        pp00 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel45 = new javax.swing.JLabel();
+        Sell00 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel46 = new javax.swing.JLabel();
+        em00 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel47 = new javax.swing.JLabel();
+        rp00 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel50 = new javax.swing.JLabel();
+        co00 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel63 = new javax.swing.JLabel();
+        pr00 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel64 = new javax.swing.JLabel();
+        ls00 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
-        jLabel65 = new javax.swing.JLabel();
+        lp00 = new javax.swing.JLabel();
         stock = new javax.swing.JPanel();
         jPanel62 = new javax.swing.JPanel();
         jLabel104 = new javax.swing.JLabel();
@@ -327,22 +337,22 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel2.setToolTipText("");
         jPanel2.setPreferredSize(new java.awt.Dimension(170, 137));
 
-        jLabel43.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel43.setText("10,500");
+        pp.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        pp.setForeground(new java.awt.Color(0, 204, 102));
+        pp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pp.setText("10,500");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pp, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -350,44 +360,44 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Purches", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(170, 137));
 
-        jLabel44.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("10,000");
+        pp00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        pp00.setForeground(new java.awt.Color(0, 204, 102));
+        pp00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pp00.setText("10,000");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+            .addComponent(pp00, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pp00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 255, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Total sale", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
 
-        jLabel45.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setText("5,00000");
+        Sell00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        Sell00.setForeground(new java.awt.Color(0, 204, 102));
+        Sell00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Sell00.setText("5,00000");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Sell00, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Sell00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -395,132 +405,132 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Total Employee", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
         jPanel6.setPreferredSize(new java.awt.Dimension(170, 137));
 
-        jLabel46.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setText("35");
+        em00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        em00.setForeground(new java.awt.Color(0, 204, 102));
+        em00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        em00.setText("35");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(em00, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(em00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Revenue", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Return Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
 
-        jLabel47.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel47.setText("35,000");
+        rp00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        rp00.setForeground(new java.awt.Color(0, 204, 102));
+        rp00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rp00.setText("35,000");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rp00, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rp00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 204));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Complain", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
 
-        jLabel50.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel50.setText("10");
+        co00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        co00.setForeground(new java.awt.Color(0, 204, 102));
+        co00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        co00.setText("10");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(co00, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(co00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel12.setBackground(new java.awt.Color(204, 255, 204));
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Net Profit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
 
-        jLabel63.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel63.setText("40,000");
+        pr00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        pr00.setForeground(new java.awt.Color(0, 204, 102));
+        pr00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pr00.setText("₹ 40,000");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+            .addComponent(pr00, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pr00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel14.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Last Months Sale", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Last 30 Days Sale", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
 
-        jLabel64.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel64.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel64.setText("35,000");
+        ls00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        ls00.setForeground(new java.awt.Color(0, 204, 102));
+        ls00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ls00.setText("35,000");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+            .addComponent(ls00, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ls00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel15.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Employee requirment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153), 2), "Lost Product", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(0, 51, 153))); // NOI18N
 
-        jLabel65.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(0, 204, 102));
-        jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel65.setText("350");
+        lp00.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        lp00.setForeground(new java.awt.Color(0, 204, 102));
+        lp00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lp00.setText("350");
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel65, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lp00, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lp00, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -2221,21 +2231,21 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         Update.setLayout(UpdateLayout);
         UpdateLayout.setHorizontalGroup(
             UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UpdateLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(UpdateLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
                 .addComponent(salf_update, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(change_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(369, 369, 369))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         UpdateLayout.setVerticalGroup(
             UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UpdateLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(50, 50, 50)
                 .addGroup(UpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(change_pass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(salf_update, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(293, Short.MAX_VALUE))
+                    .addComponent(salf_update, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
 
         jPanel1.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 810, 630));
@@ -2255,6 +2265,183 @@ public class DASHBOARD_M extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void product(){
+    
+     try {
+        
+             //Data fetch from database
+            String sql = "Select * From add_new_product ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            int aa=0;
+            while(rs.next()){
+             aa++;
+            }
+            pp.setText(Integer.toString(aa));
+           // System.out.println("rows"+" "+aa);
+            }catch(Exception e){
+            System.out.println("error"+e);
+                    
+        }
+    }
+    public void sell(){
+        String str= null;
+        try {
+        int sum = 0;
+        String sql = "Select Quantity From sell";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        Sell00.setText(str);
+       // System.out.println("sell"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+       
+    }
+    }
+     public void Return(){
+        String str= null;
+        try {
+        int sum = 0;
+        String sql = "Select Quantity From return_product";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        rp00.setText(str);
+       // System.out.println("sell"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+       
+    }
+    }
+      public void lost(){
+        String str= null;
+        try {
+        int sum = 0;
+        String sql = "Select Lost_quantity From product_lost";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        lp00.setText(str);
+       // System.out.println("sell"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+       
+    }
+    }
+     
+     public void purchase(){
+        String str= null;
+        try {
+        int sum = 0;
+        String sql = "Select QUANTITY From purchase";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        pp00.setText(str);
+       // System.out.println("Purchase"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+     }
+    }
+     
+     public void employee(){
+    
+     try {
+        
+             //Data fetch from database
+            String sql = "Select * From employee_register ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            int aa=0;
+            while(rs.next()){
+             aa++;
+            }
+            em00.setText(Integer.toString(aa));
+           // System.out.println("rows"+" "+aa);
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+    }
+    public void complain(){
+    
+     try {
+        
+             //Data fetch from database
+            String sql = "Select * From report_for_manager ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            int aa=0;
+            while(rs.next()){
+             aa++;
+            }
+            co00.setText(Integer.toString(aa));
+           // System.out.println("rows"+" "+aa);
+            }catch(Exception e){
+            System.out.println("error"+e);
+                    
+        }
+    }
+    
+    public void profit(){
+        String str= null;
+        try {
+        int sum = 0;
+        String sql = "Select Profit From sell";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        pr00.setText("\u20B9"+str);
+       // System.out.println("Purchase"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+       
+    }
+    }
+     public void Last30(){
+        String str= null;
+        LocalDate today = LocalDate.now(); 
+        LocalDate day = today.plusDays(-30);
+        try {
+        int sum = 0;
+        String sql = "SELECT Quantity  FROM sell WHERE date  between  '"+day+"' and '"+today+"' ";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        ls00.setText(str);
+      //  System.out.println("Purchase"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+       
+    }
+    }
     private void homenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homenMouseClicked
         // TODO add your handling code here:
         home.setVisible(true);
@@ -2989,6 +3176,7 @@ public class DASHBOARD_M extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LOGOUTaa;
+    private javax.swing.JLabel Sell00;
     private javax.swing.JLabel Showtime;
     private javax.swing.JPanel UPD_PRO;
     private javax.swing.JPanel Update;
@@ -2996,8 +3184,10 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JPanel add_emp3;
     private javax.swing.JPanel bill;
     private javax.swing.JPanel change_pass;
+    private javax.swing.JLabel co00;
     private javax.swing.JPanel cusln;
     private javax.swing.JLabel date;
+    private javax.swing.JLabel em00;
     private javax.swing.JPanel home;
     private javax.swing.JPanel homen;
     private javax.swing.JLabel jLabel1;
@@ -3065,24 +3255,15 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel7;
@@ -3142,14 +3323,20 @@ public class DASHBOARD_M extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel77;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lp00;
+    private javax.swing.JLabel ls00;
     private javax.swing.JPanel mng_emp;
     private javax.swing.JLabel mng_id;
     private javax.swing.JLabel mng_name;
     private javax.swing.JPanel mngen;
     private javax.swing.JPanel navbar;
+    private javax.swing.JLabel pp;
+    private javax.swing.JLabel pp00;
+    private javax.swing.JLabel pr00;
     private javax.swing.JPanel prdtn;
     private javax.swing.JPanel product;
     private javax.swing.JPanel report;
+    private javax.swing.JLabel rp00;
     private javax.swing.JPanel rprt;
     private javax.swing.JPanel sales;
     private javax.swing.JPanel salf_update;

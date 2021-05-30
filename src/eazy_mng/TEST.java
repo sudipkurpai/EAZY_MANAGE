@@ -5,8 +5,15 @@
  */
 package eazy_mng;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +26,19 @@ public class TEST extends javax.swing.JFrame {
      */
     public TEST() {
         initComponents();
+       // last30();
+        Last30();
+      
       //  destructor();
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
 //    public void destructor(){
 //        DocumentListener d = new DocumentListener() {
@@ -103,7 +121,7 @@ public class TEST extends javax.swing.JFrame {
                     .addComponent(l1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +134,7 @@ public class TEST extends javax.swing.JFrame {
                 .addComponent(f2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(l1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,6 +151,74 @@ public class TEST extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void complain(){
+    
+     try {
+        
+             //Data fetch from database
+            String sql = "Select * From report_for_manager ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            int aa=0;
+            while(rs.next()){
+             aa++;
+            }
+           // co00.setText(Integer.toString(aa));
+           // System.out.println("rows"+" "+aa);
+            }catch(Exception e){
+            System.out.println("error"+e);
+                    
+        }
+    }
+     public void last30(){
+    
+     try {
+        
+             //Data fetch from database
+            String sql = "SELECT date  FROM sell WHERE date  between (DAY,-30,GETDATE()) and  GETDATE()";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            int aa=0;
+            while(rs.next()){
+             aa++;
+            }
+           // co00.setText(Integer.toString(aa));
+            System.out.println("rows"+" "+aa);
+            }catch(Exception e){
+            System.out.println("error"+e);
+                    
+        }
+    }
+    
+    
+    public void Last30(){
+        String str= null;
+        LocalDate today = LocalDate.now(); 
+        LocalDate day = today.plusDays(-30);
+        try {
+        int sum = 0;
+        String sql = "SELECT Quantity  FROM sell WHERE date  between  '"+day+"' and '"+today+"' ";
+        Connection con=DATABASE_CONNECTION.getConnection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()) {
+        int c = rs.getInt(1);
+        sum = sum + c;
+        str = Integer.toString(sum); }
+        
+        System.out.println("Purchase"+" "+str);
+        }catch(Exception e){
+            System.out.println("error"+e);
+       
+    }
+    }
+    
+    
+    
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
       String t = f1.getText();

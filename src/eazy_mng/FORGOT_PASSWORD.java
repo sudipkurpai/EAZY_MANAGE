@@ -199,8 +199,8 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
               String  fname=rs.getString("FIRST_NAME");
              String   lname=rs.getString("LAST_NAME");
                  name=fname+" "+lname;
-                System.out.println("EMAILLLLLLLL "+eml);
-                System.out.println("phoooooo "+phonee);
+             //   System.out.println("EMAILLLLLLLL "+eml);
+              //  System.out.println("phoooooo "+phonee);
                 
                 rs.close();
                 ps.close();
@@ -216,7 +216,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                b.setEnabled(true);
                 b2.setEnabled(false);
                
-                System.out.println("matched"+eml);    
+             //   System.out.println("matched"+eml);    
              JOptionPane.showMessageDialog(null, "OTP Sand To"+" "+name);
             /* if(REGISTRATION_DATAOBEJECT.vali(p_email, phone)){
                 gen_otp();
