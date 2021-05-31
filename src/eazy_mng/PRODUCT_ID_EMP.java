@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author RAGHUNATH DAS
  */
-public class PRODUCT_ID extends javax.swing.JFrame {
+public class PRODUCT_ID_EMP extends javax.swing.JFrame {
      String time = null;
      String date = null;
      String ph = null;
@@ -25,19 +25,19 @@ public class PRODUCT_ID extends javax.swing.JFrame {
     /**
      * Creates new form PRODUCT_ID
      */
-    public PRODUCT_ID() {
+    public PRODUCT_ID_EMP() {
         initComponents();
         pro_id.setText("Enter Product Id / Product Name :");
         table();
     }
-     void pi (String fullname, String mng_Id,String email,String t1,String d1,String p) {
+    void pi (String fullname, String emp_Id,String email,String t1,String d1,String p) {
         Name = fullname;
-        Id = mng_Id;
+        Id = emp_Id;
         emll = email;
         time = t1;
         date = d1;
         ph= p;
-     }
+   }
      
      public void table() {
     try {
@@ -83,7 +83,7 @@ public class PRODUCT_ID extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 102));
+        jPanel1.setBackground(new java.awt.Color(32, 64, 81));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close (1).png"))); // NOI18N
@@ -99,7 +99,7 @@ public class PRODUCT_ID extends javax.swing.JFrame {
         jLabel1.setText(" PRODUCT'S ID");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, -1, 60));
 
-        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
         jPanel2.setForeground(new java.awt.Color(51, 51, 255));
 
@@ -256,9 +256,9 @@ public class PRODUCT_ID extends javax.swing.JFrame {
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
 
-        DASHBOARD_M dm = new DASHBOARD_M();
-        dm.mngname(Name,Id,emll,ph,date,time);
-        dm.setVisible(true);
+        DELETE_PRODUCT_MA dpm = new  DELETE_PRODUCT_MA();
+       dpm.dp(Name, Id, emll,time,date,ph);
+        dpm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
 
@@ -279,21 +279,23 @@ public class PRODUCT_ID extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PRODUCT_ID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PRODUCT_ID_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PRODUCT_ID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PRODUCT_ID_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PRODUCT_ID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PRODUCT_ID_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PRODUCT_ID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PRODUCT_ID_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PRODUCT_ID().setVisible(true);
+                new PRODUCT_ID_EMP().setVisible(true);
             }
         });
     }

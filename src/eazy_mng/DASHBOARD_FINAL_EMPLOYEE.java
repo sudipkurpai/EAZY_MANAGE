@@ -177,15 +177,6 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         c_in_search_product = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
-        c_in_show_pro = new javax.swing.JPanel();
-        jLabel112 = new javax.swing.JLabel();
-        jLabel113 = new javax.swing.JLabel();
-        c_in_pro_stock = new javax.swing.JPanel();
-        jLabel118 = new javax.swing.JLabel();
-        jLabel119 = new javax.swing.JLabel();
-        c_in_manage_product = new javax.swing.JPanel();
-        jLabel121 = new javax.swing.JLabel();
-        jLabel120 = new javax.swing.JLabel();
         jPanel69 = new javax.swing.JPanel();
         jLabel122 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
@@ -1200,101 +1191,12 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        c_in_show_pro.setBackground(new java.awt.Color(180, 242, 225));
-        c_in_show_pro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                c_in_show_proMouseClicked(evt);
-            }
-        });
-
-        jLabel112.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel112.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel112.setText("SHOW PRODUCT");
-
-        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/show product3.png"))); // NOI18N
-
-        javax.swing.GroupLayout c_in_show_proLayout = new javax.swing.GroupLayout(c_in_show_pro);
-        c_in_show_pro.setLayout(c_in_show_proLayout);
-        c_in_show_proLayout.setHorizontalGroup(
-            c_in_show_proLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel112, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-            .addComponent(jLabel113, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        c_in_show_proLayout.setVerticalGroup(
-            c_in_show_proLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, c_in_show_proLayout.createSequentialGroup()
-                .addComponent(jLabel113, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel112)
-                .addContainerGap())
-        );
-
-        c_in_pro_stock.setBackground(new java.awt.Color(180, 242, 225));
-        c_in_pro_stock.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                c_in_pro_stockMouseClicked(evt);
-            }
-        });
-
-        jLabel118.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel118.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel118.setText("PRODUCT STOCK ");
-
-        jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel119.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/product stock.png"))); // NOI18N
-
-        javax.swing.GroupLayout c_in_pro_stockLayout = new javax.swing.GroupLayout(c_in_pro_stock);
-        c_in_pro_stock.setLayout(c_in_pro_stockLayout);
-        c_in_pro_stockLayout.setHorizontalGroup(
-            c_in_pro_stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel118, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-            .addComponent(jLabel119, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        c_in_pro_stockLayout.setVerticalGroup(
-            c_in_pro_stockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, c_in_pro_stockLayout.createSequentialGroup()
-                .addComponent(jLabel119, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel118)
-                .addContainerGap())
-        );
-
-        c_in_manage_product.setBackground(new java.awt.Color(180, 242, 225));
-        c_in_manage_product.setPreferredSize(new java.awt.Dimension(170, 50));
-        c_in_manage_product.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                c_in_manage_productMouseClicked(evt);
-            }
-        });
-
-        jLabel121.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel121.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/management (1).png"))); // NOI18N
-
-        jLabel120.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel120.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel120.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel120.setText(" MANAGE PRODUCT ");
-
-        javax.swing.GroupLayout c_in_manage_productLayout = new javax.swing.GroupLayout(c_in_manage_product);
-        c_in_manage_product.setLayout(c_in_manage_productLayout);
-        c_in_manage_productLayout.setHorizontalGroup(
-            c_in_manage_productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel120, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-            .addComponent(jLabel121, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        c_in_manage_productLayout.setVerticalGroup(
-            c_in_manage_productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, c_in_manage_productLayout.createSequentialGroup()
-                .addComponent(jLabel121, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel120)
-                .addContainerGap())
-        );
-
         jPanel69.setBackground(new java.awt.Color(180, 242, 225));
+        jPanel69.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel69MouseClicked(evt);
+            }
+        });
 
         jLabel122.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel122.setForeground(new java.awt.Color(0, 102, 255));
@@ -1321,6 +1223,11 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         );
 
         jPanel70.setBackground(new java.awt.Color(180, 242, 225));
+        jPanel70.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel70MouseClicked(evt);
+            }
+        });
 
         jLabel124.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel124.setForeground(new java.awt.Color(0, 102, 255));
@@ -1390,39 +1297,28 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
                         .addComponent(jPanel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(productLayout.createSequentialGroup()
-                        .addGroup(productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(c_in_show_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addGroup(productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(c_in_pro_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c_in_manage_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(67, 67, 67)
-                        .addGroup(productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(c_in_search_product, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel69, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(85, 85, 85))))
+                        .addComponent(c_in_search_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68)
+                .addComponent(jPanel69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84))
         );
         productLayout.setVerticalGroup(
             productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, productLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(productLayout.createSequentialGroup()
                         .addGroup(productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(c_in_show_pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c_in_search_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
-                        .addGroup(productLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel71, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(c_in_search_product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel71, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(jPanel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(productLayout.createSequentialGroup()
-                        .addComponent(c_in_pro_stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(c_in_manage_product, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
-                .addComponent(jPanel70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                        .addComponent(jPanel69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(241, 241, 241))
         );
 
         BODY.add(product, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 620));
@@ -1523,26 +1419,14 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         bill.setBackground(Color.decode("#00A1AB"));
     }//GEN-LAST:event_billMouseClicked
 
-    private void c_in_show_proMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c_in_show_proMouseClicked
-        // TODO add your handling code here:
-        PRODUCT_DETAILS_EMPLOYEE pde = new PRODUCT_DETAILS_EMPLOYEE();
-        String name = Name.getText();
-        String Id = ID.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        pde.pdee(name, Id, eml, ph, d1, t1);
-        pde.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_c_in_show_proMouseClicked
-
     private void c_in_search_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c_in_search_productMouseClicked
         // TODO add your handling code here:
-        SEARCH_PRODUCT spe = new SEARCH_PRODUCT();
+        SEARCH_PRODUCT_EMP spe = new SEARCH_PRODUCT_EMP();
         String name = Name.getText();
         String Id = ID.getText();
         String t1 = time1.getText();
         String d1 = time2.getText();
-       // spe.sp(name, Id, eml, ph, t1, d1);
+        spe.sp(name, Id, eml,t1,d1,ph);
         spe.setVisible(true);
         this.dispose();
        
@@ -1550,34 +1434,15 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
 
     private void jPanel71MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel71MouseClicked
         // TODO add your handling code here:
-        SEARCH_PRODUCT sp = new SEARCH_PRODUCT();
-        sp.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jPanel71MouseClicked
-
-    private void c_in_pro_stockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c_in_pro_stockMouseClicked
-        // TODO add your handling code here:
-        PRODUCT_STOCK_CHECK prock = new PRODUCT_STOCK_CHECK();
-        String name = Name.getText();
-        String Id = ID.getText();
-        String t1 = time1.getText();
-        String d1 = time2.getText();
-        prock.psc(name, Id, eml, ph, d1, t1);
-        prock.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_c_in_pro_stockMouseClicked
-
-    private void c_in_manage_productMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c_in_manage_productMouseClicked
-        // TODO add your handling code here:
-        MANAGE_PRODUCT1 moe = new MANAGE_PRODUCT1();
+        PRODUCT_ID_EMP spt = new PRODUCT_ID_EMP();
          String name = Name.getText();
         String Id = ID.getText();
         String t1 = time1.getText();
         String d1 = time2.getText();
-        moe.mp(name, Id, eml, ph, d1, t1);
-        moe.setVisible(true);
+        spt.pi(name, Id, eml,t1,d1,ph);
+        spt.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_c_in_manage_productMouseClicked
+    }//GEN-LAST:event_jPanel71MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
@@ -1605,10 +1470,10 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         String llDate = time2.getText();
         String logoutTime=Showtime.getText();
         String logoutDate = date.getText();
-        System.out.println("TTTTTTTTTTTTTTTTTTTTT"+logoutTime);
-        System.out.println("DDDDDDDDDDDDDDDDDD"+logoutDate);
-        System.out.println("LLLLLLLLLTTTTTT"+llTime);
-        System.out.println("LLLLLLLLLDDDDDDD"+llDate); 
+     //   System.out.println("TTTTTTTTTTTTTTTTTTTTT"+logoutTime);
+      //  System.out.println("DDDDDDDDDDDDDDDDDD"+logoutDate);
+      //  System.out.println("LLLLLLLLLTTTTTT"+llTime);
+     //   System.out.println("LLLLLLLLLDDDDDDD"+llDate); 
         try {
             //  Data fetch from database
             System.out.println("@@@@@@@@@@");
@@ -1618,16 +1483,16 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
             System.out.println("!!!!!!!!!!!!!!!!!!" +ps);
             
             ps.setString(1,logoutTime);
-            System.out.println("!111111111" +logoutTime);
+       //     System.out.println("!111111111" +logoutTime);
             ps.setString(2, logoutDate);
-            System.out.println("!222222222" +logoutDate);
+        //    System.out.println("!222222222" +logoutDate);
             ps.setString(3, llTime);
-            System.out.println("!333333333" +llTime);
-            System.out.println("$$$$$$$$$$$$$$$"+status);
+        //    System.out.println("!333333333" +llTime);
+        //    System.out.println("$$$$$$$$$$$$$$$"+status);
             status = ps.executeUpdate();
-            System.out.println("UPDSATE/////////// "+status);
+          //  System.out.println("UPDSATE/////////// "+status);
             if(status>0){
-                 System.out.println("DATA INSERTED");
+              //   System.out.println("DATA INSERTED");
             }else{
                  System.out.println("ERRORRRRRRRRRRRRRRRRRRRr");
             }
@@ -1720,6 +1585,30 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void jPanel69MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel69MouseClicked
+        // TODO add your handling code here:
+       RETURN_PRODUCT_EMP rpp = new RETURN_PRODUCT_EMP();
+         String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         rpp.rp(name, Id, eml,t1,d1,ph);
+         rpp.setVisible(true);
+         this.dispose();  
+    }//GEN-LAST:event_jPanel69MouseClicked
+
+    private void jPanel70MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel70MouseClicked
+        // TODO add your handling code here:
+         PRODUCT_LOST_EMP pll = new PRODUCT_LOST_EMP();
+         String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         pll.pl(name, Id, eml,t1,d1,ph);
+         pll.setVisible(true);
+         this.dispose();  
+    }//GEN-LAST:event_jPanel70MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1765,25 +1654,16 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
     private javax.swing.JLabel Welcome;
     private javax.swing.JPanel bill;
     private javax.swing.JPanel c_bill;
-    private javax.swing.JPanel c_in_manage_product;
-    private javax.swing.JPanel c_in_pro_stock;
     private javax.swing.JPanel c_in_search_product;
-    private javax.swing.JPanel c_in_show_pro;
     private javax.swing.JLabel date;
     private javax.swing.JPanel home;
     private javax.swing.JPanel homer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel112;
-    private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
-    private javax.swing.JLabel jLabel118;
-    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel120;
-    private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;

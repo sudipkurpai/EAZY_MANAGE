@@ -349,21 +349,21 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 String emi =rs.getString("EMP_ID");
-                System.out.println("EMpppppp "+emp);
+               // System.out.println("EMpppppp "+emp);
                 String pss =rs.getString("Password");
-                System.out.println("PASSSSSSSSSS "+pss);
+               // System.out.println("PASSSSSSSSSS "+pss);
                 String fname =rs.getString("FIRST_NAME");
-                System.out.println("FIRST_NAME "+fname);
+              //  System.out.println("FIRST_NAME "+fname);
                 String lname =rs.getString("LAST_NAME");
-                System.out.println("LAST_NAME "+lname);
+              //  System.out.println("LAST_NAME "+lname);
                 name = fname+" "+lname;
-                System.out.println("FULL_NAME "+name);
+              //  System.out.println("FULL_NAME "+name);
                 emp_id =rs.getString("EMP_ID");
-                System.out.println("empoooooooo"+ emp_id);  
+              //  System.out.println("empoooooooo"+ emp_id);  
                 eml =rs.getString("EMAIL");
-                System.out.println("EMAILLLLLLLL "+eml);
+             //   System.out.println("EMAILLLLLLLL "+eml);
                 phone =rs.getString("MOBILE_NO");
-                System.out.println("EMAILLLLLLLL "+phone);
+             //   System.out.println("EMAILLLLLLLL "+phone);
                 rs.close();
                 ps.close();
             }else{
