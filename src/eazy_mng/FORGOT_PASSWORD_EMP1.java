@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  */
 
 
-public class FORGOT_PASSWORD_1 extends javax.swing.JFrame {
+public class FORGOT_PASSWORD_EMP1 extends javax.swing.JFrame {
     String phone;
     String email;
     /**
      * Creates new form FORGOT_PASSWORD
      */
-    public FORGOT_PASSWORD_1() {
+    public FORGOT_PASSWORD_EMP1() {
         initComponents();
         p3.setVisible(false);
         p4.setVisible(false);
@@ -259,7 +259,7 @@ void res (String eml, String mob) {
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
 
-        new LOGINFROM().setVisible(true);
+        new LOGIN_EMPLOYEE().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
 
@@ -280,10 +280,10 @@ void res (String eml, String mob) {
         String Paaas = p2.getText();
        
         //(FIRST_NAME,LAST_NAME,EMAIL,MOBILE_NO,PASSWORD,CONFIRM_PASSWORD,ADDRESS,GENDER)
-         if(PASSWORD_PATTERN.matcher(Paass).matches()){  
+       //  if(PASSWORD_PATTERN.matcher(Paass).matches()){  
         
         if(Paass.equals(Paaas)){
-               UPDATEPROFILE_M_DATAOBJECT.Reset_password(Paass, Paaas,email);
+               UPDATEPROFILE_M_DATAOBJECT.Reset_password2(Paass, Paaas,email);
                 System.out.println("Data inserted");
                
                
@@ -294,10 +294,10 @@ void res (String eml, String mob) {
                 System.out.println("Data NOT inserted");
                 JOptionPane.showMessageDialog(this, "Both Password Not Same"); 
            }
-         }
-         else {
-               JOptionPane.showMessageDialog(null, "Password between 8 and 30 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
-         }
+      //   }
+//         else {
+//               JOptionPane.showMessageDialog(null, "Password between 8 and 30 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
+//         }
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void hMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hMouseClicked
@@ -385,21 +385,27 @@ void res (String eml, String mob) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FORGOT_PASSWORD_1().setVisible(true);
+                new FORGOT_PASSWORD_EMP1().setVisible(true);
             }
         });
     }

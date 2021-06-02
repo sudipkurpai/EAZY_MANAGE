@@ -221,14 +221,22 @@ public class TEST extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      String t = f1.getText();
-
-if (t.isEmpty()){
-f1.setText("");
-} else {
-f1.setText(t.substring(0, t.length() - t.length()));
-
-}     
+        
+        String aa=f1.getText();
+        String bb="hello";
+         String cc="hiii";
+        
+        MAIL.send(aa, bb, cc);
+        
+        
+//      String t = f1.getText();
+//
+//if (t.isEmpty()){
+//f1.setText("");
+//} else {
+//f1.setText(t.substring(0, t.length() - t.length()));
+//
+//}     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

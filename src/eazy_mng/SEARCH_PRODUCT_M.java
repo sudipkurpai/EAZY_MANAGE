@@ -276,7 +276,7 @@ String time = null;
                    rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Vendor_Name"),rs.getString("Description"),rs.getString("Standerd_cost"),rs.getString("Unit_price"),
               rs.getString("Mfg_date"),rs.getString("Exp_date"),rs.getString("Quantity"),rs.getString("Category"),rs.getString("Brand"),rs.getString("Total") };
                model.addRow(o);
-               System.out.println("aa"+o);
+              // System.out.println("aa"+o);
            }
             }catch(Exception e){
             System.out.println("error"+e);

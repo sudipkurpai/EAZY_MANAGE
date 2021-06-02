@@ -205,6 +205,11 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 0, 63));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Forgot Password ?");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 160, -1));
 
         jPanel5.setBackground(new java.awt.Color(40, 64, 161));
@@ -478,6 +483,12 @@ public class LOGIN_EMPLOYEE extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel5.setBackground(new Color(0, 204, 204));
     }//GEN-LAST:event_Log_inMouseReleased
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+       new FORGOT_PASSWORD_EMP().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments

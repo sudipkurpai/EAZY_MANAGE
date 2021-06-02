@@ -80,6 +80,28 @@ public class UPDATEPROFILE_M_DATAOBJECT {
               return status;
 //INSERT INTO `register`(`FIRST_NAME`, `LAST_NAME`, `EMAIL`, `MOBILE_NO`, `PASSWORD`, `CONFIRM_PASSWORD`, `ADDRESS`, `GENDER`) 
     }
+              public static int Reset_password2 (String Pass,String c_pass,String email){
+        int status=0;
+              try{
+                   Connection con=DATABASE_CONNECTION.getConnection();  
+                   PreparedStatement ps=con.prepareStatement("UPDATE employee_register set PASSWORD =?,CONFIRM_PASSWORD =? where EMAIL = ?");
+                   
+                   
+                   ps.setString(1, Pass);
+                   ps.setString(2, c_pass);
+                   ps.setString(3, email);
+                  // ps.setString(4, phone);
+                   
+                   status=ps.executeUpdate();
+                   con.close();
+              }catch(Exception e){
+                  System.out.println(e);
+              }
+              System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!"+status);
+              return status;  
+              }
+               
+               
                public static boolean validate (String EMP_ID) throws SQLException
     {
         boolean status =false;

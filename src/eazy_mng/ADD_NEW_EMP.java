@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.math.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 import javax.swing.Timer;
 /**
  *
@@ -86,6 +87,13 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
      }).start();
       
   }
+   private static final String A ="^(?:(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|" +
+			"(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|" +
+			"(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|" +
+			"(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))(?!.*(.)\\1{2,})" +
+			"[A-Za-z0-9!~<>,;:_=?*+#.\"&§%°()\\|\\[\\]\\-\\$\\^\\@\\/]" +
+			"{8,30}$";
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile(A);
     //FETCH LAST ID FROM DATABASE AND STORE THE DATA IN GLOBAL VARIABLE
     
     void id_create(){
@@ -787,7 +795,9 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
         if(fName.isEmpty()){
             JOptionPane.showMessageDialog(this, "Fill up all field first");
         }
-        else if(password.equals(c_pass) ){
+        else  if(PASSWORD_PATTERN.matcher(password).matches()){
+            
+            if(password.equals(c_pass) ){
             int i = ADD_NEW_EMP_DATAOBEJECT.inventory_management (fName, lName, mail, ph,emp, password,c_pass,dob, add, gen,Name,ID,date,time);
             
             
@@ -811,6 +821,9 @@ public class ADD_NEW_EMP extends javax.swing.JFrame {
             }
         }else {
             JOptionPane.showMessageDialog(this, "Both Password Not Same");
+        }
+        }else {
+               JOptionPane.showMessageDialog(null, "Password between 8 and 30 characters\nPassword must contain at least one lowercase letter\none uppercase letter\none numeric digit\none special character.");
         }
     }//GEN-LAST:event_jLabel28MouseClicked
 

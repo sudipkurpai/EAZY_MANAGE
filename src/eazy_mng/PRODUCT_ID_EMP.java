@@ -256,9 +256,9 @@ public class PRODUCT_ID_EMP extends javax.swing.JFrame {
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
 
-        DELETE_PRODUCT_MA dpm = new  DELETE_PRODUCT_MA();
-       dpm.dp(Name, Id, emll,time,date,ph);
-        dpm.setVisible(true);
+          DASHBOARD_FINAL_EMPLOYEE de = new DASHBOARD_FINAL_EMPLOYEE();
+        de.empname(Name, Id, emll, ph, date, time);
+        de.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
 

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author RAGHUNATH DAS
  */
-public class FORGOT_PASSWORD extends javax.swing.JFrame {
+public class FORGOT_PASSWORD_EMP extends javax.swing.JFrame {
      String otp;
      String eml;
      String phonee;
@@ -31,8 +31,9 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
     /**
      * Creates new form FORGATE_PASSWORD
      */
-    public FORGOT_PASSWORD() {
+    public FORGOT_PASSWORD_EMP() {
         initComponents();
+       // gen_otp();
        text.setFocusable(false);
        text1.setVisible(false);
     }
@@ -293,7 +294,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
         
         try {
             //  Data fetch from database
-            String sql = "Select * from register Where EMAIL =? or MOBILE_NO =? ";
+            String sql = "Select * from employee_register Where EMAIL =? or MOBILE_NO =? ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1,p_email);
@@ -324,7 +325,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                b.setEnabled(false);
               //  b2.setEnabled(false);
                
-             //   System.out.println("matched"+eml);    
+              //  System.out.println("matched"+eml);    
            //  JOptionPane.showMessageDialog(null, "OTP Sand To"+" "+name);
             /* if(REGISTRATION_DATAOBEJECT.vali(p_email, phone)){
                 gen_otp();
@@ -349,7 +350,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
 
-         new LOGINFROM().setVisible(true);
+         new LOGIN_EMPLOYEE().setVisible(true);
          this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
 
@@ -375,14 +376,16 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                  
                
                msc= "YOUR OTP IS "+otp;
-            MAIL.send(eml,"Welcome"+" "+name, msc);
+               String az="Welcome "+name;
+               
+            MAIL.send(eml,az, msc);
             JOptionPane.showMessageDialog(null, "OTP Send To "+name+" By Email");
         
         a= JOptionPane.showInputDialog(this,"Enter Your OTP");
                  if (a.equals(otp)){
             
-                  //   JOptionPane.showMessageDialog(null, "OTP Match");
-                       FORGOT_PASSWORD_1 cpm = new FORGOT_PASSWORD_1();
+                    // JOptionPane.showMessageDialog(null, "OTP Match");
+                       FORGOT_PASSWORD_EMP1 cpm = new FORGOT_PASSWORD_EMP1();
                        cpm.res(eml, phonee);
                       //  cpm.cpmm(Name, Id, emll, time, date, ph);
                          cpm.setVisible(true);              
@@ -390,11 +393,10 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                  }else {
                      JOptionPane.showMessageDialog(null, "OTP Not Match. Only 2 try Left!");
                   b1 = JOptionPane.showInputDialog(this,"Enter Your OTP");
-                 
                  if(b1.equals(otp)){
                      
-                            // JOptionPane.showMessageDialog(null, "OTP Match");
-                                FORGOT_PASSWORD_1 cpm = new FORGOT_PASSWORD_1(); 
+                           //  JOptionPane.showMessageDialog(null, "OTP Match");
+                                FORGOT_PASSWORD_EMP1 cpm = new FORGOT_PASSWORD_EMP1(); 
                                cpm.res(eml, phonee);
                                   cpm.setVisible(true);              
                                  this.dispose();
@@ -404,7 +406,7 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                  if(c.equals(otp)){
                         
                            //  JOptionPane.showMessageDialog(null, "OTP Match");
-                                FORGOT_PASSWORD_1 cpm = new FORGOT_PASSWORD_1(); 
+                                FORGOT_PASSWORD_EMP1 cpm = new FORGOT_PASSWORD_EMP1(); 
                                 cpm.res(eml, phonee);
                                   cpm.setVisible(true);              
                                  this.dispose();
@@ -434,21 +436,27 @@ public class FORGOT_PASSWORD extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FORGOT_PASSWORD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FORGOT_PASSWORD_EMP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FORGOT_PASSWORD().setVisible(true);
+                new FORGOT_PASSWORD_EMP().setVisible(true);
             }
         });
     }
