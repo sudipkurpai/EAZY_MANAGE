@@ -180,9 +180,7 @@ String time = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO add your handling code here:
-        
-                            
+                              
     }
     
     public void search(){
@@ -268,8 +266,7 @@ String time = null;
            }else{
                JOptionPane.showMessageDialog(this, "Product Not Found");
            }
-          
-            }catch(Exception e){
+          }catch(Exception e){
             System.out.println("error"+e);
         }
                    
@@ -287,8 +284,7 @@ String time = null;
         // TODO add your handling code here:
          String product_idee = pro_id.getText();
       try {
-        
-             //Data fetch from database
+         //Data fetch from database
             String sql = "Select * From add_new_product where Product_id Like '%"+product_idee+"%' ";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);

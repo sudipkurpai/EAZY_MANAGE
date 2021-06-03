@@ -222,14 +222,15 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 560));
 
-        jPanel3.setBackground(new java.awt.Color(32, 64, 81));
+        jPanel3.setBackground(new java.awt.Color(0, 204, 102));
 
+        jLabel1.setBackground(new java.awt.Color(0, 204, 102));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("UPDATE PROFILE");
+        jLabel1.setText("UPDATE PROFILE EMPLOYEE");
 
-        jButton1.setBackground(new java.awt.Color(32, 64, 81));
+        jButton1.setBackground(new java.awt.Color(0, 204, 102));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("X");

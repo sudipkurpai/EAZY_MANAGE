@@ -764,7 +764,7 @@ public void res(){
     
     public void bb21(){
         try {
-        SimpleDateFormat s=new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
              String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());

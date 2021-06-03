@@ -763,6 +763,11 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         sales.setPreferredSize(new java.awt.Dimension(820, 620));
 
         jPanel66.setBackground(new java.awt.Color(180, 242, 225));
+        jPanel66.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel66MouseClicked(evt);
+            }
+        });
         jPanel66.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel149.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -1582,6 +1587,18 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jPanel65MouseClicked
+
+    private void jPanel66MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel66MouseClicked
+        // TODO add your handling code here:
+        SELL_REPORT_EMP as = new SELL_REPORT_EMP();
+        String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         as.sr(name, Id, eml,t1,d1,ph);
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel66MouseClicked
 
     /**
      * @param args the command line arguments
