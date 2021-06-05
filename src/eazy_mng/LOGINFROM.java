@@ -416,7 +416,7 @@ public class LOGINFROM extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Fill up all field first");
             }else if(REGISTRATION_DATAOBEJECT.validate(p_email, p_pass)){
                 String timeee = time;
-                System.out.println("11111111111111" +timeee);
+               // System.out.println("11111111111111" +timeee);
                 MAN_SEASION_DATAOBJECT.man_isert_session(name,mng_Id,phone,eml,timeee,"",date,"");
                 email.setForeground(Color.GREEN);
                 pass.setForeground(Color.GREEN);                

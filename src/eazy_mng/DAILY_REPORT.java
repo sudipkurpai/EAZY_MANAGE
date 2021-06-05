@@ -48,6 +48,7 @@ String Dd;
         
         date1();
         cc1();
+        r1.setSelected(true);
     }
      void drr (String fullname, String mng_Id,String email,String t1,String d1,String p) {
        Name = fullname;
@@ -1401,14 +1402,14 @@ void date1() {
         DefaultTableModel model=(DefaultTableModel)table3.getModel();
         String bb=model.getValueAt(i,1).toString();
         String aa= model.getValueAt(i,2).toString();
-        //System.out.println("aaa"+aa);
+       // System.out.println("aaa"+aa);
 
         try{
             String sql = "Select * from s_p_all Where Date = ? and Time =?";
             Connection con=DATABASE_CONNECTION.getConnection();
             PreparedStatement ps=con.prepareStatement(sql);
-            ps.setString(1,aa);
-            ps.setString(2,bb);
+            ps.setString(1,bb);
+            ps.setString(2,aa);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 String emn=rs.getString("Status");

@@ -109,6 +109,12 @@ c4.setDate(date);
         p02 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         a1 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        a2 = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        l2 = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        p2 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
@@ -187,6 +193,11 @@ c4.setDate(date);
         tp1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         tp1.setForeground(new java.awt.Color(0, 0, 204));
         tp1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204), 2));
+        tp1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tp1ActionPerformed(evt);
+            }
+        });
 
         ta2.setBackground(new java.awt.Color(255, 255, 255));
         ta2.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -273,9 +284,7 @@ c4.setDate(date);
         p01.setLayout(p01Layout);
         p01Layout.setHorizontalGroup(
             p01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(p01Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         p01Layout.setVerticalGroup(
             p01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,6 +327,60 @@ c4.setDate(date);
                 .addContainerGap())
         );
 
+        a2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Absent"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(a2);
+
+        l2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Leave"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(l2);
+
+        p2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Presentt"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(p2);
+
         javax.swing.GroupLayout pp1Layout = new javax.swing.GroupLayout(pp1);
         pp1.setLayout(pp1Layout);
         pp1Layout.setHorizontalGroup(
@@ -327,9 +390,18 @@ c4.setDate(date);
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128)
                 .addComponent(p02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149)
                 .addComponent(p01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addGap(122, 122, 122))
+            .addGroup(pp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pp1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         pp1Layout.setVerticalGroup(
             pp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,10 +412,18 @@ c4.setDate(date);
                         .addComponent(p01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pp1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(pp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(p02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(p02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pp1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jButton6.setBackground(new java.awt.Color(255, 0, 0));
@@ -604,6 +684,7 @@ void date() {
                 if(c1.getDate()==null&& c2.getDate()==null){
             cc1();
             }else{
+                 //   System.out.println("ddd"+c1.getDate());      
               cc2();  
             }
   }else if (drop.getSelectedItem().equals("Total Present")){
@@ -658,14 +739,21 @@ public void cc1(){
                model.addRow(o);
                //int count =table1.getRowCount();
                //  te.setText(Integer.toString(count));
-               tl.setText("");
-                te.setText("");
-                ta.setText("");
+              int count1 =table1.getRowCount();
+                tl.setText(Integer.toString(count1));
+               int count =table1.getRowCount();
+                te.setText(Integer.toString(count));
+                 int count3 =table1.getRowCount();
+               ta.setText(Integer.toString(count3));
+                
                 }while (rs.next()); 
                
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Today");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -677,6 +765,7 @@ public void cc2(){
             String d1 = s.format(c1.getDate());
          
             String d2 = s.format(c2.getDate());
+         //   System.out.println("ddd1"+d1);
         try {
         
              //Data fetch from database
@@ -698,15 +787,21 @@ public void cc2(){
                model.addRow(o);
               // int count =table1.getRowCount();
               //   te.setText(Integer.toString(count));
-              tl.setText("");
-                te.setText("");
-                ta.setText("");
+              p21();
+       a21();
+        l21();
+        x1();
+        y1();
+        z1();
                 
                 }while (rs.next()); 
                
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Between This Date");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -743,6 +838,10 @@ public void aa(){
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Today");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
+            
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -786,6 +885,10 @@ public void aa1(){
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Between This Date");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
+            
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -823,6 +926,9 @@ public void bb1(){
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Today");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -862,6 +968,9 @@ public void bb2(){
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Between This Date");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -898,6 +1007,10 @@ public void dd1(){
                 
             }else {
                 JOptionPane.showMessageDialog(this, "No Attendence Found Today");
+                 te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
+            
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -936,7 +1049,11 @@ public void dd2(){
                
                 
             }else {
-                JOptionPane.showMessageDialog(this, "No Attendence Found Today");
+                JOptionPane.showMessageDialog(this, "No Attendence Found Between This Date");
+                te.setText("0");
+                tl.setText("0");
+                ta.setText("0");
+            
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -947,9 +1064,17 @@ public void dd2(){
         // TODO add your handling code here:
         c1.setDate(null);
         c2.setDate(null);
-        te.setText("");
-        tl.setText("");
-        ta.setText("");
+//        te.setText("");
+//        tl.setText("");
+//        ta.setText("");
+        
+        int count1 =table1.getRowCount();
+                tl.setText(Integer.toString(count1));
+               int count =table1.getRowCount();
+                te.setText(Integer.toString(count));
+                 int count3 =table1.getRowCount();
+               ta.setText(Integer.toString(count3));
+        
         if (drop.getSelectedItem().equals("All")){
                
            
@@ -1022,20 +1147,24 @@ public void dd2(){
         dm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void tp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tp1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tp1ActionPerformed
        public void x(){
            int count2 =a1.getRowCount();
                 ta2.setText(Integer.toString(count2));
-                System.out.println("aaa"+Integer.toString(count2));
+             //  System.out.println("aaa"+Integer.toString(count2));
        }
        public void y(){
     int count1 =l1.getRowCount();
                tl2.setText(Integer.toString(count1));
-                System.out.println("lll"+Integer.toString(count1));
+              //  System.out.println("lll"+Integer.toString(count1));
 }
        public void z(){
             int count =p1.getRowCount();
                 tp1.setText(Integer.toString(count));
-                System.out.println("ppp"+Integer.toString(count));
+              //  System.out.println("ppp"+Integer.toString(count));
                  
                 
        }
@@ -1095,23 +1224,7 @@ public void dd2(){
             ResultSet rs=ps.executeQuery();
             DefaultTableModel model = (DefaultTableModel)p1.getModel();
             model.setRowCount(0);
-//            if (rs.next()){
-//             
-//                do{
-//                 
-//               Object o []={
-//                  rs.getString("STATUS")
-//               };
-//               model.addRow(o);
-//               
-//              int count =p1.getRowCount();
-//              tp1.setText(Integer.toString(count));
-//                    System.out.println("hello"+Integer.toString(count));
-//              tl2.setText("");
-//              ta2.setText("");
-//                }while (rs.next()); 
-//                String na=rs.getString("EMP_NAME");
-//              en.setText(na);
+//            
                if (rs.next()){
                     String na=rs.getString("EMP_NAME");
                    en.setText(na);
@@ -1149,6 +1262,137 @@ public void a2(){
             //ps.setString(1,product_idee);
             ResultSet rs=ps.executeQuery();
             DefaultTableModel model = (DefaultTableModel)a1.getModel();
+            model.setRowCount(0);
+            if (rs.next()){
+                do{
+                 
+               Object o []={
+                  rs.getString("STATUS")
+               };
+               model.addRow(o);
+               
+                }while (rs.next()); 
+               
+                
+            }else {
+             //   JOptionPane.showMessageDialog(this, "No Attendence Found Today");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+     
+}
+public void x1(){
+           int count2 =a2.getRowCount();
+                ta.setText(Integer.toString(count2));
+             //  System.out.println("aaa"+Integer.toString(count2));
+       }
+       public void y1(){
+    int count1 =l2.getRowCount();
+               tl.setText(Integer.toString(count1));
+              //  System.out.println("lll"+Integer.toString(count1));
+}
+       public void z1(){
+            int count =p2.getRowCount();
+                te.setText(Integer.toString(count));
+              //  System.out.println("ppp"+Integer.toString(count));
+                 
+                
+       }
+    
+    public void l21(){
+    SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
+            String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+        try {
+        
+             //Data fetch from database
+          String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+" 'and STATUS='Leave'  ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            //ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel)l2.getModel();
+            model.setRowCount(0);
+            if (rs.next()){
+                do{
+                 
+               Object o []={
+                rs.getString("STATUS") 
+               };
+               model.addRow(o);
+               
+                }while (rs.next()); 
+               
+                
+            }else {
+              //  JOptionPane.showMessageDialog(this, "No Leaves Found Between This Date");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+     
+}
+    public void p21(){
+            
+    SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
+            String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+           // System.out.println("dd1"+d1);
+           // System.out.println("dd2"+d2);
+        try {
+        
+             //Data fetch from database
+          String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+" 'and STATUS='Present' ";
+          
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            //ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel)p2.getModel();
+            model.setRowCount(0);
+//            
+               if (rs.next()){
+                  //  String na=rs.getString("EMP_NAME");
+                  // en.setText(na);
+                do{
+                 
+               Object o []={
+                  rs.getString("STATUS")
+               };
+               model.addRow(o);
+               
+                
+                }while (rs.next()); 
+                
+                
+            }else {
+              //  JOptionPane.showMessageDialog(this, "No Attendence Found Between This Date");
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+        }
+    
+public void a21(){
+    SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
+            String d1 = s.format(c1.getDate());
+         
+            String d2 = s.format(c2.getDate());
+        try {
+        
+             //Data fetch from database
+          String sql = "Select * From attendance Where DATE between '"+d1+"' and '"+d2+" 'and STATUS='Absent'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            //ps.setString(1,product_idee);
+            ResultSet rs=ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel)a2.getModel();
             model.setRowCount(0);
             if (rs.next()){
                 do{
@@ -1213,6 +1457,7 @@ public void a2(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable a1;
+    private javax.swing.JTable a2;
     private com.toedter.calendar.JDateChooser c1;
     private com.toedter.calendar.JDateChooser c2;
     private com.toedter.calendar.JDateChooser c3;
@@ -1245,10 +1490,15 @@ public void a2(){
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable l1;
+    private javax.swing.JTable l2;
     private javax.swing.JPanel p01;
     private javax.swing.JPanel p02;
     private javax.swing.JTable p1;
+    private javax.swing.JTable p2;
     private javax.swing.JPanel pp1;
     private javax.swing.JTextField ta;
     private javax.swing.JTextField ta2;
