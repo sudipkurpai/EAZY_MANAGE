@@ -301,10 +301,7 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
 
     private void SearchbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchbMouseClicked
       String em_id = Search1.getText();
-      
-      
-   
-        try {
+       try {
         
              //Data fetch from database
             String sql = "Select * From employee_register Where EMP_ID = ?";
@@ -315,9 +312,9 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
             if(rs.next()){
                 String emp_id =rs.getString("EMP_ID");
                 String f_name =rs.getString("FIRST_NAME");
-                 System.out.println("EMpppppp "+f_name);
+                // System.out.println("EMpppppp "+f_name);
                 String l_name =rs.getString("LAST_NAME");
-                 System.out.println("pppnnn "+l_name);
+                // System.out.println("pppnnn "+l_name);
                 String Phone =rs.getString("MOBILE_NO");
                  
                 String Email =rs.getString("EMAIL");
@@ -346,7 +343,7 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
                 ps.close();
             }else{
                 JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
-                System.out.println("Enter Correct Employee Id");
+               // System.out.println("Enter Correct Employee Id");
             }
         }catch(Exception e){
             System.out.println("error"+e);
@@ -354,9 +351,9 @@ public class UPDATE_PROFILE_EMPLOYEE extends javax.swing.JFrame {
         try{
             
             if(UPDATEPROFILE_M_DATAOBJECT.validate(em_id))
-                 
+            {    
 
-            {System.out.println("EmpppppppppppIDD"+em_id);
+            //System.out.println("EmpppppppppppIDD"+em_id);
                 JOptionPane.showMessageDialog(this, "Employee Found in This Id");
            }else 
             JOptionPane.showMessageDialog(this, "Employee ID not found");

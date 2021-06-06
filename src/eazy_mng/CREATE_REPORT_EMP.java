@@ -7,9 +7,14 @@ package eazy_mng;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,7 +25,7 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
      String Name = null;
      String Id = null;
      String emll = null;
-    
+    String dd = null;
     String date=null;
     String time = null;
     /**
@@ -30,6 +35,10 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
         initComponents();
         time();
         date();
+        date1();
+        panel.setVisible(false);
+        sname.setEditable(false);
+         
     }
     void cre (String fullname, String emp_Id,String email,String t1,String d1,String p) {
       Name = fullname;
@@ -40,7 +49,7 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
         ph= p;    
         en.setText(Name);
         eid.setText(Id);
-    
+       table();
     }
 
     /**
@@ -69,16 +78,20 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
         panel = new javax.swing.JPanel();
         sname = new javax.swing.JTextField();
         sid = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        repp = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -175,16 +188,37 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
         sname.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         sname.setForeground(new java.awt.Color(0, 0, 255));
         sname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0)));
-        panel.add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 220, 36));
+        panel.add(sname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 220, 36));
 
         sid.setBackground(new java.awt.Color(255, 204, 255));
         sid.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         sid.setForeground(new java.awt.Color(0, 0, 255));
         sid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0)));
-        panel.add(sid, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 230, 36));
+        panel.add(sid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 210, 36));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 0, 255));
+        jLabel11.setText("Name :");
+        panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 140, 20));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(153, 0, 255));
+        jLabel12.setText("Enter Id :");
+        panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 140, 20));
+
+        jButton2.setBackground(new java.awt.Color(255, 0, 153));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Reset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 90, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -192,19 +226,13 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 90, 30));
+        panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 90, 30));
 
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(153, 0, 255));
-        jLabel11.setText("Name :");
-        panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 140, 20));
-
-        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(153, 0, 255));
-        jLabel12.setText("Enter Id :");
-        panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 140, 20));
-
-        jScrollPane1.setViewportView(jTextPane1);
+        repp.setBackground(new java.awt.Color(255, 204, 255));
+        repp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 51)));
+        repp.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        repp.setForeground(new java.awt.Color(0, 0, 204));
+        jScrollPane1.setViewportView(repp);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 0, 255));
@@ -213,10 +241,20 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(153, 0, 255));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/sbutton.png"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(153, 0, 255));
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/rbutton.png"))); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -234,11 +272,11 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
                             .addComponent(r1)
                             .addGap(39, 39, 39)
                             .addComponent(r2)
-                            .addGap(31, 31, 31)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 889, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,19 +290,18 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 940, 360));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 940, 270));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(153, 0, 255));
@@ -275,6 +312,54 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(153, 0, 255));
         jLabel13.setText(" Id :");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 30, 30));
+
+        jPanel4.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 51), 2));
+
+        table.setBackground(new java.awt.Color(153, 255, 204));
+        table.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(0, 0, 204));
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Date", "Time", "Report Type", "In Whose Id", "In Whose Name", "Report"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 940, 230));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,11 +372,11 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1003, 514));
+        setSize(new java.awt.Dimension(1003, 673));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -318,7 +403,7 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
     private void clossMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clossMouseClicked
         // TODO add your handling code here:\
         DASHBOARD_FINAL_EMPLOYEE de = new DASHBOARD_FINAL_EMPLOYEE();
-    //    de.empname(Name, Id, emll, ph, date, time);
+        de.empname(Name, Id, emll, ph, date, time);
         de.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_clossMouseClicked
@@ -335,7 +420,189 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         String em_id = sid.getText();
+       try {
+        
+             //Data fetch from database
+            String sql = "Select * From employee_register Where EMP_ID = ?";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,em_id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+               
+                String f_name =rs.getString("FIRST_NAME");
+                // System.out.println("EMpppppp "+f_name);
+                String l_name =rs.getString("LAST_NAME");
+               String za=f_name+l_name;
+               sname.setText(za);
+               
+                rs.close();
+                ps.close();
+            }else{ 
+                
+                try {
+        
+             //Data fetch from database
+            String sql1 = "Select * from register Where MNG_ID = ?";
+            Connection con1=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps1=con1.prepareStatement(sql1);
+            ps1.setString(1,em_id);
+            ResultSet rs1=ps1.executeQuery();
+            if(rs1.next()){
+               
+                String f_name =rs1.getString("FIRST_NAME");
+                // System.out.println("EMpppppp "+f_name);
+                String l_name =rs1.getString("LAST_NAME");
+               String za=f_name+l_name;
+               sname.setText(za);
+               
+                rs1.close();
+                ps1.close();
+            }else{
+                JOptionPane.showMessageDialog(this, "Enter Correct Empolyee Id");
+               // System.out.println("Enter Correct Employee Id");
+            
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+            }
+       }
+         catch(Exception e1){
+            System.out.println("error2"+e1);
+        }
+            
+       
     }//GEN-LAST:event_jButton1ActionPerformed
+ void date1 (){
+      Date d=new Date ();
+      SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
+      dd =s.format(d);
+ }
+ 
+ 
+  public void table()
+{
+    
+   // System.out.println("hello"+Id);
+    try {
+        
+             //Data fetch from database
+            String sql = "Select * From report_for_manager Where Emp_id=? ";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1,Id);
+            ResultSet rs=ps.executeQuery();
+            
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           while (rs.next())
+           {
+               
+               Object o []={
+                  // Manager_Name, Manager_id, Date,Time, Employee_Name, ,Employee_Phone,Employee_email,Complain
+                   rs.getString("Date"),rs.getString("Time"),rs.getString("Report_type"),rs.getString("In_whose_name"),rs.getString("In_Whose_Id"),rs.getString("Report")};
+                   model.addRow(o);
+               
+           }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+}
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        String emp=en.getText();
+        String empid=eid.getText();
+        String tt=Showtime.getText();
+        
+        
+        String sidd=sid.getText();
+        String siname=sname.getText();
+        String sirep=repp.getText();
+        String redio=r1.getText();
+        
+        String redio1=r2.getText();
+      //  System.out.println("rr"+redio);
+      //  System.out.println("rr"+redio1);
+      
+      if(r1.isSelected()==false && r2.isSelected()==false){
+          JOptionPane.showMessageDialog(null, " Select Report Type ");
+     }else 
+      { if(r1.isSelected()==true){
+       if(repp.getText().equals("")||(sirep.length()<=50)){
+         // System.out.println("fail");
+         JOptionPane.showMessageDialog(null, " Describe a Report(Min length 50) for Continue  ");
+    }else{
+          REPORT_DETAOBJECT.reportma(emp, empid, dd, tt, redio,siname,sidd, sirep);
+     
+   //   Emp_name, Emp_id, Date, Time , Report_type, In_whose_name, In_Whose_Id, Report
+       }
+      }else
+          //System.out.println("Error tor insert databesh");
+       
+        if(r2.isSelected()==true){
+           if(sname.getText().equals("")){
+               JOptionPane.showMessageDialog(null, " Identifi The Person in Whose Name You will Report ");
+           }else if(repp.getText().equals("")||(sirep.length()<=50)){
+         // System.out.println("fail");
+         JOptionPane.showMessageDialog(null, " Describe a Report(Min length 50) for Continue  ");
+    }else{
+         
+          REPORT_DETAOBJECT.reportma(emp, empid, dd, tt, redio1,siname,sidd, sirep);
+           }
+   //   Emp_name, Emp_id, Date, Time , Report_type, In_whose_name, In_Whose_Id, Report
+       } else{
+          System.out.println("Error tor insert databesh");  
+      }
+                
+        }          
+       
+      
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        sname.setText("");
+        sid.setText("");
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        repp.setText("");
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int i = table.getSelectedRow();
+     DefaultTableModel model=(DefaultTableModel)table.getModel();
+     String find = model.getValueAt(i,0).toString();
+     String find1 = model.getValueAt(i,1).toString();
+     try {
+        
+             //Data fetch from database
+            String sql1 = "Select * from report_for_manager Where Date = ? And Time =?";
+            Connection con1=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps1=con1.prepareStatement(sql1);
+            ps1.setString(1,find);
+            ps1.setString(2,find1);
+            ResultSet rs1=ps1.executeQuery();
+            if(rs1.next()){
+               
+                String f_name =rs1.getString("Report");
+                // System.out.println("EMpppppp "+f_name);
+                
+               repp.setText(f_name);
+               
+                rs1.close();
+                ps1.close();
+            }
+        }catch(Exception e){
+            System.out.println("error"+e);
+        }
+     
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -380,6 +647,7 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
     private javax.swing.JLabel eid;
     private javax.swing.JLabel en;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -393,12 +661,15 @@ public class CREATE_REPORT_EMP extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel panel;
     private javax.swing.JRadioButton r1;
     private javax.swing.JRadioButton r2;
+    private javax.swing.JTextPane repp;
     private javax.swing.JTextField sid;
     private javax.swing.JTextField sname;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

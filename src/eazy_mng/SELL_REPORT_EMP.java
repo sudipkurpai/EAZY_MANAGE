@@ -42,6 +42,7 @@ String time = null;
 Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(dd1);
 c1.setDate(date1);
 c2.setDate(date1);
+
     }
      void sr (String fullname, String emp_Id,String email,String t1,String d1,String p) {
         Name = fullname;
@@ -50,6 +51,7 @@ c2.setDate(date1);
         time = t1;
         date = d1;
         ph= p;
+        fst();
    }
 
     /**
@@ -255,6 +257,33 @@ c2.setDate(date1);
       SimpleDateFormat s=new SimpleDateFormat("yyyy-MM-dd");
       dd=s.format(d); 
  }
+ public void fst(){
+     try {
+        
+             //Data fetch from database
+            String sql = "Select * From sell Where  Emp_id = '"+Id+"' And Date= '"+dd+"'";
+            Connection con=DATABASE_CONNECTION.getConnection();
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+           DefaultTableModel model =(DefaultTableModel)table.getModel(); 
+           model.setRowCount(0);
+           
+           if(rs.next()){
+               
+           do{
+               
+               Object o []={
+                   rs.getString("Date"),rs.getString("Time"),rs.getString("Product_id"),rs.getString("Product_name"),rs.getString("Quantity"),rs.getString("Price"),rs.getString("Total") };
+               model.addRow(o);
+              // System.out.println("aa"+o);
+           }while (rs.next());
+           } else {
+             JOptionPane.showMessageDialog(null,"You have't made any sells yet ");
+         }
+            }catch(Exception e){
+            System.out.println("error"+e);
+        }
+ }
     private void goMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goMouseClicked
         // TODO add your handling code here:
          
@@ -281,7 +310,7 @@ c2.setDate(date1);
               // System.out.println("aa"+o);
            }while (rs.next());
            } else {
-             JOptionPane.showMessageDialog(null,"No Sells found Today Till Now ");
+             JOptionPane.showMessageDialog(null,"You have't made any sells yet ");
          }
             }catch(Exception e){
             System.out.println("error"+e);
@@ -318,7 +347,7 @@ c2.setDate(date1);
               // System.out.println("aa"+o);
            }while(rs.next());
            } else {
-             JOptionPane.showMessageDialog(null,"No Sells found Between That Days Till Now ");
+             JOptionPane.showMessageDialog(null,"No Sells have been found in those days yet ");
          }
             }catch(Exception e){
             System.out.println("error"+e);

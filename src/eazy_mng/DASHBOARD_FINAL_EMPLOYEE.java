@@ -837,17 +837,22 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         jPanel67.add(jLabel149, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 70, 70));
 
         jPanel60.setBackground(new java.awt.Color(180, 242, 225));
+        jPanel60.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel60MouseClicked(evt);
+            }
+        });
         jPanel60.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel132.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         jLabel132.setForeground(new java.awt.Color(32, 64, 81));
-        jLabel132.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Sale_target.png"))); // NOI18N
+        jLabel132.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/complain006.png"))); // NOI18N
         jPanel60.add(jLabel132, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 70, 80));
 
         jLabel157.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel157.setForeground(new java.awt.Color(0, 102, 255));
         jLabel157.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel157.setText("Sales Target");
+        jLabel157.setText("View Complain");
         jLabel157.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel157MouseClicked(evt);
@@ -957,6 +962,11 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         jPanel66.add(jLabel147, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 70, 70));
 
         jPanel58.setBackground(new java.awt.Color(180, 242, 225));
+        jPanel58.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel58MouseClicked(evt);
+            }
+        });
         jPanel58.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel130.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -976,6 +986,11 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         jPanel58.add(jLabel151, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 150, -1));
 
         jPanel80.setBackground(new java.awt.Color(180, 242, 225));
+        jPanel80.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel80MouseClicked(evt);
+            }
+        });
         jPanel80.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel152.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
@@ -1781,33 +1796,48 @@ public class DASHBOARD_FINAL_EMPLOYEE extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel61MouseClicked
 
+    private void jPanel58MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel58MouseClicked
+        // TODO add your handling code here:
+        SELL_TARGET_EMP as = new SELL_TARGET_EMP();
+        String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         as.ste(name, Id, eml,t1,d1,ph);
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel58MouseClicked
+
+    private void jPanel80MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel80MouseClicked
+        // TODO add your handling code here:
+         AVERAGE_SELL_EMP as = new AVERAGE_SELL_EMP();
+        String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         as.ase(name, Id, eml,t1,d1,ph);
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel80MouseClicked
+
+    private void jPanel60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel60MouseClicked
+        // TODO add your handling code here:
+        COMPLAIN_FOR_EMP as = new COMPLAIN_FOR_EMP();
+        String name = Name.getText();
+         String Id = ID.getText();
+         String t1 = time1.getText();
+         String d1 = time2.getText();
+         as.cpp(name, Id, eml,t1,d1,ph);
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel60MouseClicked
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DASHBOARD_FINAL_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DASHBOARD_FINAL_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DASHBOARD_FINAL_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DASHBOARD_FINAL_EMPLOYEE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

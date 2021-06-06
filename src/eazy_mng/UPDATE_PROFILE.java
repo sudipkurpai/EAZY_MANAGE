@@ -283,7 +283,7 @@ public class UPDATE_PROFILE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     void Update_Profile(){
-         System.out.println("!!!!!!!!56!");
+        // System.out.println("!!!!!!!!56!");
          String mng_ID = MNG_ID.getText();
         
          try{   

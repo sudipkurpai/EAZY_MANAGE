@@ -41,6 +41,7 @@ public class PRODUCT_STOCK_CHECK_MA extends javax.swing.JFrame {
         table();
         cc1();
         Edit();
+        r1.setSelected(true);
          
         
     }

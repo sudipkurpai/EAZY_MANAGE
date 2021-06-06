@@ -1448,6 +1448,9 @@
                       <Color blue="e1" green="f2" red="b4" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel60MouseClicked"/>
+                  </Events>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
                     <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1462,7 +1465,7 @@
                           <Color blue="51" green="40" red="20" type="rgb"/>
                         </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/image/Sale_target.png"/>
+                          <Image iconType="3" name="/image/complain006.png"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -1480,7 +1483,7 @@
                           <Color blue="ff" green="66" red="0" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="Sales Target"/>
+                        <Property name="text" type="java.lang.String" value="View Complain"/>
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel157MouseClicked"/>
@@ -1710,6 +1713,9 @@
                       <Color blue="e1" green="f2" red="b4" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel58MouseClicked"/>
+                  </Events>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
                     <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1761,6 +1767,9 @@
                       <Color blue="e1" green="f2" red="b4" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel80MouseClicked"/>
+                  </Events>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
                     <Property name="useNullLayout" type="boolean" value="false"/>
